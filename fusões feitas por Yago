@@ -1,0 +1,34 @@
+programa
+{
+	
+	funcao inicio()
+	{
+		credito()
+	}
+	funcao vazio credito()
+	{
+	real  valorCompra, valorFinal, desconto
+
+          escreva("\n----------Fusão desconto no credito----------\n")
+		escreva("Digite o valor da compra: ")
+		leia(valorCompra)
+
+		desconto = valorCompra * 0.035
+		valorFinal = valorCompra - desconto
+
+		escreva("O valor final da compra com desconto é: ", valorFinal, "\n")
+	}
+	funcao vazio dinheiro()
+	{
+	real valorCompra, valorFinal, desconto
+
+          escreva("\n----------Fusão desconto no dinheiro----------\n")
+		escreva("\nDigite o valor da compra: ")
+		leia(valorCompra)
+
+		desconto = valorCompra * 0.05
+		valorFinal = valorCompra - desconto
+
+		escreva("O valor final da compra com desconto é: ", valorFinal)
+	}
+}
