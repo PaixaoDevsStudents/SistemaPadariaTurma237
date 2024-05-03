@@ -7,7 +7,9 @@ programa
 	inclua biblioteca Matematica-->mat
 	inclua biblioteca Util-->utl
 	inclua biblioteca Arquivos-->src
-	
+
+	const inteiro TAM_X_TELA = 1920
+	const inteiro TAM_Y_TELA = 1080
 	funcao inicio()
 	{	
 
@@ -70,6 +72,7 @@ programa
 					//entrada de dados
 					
 					//processamento
+
 					
 					//saida de dados
 				pare
@@ -83,7 +86,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 1182; 
+ * @POSICAO-CURSOR = 276; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
