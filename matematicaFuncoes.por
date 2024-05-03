@@ -5,12 +5,21 @@ programa
 	inclua biblioteca Util --> utl
 	
 	funcao inicio() {	// teste de funçoes 
+		// funçao abrir caixa
+		real saldoCaixa=0.0
+		escreva ("Saldo em caixa é: R$ ",abrirCaixa (saldoCaixa)," Reais\n")
 		
 		inteiro quantidadeCompraCliente=0				// VAriaveissss
 		real valorDaG=0.08, compraEmGramas=0.0,valorCobrarCliente=0.0
 		// Chama de funçoes para testess e aquii
 		calcularJuros_Desconto (balanca(quantidadeCompraCliente,compraEmGramas,valorCobrarCliente,valorDaG))
 		
+	}
+	funcao real abrirCaixa (real saldoCaixa){
+		escreva ("Abertura de caixa, Quantos reais tem no caixa? ")
+		leia (saldoCaixa)
+		
+		retorne (saldoCaixa)
 	}
 	funcao real calcularJuros_Desconto (real valorCobrarCliente){
      	inteiro opcao_pagamento
@@ -58,7 +67,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 429; 
+ * @POSICAO-CURSOR = 275; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
