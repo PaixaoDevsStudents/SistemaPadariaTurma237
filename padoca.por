@@ -8,14 +8,15 @@ programa
 	inclua biblioteca Util-->utl
 	inclua biblioteca Arquivos-->src
 
-	const inteiro TAM_X_TELA = 1920
+	const inteiro TAM_X_TELA = 1920	
 	const inteiro TAM_Y_TELA = 1080
 	funcao inicio()
 	{	
 
 		//variaveis
-		inteiro opcao, arquivo
-
+		inteiro arquivo, mnu=0, qtd_estoque=0, id_produto=0
+		real val_uni=0.0, val_custo=0.0
+		cadeia nome_produto=""
 		/*
 		 * caminhos dos arquivos
 		const
@@ -27,10 +28,16 @@ programa
 		//leitura de arquivos
 			
 		//menu de opções
-			escreva("1-Cadastrar produtos\n2-Realizar vendas\n3-Relatório temporario\n4-Fechar caixa\n5-Verificar acesso\n->")
-			leia(opcao)
-			escolha(opcao){
+			imprime_mnu(mnu)
+			escolha(mnu){
 				caso 1:
+					inteiro y=0
+						escreva("Quantos produtos irá cadastrar?: ")
+						leia(y)
+					para(inteiro i=0; i<y; i++){
+						cad_produ(qtd_estoque, id_produto, val_uni, val_custo, nome_produto)	
+						}
+						imprime_mnu(mnu)
 					//cadastrar produtos
 					
 					//entrada de dados
@@ -79,6 +86,12 @@ programa
 				caso contrario:
 				inicio()
 			}
+	}funcao inteiro imprime_mnu(inteiro &opcao){
+		escreva("Escolha uma opcao \n\n 1) Cadastrar produto         2) Registrar Venda\n 3) Relatorio Atual           4) Fechar Caixa e Sair\n\nDigite o numero referente a opção desejada: ")
+		leia(opcao)
+		retorne opcao
+	}funcao cad_produ(inteiro qtd_estoque,inteiro id_produto, inteiro val_uni,inteiro val_custo,cadeia nome_produto){
+		
 	}
 }
 /* $$$ Portugol Studio $$$ 
@@ -86,7 +99,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 276; 
+ * @POSICAO-CURSOR = 1888; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
