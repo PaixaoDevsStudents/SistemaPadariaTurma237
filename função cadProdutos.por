@@ -14,9 +14,9 @@ programa
 	{	
 
 		//variaveis
-		inteiro opcao, arquivo, vetCod[5], vetQntProduto[5], quantProduto
-		real saldoCaixa=0.0, vetCusto[5], custoProduto, valorProduto, vetValorProd[5]
-		cadeia vetsrc[5], vetNome[5], nomeProduto
+		inteiro opcao, arquivo, vetCod[5], vetQntProduto[5]
+		real saldoCaixa=0.0, vetCusto[5], vetValorProd[5]
+		cadeia vetsrc[5], vetNome[5]
 		escreva("Selecione a sequência de arquivos:\n1-Carrinho\n2-Produtos Registrados\n3-Total de vendas\n4-Vendas do dia\n5-Registro de vendas")
 		cadeia typdata[2]={"arquivodetexto|txt","arquivodetexto|txt"}
 		para(inteiro c=0;c<5;c++){
@@ -40,11 +40,11 @@ programa
 		
 		escreva("Digite o nome do produto para cadastrar :\n-->")//saída de daos para direcionar o usuario
 			    leia ( vetNome[l])
-		escreva("Digite o valor do produto :\n-->")//saída de daos para direcionar o usuario
-			    leia ( vetValorProd[l])
-		escreva(" Digite a quantidade em estoque :\n--> ")//saída de daos para direcionar o usuario
-  		        leia(vetQntProduto[l])
-          escreva(" Digite o custo do Produto :\n-->")//saída de daos para direcionar o usuario
+		 escreva("Digite o valor do produto :\n-->")//saída de daos para direcionar o usuario
+			     leia ( vetValorProd[l])
+		  escreva(" Digite a quantidade em estoque :\n--> ")//saída de daos para direcionar o usuario
+  		         leia(vetQntProduto[l])
+           escreva(" Digite o custo do Produto :\n-->")//saída de daos para direcionar o usuario
           	   leia(vetCusto[l])
           	}
 
@@ -201,7 +201,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 5486; 
+ * @POSICAO-CURSOR = 1553; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
