@@ -37,31 +37,15 @@ programa
 					//cadastrar produtos
 					para(inteiro l=0;l<5;l++){
 				//escreva("\nEscreva o nome do produto para cadastrar:  ")
-		escreva(" ------------------------------------------------------------\n")//saída de dados (representação gráfica)
-		escreva("|            Escreva o nome do produto para cadastrar        |\n")//saída de daos para direcionar o usuario 
-		escreva(" ------------------------------------------------------------\n --------------------------->  ")//saida de dados (representação gráfica)
-			    leia (nomeProduto)
-			   
-				vetNome[l] = nomeProduto
-				//escreva("\nValor do produto:  ")
-		escreva(" ------------------------------------------------------------\n")//saída de dados (representação gráfica)
-		escreva("|                    Valor do produto:                       |\n")//saída de daos para direcionar o usuario
-    		escreva(" ------------------------------------------------------------\n --------------------------->  ")//saída de dados (representação gráfica)
-			    leia (valorProduto)
-			   
-			     vetValorProd[l] = valorProduto 
-			//escreva("Digite a quantidade em estoque: ")
-		escreva(" ------------------------------------------------------------\n")//saída de dados (representação gráfica
-		escreva("|               Digite a quantidade em estoque               |\n ")//saída de daos para direcionar o usuario
-		escreva("------------------------------------------------------------\n --------------------------->  ")//saída de dados (representação gráfica)
-  		        leia(quantProduto)
-			    vetQntProduto[l] = quantProduto
-          	//escreva("Digite o custo do Produto:  ")
-          escreva(" ----------------------------------------------------------\n")//saída de dados (representação gráfica)
-          escreva("|                Digite o custo do Produto                 |\n")//saída de daos para direcionar o usuario
-          escreva(" ----------------------------------------------------------\n --------------------------->  ")//saída de dados (representação gráfica)
-          	   leia(custoProduto)
-          	     vetCusto[l]=custoProduto
+		
+		escreva("Digite o nome do produto para cadastrar :\n-->")//saída de daos para direcionar o usuario
+			    leia ( vetNome[l])
+		escreva("Digite o valor do produto :\n-->")//saída de daos para direcionar o usuario
+			    leia ( vetValorProd[l])
+		escreva(" Digite a quantidade em estoque :\n--> ")//saída de daos para direcionar o usuario
+  		        leia(vetQntProduto[l])
+          escreva(" Digite o custo do Produto :\n-->")//saída de daos para direcionar o usuario
+          	   leia(vetCusto[l])
           	}
 
 			para (inteiro l=0;l<5;l++){  // sorteia numero do codigo dos produtos
@@ -72,9 +56,18 @@ programa
 			}
 		
 		para (inteiro l=0;l<5;l++){
-		
-			
-		 escreva("\t|",vetNome[l],"|\t",vetCod[l],"|\t",vetValorProd[l],"|\t",vetQntProduto[l],"|\t",vetCusto[l],"|\n")
+		cadeia vetTexto[5]
+		vetTexto[0] = "Nome"
+		vetTexto[1] = "Cod"
+		vetTexto[2] = "Valor"
+		vetTexto[3] = "Quant"
+		vetTexto[4] = "Custo"
+			escreva("\t",vetTexto[l]," |")
+		 
+      	}
+      	escreva("\n")
+      	para (inteiro l=0;l<5;l++){
+      		escreva("\t",vetNome[l],"|\t ",vetCod[l],"|\t  ",vetValorProd[l],"|\t  ",vetQntProduto[l],"|\t  ",vetCusto[l],"|\n")
       	}
 		
 					
@@ -208,7 +201,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 3473; 
+ * @POSICAO-CURSOR = 5486; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
