@@ -86,7 +86,7 @@ programa
           	   	se(vetCusto[l]>vetValorProd[l]){
           	   		escreva("O Custo de Produção nao pode ser maoir que o valor do Produto.Por favor,Digite novamente.\n")
           	   	}
-           }enquanto(vetCusto[l]<=0 ou vetCusto[l]>vetValorProd[l])
+           }enquanto(vetCusto[l]<=0 ou vetCusto[l]>vetValorProd[l])// vai ficar repetindo enquanto valor digitado for zerro ou enquanto o valor do custo digitado for maior que o valor do produto
 
 			para ( inteiro i=0;i<5;i++){  // sorteia numero do codigo dos produtos
 			vetCod[i] = utl.sorteia(100, 300)
@@ -254,7 +254,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 2573; 
+ * @POSICAO-CURSOR = 3888; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
