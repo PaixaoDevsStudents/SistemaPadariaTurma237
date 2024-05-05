@@ -16,7 +16,7 @@ programa
 		//variaveis
 		inteiro opcao, arquivo, vetCod[5], vetQntProduto[5]
 		real saldoCaixa=0.0, vetCusto[5], vetValorProd[5]
-		cadeia vetsrc[5], vetNome[5]
+		cadeia vetsrc[5], vetNome[5],nomeProduto,valorProd,qntProduto,custo
 		escreva("Selecione a sequência de arquivos:\n1-Carrinho\n2-Produtos Registrados\n3-Total de vendas\n4-Vendas do dia\n5-Registro de vendas")
 		cadeia typdata[2]={"arquivodetexto|txt","arquivodetexto|txt"}
 		para(inteiro c=0;c<5;c++){
@@ -35,26 +35,79 @@ programa
 				caso 1:
 				
 					//cadastrar produtos
-					para(inteiro l=0;l<5;l++){
+		para(inteiro l=0;l<5;l++){
 				//escreva("\nEscreva o nome do produto para cadastrar:  ")
-		
+		logico nomeValido = verdadeiro
+		faca{
 		escreva("Digite o nome do produto para cadastrar :\n-->")//saída de daos para direcionar o usuario
-			    leia ( vetNome[l])
+          leia(nomeProduto) // Ler a entrada do usuário
+          se(nomeProduto==""){ // Verifica se o usuário digitou algo
+        	escreva("Digite um nome\n")// Se o usuário não digitou nada, pedimos que ele digite o nome do produto
+        }
+          se(nomeProdutoExiste(nomeProduto,vetNome)){ // Usa sua função para verificar se o nome do produto não existe
+           escreva("Este produto ja foi Cadrastrado\n") // Se o nome do produto já existir, informa ao usuário
+          }senao{
+          vetNome[l]= nomeProduto // Se o nome do produto não existir, o adiciona ao produto
+          nomeValido = falso // Defini nomeValido como falso
+          }
+           }enquanto(nomeValido == verdadeiro) // Repeti o loop até que o usuário digite um nome de produto válido	
+           faca{
 		 escreva("Digite o valor do produto :\n-->")//saída de daos para direcionar o usuario
-			     leia ( vetValorProd[l])
+			     leia (valorProd)
+		 se(valorProd==""){
+		 	escreva("Digite um valor\n")
+		 }
+		 se(typ.cadeia_e_real(valorProd)==falso){// Verifica se a entrada é um número real
+		 	escreva("Por favor Digite o valor real do Produto\n")}
+		 senao{
+		 	vetValorProd[l]=typ.cadeia_para_real(valorProd)}	 // Converte a entrada para um número real e armazena no vetor    
+           }enquanto(vetValorProd[l]<=0) 
+           faca{    
 		  escreva(" Digite a quantidade em estoque :\n--> ")//saída de daos para direcionar o usuario
-  		         leia(vetQntProduto[l])
+  		         leia(qntProduto)
+  		         se(qntProduto==""){
+  		         	escreva("Digite um valor\n")
+  		         }
+  		         se(typ.cadeia_e_inteiro(qntProduto,10)==falso){
+  		         escreva("Digite numero inteiro de Quantidade\n")
+  		         }senao{
+  		         vetQntProduto[l]=typ.cadeia_para_inteiro(qntProduto,10)}
+           }enquanto( vetQntProduto[l]<=0)
+           faca{
            escreva(" Digite o custo do Produto :\n-->")//saída de daos para direcionar o usuario
-          	   leia(vetCusto[l])
-          	}
+          	   leia(custo)
+          	   se(custo==""){
+          	   	escreva("Digite um valor\n")
+          	   }
+          	   se(typ.cadeia_e_real(custo)==falso){
+          	   	escreva("Digite um valor real do Custo de Produção\n")
+          	   }senao{
+          	   	vetCusto[l]=typ.cadeia_para_real(custo)}
+          	   	se(vetCusto[l]>vetValorProd[l]){
+          	   		escreva("O Custo de Produção nao pode ser maoir que o valor do Produto.Por favor,Digite novamente.\n")
+          	   	}
+           }enquanto(vetCusto[l]<=0 ou vetCusto[l]>vetValorProd[l])
 
-			para (inteiro l=0;l<5;l++){  // sorteia numero do codigo dos produtos
-			vetCod[l] = utl.sorteia(100, 300)
+			para ( inteiro i=0;i<5;i++){  // sorteia numero do codigo dos produtos
+			vetCod[i] = utl.sorteia(100, 300)
 			se(utl.sorteia(100, 300) == utl.sorteia(100, 300)){
-				vetCod[l] = utl.sorteia(100, 300)
+				vetCod[i] = utl.sorteia(100, 300)
 				}
-			}
-		
+				
+			  }
+		     }
+		  }
+		}
+		funcao logico nomeProdutoExiste(cadeia nomeProduto, cadeia vetNome[]){// Função para verificar se o nome do produto já existe
+       	inteiro intNumProdutos=0  
+       para(inteiro l=0; l<5; l++){// Loop para percorrer todos os produtos       
+       se(vetNome[l] == nomeProduto){// Se o nome do produto já existe na matriz de produtos            
+       retorne verdadeiro// Retorna verdadeiro indicando que o nome do produto já existe
+         }
+       } 
+        retorne falso // Se o nome do produto não foi encontrado na matriz de produtos, retorna falso
+       }
+}
 		para (inteiro l=0;l<5;l++){
 		cadeia vetTexto[5]
 		vetTexto[0] = "Nome"
@@ -201,7 +254,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 1553; 
+ * @POSICAO-CURSOR = 2573; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
