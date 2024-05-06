@@ -19,21 +19,11 @@ programa
 		//variaveis
 		inteiro arquivo, mnu=0, qtd_estoque=0, id_produto=0
 		real val_uni=0.0, val_custo=0.0
-		cadeia nome_produto=""
-		/*
-		 * caminhos dos arquivos
-		const
-		const
-		const
-		const
-		*/
-		
+		cadeia nome_produto="", vetsrc[5], typdata[2]={"arquivodetexto|txt","arquivodetexto|txt"}, password="admin"
 		inteiro opcao
-		cadeia vetsrc[5]
 		escreva("Selecione a sequência de arquivos:\n1-Carrinho\n2-Produtos Registrados\n3-Total de vendas\n4-Vendas do dia\n5-Registro de vendas")
-		cadeia typdata[2]={"arquivodetexto|txt","arquivodetexto|txt"}
 		para(inteiro c=0;c<5;c++){
-			vetsrc[c] = src.selecionar_arquivo(typdata, verdadeiro)	
+			vetsrc[c] = src.selecionar_arquivo(typdata, verdadeiro)
 		}
 		limpa()
 		//leitura de arquivos
@@ -823,8 +813,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 32374; 
- * @DOBRAMENTO-CODIGO = [763, 795];
+ * @POSICAO-CURSOR = 32301; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
