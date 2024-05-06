@@ -694,7 +694,7 @@ programa
 		}
 		
 	}
-	funcao cadeia entradaBaseCadeia(cadeia texto)
+	funcao cadeia entradaBaseCadeia(cadeia texto)//função que trata erros
      {
      	cadeia opcao
           caracter saida = ' '//Váriavel de saída.
@@ -717,7 +717,7 @@ programa
 		//Retorna a valor de entrada do usuário.
           retorne opcao
      }
-	funcao real entradaBaseReal(cadeia texto)
+	funcao real entradaBaseReal(cadeia texto)//tratamento de erro para variavel do tipo real
      {
      	cadeia opcao
           caracter saida = ' '//variavel de saida
@@ -751,7 +751,8 @@ programa
           //retorna variável de retorno x
           retorne x
      }
-     funcao inteiro entradaBaseInteiro(cadeia texto){
+     funcao inteiro entradaBaseInteiro(cadeia texto)//tratamento de erro variavel do tipo inteiro
+     {
      	cadeia opcao
           caracter saida = ' '//variável de saída.
           inteiro x = 0//variável de retorno.
@@ -813,7 +814,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 32301; 
+ * @POSICAO-CURSOR = 30660; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
