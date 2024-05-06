@@ -556,15 +556,46 @@ programa
 		aq.escrever_linha(linha, arquivo)//escreve a linha no arquivo e pula pra próxima
 		aq.fechar_arquivo(arquivo)//fechar arquivo
 	}
-
+	funcao ordenacaoVend(inteiro p, inteiro k, cadeia dadosDeVenda[], inteiro arquivoVendaD, inteiro numDeVendasDiaria, cadeia caminhoDeVendasDiaria){
+		se(dadosDeVenda[0] != ""){
+          	//título		
+          	escreva("++++++++++++++++++++++++++\n")
+          	escreva("REGISTROS DE VENDAS DO DIA\n")
+          	escreva("++++++++++++++++++++++++++\n")
+			//loop para organizar a escritura dos códigos 					
+			faca{
+									
+				se(tp.cadeia_para_inteiro(dadosDeVenda[0], 10) == k){
+					escreva("===============================================================================================================\n")
+					escreva("|Código:"+dadosDeVenda[0]+"|Nome: "+dadosDeVenda[1]+"|Quantidade vendida: "+dadosDeVenda[2]+"|Valor total de vendas do produto: "+dadosDeVenda[3]+"|\n")	
+					escreva("===============================================================================================================\n")
+					k++
+				}
+				leiaProduto(dadosDeVenda, arquivoVendaD)//lê o produto vendido e passa para vetor
+				p++
+				se(p > numDeVendasDiaria){
+					p = 1
+					se(k <= numDeVendasDiaria){
+						aq.fechar_arquivo(arquivoVendaD)
+						arquivoVendaD = aq.abrir_arquivo(caminhoDeVendasDiaria, aq.MODO_LEITURA)					
+					}
+				}
+				
+			}enquanto(p <=numDeVendasDiaria e k <= numDeVendasDiaria)
+		}
+		senao{escreva("Não há registros de vendas no dia.\n")}
+          aq.fechar_arquivo(arquivoVendaD)
+		
+	}
+	
 }
 /* $$$ Portugol Studio $$$ 
  * 
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 23511; 
- * @DOBRAMENTO-CODIGO = [7, 300, 399, 459, 472, 493, 508, 539];
+ * @POSICAO-CURSOR = 24913; 
+ * @DOBRAMENTO-CODIGO = [7, 300, 399, 459, 472, 493, 508, 539, 558];
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
