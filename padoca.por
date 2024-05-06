@@ -14,7 +14,6 @@ programa
 	{	
 
 		//variaveis
-<<<<<<< HEAD
 		inteiro arquivo, mnu=0, qtd_estoque=0, id_produto=0
 		real val_uni=0.0, val_custo=0.0
 		cadeia nome_produto=""
@@ -26,7 +25,6 @@ programa
 		const
 		*/
 		
-=======
 		inteiro opcao
 		cadeia vetsrc[5]
 		escreva("Selecione a sequência de arquivos:\n1-Carrinho\n2-Produtos Registrados\n3-Total de vendas\n4-Vendas do dia\n5-Registro de vendas")
@@ -35,7 +33,6 @@ programa
 			vetsrc[c] = src.selecionar_arquivo(typdata, verdadeiro)	
 		}
 		limpa()
->>>>>>> c3325990a1b0d4bf545322734d248cc7db995bc0
 		//leitura de arquivos
 		
 		//menu de opções
@@ -104,19 +101,4 @@ programa
 	}funcao cad_produ(inteiro qtd_estoque,inteiro id_produto, inteiro val_uni,inteiro val_custo,cadeia nome_produto){
 		
 	}
-<<<<<<< HEAD
 }
-/* $$$ Portugol Studio $$$ 
- * 
- * Esta seção do arquivo guarda informações do Portugol Studio.
- * Você pode apagá-la se estiver utilizando outro editor.
- * 
- * @POSICAO-CURSOR = 1888; 
- * @PONTOS-DE-PARADA = ;
- * @SIMBOLOS-INSPECIONADOS = ;
- * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
- * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
- */
-=======
-}
->>>>>>> c3325990a1b0d4bf545322734d248cc7db995bc0
