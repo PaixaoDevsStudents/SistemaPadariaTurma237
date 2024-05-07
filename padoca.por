@@ -65,6 +65,7 @@ programa
 			}
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	funcao logico nomeProdutoExiste(cadeia nomeProduto, cadeia vetNome[]){// Função para verificar se o nome do produto já existe
        	inteiro intNumProdutos=0  
        para(inteiro l=0; l<5; l++){// Loop para percorrer todos os produtos       
@@ -89,6 +90,8 @@ programa
 		escreva("Valor a cobrar do cliente é: ",valorCobrarCliente) // mostra o valor na tela a ser cobrado 
 		retorne (valorCobrarCliente)
 		}
+=======
+>>>>>>> fd406edc21d57886cfc639ebe76d3eeb626b3ca1
 =======
 >>>>>>> fd406edc21d57886cfc639ebe76d3eeb626b3ca1
 	funcao inteiro imprime_mnu(inteiro &opcao){
@@ -848,6 +851,7 @@ programa
  * @POSICAO-CURSOR = 23566; 
  * @DOBRAMENTO-CODIGO = [66, 71, 364, 463, 523, 536, 577, 627, 658, 676, 699, 738, 733, 764, 786];
 <<<<<<< HEAD
+<<<<<<< HEAD
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
@@ -860,6 +864,8 @@ programa
  * 
  * @POSICAO-CURSOR = 1577; 
  * @DOBRAMENTO-CODIGO = [66, 75, 80, 90, 95, 388, 487, 547, 560, 581, 601, 632, 651, 682, 700, 723, 757, 788, 810];
+=======
+>>>>>>> fd406edc21d57886cfc639ebe76d3eeb626b3ca1
 =======
 >>>>>>> fd406edc21d57886cfc639ebe76d3eeb626b3ca1
  * @PONTOS-DE-PARADA = ;
