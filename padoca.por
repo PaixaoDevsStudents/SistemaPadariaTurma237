@@ -10,7 +10,7 @@ programa
 
 	const inteiro TAM_X_TELA = 1920	
 	const inteiro TAM_Y_TELA = 1080
-	const inteiro PROD = 6
+	const inteiro PROD = 5
 	const inteiro VENDA = 4
 	
 	funcao inicio()
@@ -40,7 +40,7 @@ programa
 						leia(y)
 						limpa()
 					para(inteiro i=0; i<y; i++){
-						
+						cadastroProduto(vetsrc[1])
 					}
 					inicio()
 				pare
@@ -555,19 +555,24 @@ programa
 		retorne entrada
 		
 	}
-	funcao cadastroProduto(cadeia vetor[], cadeia caminho){
+	funcao cadastroProduto(cadeia caminho){
+		cadeia vetor[PROD]
 		//loop para limpar o vetor de valores vazios
 		para(inteiro i = 0; i< PROD; i++){
 			vetor[i] = ""
 		}
 		//Vetor com idnomes recebe entrada de usuário do nome do produtlo
 		vetor[0] += filtrarCaracteres(entradaBaseCadeia("Digite o nome do produtlo: "))
+		limpa()
 		//Vetor com id de stock recebe entrada de usuário do número de stock
 		vetor[1] += entradaBaseInteiro("Digite a quantidade do produtlo que tem no estoque de hoje: ")
+		limpa()
           //Vetor com id de precos recebe entrada de usuário do preço do produtlo
           vetor[2] += mat.arredondar(entradaBaseReal("Digite o preço do produtlo: "), 2)
+          limpa()
           //vetor com id de custo recebe entrada de usuário do custo do produtlo
           vetor[3] += entradaBaseReal("Digite o custo do produtlo: ")
+          limpa()
           passeProduto(1, caminho , vetor)//passa os dados do produtlo para o arquivo
 	}
 	funcao cadeia leiaProduto(cadeia vetor[], inteiro arquivo){
@@ -757,7 +762,6 @@ programa
           //retorna valor de x
           retorne x
      }
-
 	funcao inteiro escolhas(cadeia texto){
      	inteiro saidaLoop = 0
      	faca{
@@ -807,7 +811,6 @@ programa
 			}
 		}
 	}
-	
 }
 
 /* $$$ Portugol Studio $$$ 
@@ -815,7 +818,8 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 1150; 
+ * @POSICAO-CURSOR = 23566; 
+ * @DOBRAMENTO-CODIGO = [66, 71, 364, 463, 523, 536, 577, 627, 658, 676, 699, 738, 733, 764, 786];
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
