@@ -30,69 +30,44 @@ programa
 		
 		//menu de opções
 			imprime_mnu(mnu)
+			limpa()
 			escolha(mnu){
 				caso 1:
+					//Cadastrar produtos
+					verifAcess(password)
 					inteiro y=0
 						escreva("Quantos produtos irá cadastrar?: ")
 						leia(y)
+						limpa()
 					para(inteiro i=0; i<y; i++){
-						cad_produ(qtd_estoque, id_produto, val_uni, val_custo, nome_produto)	
-						}
-						imprime_mnu(mnu)
-					//cadastrar produtos
-					
-					//entrada de dados
-					
-					//processamento
-					
-					//saida de dados
+						
+					}
+					inicio()
 				pare
 				caso 2:
 					//realizar vendas
 					
-					//entrada de dados
-					
-					//processamento
-					
-					//saida de dados
 				pare
 				caso 3:
 					//relatorio temporario
 					
-					//entrada de dados
-					
-					//processamento
-					
-					//saida de dados
 				pare
 				caso 4:
 					//fechar caixa
-
-					//entrada de dados
-
-					//processamento
-
-					//saida de dados
+					
 				pare
 				caso 5:
 					//verificar acesso
 					
-					//entrada de dados
-					
-					//processamento
-
-					
-					//saida de dados
 				pare
 				caso contrario:
 				inicio()
 			}
-	}funcao inteiro imprime_mnu(inteiro &opcao){
+	}
+	funcao inteiro imprime_mnu(inteiro &opcao){
 		escreva("Escolha uma opcao \n\n 1) Cadastrar produto         2) Registrar Venda\n 3) Relatorio Atual           4) Fechar Caixa e Sair\n\nDigite o numero referente a opção desejada: ")
 		leia(opcao)
 		retorne opcao
-	}funcao cad_produ(inteiro qtd_estoque,inteiro id_produto, inteiro val_uni,inteiro val_custo,cadeia nome_produto){
-		
 	}
 	funcao realizarVenda(cadeia vetorProd[], cadeia vetorVend[], cadeia caminho[], cadeia linhaOriginal, inteiro posicao,inteiro vetDeNum[]){
 		//se existir produtlo escolhido
@@ -805,6 +780,33 @@ programa
 		}enquanto(saidaLoop != 1 e saidaLoop != 2)
 		retorne saidaLoop
      }
+     funcao vazio verifAcess (cadeia password){
+		cadeia senha
+		inteiro contador=0
+		escreva("Verificação de Acesso\n\nDigite a senha para continuar:\n->")
+		leia(senha)
+		limpa()
+		se(senha=="x" ou senha=="X"){
+			inicio()
+		}
+		enquanto(senha!=password){
+			contador++
+			se(contador==5){
+				para(inteiro i=30;i>0;i--){
+					limpa()
+					escreva("Você errou demais, aguarde ",i," segundos para tentar novamente...")
+					utl.aguarde(1000)
+				}
+				limpa()
+			}
+			escreva("Senha incorreta!Tente novamente:\n->")
+			leia(senha)
+			limpa()
+			se(senha=="x" ou senha=="X"){
+				inicio()
+			}
+		}
+	}
 	
 }
 
@@ -813,7 +815,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 32301; 
+ * @POSICAO-CURSOR = 1150; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
