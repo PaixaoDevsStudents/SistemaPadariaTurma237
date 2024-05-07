@@ -19,17 +19,24 @@ programa
 		//variaveis
 		inteiro arquivo, mnu=0, qtd_estoque=0, id_produto=0
 		real val_uni=0.0, val_custo=0.0
-		cadeia nome_produto="", vetsrc[5], typdata[2]={"arquivodetexto|txt","arquivodetexto|txt"}, password="admin"
+		cadeia nome_produto="", vetsrc[5], typdata[2]={"arquivodetexto|txt","arquivodetexto|txt"}, password="admin", ciclo=""
+		
 		inteiro opcao
+		imprime_mnu(mnu)
 		escreva("Selecione a sequência de arquivos:\n1-Carrinho\n2-Produtos Registrados\n3-Total de vendas\n4-Vendas do dia\n5-Registro de vendas")
 		para(inteiro c=0;c<5;c++){
-			vetsrc[c] = src.selecionar_arquivo(typdata, verdadeiro)
-		}
+				vetsrc[c] = src.selecionar_arquivo(typdata, verdadeiro)
+				ciclo = vetsrc[c]
+				}
+		
+		
+			
+		
 		limpa()
 		//leitura de arquivos
 		
 		//menu de opções
-			imprime_mnu(mnu)
+			
 			limpa()
 			escolha(mnu){
 				caso 1:
@@ -63,6 +70,14 @@ programa
 				caso contrario:
 				inicio()
 			}
+	}funcao logico verificaVetor(cadeia vetsrc[], cadeia ciclo){
+
+		para(inteiro i=0; i<5; i++){
+			
+			se(vetsrc[i]==ciclo){
+			retorne verdadeiro}
+		
+		}retorne falso
 	}
 	funcao inteiro imprime_mnu(inteiro &opcao){
 		escreva("Escolha uma opcao \n\n 1) Cadastrar produto         2) Registrar Venda\n 3) Relatorio Atual           4) Fechar Caixa e Sair\n\nDigite o numero referente a opção desejada: ")
@@ -70,7 +85,7 @@ programa
 		retorne opcao
 	}
 	funcao realizarVenda(cadeia vetorProd[], cadeia vetorVend[], cadeia caminho[], cadeia linhaOriginal, inteiro posicao,inteiro vetDeNum[]){
-		//se existir produtlo escolhido
+		//se existir Produto escolhido
 		se(vetorProd[0] != ""){
 			//define valores default do vetor de vendas
 			para(inteiro i = 0; i < VENDA; i++){
@@ -91,15 +106,15 @@ programa
 			}
 			
 			inteiro opcaoInterna , saidaLoop = 0//declara variáveis de opção e saida de loop
-			inteiro quantidadeVend = 0//Variável para a quantidade de produtlos que será comprada.
-			real preco = typ.cadeia_para_real(vetorProd[2])//declara variável de preco e dá o preço do produtlo
+			inteiro quantidadeVend = 0//Variável para a quantidade de Produtos que será comprada.
+			real preco = typ.cadeia_para_real(vetorProd[2])//declara variável de preco e dá o preço do Produto
 			inteiro reposicao //variavel de quantidade de reposição de estoque
 			
 			cadeia linhaVend = ""//variável que guardará os dados atualizados da venda
 			cadeia linhaVendD = ""
 			cadeia linhaVendOrig = ""// variável que abrigará os dados antigos da venda
 			cadeia linhaVendOrigD = ""
-			cadeia linhaSubsProd = ""// variável que irá guradar os dados atualizados do produtlo
+			cadeia linhaSubsProd = ""// variável que irá guradar os dados atualizados do Produto
 			real valorTotal = 0.0//variável para o valor total da compra
 			real valorTotalD = 0.0
 			inteiro limite = 0 //variável para o limite de estoque
@@ -108,22 +123,22 @@ programa
 				limite = typ.cadeia_para_inteiro(vetorProd[1], 10)//váriavel limite de estoque recebe limite de estoque
 				//se estoque foi esgotado
 				se(limite == 0){
-					escreva("Produtlo foi esgotado!! Reposição do estoque foi solicitada\n")
+					escreva("Produto foi esgotado!! Reposição do estoque foi solicitada\n")
 					reposicao = entradaBaseInteiro("Insira o número da reposicao: ")//reposição recebe a reposição de estoque
 					//loop para receber receber o uma diferença do estoque
 					para(inteiro i = 0; i < PROD; i++){
 						//se iterador for igual a posição do valor do estoque
 						se(i == 1){
-							vetorProd[i] = ""//vetor de produtlo com id de estoque é limpado
-							vetorProd[i] += reposicao //vetor de produtlo com id de estoque é substituido pelo valor de reposição
+							vetorProd[i] = ""//vetor de Produto com id de estoque é limpado
+							vetorProd[i] += reposicao //vetor de Produto com id de estoque é substituido pelo valor de reposição
 						}
-						linhaSubsProd += "/"+vetorProd[i]+"/"//linhaSubsProd concatena os dados do vetor do produtlo
+						linhaSubsProd += "/"+vetorProd[i]+"/"//linhaSubsProd concatena os dados do vetor do Produto
 					}
 					src.substituir_texto(caminho[0], linhaOriginal, linhaSubsProd, verdadeiro)//substitui os dados antigos do estoque pelos novos
 					limite = typ.cadeia_para_inteiro(vetorProd[1], 10)//váriavel limite de estoque recebe NOVO limite de estoque
 				}
 				//usuário escolhe a quantidade de compra
-				quantidadeVend = entradaBaseInteiro("Insira a quantidade do produtlo que deseja comprar: ")
+				quantidadeVend = entradaBaseInteiro("Insira a quantidade do Produto que deseja comprar: ")
 
 				//se usuário passar do limite de estoque ou for abaixo de zero
 				se(quantidadeVend > limite){
@@ -167,29 +182,29 @@ programa
 					pare
 			}
 			
-			vetorProd[1] = ""//vetor de produtlo com id de estoque é limpo
-			vetorProd[1] += (limite - quantidadeVend)//vetor de produtlo com id de estoque recebe o estoque diminuído
-			vetorVend[0] = ""//vetorVend com id de código é limpo do código de produtlo anterior
-			vetorVend[0] = typ.inteiro_para_cadeia(posicao, 10)//vetorVend com id de código de venda recebe código de produtlo atual
-			vetorVend[1] = ""//vetorVend com id de nome é limpo do nome de produtlo anterior 
-			vetorVend[1] += vetorProd[0] //vetorVend com id de nome recebe nome do produtlo atual
+			vetorProd[1] = ""//vetor de Produto com id de estoque é limpo
+			vetorProd[1] += (limite - quantidadeVend)//vetor de Produto com id de estoque recebe o estoque diminuído
+			vetorVend[0] = ""//vetorVend com id de código é limpo do código de Produto anterior
+			vetorVend[0] = typ.inteiro_para_cadeia(posicao, 10)//vetorVend com id de código de venda recebe código de Produto atual
+			vetorVend[1] = ""//vetorVend com id de nome é limpo do nome de Produto anterior 
+			vetorVend[1] += vetorProd[0] //vetorVend com id de nome recebe nome do Produto atual
 			valorTotal = mat.arredondar(valorTotal, 2)//valor Total da compra é arredondado para duas casas
 			valorTotalD = mat.arredondar(valorTotalD, 2)
 			//texto de dados da compra
 			escreva("======================\n")
 			escreva("|Dados da compra: 	\n")
-			escreva("|Código: ",vetorVend[0],"\n|Nome: ",vetorVend[1],"\n|Quantidade: ",quantidadeVend,"\n|Preço da compra do produtlo: ",valorTotal,"\n")
+			escreva("|Código: ",vetorVend[0],"\n|Nome: ",vetorVend[1],"\n|Quantidade: ",quantidadeVend,"\n|Preço da compra do Produto: ",valorTotal,"\n")
 			escreva("======================\n")
 			
 
 			linhaSubsProd = ""//linhaSubsProd é limpo
-			//loop para concatenar dados de produtlo a linha de atualização do produtlo
+			//loop para concatenar dados de Produto a linha de atualização do Produto
 			para(inteiro i = 0; i < PROD; i++){
-				linhaSubsProd += "/"+vetorProd[i]+"/"//linhaSubsProd concatena os dados do produtlo que será atualizado
+				linhaSubsProd += "/"+vetorProd[i]+"/"//linhaSubsProd concatena os dados do Produto que será atualizado
 			}
 			inteiro i = 1//iterador
-			inteiro cod, codD // variável que armazena código do produtlo
-			cadeia vetorOrig[] = {"0","","0","0"},// cria vetor que abrigará as leituras dos produtlos iterados
+			inteiro cod, codD // variável que armazena código do Produto
+			cadeia vetorOrig[] = {"0","","0","0"},// cria vetor que abrigará as leituras dos Produtos iterados
 			
 			vetorOrigD[] = {"0","","0","0"},
 			vetorVendD[] = {"0","","0","0"}
@@ -197,44 +212,44 @@ programa
 			inteiro arqVenda = src.abrir_arquivo(caminho[1], src.MODO_LEITURA)//abre PRODBase de vendas e armazena endereço de memória na variável arqVendas em modo de leitura
 			,arqVendaDiaria = src.abrir_arquivo(caminho[2], src.MODO_LEITURA)
 			
-			leiaProduto(vetorOrigD, arqVendaDiaria)//lê primeiro produtlo temporário e passa para vetor vetorOrigD
-			leiaProduto(vetorOrig, arqVenda)//lê primeiro produtlo e passa para veto vetorOrig
+			leiaProduto(vetorOrigD, arqVendaDiaria)//lê primeiro Produto temporário e passa para vetor vetorOrigD
+			leiaProduto(vetorOrig, arqVenda)//lê primeiro Produto e passa para veto vetorOrig
 			
-			cod = typ.cadeia_para_inteiro(vetorOrig[0], 10)//cod recebe código do primeiro produtlo vendido
+			cod = typ.cadeia_para_inteiro(vetorOrig[0], 10)//cod recebe código do primeiro Produto vendido
 			codD = typ.cadeia_para_inteiro(vetorOrigD[0], 10)
-			inteiro quantidadeVendTot = typ.cadeia_para_inteiro(vetorOrig[2], 10)//quantidadeVendTot recebe a quantidade do primeiro produtlo vendido
+			inteiro quantidadeVendTot = typ.cadeia_para_inteiro(vetorOrig[2], 10)//quantidadeVendTot recebe a quantidade do primeiro Produto vendido
 			,quantidadeVendTotD = typ.cadeia_para_inteiro(vetorOrigD[2], 10)
 			logico chave1, chave2
 			
 			//loop para processo de venda
 			faca{
-				//se código de produtlo vendido for igual a produtlo selecionado ou venda de produtlo com código ainda não foi registrado
+				//se código de Produto vendido for igual a Produto selecionado ou venda de Produto com código ainda não foi registrado
 				se(cod == posicao ou cod == 0){chave1 = verdadeiro}senao{chave1 = falso}
 				se(codD == posicao ou codD == 0){chave2 = verdadeiro}senao{chave2 = falso}
 				se(chave1 e chave2){
-					//loop para concatenar dados originais do produtlo vendido  
+					//loop para concatenar dados originais do Produto vendido  
 					para(inteiro j = 0; j < VENDA; j++){
 							linhaVendOrig += "/"+vetorOrig[j]+"/"
 							linhaVendOrigD += "/"+vetorOrigD[j]+"/"
 					}
 					
-					//se venda de produtlo com código ainda não foi registrado
+					//se venda de Produto com código ainda não foi registrado
 					se(cod == 0){
 						valorTotal += 0 // valorTotal é somado com zero
-						quantidadeVendTot = quantidadeVend // quantidadeVendTot recebe valor de de quantidade de produtlo da compra atual
+						quantidadeVendTot = quantidadeVend // quantidadeVendTot recebe valor de de quantidade de Produto da compra atual
 					}
 					se(codD == 0){
 						valorTotalD += 0
-						quantidadeVendTotD = quantidadeVend // quantidadeVendTot recebe valor de de quantidade de produtlo da compra atual
+						quantidadeVendTotD = quantidadeVend // quantidadeVendTot recebe valor de de quantidade de Produto da compra atual
 					}
-					//se código de produtlo vendido for igual a produtlo selecionado 
+					//se código de Produto vendido for igual a Produto selecionado 
 					se(cod == posicao){
-						valorTotal += typ.cadeia_para_real(vetorOrig[3]) //valorTotal da compra soma o valor atual com o valor registrado da compra do produtlo
-						quantidadeVendTot += quantidadeVend//quantidadeVendTot recebe soma da quantidade atual de produtlos vendidos com o valor registrado da compra do produtlo
+						valorTotal += typ.cadeia_para_real(vetorOrig[3]) //valorTotal da compra soma o valor atual com o valor registrado da compra do Produto
+						quantidadeVendTot += quantidadeVend//quantidadeVendTot recebe soma da quantidade atual de Produtos vendidos com o valor registrado da compra do Produto
 					}
 					se(codD == posicao ){
-						valorTotalD += typ.cadeia_para_real(vetorOrigD[3]) //valorTotal da compra soma o valor atual com o valor registrado da compra do produtlo
-						quantidadeVendTotD += quantidadeVend //quantidadeVendTot recebe soma da quantidade atual de produtlos vendidos com o valor registrado da compra do produtlo
+						valorTotalD += typ.cadeia_para_real(vetorOrigD[3]) //valorTotal da compra soma o valor atual com o valor registrado da compra do Produto
+						quantidadeVendTotD += quantidadeVend //quantidadeVendTot recebe soma da quantidade atual de Produtos vendidos com o valor registrado da compra do Produto
 					}
 					
 					src.fechar_arquivo(arqVendaDiaria)//fechando PRODBase de vendas em modo de leitura
@@ -242,7 +257,7 @@ programa
 					
 					arqVenda = src.abrir_arquivo(caminho[1], src.MODO_ACRESCENTAR)//abre PRODBase de vendas e armazena endereço de memória na variável arqVendas em modo de acréscimo
 					arqVendaDiaria = src.abrir_arquivo(caminho[2], src.MODO_ACRESCENTAR)//abre PRODBase de vendas e armazena endereço de memória na variável arqVendas em modo de acréscimo
-					//se venda de produtlo com código ainda não foi registrado 
+					//se venda de Produto com código ainda não foi registrado 
 					se(cod == 0 ou codD == 0){
 						//loop para atribuir dados de venda a vetorVend
 						para(inteiro j = 0; j < VENDA; j++){
@@ -272,14 +287,14 @@ programa
 							}
 						}
 						se(cod == 0){
-							src.escrever_linha(linhaVend, arqVenda)//adiciona produtlo ao PRODBase de Vendas
+							src.escrever_linha(linhaVend, arqVenda)//adiciona Produto ao PRODBase de Vendas
 						}
 						se(codD == 0){
 							src.escrever_linha(linhaVendD, arqVendaDiaria)
 							
 						}
 					}
-					//se código de produtlo vendido for igual a produtlo selecionado
+					//se código de Produto vendido for igual a Produto selecionado
 					se(cod == posicao ou codD == posicao){
 						para(inteiro j = 0; j < VENDA; j++){
 							//escolha caso para atribuir dados aos ids especificos do vetorVend
@@ -307,7 +322,7 @@ programa
 								linhaVendD += "/"+vetorVendD[j]+"/"//linha concatena valor de venda
 							}
 						}
-						//substitui os dados antigos de venda do produtlo pelos novos dados atualizados
+						//substitui os dados antigos de venda do Produto pelos novos dados atualizados
 						se(cod == posicao){
 							src.substituir_texto(caminho[1], linhaVendOrig, linhaVend, verdadeiro)
 						}
@@ -315,7 +330,7 @@ programa
 							src.substituir_texto(caminho[2], linhaVendOrigD, linhaVendD, verdadeiro)
 						}
 					}
-					//substitui os dados antigos do produtlo vendido pelos novos dados atualizados
+					//substitui os dados antigos do Produto vendido pelos novos dados atualizados
 					src.substituir_texto(caminho[0], linhaOriginal, linhaSubsProd, verdadeiro)
 					src.fechar_arquivo(arqVendaDiaria)//fecha arquivo
 					src.fechar_arquivo(arqVenda)//fecha arquivo
@@ -327,13 +342,13 @@ programa
 					se(chave1 == falso){
 						//lê os dados da venda e passa para vetor
 						leiaProduto(vetorOrig, arqVenda)
-						inteiro codProximo = typ.cadeia_para_inteiro(vetorOrig[0], 10)//vê o código do do próximo produtlo
+						inteiro codProximo = typ.cadeia_para_inteiro(vetorOrig[0], 10)//vê o código do do próximo Produto
 						// se código anterior é igual a próximo código
 						se(cod == codProximo ){
 							cod = 0	//código recebe 0
 							quantidadeVendTot = 0// quantidadeVendTot recebe 0
 						}
-						//senão, se código anterior é diferente a próximo código ou está no último produtlo
+						//senão, se código anterior é diferente a próximo código ou está no último Produto
 						senao se (cod != codProximo ou i == vetDeNum[1]){
 							cod = codProximo // cod recebe próximo código
 							quantidadeVendTot = typ.cadeia_para_inteiro(vetorOrig[2], 10)//quantidadeVendTot recebe quantidade dos dados de venda
@@ -343,19 +358,19 @@ programa
 					se(chave2 == falso){
 						//lê os dados da venda e passa para vetor
 						leiaProduto(vetorOrigD, arqVendaDiaria)
-						inteiro codProximoD = typ.cadeia_para_inteiro(vetorOrigD[0], 10)//vê o código do do próximo produtlo
+						inteiro codProximoD = typ.cadeia_para_inteiro(vetorOrigD[0], 10)//vê o código do do próximo Produto
 						// se código anterior é igual a próximo código
 						se(codD == codProximoD ){
 							codD = 0	//código recebe 0
 							quantidadeVendTotD = 0// quantidadeVendTot recebe 0
 						}
-						//senão, se código anterior é diferente a próximo código ou está no último produtlo
+						//senão, se código anterior é diferente a próximo código ou está no último Produto
 						senao se (codD != codProximoD ou i == vetDeNum[2]){
 							codD = codProximoD // cod recebe próximo código
 							quantidadeVendTotD = typ.cadeia_para_inteiro(vetorOrigD[2], 10)//quantidadeVendTot recebe quantidade dos dados de venda
 						}
 					}
-					i++// iterador de produtlo é incrementado +1
+					i++// iterador de Produto é incrementado +1
 					 
 					
 				}
@@ -461,26 +476,26 @@ programa
 		}
 		retorne nome
 	}
-	funcao pesquisarProdutlo(inteiro id, inteiro numDeDados[],cadeia vetInfProd[], cadeia vetInfVend[], cadeia caminho[], inteiro vetDeNum[]){
+	funcao pesquisarProduto(inteiro id, inteiro numDeDados[],cadeia vetInfProd[], cadeia vetInfVend[], cadeia caminho[], inteiro vetDeNum[]){
 		inteiro opcaoInterna, arquivo, saidaLoop, j = 1
 		faca{
           	saidaLoop = 0
-			//se tiver produtlos
+			//se tiver Produtos
           	se(numDeDados[0] != 0){
          			//escolha da posição do arquivo
 	          	faca{
 					//usuário escolhe a matriz que deseja entrar
-					escreva("Número de produtlos do Arquivo: ",numDeDados[0],"\n")
-					opcaoInterna = entradaBaseInteiro("Insira o código do produtlo: ")
+					escreva("Número de Produtos do Arquivo: ",numDeDados[0],"\n")
+					opcaoInterna = entradaBaseInteiro("Insira o código do Produto: ")
 					//se usuário colocar uma opção inválida 
 					se(opcaoInterna <= 0 ou opcaoInterna > numDeDados[0]){
 						escreva("Número de  inválido!!\n")
 					}
 				}enquanto(opcaoInterna <= 0 ou opcaoInterna > numDeDados[0])
 				arquivo = src.abrir_arquivo(caminho[0], src.MODO_LEITURA)
-				//verificar o produtlo
+				//verificar o Produto
 				faca{
-					//se opcaoInterna for igual a posição da linha do produtlo escolhido
+					//se opcaoInterna for igual a posição da linha do Produto escolhido
 					se(opcaoInterna == j){	
 						leiaProduto(vetInfProd,arquivo)//lê linha
 						cadeia linhaOriginal = ""
@@ -488,18 +503,18 @@ programa
 							linhaOriginal += "/"+vetInfProd[i]+"/"
 						}
 						src.fechar_arquivo(arquivo)//fecha arquivo
-						//escreve informações do produtlo escolhido
+						//escreve informações do Produto escolhido
 						escrevaProdutoVenda(id,vetInfProd,vetInfVend,j)
 						//se sim sai do loop, se não limpa vetor e sai do loop
-						saidaLoop = escolhas("Deseja escolher este produtlo:\n1: Sim\n2: Não\n")
-						//se produtlo não foi escolhido, limpa o vetor e sai
+						saidaLoop = escolhas("Deseja escolher este Produto:\n1: Sim\n2: Não\n")
+						//se Produto não foi escolhido, limpa o vetor e sai
 						se(saidaLoop == 1){
 							para(inteiro i = 0; i< PROD; i++){
 								vetInfProd[i] = ""
 							}
 							saidaLoop = 1		
 						}
-						//se produtlo foi escolhido, realiza venda e sai
+						//se Produto foi escolhido, realiza venda e sai
 						senao{
 							realizarVenda(vetInfProd, vetInfVend, caminho, linhaOriginal, j, vetDeNum)
 							saidaLoop = 1
@@ -515,13 +530,13 @@ programa
           	}
           	//senão
           	senao{
-          		escreva("Não há produtlos cadastrados para realizar venda.\n")
+          		escreva("Não há Produtos cadastrados para realizar venda.\n")
           		saidaLoop = 1//sai do loop
           	}
 		}enquanto(saidaLoop != 1)
           saidaLoop = 0
 	}
-	funcao inteiro totalProdutlos(cadeia caminho){
+	funcao inteiro totalProdutos(cadeia caminho){
 		cadeia linha = ""//variável para receber linha do arquivo
 		inteiro arquivo = src.abrir_arquivo(caminho, src.MODO_LEITURA)//váriavel arquivo recebe permissão para abrir e somente ler o arquivo com matrizes
 		inteiro numDeLinhas = -1//o número de linhas utlilizadas
@@ -561,20 +576,25 @@ programa
 		para(inteiro i = 0; i< PROD; i++){
 			vetor[i] = ""
 		}
-		//Vetor com idnomes recebe entrada de usuário do nome do produtlo
-		vetor[0] += filtrarCaracteres(entradaBaseCadeia("Digite o nome do produtlo: "))
+		//Vetor com idnomes recebe entrada de usuário do nome do Produto
+		vetor[0] += filtrarCaracteres(entradaBaseCadeia("Digite o nome do produto: "))
 		limpa()
 		//Vetor com id de stock recebe entrada de usuário do número de stock
-		vetor[1] += entradaBaseInteiro("Digite a quantidade do produtlo que tem no estoque de hoje: ")
+		vetor[1] += entradaBaseInteiro("Digite a quantidade do produto que tem no estoque de hoje: ")
 		limpa()
-          //Vetor com id de precos recebe entrada de usuário do preço do produtlo
-          vetor[2] += mat.arredondar(entradaBaseReal("Digite o preço do produtlo: "), 2)
+          //Vetor com id de precos recebe entrada de usuário do preço do Produto
+          vetor[2] += mat.arredondar(entradaBaseReal("Digite o preço do produto: "), 2)
           limpa()
-          //vetor com id de custo recebe entrada de usuário do custo do produtlo
-          vetor[3] += entradaBaseReal("Digite o custo do produtlo: ")
+          //vetor com id de custo recebe entrada de usuário do custo do Produto
+          vetor[3] += entradaBaseReal("Digite o custo do Produto: ")
           limpa()
-          passeProduto(1, caminho , vetor)//passa os dados do produtlo para o arquivo
+          passeProduto(1, caminho , vetor)//passa os dados do Produto para o arquivo
+
+          
+			
 	}
+		
+	
 	funcao cadeia leiaProduto(cadeia vetor[], inteiro arquivo){
 		//loop for para cada elemento da coluna
 		cadeia valor = "" //váriavel para colocar os valores retirados das matrizes dentro arquivo, começa limpa
@@ -585,12 +605,12 @@ programa
 		texto = txt.substituir(texto, "/", "")
 		/*
 		Ex: 
-		linha de produtlos antes de ser simplificada:
+		linha de Produtos antes de ser simplificada:
 			/x//y//z/
 		linha depois de ser simplificada:
 			x:y:z
 		*/
-		//loop for para análisar a linha de dados do produtlo
+		//loop for para análisar a linha de dados do Produto
 			
 		para(inteiro c = 0; c < txt.numero_caracteres(texto); c++){
 			//se caracter de linha da matriz for número inteiro
@@ -620,7 +640,7 @@ programa
 				pare
 		}
 		para(inteiro i = 0; i < utl.numero_elementos(vetor); i++){
-			linha += "/"+vetor[i]+"/"//linha acrescenta a si os dados do produtlo
+			linha += "/"+vetor[i]+"/"//linha acrescenta a si os dados do Produto
 		}
 		src.escrever_linha(linha, arquivo)//escreve a linha no arquivo e pula pra próxima
 		src.fechar_arquivo(arquivo)//fechar arquivo
@@ -636,11 +656,11 @@ programa
 									
 				se(typ.cadeia_para_inteiro(dadosDeVenda[0], 10) == k){
 					escreva("===============================================================================================================\n")
-					escreva("|Código:"+dadosDeVenda[0]+"|Nome: "+dadosDeVenda[1]+"|Quantidade vendida: "+dadosDeVenda[2]+"|Valor total de vendas do produtlo: "+dadosDeVenda[3]+"|\n")	
+					escreva("|Código:"+dadosDeVenda[0]+"|Nome: "+dadosDeVenda[1]+"|Quantidade vendida: "+dadosDeVenda[2]+"|Valor total de vendas do Produto: "+dadosDeVenda[3]+"|\n")	
 					escreva("===============================================================================================================\n")
 					k++
 				}
-				leiaProduto(dadosDeVenda, arquivoVendaD)//lê o produtlo vendido e passa para vetor
+				leiaProduto(dadosDeVenda, arquivoVendaD)//lê o Produto vendido e passa para vetor
 				p++
 				se(p > numDeVendasDiaria){
 					p = 1
@@ -818,8 +838,8 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 23566; 
- * @DOBRAMENTO-CODIGO = [66, 71, 364, 463, 523, 536, 577, 627, 658, 676, 699, 738, 733, 764, 786];
+ * @POSICAO-CURSOR = 908; 
+ * @DOBRAMENTO-CODIGO = [81, 86, 379, 478, 538, 551, 678, 696, 719, 758, 753, 784, 806];
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
