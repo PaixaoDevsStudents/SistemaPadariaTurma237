@@ -10,7 +10,7 @@ programa
 
 	const inteiro TAM_X_TELA = 1920	
 	const inteiro TAM_Y_TELA = 1080
-	const inteiro PROD = 6
+	const inteiro PROD = 5
 	const inteiro VENDA = 4
 	
 	funcao inicio()
@@ -36,9 +36,15 @@ programa
 			vetsrc[c] = src.selecionar_arquivo(typdata, verdadeiro)	
 		}
 		limpa()
+		inteiro numDeRegistros[3]
+		inteiro saidaLoop = 0
 		//leitura de arquivos
 		
 		//menu de opções
+		faca{
+			numDeRegistros[0] = totalProdutos(vetsrc[1])
+			numDeRegistros[1] = totalProdutos(vetsrc[2])
+			numDeRegistros[2] = totalProdutos(vetsrc[3])
 			imprime_mnu(mnu)
 			escolha(mnu){
 				caso 1:
@@ -46,9 +52,9 @@ programa
 						escreva("Quantos produtos irá cadastrar?: ")
 						leia(y)
 					para(inteiro i=0; i<y; i++){
-						cad_produ(qtd_estoque, id_produto, val_uni, val_custo, nome_produto)	
-						}
-						imprime_mnu(mnu)
+						cadastroProduto(vetsrc[1], numDeRegistros[0])
+						numDeRegistros[0]++
+					}
 					//cadastrar produtos
 					
 					//entrada de dados
@@ -95,14 +101,13 @@ programa
 					//saida de dados
 				pare
 				caso contrario:
-				inicio()
+				escreva("Opção inválida\n")
 			}
+		}enquanto(saidaLoop != 1)
 	}funcao inteiro imprime_mnu(inteiro &opcao){
 		escreva("Escolha uma opcao \n\n 1) Cadastrar produto         2) Registrar Venda\n 3) Relatorio Atual           4) Fechar Caixa e Sair\n\nDigite o numero referente a opção desejada: ")
 		leia(opcao)
 		retorne opcao
-	}funcao cad_produ(inteiro qtd_estoque,inteiro id_produto, inteiro val_uni,inteiro val_custo,cadeia nome_produto){
-		
 	}
 	funcao realizarVenda(cadeia vetorProd[], cadeia vetorVend[], cadeia caminho[], cadeia linhaOriginal, inteiro posicao,inteiro vetDeNum[]){
 		//se existir produtlo escolhido
@@ -496,7 +501,7 @@ programa
 		}
 		retorne nome
 	}
-	funcao pesquisarProdutlo(inteiro id, inteiro numDeDados[],cadeia vetInfProd[], cadeia vetInfVend[], cadeia caminho[], inteiro vetDeNum[]){
+	funcao pesquisarProduto(inteiro id, inteiro numDeDados[],cadeia vetInfProd[], cadeia vetInfVend[], cadeia caminho[], inteiro vetDeNum[]){
 		inteiro opcaoInterna, arquivo, saidaLoop, j = 1
 		faca{
           	saidaLoop = 0
@@ -556,7 +561,7 @@ programa
 		}enquanto(saidaLoop != 1)
           saidaLoop = 0
 	}
-	funcao inteiro totalProdutlos(cadeia caminho){
+	funcao inteiro totalProdutos(cadeia caminho){
 		cadeia linha = ""//variável para receber linha do arquivo
 		inteiro arquivo = src.abrir_arquivo(caminho, src.MODO_LEITURA)//váriavel arquivo recebe permissão para abrir e somente ler o arquivo com matrizes
 		inteiro numDeLinhas = -1//o número de linhas utlilizadas
@@ -590,19 +595,21 @@ programa
 		retorne entrada
 		
 	}
-	funcao cadastroProduto(cadeia vetor[], cadeia caminho){
+	funcao cadastroProduto( cadeia caminho, inteiro numDeProdutos){
+		cadeia vetor[PROD]
 		//loop para limpar o vetor de valores vazios
 		para(inteiro i = 0; i< PROD; i++){
 			vetor[i] = ""
 		}
+		vetor[0] += (numDeProdutos+1)
 		//Vetor com idnomes recebe entrada de usuário do nome do produtlo
-		vetor[0] += filtrarCaracteres(entradaBaseCadeia("Digite o nome do produtlo: "))
+		vetor[1] += filtrarCaracteres(entradaBaseCadeia("Digite o nome do produtlo: "))
 		//Vetor com id de stock recebe entrada de usuário do número de stock
-		vetor[1] += entradaBaseInteiro("Digite a quantidade do produtlo que tem no estoque de hoje: ")
+		vetor[2] += entradaBaseInteiro("Digite a quantidade do produto que tem no estoque de hoje: ")
           //Vetor com id de precos recebe entrada de usuário do preço do produtlo
-          vetor[2] += mat.arredondar(entradaBaseReal("Digite o preço do produtlo: "), 2)
+          vetor[3] += mat.arredondar(entradaBaseReal("Digite o preço do produto: "), 2)
           //vetor com id de custo recebe entrada de usuário do custo do produtlo
-          vetor[3] += entradaBaseReal("Digite o custo do produtlo: ")
+          vetor[4] += entradaBaseReal("Digite o custo do produto: ")
           passeProduto(1, caminho , vetor)//passa os dados do produtlo para o arquivo
 	}
 	funcao cadeia leiaProduto(cadeia vetor[], inteiro arquivo){
@@ -823,8 +830,8 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 32374; 
- * @DOBRAMENTO-CODIGO = [763, 795];
+ * @POSICAO-CURSOR = 1426; 
+ * @DOBRAMENTO-CODIGO = [111, 404, 503, 576, 631, 614, 645, 664, 695, 713, 736, 770, 802];
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
