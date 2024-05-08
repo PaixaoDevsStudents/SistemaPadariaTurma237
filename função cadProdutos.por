@@ -16,11 +16,15 @@ programa
 		//variaveis
 		inteiro opcao, arquivo, vetCod[5], vetQntProduto[5]
 		real saldoCaixa=0.0, vetCusto[5], vetValorProd[5]
-		cadeia vetsrc[5], vetNome[5],nomeProduto,valorProd,qntProduto,custo
+		cadeia vetsrc[5], vetNome[5]
+		se(caminhoArquivos(vetsrc)){
+			escreva("1-Cadastrar produtos\n2-Realizar vendas\n3-Relatório temporario\n4-Fechar caixa\n5-Verificar acesso\n->")
+			leia(opcao)
+		}senao{
 		escreva("Selecione a sequência de arquivos:\n1-Carrinho\n2-Produtos Registrados\n3-Total de vendas\n4-Vendas do dia\n5-Registro de vendas")
 		cadeia typdata[2]={"arquivodetexto|txt","arquivodetexto|txt"}
 		para(inteiro c=0;c<5;c++){
-			vetsrc[c] = src.selecionar_arquivo(typdata, verdadeiro)	
+			vetsrc[c] = src.selecionar_arquivo(typdata, verdadeiro)}	
 		}
 		limpa()
 		//leitura de arquivos
@@ -33,7 +37,75 @@ programa
 			leia(opcao)
 			escolha(opcao){
 				caso 1:
+					cadProduto(vetNome,vetCod,vetQntProduto,vetCusto,vetValorProd)
+					//entrada de dados
+					
+					//processamento
+					
+					//saida de dados
+				pare
+				caso 2:
 				
+					//realizar vendas
+					
+					//entrada de dados
+					
+					//processamento
+					
+					//saida de dados
+				pare
+				caso 3:
+					//relatorio temporario
+					
+					//entrada de dados
+					
+					//processamento
+					
+					//saida de dados
+				pare
+				caso 4:
+					//fechar caixa
+
+					//entrada de dados
+
+					//processamento
+
+					//saida de dados
+				pare
+				caso 5:
+					//verificar acesso
+					
+					//entrada de dados
+					
+					//processamento
+					
+					//saida de dados
+				pare
+				caso 6:
+				// abrir caixa
+				abrirCaixa (saldoCaixa)
+				pare
+				
+				caso contrario:
+				inicio()
+			}
+	}
+	
+	/*
+	funcao inicio() {	// teste de funçoes 
+		// funçao abrir caixa
+		real saldoCaixa=0.0
+		escreva ("Saldo em caixa é: R$ ",abrirCaixa (saldoCaixa)," Reais\n")
+		
+		inteiro quantidadeCompraCliente=0				// VAriaveissss
+		real valorDaG=0.08, compraEmGramas=0.0,valorCobrarCliente=0.0
+		// Chama de funçoes para testess e aquii
+		calcularJuros_Desconto (balanca(quantidadeCompraCliente,compraEmGramas,valorCobrarCliente,valorDaG))
+		
+	}  */
+	
+	funcao vazio cadProduto(cadeia vetNome[],inteiro vetCod[],inteiro vetQntProduto[],real vetCusto[],real vetValorProd[]){
+			cadeia nomeProduto,valorProd,qntProduto,custo
 					//cadastrar produtos
 		para(inteiro l=0;l<5;l++){
 				//escreva("\nEscreva o nome do produto para cadastrar:  ")
@@ -44,7 +116,7 @@ programa
           se(nomeProduto==""){ // Verifica se o usuário digitou algo
         	escreva("Digite um nome\n")// Se o usuário não digitou nada, pedimos que ele digite o nome do produto
         }
-          se(nomeProdutoExiste(nomeProduto,vetNome)){ // Usa sua função para verificar se o nome do produto não existe
+          se(nomeProdutoExiste(nomeProduto,vetNome)){ // Usa sua função para verificar se o nome do produto não existe no veto
            escreva("Este produto ja foi Cadrastrado\n") // Se o nome do produto já existir, informa ao usuário
           }senao{
           vetNome[l]= nomeProduto // Se o nome do produto não existir, o adiciona ao produto
@@ -111,76 +183,18 @@ programa
       	para (inteiro l=0;l<5;l++){
       		escreva("\t",vetNome[l],"|\t ",vetCod[l],"|\t  ",vetValorProd[l],"|\t  ",vetQntProduto[l],"|\t  ",vetCusto[l],"|\n")
       	}
-		
-					
-					
-					//entrada de dados
-					
-					//processamento
-					
-					//saida de dados
-				pare
-				caso 2:
-				
-					//realizar vendas
-					
-					//entrada de dados
-					
-					//processamento
-					
-					//saida de dados
-				pare
-				caso 3:
-					//relatorio temporario
-					
-					//entrada de dados
-					
-					//processamento
-					
-					//saida de dados
-				pare
-				caso 4:
-					//fechar caixa
-
-					//entrada de dados
-
-					//processamento
-
-					//saida de dados
-				pare
-				caso 5:
-					//verificar acesso
-					
-					//entrada de dados
-					
-					//processamento
-					
-					//saida de dados
-				pare
-				caso 6:
-				// abrir caixa
-				abrirCaixa (saldoCaixa)
-				pare
-				
-				caso contrario:
-				inicio()
-			}
 	}
-	
-	/*
-	funcao inicio() {	// teste de funçoes 
-		// funçao abrir caixa
-		real saldoCaixa=0.0
-		escreva ("Saldo em caixa é: R$ ",abrirCaixa (saldoCaixa)," Reais\n")
+       funcao logico caminhoArquivos(cadeia vetsrc[]){// Função para verificar se o nome do produto já existe
+       para(inteiro c=0; c<5; c++){// Loop para percorrer todos os produtos       
+       se(vetsrc[c] == ""){// Se o vetor esta vazio            
+       retorne falso// Retorna falso indicando que o vetor esta vazio
+         }
+       } 
+        retorne verdadeiro // Se o vetor estiver prenchio vai, retorna verdadeiro
+       }
 		
-		inteiro quantidadeCompraCliente=0				// VAriaveissss
-		real valorDaG=0.08, compraEmGramas=0.0,valorCobrarCliente=0.0
-		// Chama de funçoes para testess e aquii
-		calcularJuros_Desconto (balanca(quantidadeCompraCliente,compraEmGramas,valorCobrarCliente,valorDaG))
 		
-	}  */
-	funcao logico nomeProdutoExiste(cadeia nomeProduto, cadeia vetNome[]){// Função para verificar se o nome do produto já existe
-       	inteiro intNumProdutos=0  
+	funcao logico nomeProdutoExiste(cadeia nomeProduto, cadeia vetNome[]){// Função para verificar se o nome do produto já existe 
        para(inteiro l=0; l<5; l++){// Loop para percorrer todos os produtos       
        se(vetNome[l] == nomeProduto){// Se o nome do produto já existe na matriz de produtos            
        retorne verdadeiro// Retorna verdadeiro indicando que o nome do produto já existe
@@ -270,7 +284,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 6869; 
+ * @POSICAO-CURSOR = 10679; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;

@@ -10,7 +10,7 @@ programa
 
 	const inteiro TAM_X_TELA = 1920	
 	const inteiro TAM_Y_TELA = 1080
-	const inteiro PROD = 6
+	const inteiro PROD = 5
 	const inteiro VENDA = 4
 	
 	funcao inicio()
@@ -30,69 +30,44 @@ programa
 		
 		//menu de opções
 			imprime_mnu(mnu)
+			limpa()
 			escolha(mnu){
 				caso 1:
+					//Cadastrar produtos
+					verifAcess(password)
 					inteiro y=0
 						escreva("Quantos produtos irá cadastrar?: ")
 						leia(y)
+						limpa()
 					para(inteiro i=0; i<y; i++){
-						cad_produ(qtd_estoque, id_produto, val_uni, val_custo, nome_produto)	
-						}
-						imprime_mnu(mnu)
-					//cadastrar produtos
-					
-					//entrada de dados
-					
-					//processamento
-					
-					//saida de dados
+						cadastroProduto(vetsrc[1])
+					}
+					inicio()
 				pare
 				caso 2:
 					//realizar vendas
 					
-					//entrada de dados
-					
-					//processamento
-					
-					//saida de dados
 				pare
 				caso 3:
 					//relatorio temporario
 					
-					//entrada de dados
-					
-					//processamento
-					
-					//saida de dados
 				pare
 				caso 4:
 					//fechar caixa
-
-					//entrada de dados
-
-					//processamento
-
-					//saida de dados
+					
 				pare
 				caso 5:
 					//verificar acesso
 					
-					//entrada de dados
-					
-					//processamento
-
-					
-					//saida de dados
 				pare
 				caso contrario:
 				inicio()
 			}
-	}funcao inteiro imprime_mnu(inteiro &opcao){
+	}
+	funcao inteiro imprime_mnu(inteiro &opcao){
 		escreva("Escolha uma opcao \n\n 1) Cadastrar produto         2) Registrar Venda\n 3) Relatorio Atual           4) Fechar Caixa e Sair\n\nDigite o numero referente a opção desejada: ")
 		leia(opcao)
 		retorne opcao
-	}funcao cad_produ(inteiro qtd_estoque,inteiro id_produto, inteiro val_uni,inteiro val_custo,cadeia nome_produto){
-		
 	}
 	funcao realizarVenda(cadeia vetorProd[], cadeia vetorVend[], cadeia caminho[], cadeia linhaOriginal, inteiro posicao,inteiro vetDeNum[]){
 		//se existir produtlo escolhido
@@ -580,19 +555,24 @@ programa
 		retorne entrada
 		
 	}
-	funcao cadastroProduto(cadeia vetor[], cadeia caminho){
+	funcao cadastroProduto(cadeia caminho){
+		cadeia vetor[PROD]
 		//loop para limpar o vetor de valores vazios
 		para(inteiro i = 0; i< PROD; i++){
 			vetor[i] = ""
 		}
 		//Vetor com idnomes recebe entrada de usuário do nome do produtlo
 		vetor[0] += filtrarCaracteres(entradaBaseCadeia("Digite o nome do produtlo: "))
+		limpa()
 		//Vetor com id de stock recebe entrada de usuário do número de stock
 		vetor[1] += entradaBaseInteiro("Digite a quantidade do produtlo que tem no estoque de hoje: ")
+		limpa()
           //Vetor com id de precos recebe entrada de usuário do preço do produtlo
           vetor[2] += mat.arredondar(entradaBaseReal("Digite o preço do produtlo: "), 2)
+          limpa()
           //vetor com id de custo recebe entrada de usuário do custo do produtlo
           vetor[3] += entradaBaseReal("Digite o custo do produtlo: ")
+          limpa()
           passeProduto(1, caminho , vetor)//passa os dados do produtlo para o arquivo
 	}
 	funcao cadeia leiaProduto(cadeia vetor[], inteiro arquivo){
@@ -782,7 +762,6 @@ programa
           //retorna valor de x
           retorne x
      }
-
 	funcao inteiro escolhas(cadeia texto){
      	inteiro saidaLoop = 0
      	faca{
@@ -805,7 +784,33 @@ programa
 		}enquanto(saidaLoop != 1 e saidaLoop != 2)
 		retorne saidaLoop
      }
-	
+     funcao vazio verifAcess (cadeia password){
+		cadeia senha
+		inteiro contador=0
+		escreva("Verificação de Acesso\n\nDigite a senha para continuar:\n->")
+		leia(senha)
+		limpa()
+		se(senha=="x" ou senha=="X"){
+			inicio()
+		}
+		enquanto(senha!=password){
+			contador++
+			se(contador==5){
+				para(inteiro i=30;i>0;i--){
+					limpa()
+					escreva("Você errou demais, aguarde ",i," segundos para tentar novamente...")
+					utl.aguarde(1000)
+				}
+				limpa()
+			}
+			escreva("Senha incorreta!Tente novamente:\n->")
+			leia(senha)
+			limpa()
+			se(senha=="x" ou senha=="X"){
+				inicio()
+			}
+		}
+	}
 }
 
 /* $$$ Portugol Studio $$$ 
@@ -813,7 +818,12 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
+<<<<<<< HEAD
  * @POSICAO-CURSOR = 11326; 
+=======
+ * @POSICAO-CURSOR = 23566; 
+ * @DOBRAMENTO-CODIGO = [66, 71, 364, 463, 523, 536, 577, 627, 658, 676, 699, 738, 733, 764, 786];
+>>>>>>> fd406edc21d57886cfc639ebe76d3eeb626b3ca1
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
