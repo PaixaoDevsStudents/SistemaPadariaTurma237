@@ -20,14 +20,13 @@ programa
 		inteiro arquivo, menu=0, qtd_estoque=0, id_produto=0
 		real val_uni=0.0, val_custo=0.0
 		cadeia nome_produto="", vetsrc[5], typdata[2]={"arquivodetexto|txt","arquivodetexto|txt"}, password="admin"
-		inteiro opcao
 		escreva("Selecione a sequência de arquivos:\n1-Carrinho\n2-Produtos Registrados\n3-Total de vendas\n4-Vendas do dia\n5-Registro de vendas")
 		para(inteiro c=0;c<5;c++){
 			vetsrc[c] = src.selecionar_arquivo(typdata, verdadeiro)
 		}
 		limpa()
 		//leitura de arquivos
-		
+			
 		//menu de opções
 			imprime_menu(menu)
 			limpa()
@@ -64,12 +63,11 @@ programa
 				inicio()
 			}
 	}
-<<<<<<< HEAD
-	funcao inteiro imprime_menu(inteiro &opcao){
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
+	funcao inteiro imprime_menu(inteiro &menu){
+		escreva("Cadastrar Produtos\nRealizar Vendas\nRelatório Temporário\nFechar Caixa\n->")
+		leia(menu)
+		retorne menu
+	}
 	funcao logico nomeProdutoExiste(cadeia nomeProduto, cadeia vetNome[]){// Função para verificar se o nome do produto já existe
        	inteiro intNumProdutos=0  
        para(inteiro l=0; l<5; l++){// Loop para percorrer todos os produtos       
@@ -94,20 +92,11 @@ programa
 		escreva("Valor a cobrar do cliente é: ",valorCobrarCliente) // mostra o valor na tela a ser cobrado 
 		retorne (valorCobrarCliente)
 		}
-=======
->>>>>>> fd406edc21d57886cfc639ebe76d3eeb626b3ca1
-=======
->>>>>>> fd406edc21d57886cfc639ebe76d3eeb626b3ca1
-=======
->>>>>>> fd406edc21d57886cfc639ebe76d3eeb626b3ca1
 	funcao inteiro imprime_mnu(inteiro &opcao){
->>>>>>> 4338c882036d010b5e12f209ef465b8159d20518
 		escreva("Escolha uma opcao \n\n 1) Cadastrar produto         2) Registrar Venda\n 3) Relatorio Atual           4) Fechar Caixa e Sair\n\nDigite o numero referente a opção desejada: ")
 		leia(opcao)
 		retorne opcao
 	}
-	
-	
      funcao vazio verifAcess (cadeia password){
 		cadeia senha
 		inteiro contador=0
@@ -137,39 +126,13 @@ programa
 		}
 	}
 }
-
 /* $$$ Portugol Studio $$$ 
  * 
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
-<<<<<<< HEAD
- * @POSICAO-CURSOR = 1741; 
-=======
- * @POSICAO-CURSOR = 23566; 
- * @DOBRAMENTO-CODIGO = [66, 71, 364, 463, 523, 536, 577, 627, 658, 676, 699, 738, 733, 764, 786];
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
- * @PONTOS-DE-PARADA = ;
- * @SIMBOLOS-INSPECIONADOS = ;
- * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
- * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
- */
-/* $$$ Portugol Studio $$$ 
- * 
- * Esta seção do arquivo guarda informações do Portugol Studio.
- * Você pode apagá-la se estiver utilizando outro editor.
- * 
- * @POSICAO-CURSOR = 1577; 
- * @DOBRAMENTO-CODIGO = [66, 75, 80, 90, 95, 388, 487, 547, 560, 581, 601, 632, 651, 682, 700, 723, 757, 788, 810];
-=======
->>>>>>> fd406edc21d57886cfc639ebe76d3eeb626b3ca1
-=======
->>>>>>> fd406edc21d57886cfc639ebe76d3eeb626b3ca1
-=======
->>>>>>> fd406edc21d57886cfc639ebe76d3eeb626b3ca1
->>>>>>> 4338c882036d010b5e12f209ef465b8159d20518
+ * @POSICAO-CURSOR = 1751; 
+ * @DOBRAMENTO-CODIGO = [65, 73, 70, 79, 84, 94, 99];
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
