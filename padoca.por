@@ -823,6 +823,7 @@ programa
 				inicio()
 			}
 		}
+<<<<<<< HEAD
      }
 	funcao inteiro escolhas(cadeia texto){
      	inteiro saidaLoop = 0
@@ -862,3 +863,6 @@ programa
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
  * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
  */
+=======
+}
+>>>>>>> 42e35df2b39bd7b17351cc6c1994165eccf3c02c
