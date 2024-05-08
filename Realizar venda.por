@@ -14,15 +14,22 @@ programa
 	{	
 
 		//variaveis
+		inteiro cod_produto=0, qnt_produto=0, qnt_estoque=0, atualizaEstoque=0, formaPagamento=0, atualizaProdutosV = 0, totalEstoque =0, estoque =0
+	  	real saldoDoCaixa=0.0, atualizarSaldoCaixa = 0.0, valorVenda=0.0, desconto = 0.0, acrescimo = 0.0, custoVenda = 0.0, lucroVenda = 0.0,atualizaCusto=0.0, atualizaLucro=0.0
+		inteiro opcao_menu
+	     cadeia nomeProduto,valorProduto, quantProduto, custoProduto = "sed"
+	     caracter Opcao_produtos
 		inteiro opcao, arquivo, vetCod[5], vetQntProduto[5]
 		real saldoCaixa=0.0, vetCusto[5], vetValorProd[5]
-		cadeia vetsrc[5], vetNome[5],nomeProduto,valorProd,qntProduto,custo
-		escreva("Selecione a sequência de arquivos:\n1-Carrinho\n2-Produtos Registrados\n3-Total de vendas\n4-Vendas do dia\n5-Registro de vendas")
+		cadeia vetsrc[5], vetNome[5],valorProd,qntProduto,custo
+		escreva ("Selecione a sequência de arquivos:\n1-Carrinho\n2-Produtos Registrados\n3-Total de vendas\n4-Vendas do dia\n5-Registro de vendas")
 		cadeia typdata[2]={"arquivodetexto|txt","arquivodetexto|txt"}
 		para(inteiro c=0;c<5;c++){
 			vetsrc[c] = src.selecionar_arquivo(typdata, verdadeiro)	
 		}
+		
 		limpa()
+		
 		//leitura de arquivos
 		
 		
@@ -33,7 +40,8 @@ programa
 			leia(opcao)
 			escolha(opcao){
 				caso 1:
-				//cadastrar produtos
+				
+					//cadastrar produtos
 		para(inteiro l=0;l<5;l++){
 				//escreva("\nEscreva o nome do produto para cadastrar:  ")
 		logico nomeValido = verdadeiro
@@ -94,9 +102,9 @@ programa
 				}
 				
 			  }
-		     
+		     }
 		  
-		para (l=0;l<5;l++){
+		para (inteiro l=0;l<5;l++){
 			cadeia vetTexto[5]
 			vetTexto[0] = "Nome"
 			vetTexto[1] = "Cod"
@@ -107,11 +115,10 @@ programa
 		 
       	}
       	escreva("\n")
-      	para ( l=0;l<5;l++){
+      	para (inteiro l=0;l<5;l++){
       		escreva("\t",vetNome[l],"|\t ",vetCod[l],"|\t  ",vetValorProd[l],"|\t  ",vetQntProduto[l],"|\t  ",vetCusto[l],"|\n")
       	}
-	}
-					
+		
 					
 					
 					//entrada de dados
@@ -121,9 +128,116 @@ programa
 					//saida de dados
 				pare
 				caso 2:
-				
-					//realizar vendas
-					
+				// imprimir lista 
+				para (inteiro l=0;l<5;l++){
+				cadeia vetTexto[5]
+			vetTexto[0] = "Nome"
+			vetTexto[1] = "Cod"
+			vetTexto[2] = "Valor"
+			vetTexto[3] = "Quant"
+			vetTexto[4] = "Custo"
+				escreva("\t",vetTexto[l]," |") 
+      	}
+      	escreva("\n")
+      	para (inteiro l=0;l<5;l++){
+      	escreva("\t",vetNome[l],"|\t ",vetCod[l],"|\t  ",vetValorProd[l],"|\t  ",vetQntProduto[l],"|\t  ",vetCusto[l],"|\n")
+      	}
+			//realizar vendas
+		para (inteiro l=0;l<6;l++){
+		
+		//escreva("Digite o código do produto que deseja comprar: \n--> ")
+          escreva(" -----------------------------------------------------\n")//saída de dados (representação gráfica)
+          escreva("|    Digite o código do produto que deseja comprar    | \n ")//saída de daos para direcionar o usuario
+          escreva(" -----------------------------------------------------\n-->")//saída de dados (representação gráfica)
+                  leia(cod_produto) 
+          //escreva("Digite a quantidade que deseja comprar: \n--> ")
+          escreva(" ------------------------------------------------------\n")//saída de dados (representação gráfica)
+          escreva("|    Digite a quantidade que deseja comprar            |\n ")//saída de dado (será printado na tela para direcionar o usuario do que deve ser digitado)
+          escreva(" ------------------------------------------------------\n-->")//saída de dados (representação gráfica)
+                  leia(qnt_produto)
+          
+          se(cod_produto == vetCod[l]){
+          	//escreva("Processando compra...\n\n")         
+          escreva(" ------------------------------------------------------\n")//saída de dados (representação gráfica)
+          escreva("|    .........PROCESSANDO COMPRA...........            |\n ")//saída de dado (será printado na tela para direcionar o usuario do que deve ser digitado)
+          escreva(" ------------------------------------------------------\n-->")//saída de dados (representação gráfica)
+          para (inteiro l=0;l<6;l++){
+          qnt_estoque == vetQntProduto[l] // atribui uma valor da matriz a uma variável 
+          
+          se( qnt_produto <=  qnt_estoque  ){ // condição para o bloco de código ser executado caso seja verdadeira 
+           atualizaEstoque = qnt_estoque - qnt_produto // atualização do estoque 
+            matriz[l][3]  =  Tipos.inteiro_para_cadeia(atualizaEstoque, 10) // atualiza o estoque dentro da matriz 
+              atualizaProdutos(atualizaProdutosV , qnt_produto) // chamada de função que mantem o controle de quantos produtos foram vendidos  
+                valorVenda = Tipos.cadeia_para_real(matriz[l][1]) // atribui um valor da matriz a uma variavel 
+                 valorVenda = valorVenda * qnt_produto // calculo para saber o valor da venda 
+		      custoVenda = Tipos.inteiro_para_real(qnt_produto) * Tipos.cadeia_para_real(custoProduto) // calculo para saber o custo total da venda 
+		     fAtualizaCusto( atualizaCusto ,custoVenda)//chamda de função para atualização do custo das vendas totais
+		   lucroVenda = valorVenda - custoVenda // calculo para saber o lucro da venda 
+		fAtualizaLucro(atualizaLucro, lucroVenda) //chamda de função para atualização do lucro das vendas totais 
+
+            matrizControle[l][3] = Tipos.inteiro_para_cadeia(atualizaProdutosV = atualizaProdutosV + qnt_produto, 10)
+		  matrizControle[l][2] = Tipos.inteiro_para_cadeia(atualizaEstoque, 10)
+           
+          escreva("\n-----------------\n ---------------> Você comprou ",qnt_produto," ", matriz[l][0], " e ainda restam ", atualizaEstoque," ", matriz[l][0], " no estoque \n")
+          escreva ("\n----------------\n ---------------> Carrinho de compras:  ", matriz[l][0], " , ",qnt_produto," unidades. \n-----> O valor da venda ficou um total de R$:",valorVenda,"\n\n")
+          }
+           senao se (qnt_estoque == 0) // segunda condição a ser executada caso a primeira não seja e a condição seja verdadeira 
+          {
+          	escreva("Não é possivel completar a venda. O estoque está zerado!\n")
+         	}
+         senao se (qnt_produto > qnt_estoque ){ // terceira condição a ser executada caso nem a primeira nem a segunda seja verdadeira 
+         escreva("Quantidade insuficiente no estoque! \nTemos apenas ",qnt_estoque," unidades, gostaria de comprar o mesmo produto nessa quantidade??\nDigite S - para sim e N - para não\n-->")
+           leia(Opcao_produtos)  
+             se(Opcao_produtos == 'S' ou Opcao_produtos == 's'){
+     
+               atualizaEstoque = qnt_estoque -  qnt_estoque
+                 matriz[l][3]  =  Tipos.inteiro_para_cadeia(atualizaEstoque, 10)
+                   atualizaProdutos(atualizaProdutosV , qnt_produto) // chamada de função que mantem o controle de quantos produtos foram vendidos 
+                 valorVenda = Tipos.cadeia_para_real(matriz[l][1]) 
+               valorVenda = valorVenda * qnt_estoque
+
+               custoVenda = Tipos.inteiro_para_real(qnt_produto) * Tipos.cadeia_para_real(custoProduto) // calculo para saber o custo total da venda 
+                 fAtualizaCusto( atualizaCusto ,custoVenda)//chamda de função para atualização do custo das vendas totais
+		        lucroVenda = valorVenda - custoVenda // calculo para saber o lucro da venda 
+		          fAtualizaLucro(atualizaLucro, lucroVenda) //chamda de função para atualização do lucro das vendas totais 
+		       
+                   matrizControle[l][3] = Tipos.inteiro_para_cadeia(atualizaEstoque, 10)
+		       matrizControle[l][2] = Tipos.inteiro_para_cadeia(atualizaEstoque, 10)
+		  
+                escreva("\n\n Você comprou ",qnt_estoque," ", matriz[l][0], " e ainda restam ", atualizaEstoque," ", matriz[l][0], " no estoque \n")
+          	escreva ("\n\n O valor a ser cobrado pelo produto:  ", matriz[l][0]," ", qnt_estoque," unidades \n O valor da venda ficou um total de R$:",valorVenda,"\n\n")
+             	}
+             	senao se(Opcao_produtos == 'N' ou Opcao_produtos == 'n'){
+             		escreva("Vamos cancelar a compra...\nObrigada e volte sempre!\n")
+             		}
+         	     	senao{
+         	     	escreva("Opção invalida!\n\n")
+         	     	}
+         	}
+          
+      	escreva ("-> Qual será a forma de pagamento? \nDigite 1 para dinheiro ou pix \nDigite 2 para cartão\nDigite 3 para cancelamento de compra\n-->")
+         		leia(formaPagamento)
+         	 	escolha (formaPagamento){ // escolha caso para a forma de pagamento
+         	 		caso 1: 
+         	 		escreva("Pagamento em dinheiro tem 10% de desconto! \n")
+         	 		escreva(" \nO Valor total com desconto é:  ",dinheiro(valorVenda, desconto)) // chamada de função
+         	 		escreva ("\n...Recebemos o pagamento....\n .....Guardando valor em caixa....\n")
+			
+			//dinheiro (valorVenda,desconto)
+			saldoDoCaixa = saldoDoCaixa + dinheiro (valorVenda,desconto)
+			atualizarSaldoCaixa = saldoDoCaixa // atualização do saldo do caixa 
+	  		escreva ("\nO Saldo total em caixa é de: R$",atualizarSaldoCaixa,"\n")	
+         	 		pare
+         	 		caso 2:
+         	 		escreva("Pagamento no cartão tem 3% de acrescimo: \n ")
+         	 		escreva("\n O Valor total com acrescimo é:  ",cartao(valorVenda, acrescimo)) //chamda de função
+         	 		escreva ("\n.....Recebemos o pagamento....\n .....Guardando valor em caixa....\n")
+			
+	 		//cartao(valorVenda,acrescimo)
+	  		saldoDoCaixa = saldoDoCaixa + cartao(valorVenda,acrescimo)
+			atualizarSaldoCaixa = saldoDoCaixa // atualização do saldo do caixa
+			escreva ("\n O Saldo total em caixa é de: R$,",atualizarSaldoCaixa,"\n") 
+         	 	
 					//entrada de dados
 					
 					//processamento
@@ -178,17 +292,14 @@ programa
 		// Chama de funçoes para testess e aquii
 		calcularJuros_Desconto (balanca(quantidadeCompraCliente,compraEmGramas,valorCobrarCliente,valorDaG))
 		
-	}  */
-	
-		
-
-	funcao logico nomeProdutoExiste(cadeia nomeProduto, cadeia vetNome[]){// Função para verificar se o nome do produto já existe
+	}  */}}}
+	 funcao logico nomeProdutoExiste(cadeia nomeProduto, cadeia vetNome[]){// Função para verificar se o nome do produto já existe
        	inteiro intNumProdutos=0  
        para(inteiro l=0; l<5; l++){// Loop para percorrer todos os produtos       
        se(vetNome[l] == nomeProduto){// Se o nome do produto já existe na matriz de produtos            
        retorne verdadeiro// Retorna verdadeiro indicando que o nome do produto já existe
          }
-       } 
+       }
         retorne falso // Se o nome do produto não foi encontrado na matriz de produtos, retorna falso
        }
 	
@@ -201,7 +312,7 @@ programa
      	inteiro opcao_pagamento
      	const real juros = 0.035, jurosD = 0.02
      	faca{
-     	escreva("\nDigite:\n1 - Para cartão de crédito\n2 - Para Débito\n-->")
+     	escreva("Qual a forma de pagamento?\nDigite:\n1 - Para cartão de crédito\n2 - Para Débito\n-->")
      	leia(opcao_pagamento)
      	se(opcao_pagamento < 1 ou opcao_pagamento > 2){
      		escreva("Forma de pagamento invalida! Digite uma oção valida:\n")
@@ -221,19 +332,14 @@ programa
      	}
 	}
      	
-     funcao real funcaoDinheiro(real trocoCliente, real valorCobrarCliente){
+     funcao real funcaoDinheiro_Troco(real trocoCliente, real valorCobrarCliente){
      		real valorDinheiro
      		const real desconto = 0.05
      		
      		escreva("Pagamento em dineiro possuí 5% de desconto em cima do valor total\n")
                    valorCobrarCliente = valorCobrarCliente - (valorCobrarCliente*desconto)
                escreva("O valor final da venda é:\n-->R$ ",mat.arredondar(valorCobrarCliente, 2))
-               retorne(valorCobrarCliente)
-     		
-     	}
-     funcao real troco(real valorDinheiro,real valorCobrarCliente, real trocoCliente){
-     	   const real desconto = 0.05
-     			faca{
+     		faca{
      		 escreva("\nInforme o valor em dinheiro passado pelo cliente:\n-->")
      		  leia(valorDinheiro)
      		  se(valorDinheiro < valorCobrarCliente){
@@ -241,13 +347,13 @@ programa
      		  }
      		  	}enquanto(valorDinheiro < valorCobrarCliente)
      		 se(valorDinheiro == valorCobrarCliente ou valorDinheiro > valorCobrarCliente){
-     		 	 valorCobrarCliente = valorCobrarCliente - (valorCobrarCliente*desconto)
      		 	trocoCliente = valorDinheiro - valorCobrarCliente
      		   escreva("O troco do cliente é: ",trocoCliente)
      		
      		 }
      		retorne(trocoCliente)
-     			}
+     	}
+     		
 		funcao real balanca (inteiro quantidadeCompraCliente,real compraEmGramas,real valorCobrarCliente,real valorDaG){
 		quantidadeCompraCliente = utl.sorteia(1, 1000)  // sorteando a quantidade que o cliente vai comprar, para simular uma balança 
 		quantidadeCompraCliente = typ.inteiro_para_real(quantidadeCompraCliente) // mudando o valor de inteiro para real para poder usar zero apos a virgula pq o sorteia so roda com inteiro...
@@ -278,7 +384,18 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 861; 
+ * @POSICAO-CURSOR = 6869; 
+ * @PONTOS-DE-PARADA = ;
+ * @SIMBOLOS-INSPECIONADOS = ;
+ * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
+ * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
+ */
+/* $$$ Portugol Studio $$$ 
+ * 
+ * Esta seção do arquivo guarda informações do Portugol Studio.
+ * Você pode apagá-la se estiver utilizando outro editor.
+ * 
+ * @POSICAO-CURSOR = 11300; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
