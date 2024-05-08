@@ -1,0 +1,16 @@
+programa {
+    inclua biblioteca Matematica --> mat
+
+    funcao inicio() {
+        /* atualizarSaldo(500, 200) */ // Aqui e para chamar a função com os valores desejados
+    }
+
+
+    funcao real atualizarSaldo(real saldoAtual, real valorCobrado) {
+        saldoAtual = saldoAtual + valorCobrado
+        escreva("\nSaldo atualizado: R$", mat.arredondar(saldoAtual, 2))
+        retorne saldoAtual
+    }
+}
+
+/*nessa funcao,adicionei o valor cobrado ao saldo atual e depois exibe o saldo atualizado na tela, por fim, a função retorna o saldo atualizado
