@@ -17,7 +17,7 @@ programa
 	{	
 
 		//variaveis
-		inteiro arquivo, menu=0, qtd_estoque=0, id_produto=0
+		inteiro arquivo, mnu=0, qtd_estoque=0, id_produto=0
 		real val_uni=0.0, val_custo=0.0
 		cadeia nome_produto="", vetsrc[5], typdata[2]={"arquivodetexto|txt","arquivodetexto|txt"}, password="admin"
 		inteiro opcao
@@ -32,19 +32,10 @@ programa
 			vetsrc[c] = src.selecionar_arquivo(typdata, verdadeiro)
 		}
 		limpa()
-<<<<<<< HEAD
-		//leitura de arquivos
-		
-		//menu de opções
-			imprime_menu(menu)
-			limpa()
-			escolha(menu){
-=======
 		faca{
 			imprime_mnu(mnu)
 			
 			escolha(mnu){
->>>>>>> 5e90e0a044b6e0b70fca6b25b8c9c353cf224f35
 				caso 1:
 					verifAcess(password)
 					inteiro y=0
@@ -52,7 +43,7 @@ programa
 						leia(y)
 						limpa()
 					para(inteiro i=0; i<y; i++){
-						escreva("aqui deve chamar a funcao  cad.prod")
+						cadastroProduto(vetsrc[1])
 					}
 					//cadastrar produtos
 					
@@ -106,60 +97,16 @@ programa
 			}
 		}enquanto(saida==verdadeiro)
 	}
-<<<<<<< HEAD
-<<<<<<< HEAD
-	funcao inteiro imprime_menu(inteiro &opcao){
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-	funcao logico nomeProdutoExiste(cadeia nomeProduto, cadeia vetNome[]){// Função para verificar se o nome do produto já existe
-       	inteiro intNumProdutos=0  
-       para(inteiro l=0; l<5; l++){// Loop para percorrer todos os produtos       
-       se(vetNome[l] == nomeProduto){// Se o nome do produto já existe na matriz de produtos            
-       retorne verdadeiro// Retorna verdadeiro indicando que o nome do produto já existe
-         }
-       }
-        retorne falso // Se o nome do produto não foi encontrado na matriz de produtos, retorna falso
-       }
-	funcao real abrirCaixa (real saldoCaixa){
-		escreva ("Abertura de caixa, Quantos reais tem no caixa? ")
-		leia (saldoCaixa)
-		retorne (saldoCaixa)
-	}
-	funcao real balanca (inteiro quantidadeCompraCliente,real compraEmGramas,real valorCobrarCliente,real valorDaG){
-		quantidadeCompraCliente = utl.sorteia(1, 1000)  // sorteando a quantidade que o cliente vai comprar, para simular uma balança 
-		quantidadeCompraCliente = typ.inteiro_para_real(quantidadeCompraCliente) // mudando o valor de inteiro para real para poder usar zero apos a virgula pq o sorteia so roda com inteiro...
-		escreva ("Você comprou ",quantidadeCompraCliente," gramas de pão.\n")
-		compraEmGramas = (quantidadeCompraCliente * 1000) // converter Kg para gramas 
-		valorCobrarCliente = ((valorDaG*compraEmGramas) / 1000) // converte gramas em reais $$ dindin
-		valorCobrarCliente = mat.arredondar(valorCobrarCliente, 7)
-		escreva("Valor a cobrar do cliente é: ",valorCobrarCliente) // mostra o valor na tela a ser cobrado 
-		retorne (valorCobrarCliente)
-		}
-=======
->>>>>>> fd406edc21d57886cfc639ebe76d3eeb626b3ca1
-=======
->>>>>>> fd406edc21d57886cfc639ebe76d3eeb626b3ca1
-=======
->>>>>>> fd406edc21d57886cfc639ebe76d3eeb626b3ca1
-=======
 	/*funcao verificaBase(logico &basedados, cadeia vetsrc[], cadeia typdata[]){
 			
 	}*/
->>>>>>> 5e90e0a044b6e0b70fca6b25b8c9c353cf224f35
 	funcao inteiro imprime_mnu(inteiro &opcao){
->>>>>>> 4338c882036d010b5e12f209ef465b8159d20518
 		escreva("Escolha uma opcao \n\n 1) Cadastrar produto         2) Registrar Venda\n 3) Relatorio Atual           4) Fechar Caixa e Sair\n\nDigite o numero referente a opção desejada: ")
 		leia(opcao)
 		retorne opcao
 	}funcao cad_produ(inteiro qtd_estoque,inteiro id_produto, inteiro val_uni,inteiro val_custo,cadeia nome_produto){
 		
 	}
-<<<<<<< HEAD
-	
-	
-=======
 	funcao realizarVenda(cadeia vetorProd[], cadeia vetorVend[], cadeia caminho[], cadeia linhaOriginal, inteiro posicao,inteiro vetDeNum[]){
 		//se existir produtlo escolhido
 		se(vetorProd[0] != ""){
@@ -850,7 +797,6 @@ programa
           //retorna valor de x
           retorne x
      }
->>>>>>> 5e90e0a044b6e0b70fca6b25b8c9c353cf224f35
      funcao vazio verifAcess (cadeia password){
 		cadeia senha
 		inteiro contador=0
@@ -868,7 +814,6 @@ programa
 					escreva("Você errou demais, aguarde ",i," segundos para tentar novamente...")
 					utl.aguarde(1000)
 				}
-				contador=0
 				limpa()
 			}
 			escreva("Senha incorreta!Tente novamente:\n->")
@@ -878,7 +823,6 @@ programa
 				inicio()
 			}
 		}
-<<<<<<< HEAD
      }
 	funcao inteiro escolhas(cadeia texto){
      	inteiro saidaLoop = 0
@@ -911,51 +855,10 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
- * @POSICAO-CURSOR = 11326; 
-=======
- * @POSICAO-CURSOR = 23566; 
- * @DOBRAMENTO-CODIGO = [66, 71, 364, 463, 523, 536, 577, 627, 658, 676, 699, 738, 733, 764, 786];
->>>>>>> fd406edc21d57886cfc639ebe76d3eeb626b3ca1
-=======
- * @POSICAO-CURSOR = 1741; 
-=======
- * @POSICAO-CURSOR = 23566; 
- * @DOBRAMENTO-CODIGO = [66, 71, 364, 463, 523, 536, 577, 627, 658, 676, 699, 738, 733, 764, 786];
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
- * @PONTOS-DE-PARADA = ;
- * @SIMBOLOS-INSPECIONADOS = ;
- * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
- * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
- */
-/* $$$ Portugol Studio $$$ 
- * 
- * Esta seção do arquivo guarda informações do Portugol Studio.
- * Você pode apagá-la se estiver utilizando outro editor.
- * 
- * @POSICAO-CURSOR = 1577; 
- * @DOBRAMENTO-CODIGO = [66, 75, 80, 90, 95, 388, 487, 547, 560, 581, 601, 632, 651, 682, 700, 723, 757, 788, 810];
-=======
->>>>>>> fd406edc21d57886cfc639ebe76d3eeb626b3ca1
-=======
->>>>>>> fd406edc21d57886cfc639ebe76d3eeb626b3ca1
-=======
->>>>>>> fd406edc21d57886cfc639ebe76d3eeb626b3ca1
->>>>>>> 4338c882036d010b5e12f209ef465b8159d20518
->>>>>>> b1d39e156e7921aa36d38535393fc7cd139d5dd3
-=======
  * @POSICAO-CURSOR = 933; 
  * @DOBRAMENTO-CODIGO = [102, 109, 402, 501, 561, 574, 611, 642, 661, 692, 710, 733, 767];
->>>>>>> 5e90e0a044b6e0b70fca6b25b8c9c353cf224f35
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
  * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
  */
-=======
-}
->>>>>>> 42e35df2b39bd7b17351cc6c1994165eccf3c02c
