@@ -78,7 +78,7 @@ programa
 				caso 2:
 					//realizar vendas
 					abrirCaixa (saldoCaixa)
-					realizarVenda(opcaoInterna, saidaLoop,entradaBaseInteiro,quantidadeVend,preco = typ.cadeia_para_real(vetorProd[2]),reposicao ,linhaVend = "",linhaVendD = "",linhaVendOrig = "",linhaVendOrigD = "",linhaSubsProd = "",valorTotal = 0.0,valorTotalD = 0.0,limite )
+					realizarVenda(opcaoInterna, saidaLoop,entradaBaseInteiro,quantidadeVend,preco = typ.cadeia_para_real(vetorProd[2]),reposicao ,linhaVend,linhaVendD,linhaVendOrig,linhaVendOrigD,linhaSubsProd,valorTotal,valorTotalD,limite)
 					
 					//processamento
 					
@@ -94,7 +94,9 @@ programa
 					//saida de dados
 				pare
 				caso 4:
+					verifAcess(password)
 					escreva("Deseja mesmo sair?")
+					
 					saida=falso
 					//fechar caixa
 
@@ -901,8 +903,8 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 2669; 
- * @DOBRAMENTO-CODIGO = [124, 133, 138, 148, 448, 547, 607, 620, 641, 688, 707, 738, 756, 779, 845, 872];
+ * @POSICAO-CURSOR = 2889; 
+ * @DOBRAMENTO-CODIGO = [126, 135, 140, 150, 450, 549, 609, 622, 643, 690, 709, 740, 758, 781, 847, 874];
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
