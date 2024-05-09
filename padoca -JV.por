@@ -247,8 +247,8 @@ programa
 					src.fechar_arquivo(arqVendaDiaria)//fechando PRODBase de vendas em modo de leitura
 					src.fechar_arquivo(arqVenda)//fechando PRODBase de vendas em modo de leitura
 					
-					arqVenda = src.abrir_arquivo(caminho[1], src.MODO_ACRESCENTAR)//abre PRODBase de vendas e armazena endereço de memória na variável arqVendas em modo de acréscimo
-					arqVendaDiaria = src.abrir_arquivo(caminho[2], src.MODO_ACRESCENTAR)//abre PRODBase de vendas e armazena endereço de memória na variável arqVendas em modo de acréscimo
+					arqVenda = src.abrir_arquivo(caminho[2], src.MODO_ACRESCENTAR)//abre PRODBase de vendas e armazena endereço de memória na variável arqVendas em modo de acréscimo
+					arqVendaDiaria = src.abrir_arquivo(caminho[3], src.MODO_ACRESCENTAR)//abre PRODBase de vendas e armazena endereço de memória na variável arqVendas em modo de acréscimo
 					//se venda de produtlo com código ainda não foi registrado 
 					se(cod == 0 ou codD == 0){
 						//loop para atribuir dados de venda a vetorVend
@@ -829,7 +829,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 14326; 
+ * @POSICAO-CURSOR = 11019; 
  * @DOBRAMENTO-CODIGO = [67, 371, 546, 620, 639, 687, 710, 749, 744, 775, 797];
  * @PONTOS-DE-PARADA = 110;
  * @SIMBOLOS-INSPECIONADOS = ;
