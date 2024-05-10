@@ -903,7 +903,57 @@ programa
 		retorne saidaLoop
      }
 	
-}
+
+	funcao vazio quantidadeEstoque(){
+		inteiro estoque1
+		inteiro quantidade1
+		
+		escreva("\n------------------calcular a quantidade de estoque--------------------------\n")
+  
+		escreva("Digite o número de estoque1 : ")
+		leia(estoque1)
+
+         escreva("Digite o  número de quantidade1 : ")
+		leia(quantidade1)
+
+		quantidade1 = estoque1 - quantidade1
+
+	escreva("\nResultado : " , quantidade1 , "  \n")
+	}
+	  funcao vazio calcularBaixaEstoque() 
+	{ 
+		inteiro estoque2
+	     inteiro quantidade2
+		
+		escreva("Digite o número de estoque1 : ")
+		leia(estoque2)
+
+         escreva("Digite o  número de quantidade1 : ")
+		leia(quantidade2)
+		
+		se (estoque2 > quantidade2) 
+		{
+			escreva(estoque2+ " = estoque e maior que quantidade : "+quantidade2 )// essa mensagem mostrar se estoque e maior que quantidade.
+		}
+		senao se (quantidade2 > estoque2) 
+		{
+			escreva(quantidade2+ " quantidade maior que estoque : " +estoque2)// essa mensagem mostrar se quantidade e  maior que estoque.
+		}
+		senao
+		{
+			escreva(estoque2+ " estoque e igual a quantidade : " +quantidade2)// essa mensagem vai mostrar se estoque e  igual a quantidade
+		} 
+		se
+		(estoque2 == 0 )// se o estoque for igual a zero ele vai mostrar a mensagem no programa.
+		{
+		escreva("\n seu estoque acabou : " +quantidade2)// essa e a mensagem que será mostrado no programa para que possa mostrar se o estoque serou (acabou).
+		}
+		senao se(estoque2 == 1 )
+		{
+		escreva("\n seu estoque e esse : " + quantidade2)// essa mansagem será mostrada no programa se sobrou estoque no programa e mostrar a quantidade.
+		}
+		} 
+	 
 
 
 /* $$$ Portugol Studio $$$ 
