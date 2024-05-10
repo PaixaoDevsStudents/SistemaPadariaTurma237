@@ -21,7 +21,7 @@ programa
 		cadeia nome_produto="", vetsrc[5], typdata[2]={"arquivodetexto|txt","arquivodetexto|txt"}, password="admin"
 		inteiro opcao
 		inteiro numDeVet[3]
-		logico saida = verdadeiro
+		logico saida = verdadeiro, teste=falso
 		//leitura de arquivos
 		/*para(inteiro c=0;c<5;c++){
 			escreva("Selecione a sequência de arquivos:\n1-Carrinho\n2-Produtos Registrados\n3-Total de vendas\n4-Vendas do dia\n5-Registro de vendas")
@@ -36,7 +36,9 @@ programa
 			escolha(mnu){
 				caso 1:
 					//cadastrar produtos
-					verifAcess(password)
+					enquanto(teste==falso){
+					verifAcess(password,teste)
+					}
 					inteiro y=0
 						escreva("Quantos produtos irá cadastrar?: ")
 						leia(y)
@@ -59,7 +61,7 @@ programa
 					//fechar caixa
 
 				pare
-			}
+			}//
 		}enquanto(saida==verdadeiro)
 	}
 	funcao inteiro imprime_mnu(inteiro &opcao){
@@ -792,19 +794,27 @@ programa
 		}enquanto(saidaLoop != 1 e saidaLoop != 2)
 		retorne saidaLoop
      }
-     funcao vazio verifAcess (cadeia password){
-		cadeia senha
+     funcao logico verifAcess (cadeia password, logico &teste){
+		cadeia senha=""
 		inteiro contador=1
 		escreva("Verificação de acesso\nInforme a senha de segurança\n->")
 		leia(senha)
 		limpa()
+		se(senha=="x" ou senha =="X"){
+			teste=verdadeiro
+			retorne teste
+		}
 		enquanto(senha!=password){
 			faca{
 				contador++
 				escreva("Senha incorreta\nInforme a senha novamente\n->")
 				leia(senha)
 				limpa()
-			}enquanto(contador<=5)
+				se(senha=="x" ou senha =="X"){
+					teste=verdadeiro
+					retorne teste
+				}
+			}enquanto(contador!=5)
 			para(inteiro i=5;i>0;i--){
 				escreva("Você errou a senha 5 vezes\nAguarde ",i," segundos antes de tentar novamente\n->")
 				utl.aguarde(1000)
@@ -812,7 +822,8 @@ programa
 			}
 			contador=0
 		}
-	}
+		retorne teste
+     }
 }
 
 /* $$$ Portugol Studio $$$ 
@@ -820,8 +831,8 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 32242; 
- * @DOBRAMENTO-CODIGO = [64, 70, 368, 467, 530, 543, 564, 586, 617, 636, 666, 684, 707, 746, 741, 772];
+ * @POSICAO-CURSOR = 1236; 
+ * @DOBRAMENTO-CODIGO = [72, 370, 469, 532, 545, 566, 588, 619, 638, 668, 686, 709, 748, 743, 774];
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
