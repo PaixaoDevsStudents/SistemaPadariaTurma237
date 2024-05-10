@@ -823,7 +823,6 @@ programa
 				inicio()
 			}
 		}
-<<<<<<< HEAD
      }
 	funcao inteiro escolhas(cadeia texto){
      	inteiro saidaLoop = 0
@@ -856,42 +855,10 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
-<<<<<<< HEAD
-<<<<<<< HEAD
- * @POSICAO-CURSOR = 11326; 
-=======
-<<<<<<< HEAD
- * @POSICAO-CURSOR = 1741; 
-=======
- * @POSICAO-CURSOR = 23566; 
- * @DOBRAMENTO-CODIGO = [66, 71, 364, 463, 523, 536, 577, 627, 658, 676, 699, 738, 733, 764, 786];
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
  * @POSICAO-CURSOR = 933; 
  * @DOBRAMENTO-CODIGO = [102, 109, 402, 501, 561, 574, 611, 642, 661, 692, 710, 733, 767];
->>>>>>> 5e90e0a044b6e0b70fca6b25b8c9c353cf224f35
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
  * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
  */
-=======
-<<<<<<< HEAD
->>>>>>> fd406edc21d57886cfc639ebe76d3eeb626b3ca1
-=======
->>>>>>> fd406edc21d57886cfc639ebe76d3eeb626b3ca1
-=======
->>>>>>> fd406edc21d57886cfc639ebe76d3eeb626b3ca1
->>>>>>> 4338c882036d010b5e12f209ef465b8159d20518
->>>>>>> b1d39e156e7921aa36d38535393fc7cd139d5dd3
- * @PONTOS-DE-PARADA = ;
- * @SIMBOLOS-INSPECIONADOS = ;
- * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
- * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
- */
-=======
-}
->>>>>>> 42e35df2b39bd7b17351cc6c1994165eccf3c02c
->>>>>>> 5e90e0a044b6e0b70fca6b25b8c9c353cf224f35

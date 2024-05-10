@@ -37,6 +37,7 @@ programa
 			leia(opcao)
 			escolha(opcao){
 				caso 1:
+<<<<<<< HEAD
 					cadProduto(vetNome,vetCod,vetQntProduto,vetCusto,vetValorProd)
 					//entrada de dados
 					
@@ -107,6 +108,9 @@ programa
 	funcao vazio cadProduto(cadeia vetNome[],inteiro vetCod[],inteiro vetQntProduto[],real vetCusto[],real vetValorProd[]){
 			cadeia nomeProduto,valorProd,qntProduto,custo
 					//cadastrar produtos
+=======
+				//cadastrar produtos
+>>>>>>> 5e90e0a044b6e0b70fca6b25b8c9c353cf224f35
 		para(inteiro l=0;l<5;l++){
 				//escreva("\nEscreva o nome do produto para cadastrar:  ")
 		logico nomeValido = verdadeiro
@@ -167,9 +171,9 @@ programa
 				}
 				
 			  }
-		     }
+		     
 		  
-		para (inteiro l=0;l<5;l++){
+		para (l=0;l<5;l++){
 			cadeia vetTexto[5]
 			vetTexto[0] = "Nome"
 			vetTexto[1] = "Cod"
@@ -180,9 +184,67 @@ programa
 		 
       	}
       	escreva("\n")
-      	para (inteiro l=0;l<5;l++){
+      	para ( l=0;l<5;l++){
       		escreva("\t",vetNome[l],"|\t ",vetCod[l],"|\t  ",vetValorProd[l],"|\t  ",vetQntProduto[l],"|\t  ",vetCusto[l],"|\n")
       	}
+<<<<<<< HEAD
+=======
+	}
+					
+					
+					
+					//entrada de dados
+					
+					//processamento
+					
+					//saida de dados
+				pare
+				caso 2:
+				
+					//realizar vendas
+					
+					//entrada de dados
+					
+					//processamento
+					
+					//saida de dados
+				pare
+				caso 3:
+					//relatorio temporario
+					
+					//entrada de dados
+					
+					//processamento
+					
+					//saida de dados
+				pare
+				caso 4:
+					//fechar caixa
+
+					//entrada de dados
+
+					//processamento
+
+					//saida de dados
+				pare
+				caso 5:
+					//verificar acesso
+					
+					//entrada de dados
+					
+					//processamento
+					
+					//saida de dados
+				pare
+				caso 6:
+				// abrir caixa
+				abrirCaixa (saldoCaixa)
+				pare
+				
+				caso contrario:
+				inicio()
+			}
+>>>>>>> 5e90e0a044b6e0b70fca6b25b8c9c353cf224f35
 	}
        funcao logico caminhoArquivos(cadeia vetsrc[]){// Função para verificar se o nome do produto já existe
        para(inteiro c=0; c<5; c++){// Loop para percorrer todos os produtos       
@@ -194,7 +256,16 @@ programa
        }
 		
 		
+<<<<<<< HEAD
 	funcao logico nomeProdutoExiste(cadeia nomeProduto, cadeia vetNome[]){// Função para verificar se o nome do produto já existe 
+=======
+	}  */
+	
+		
+
+	funcao logico nomeProdutoExiste(cadeia nomeProduto, cadeia vetNome[]){// Função para verificar se o nome do produto já existe
+       	inteiro intNumProdutos=0  
+>>>>>>> 5e90e0a044b6e0b70fca6b25b8c9c353cf224f35
        para(inteiro l=0; l<5; l++){// Loop para percorrer todos os produtos       
        se(vetNome[l] == nomeProduto){// Se o nome do produto já existe na matriz de produtos            
        retorne verdadeiro// Retorna verdadeiro indicando que o nome do produto já existe
@@ -212,7 +283,7 @@ programa
      	inteiro opcao_pagamento
      	const real juros = 0.035, jurosD = 0.02
      	faca{
-     	escreva("Qual a forma de pagamento?\nDigite:\n1 - Para cartão de crédito\n2 - Para Débito\n-->")
+     	escreva("\nDigite:\n1 - Para cartão de crédito\n2 - Para Débito\n-->")
      	leia(opcao_pagamento)
      	se(opcao_pagamento < 1 ou opcao_pagamento > 2){
      		escreva("Forma de pagamento invalida! Digite uma oção valida:\n")
@@ -232,14 +303,19 @@ programa
      	}
 	}
      	
-     funcao real funcaoDinheiro_Troco(real trocoCliente, real valorCobrarCliente){
+     funcao real funcaoDinheiro(real trocoCliente, real valorCobrarCliente){
      		real valorDinheiro
      		const real desconto = 0.05
      		
      		escreva("Pagamento em dineiro possuí 5% de desconto em cima do valor total\n")
                    valorCobrarCliente = valorCobrarCliente - (valorCobrarCliente*desconto)
                escreva("O valor final da venda é:\n-->R$ ",mat.arredondar(valorCobrarCliente, 2))
-     		faca{
+               retorne(valorCobrarCliente)
+     		
+     	}
+     funcao real troco(real valorDinheiro,real valorCobrarCliente, real trocoCliente){
+     	   const real desconto = 0.05
+     			faca{
      		 escreva("\nInforme o valor em dinheiro passado pelo cliente:\n-->")
      		  leia(valorDinheiro)
      		  se(valorDinheiro < valorCobrarCliente){
@@ -247,13 +323,13 @@ programa
      		  }
      		  	}enquanto(valorDinheiro < valorCobrarCliente)
      		 se(valorDinheiro == valorCobrarCliente ou valorDinheiro > valorCobrarCliente){
+     		 	 valorCobrarCliente = valorCobrarCliente - (valorCobrarCliente*desconto)
      		 	trocoCliente = valorDinheiro - valorCobrarCliente
      		   escreva("O troco do cliente é: ",trocoCliente)
      		
      		 }
      		retorne(trocoCliente)
-     	}
-     		
+     			}
 		funcao real balanca (inteiro quantidadeCompraCliente,real compraEmGramas,real valorCobrarCliente,real valorDaG){
 		quantidadeCompraCliente = utl.sorteia(1, 1000)  // sorteando a quantidade que o cliente vai comprar, para simular uma balança 
 		quantidadeCompraCliente = typ.inteiro_para_real(quantidadeCompraCliente) // mudando o valor de inteiro para real para poder usar zero apos a virgula pq o sorteia so roda com inteiro...
@@ -284,7 +360,11 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
+<<<<<<< HEAD
  * @POSICAO-CURSOR = 6484; 
+=======
+ * @POSICAO-CURSOR = 861; 
+>>>>>>> 5e90e0a044b6e0b70fca6b25b8c9c353cf224f35
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
