@@ -78,7 +78,7 @@ programa
 				caso 2:
 					//realizar vendas
 					abrirCaixa (saldoCaixa)
-					realizarVenda(opcaoInterna, saidaLoop,entradaBaseInteiro,quantidadeVend,preco = typ.cadeia_para_real(vetorProd[2]),reposicao ,linhaVend,linhaVendD,linhaVendOrig,linhaVendOrigD,linhaSubsProd,valorTotal,valorTotalD,limite)
+					//realizarVenda(opcaoInterna, saidaLoop,entradaBaseInteiro,quantidadeVend,preco = typ.cadeia_para_real(vetorProd[2]),reposicao ,linhaVend,linhaVendD,linhaVendOrig,linhaVendOrigD,linhaSubsProd,valorTotal,valorTotalD,limite)
 					
 					//processamento
 					
@@ -86,7 +86,7 @@ programa
 				pare
 				caso 3:
 					//relatorio temporario
-					leiaProduto(valor,j ,x=src.ler_linha(arquivo),texto=txt.substituir(x, "//", ":") ,vetor, arquivo)
+					//leiaProduto(valor,j ,x=src.ler_linha(arquivo),texto=txt.substituir(x, "//", ":") ,vetor, arquivo)
 					//entrada de dados
 					
 					//processamento
@@ -649,6 +649,12 @@ programa
 		}
 		//Vetor com idnomes recebe entrada de usuário do nome do produtlo
 		vetor[0] += filtrarCaracteres(entradaBaseCadeia("Digite o nome do produtlo: "))
+		 escreva ("O produto é vendido na grama ?")
+          caracter evendidonaG
+          leia(evendidonaG)
+          se (evendidonaG == 's'){
+          vetor[4] += entradaBaseGramas("Qual é o valor do Kilo?: ")
+          }senao{
 		//Vetor com id de stock recebe entrada de usuário do número de stock
 		vetor[1] += entradaBaseInteiro("Digite a quantidade do produtlo que tem no estoque de hoje: ")
           //Vetor com id de precos recebe entrada de usuário do preço do produtlo
@@ -656,6 +662,35 @@ programa
           //vetor com id de custo recebe entrada de usuário do custo do produtlo
           vetor[3] += entradaBaseReal("Digite o custo do produtlo: ")
           passeProduto(1, caminho , vetor)//passa os dados do produtlo para o arquivo
+          }
+         
+	}
+	funcao real entradaBaseGramas(cadeia texto){
+		cadeia opcao
+          caracter saida = ' '//variavel de saida
+          real x = 0.0//variavel de retorno
+          //Faça-enquanto para verificar a entrada do usuário.
+          faca 
+          {
+           escreva(texto)//Escreve o texto recebido pelo parâmetro.
+           leia(opcao)//Parâmetro opçao recebe valor do usuário.
+               //Se opcao não for um número real.
+                
+          }enquanto (typ.cadeia_e_real(opcao) == falso e typ.cadeia_e_inteiro(opcao,10) == falso)
+               
+               	//Opção inválida.
+                    escreva("Opção incorreta!! Por favor, somente números reais.\n")
+                    x = typ.cadeia_para_real(opcao)//x recebe coversão de cadeia para real do opcao.
+               	se (x > 0)// se x é maior que 0.
+				{
+                    saida = 'e'//sai do loop.
+				}
+				senao
+				{
+				//opção inválida.
+				escreva("Opção inválida!! Por favor, somente números acima de zero.\n")
+                    }
+		retorne x
 	}
 	funcao cadeia leiaProduto(cadeia vetor[], inteiro arquivo){
 		//loop for para cada elemento da coluna
@@ -903,8 +938,8 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 2889; 
- * @DOBRAMENTO-CODIGO = [126, 135, 140, 150, 450, 549, 609, 622, 643, 690, 709, 740, 758, 781, 847, 874];
+ * @POSICAO-CURSOR = 28301; 
+ * @DOBRAMENTO-CODIGO = [126, 135, 140, 150, 157, 450, 549, 609, 622, 694, 725, 744, 775, 793, 882, 909];
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
