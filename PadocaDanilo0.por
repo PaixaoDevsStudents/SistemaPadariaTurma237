@@ -606,12 +606,15 @@ programa
            leia(opcao)//Parâmetro opçao recebe valor do usuário.
                //Se opcao não for um número real.
                 
-          }enquanto (typ.cadeia_e_real(opcao) == falso e typ.cadeia_e_inteiro(opcao,10) == falso)
-               
-               	//Opção inválida.
-                    escreva("Opção incorreta!! Por favor, somente números reais.\n")
+          se (typ.cadeia_e_real(opcao) == falso e typ.cadeia_e_inteiro(opcao,10) == falso)
+               {
+               //Opção inválida.
+                escreva("Opção incorreta!! Por favor, somente números reais.\n")
+               }
+               senao 
+              	{
                     x = typ.cadeia_para_real(opcao)//x recebe coversão de cadeia para real do opcao.
-               	se (x > 0)// se x é maior que 0.
+				se (x > 0)// se x é maior que 0.
 				{
                     saida = 'e'//sai do loop.
 				}
@@ -620,7 +623,8 @@ programa
 				//opção inválida.
 				escreva("Opção inválida!! Por favor, somente números acima de zero.\n")
                     }
-          vetor[2] += entradaBaseInteiro("Digite a quantidade do produtlo que tem no estoque de hoje: ")
+               }
+          vetor[2] += entradaEstoqueKilos("Digite a quantidade total em kilos do produto ")
 		limpa()
           //Vetor com id de precos recebe entrada de usuário do preço do produtlo
           vetor[3] += mat.arredondar(entradaBaseReal("Digite o preço do produtlo: "), 2)
@@ -629,7 +633,43 @@ programa
           vetor[4] += entradaBaseReal("Digite o custo do produtlo: ")
           limpa()
           passeProduto(1, caminho , vetor)//passa os dados do produtlo para o arquivo
+		
+		}enquanto (saida != 'e')//repete enquanto saida não tiver valor de saída.
+          //retorna variável de retorno x
 		retorne x
+	}
+	funcao real entradaEstoqueKilos(cadeia texto){
+		cadeia opcao
+          caracter saida = ' '//variavel de saida
+          real x = 0.0//variavel de retorno
+          //Faça-enquanto para verificar a entrada do usuário.
+          faca 
+          {
+               escreva(texto)//Escreve o texto recebido pelo parâmetro.
+               leia(opcao)//Parâmetro opçao recebe valor do usuário.
+               //Se opcao não for um número real.
+               se (typ.cadeia_e_real(opcao) == falso e typ.cadeia_e_inteiro(opcao,10) == falso)
+               {
+               	//Opção inválida.
+                    escreva("Opção incorreta!! Por favor, somente números reais.\n")
+               }
+               senao 
+              	{
+                    x = typ.cadeia_para_real(opcao)//x recebe coversão de cadeia para real do opcao.
+				se (x > 0)// se x é maior que 0.
+				{
+                    	saida = 'e'//sai do loop.
+				}
+				senao
+				{
+					//opção inválida.
+					escreva("Opção inválida!! Por favor, somente números acima de zero.\n")
+                    }
+               }
+          }
+          enquanto (saida != 'e')//repete enquanto saida não tiver valor de saída.
+          //retorna variável de retorno x
+          retorne x
 	}
 	funcao cadeia leiaProduto(cadeia vetor[], inteiro arquivo){
 		//loop for para cada elemento da coluna
@@ -888,8 +928,8 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 23430; 
- * @DOBRAMENTO-CODIGO = [67, 73, 371, 470, 533, 546, 633, 664];
+ * @POSICAO-CURSOR = 23366; 
+ * @DOBRAMENTO-CODIGO = [67, 73, 371, 470, 533, 546, 704, 723, 756, 774, 831, 862, 884];
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
