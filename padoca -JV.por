@@ -15,7 +15,6 @@ programa
 	
 	funcao inicio()
 	{	
-
 		//variaveis
 		inteiro arquivo, mnu=0, qtd_estoque=0, id_produto=0
 		real val_uni=0.0, val_custo=0.0
@@ -24,17 +23,16 @@ programa
 		inteiro numDeVet[3]
 		logico saida = verdadeiro
 		//leitura de arquivos
-		para(inteiro c=0;c<5;c++){
+		/*para(inteiro c=0;c<5;c++){
 			escreva("Selecione a sequência de arquivos:\n1-Carrinho\n2-Produtos Registrados\n3-Total de vendas\n4-Vendas do dia\n5-Registro de vendas")
 			vetsrc[c] = src.selecionar_arquivo(typdata, verdadeiro)
-		}
+		}*/
 		//menu de opções
 		faca{
-			numDeVet[0] = totalProdutos(vetsrc[1])
+			/*numDeVet[0] = totalProdutos(vetsrc[1])
 			numDeVet[1] = totalProdutos(vetsrc[2])
-			numDeVet[2] = totalProdutos(vetsrc[3])
+			numDeVet[2] = totalProdutos(vetsrc[3])*/
 			imprime_mnu(mnu)
-			
 			escolha(mnu){
 				caso 1:
 					//cadastrar produtos
@@ -46,7 +44,6 @@ programa
 					para(inteiro i=0; i<y; i++){
 						numDeVet[0]++
 						cadastroProduto(vetsrc[1], numDeVet[0])
-						
 					}
 				pare
 				caso 2:
@@ -797,29 +794,23 @@ programa
      }
      funcao vazio verifAcess (cadeia password){
 		cadeia senha
-		inteiro contador=0
-		escreva("Verificação de Acesso\n\nDigite a senha para continuar:\n->")
+		inteiro contador=1
+		escreva("Verificação de acesso\nInforme a senha de segurança\n->")
 		leia(senha)
 		limpa()
-		se(senha=="x" ou senha=="X"){
-			inicio()
-		}
 		enquanto(senha!=password){
-			contador++
-			se(contador==5){
-				para(inteiro i=30;i>0;i--){
-					limpa()
-					escreva("Você errou demais, aguarde ",i," segundos para tentar novamente...")
-					utl.aguarde(1000)
-				}
+			faca{
+				contador++
+				escreva("Senha incorreta\nInforme a senha novamente\n->")
+				leia(senha)
+				limpa()
+			}enquanto(contador<=5)
+			para(inteiro i=5;i>0;i--){
+				escreva("Você errou a senha 5 vezes\nAguarde ",i," segundos antes de tentar novamente\n->")
+				utl.aguarde(1000)
 				limpa()
 			}
-			escreva("Senha incorreta!Tente novamente:\n->")
-			leia(senha)
-			limpa()
-			se(senha=="x" ou senha=="X"){
-				inicio()
-			}
+			contador=0
 		}
 	}
 }
@@ -829,9 +820,9 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 11019; 
- * @DOBRAMENTO-CODIGO = [67, 371, 546, 620, 639, 687, 710, 749, 744, 775, 797];
- * @PONTOS-DE-PARADA = 110;
+ * @POSICAO-CURSOR = 32242; 
+ * @DOBRAMENTO-CODIGO = [64, 70, 368, 467, 530, 543, 564, 586, 617, 636, 666, 684, 707, 746, 741, 772];
+ * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
  * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
