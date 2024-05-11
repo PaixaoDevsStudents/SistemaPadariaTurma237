@@ -249,10 +249,17 @@ programa
        funcao logico caminhoArquivos(cadeia vetsrc[]){// Função para verificar se o nome do produto já existe
        para(inteiro c=0; c<5; c++){// Loop para percorrer todos os produtos       
        se(vetsrc[c] == ""){// Se o vetor esta vazio            
+<<<<<<< HEAD
        retorne falso// Retorna verdadeiro indicando que o vetor esta vazio
          }
        } 
         retorne verdadeiro // Se o vetor estiver prenchio vai, retorna falso
+=======
+       retorne falso// Retorna falso indicando que o vetor esta vazio
+         }
+       } 
+        retorne verdadeiro // Se o vetor estiver prenchio vai, retorna verdadeiro
+>>>>>>> abcc4d076158f119542c5d1ac7a09ed908900ee3
        }
 		
 		
@@ -361,7 +368,11 @@ programa
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
 <<<<<<< HEAD
+<<<<<<< HEAD
  * @POSICAO-CURSOR = 6484; 
+=======
+ * @POSICAO-CURSOR = 6534; 
+>>>>>>> abcc4d076158f119542c5d1ac7a09ed908900ee3
 =======
  * @POSICAO-CURSOR = 861; 
 >>>>>>> 5e90e0a044b6e0b70fca6b25b8c9c353cf224f35
