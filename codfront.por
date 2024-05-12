@@ -10,18 +10,18 @@ programa
 //------------------------------------------------------------------
 
      //Altura e Largura da janela de exibição
-     const inteiro LarguraT = 1920
-     const inteiro AlturaT = 1080
+     inteiro LarguraT = g.largura_tela()
+     inteiro AlturaT = g.altura_tela()
 
 //--------------------------------------------------------------------
  
  /*TELAS*/
  
 	//Menu     
-     inteiro TelaMenu = g.carregar_imagem("C:/Users/Aluno/Desktop/portugol/Telas/Menu/telaMenu.png")
+     inteiro TelaMenu = g.carregar_imagem("C:/Users/AM VM/Documents/imagens/Telas/Menu/telaMenu.png")
 
      //CadastrarProduto
-     inteiro TelaVerificaAdm = g.carregar_imagem("C:/Users/Aluno/Desktop/portugol/Telas/Cadastrar/Tela_senha.png")
+     inteiro TelaVerificaAdm = g.carregar_imagem("C:/Users/AM VM/Documents/imagens/Telas/Cadastrar/Tela_senha.png")
      /*inteiro TelaAdmNegado = g.carregar_imagem()
      inteiro TelaCusto = g.carregar_imagem()
      inteiro TelaPreco = g.carregar_imagem()
@@ -80,33 +80,30 @@ programa
           enquanto (verdadeiro) {
           	
                
-               inteiro TelaMenu2 = g.redimensionar_imagem(TelaMenu, 1920, 1080, verdadeiro) // variavel que recebe a foto da variavel (telaMenu) e redimensiona para cobrir toda a janela.
+               inteiro TelaMenu2 = g.redimensionar_imagem(TelaMenu, LarguraT, AlturaT, verdadeiro) // variavel que recebe a foto da variavel (telaMenu) e redimensiona para cobrir toda a janela.
                
-               g.desenhar_imagem(1,1, TelaMenu2)
+               g.desenhar_imagem(0,0, TelaMenu2)
                g.liberar_imagem(TelaMenu2)  // libera o cache dessa imagem da memoria RAM 
-
+			g.renderizar()
 			//Função para Cadastrar Produtos
 
 			inteiro VerificaAdm = 0
 			inteiro mou = m.ler_botao() 
-			inteiro botao = 0
-			
+			inteiro botao = 0 
 			cadeia texto = ""
 			
        	  	
        	  	
 			////////////////////////////
 			
-           	se(mouse(735, 330, 325, 85) == verdadeiro e mou == m.BOTAO_ESQUERDO){
+           	se(mouse(Tela(1920,735,LarguraT), Tela(1080,330,AlturaT), Tela(1920,325,LarguraT), Tela(1080,85,AlturaT)) e mou == m.BOTAO_ESQUERDO){
            		botao = 1
                }
                se(botao == 1){
-               	inteiro saida = 0
-               	enquanto(saida != 1){
-               		g.desenhar_imagem(1, 1, TelaVerificaAdm)
-               		Escrever(texto)
-		               g.renderizar()
-		               
+               	logico saida = verdadeiro
+               	enquanto(saida){
+               		Apresenta_Menu(Tela(1920, 684, LarguraT),Tela(1080, 850, AlturaT),texto)
+               		Escrever(texto, saida)
                	}
 	               
                }
@@ -141,32 +138,54 @@ programa
 		     	
 			
                }
-               g.renderizar()
           }
           g.encerrar_modo_grafico()
      }
 
-     funcao vazio Apresenta_Menu()// função para aparecer a outra tela 
+     funcao vazio Apresenta_Menu(inteiro x, inteiro y,cadeia &texto)// função para aparecer a outra tela 
      {
-     	
+     	inteiro TelaAdm = g.redimensionar_imagem(TelaVerificaAdm, LarguraT, AlturaT, verdadeiro)
+     	g.desenhar_imagem(0, 0, TelaAdm)
+     	g.desenhar_texto(x, y, texto)
+     	g.liberar_imagem(TelaAdm)  
+     	g.renderizar()
      }
-
-     funcao vazio Escrever (cadeia &texto)
+	funcao inteiro Tela(inteiro Base, inteiro posiTam, inteiro tela){
+		retorne ((tela*posiTam)/Base)
+	}
+     funcao vazio Escrever (cadeia &texto, logico &saida)
      {
-     	
 		inteiro tam = txt.numero_caracteres(texto)
           inteiro tecla = tec.ler_tecla() // função para pegar o código da tecla pressionada.
 
 		g.definir_cor(g.COR_AZUL) // cor da letra da variavel ( texto )
           g.definir_tamanho_texto(20.0) // ( texto)
 		se (tecla >= tec.TECLA_A e tecla <= tec.TECLA_Z ou tecla == tec.TECLA_ESPACO) {
+			se(tam < 29){
                     texto += tec.caracter_tecla(tecla)
+			}
           }
           senao {
                     se (tecla == tec.TECLA_BACKSPACE e tam >= 1) {
                          texto = txt.extrair_subtexto(texto, 0, tam - 1)
                     }
           }
-          g.desenhar_texto(735, 330, texto)
+          se(tecla == tec.TECLA_ENTER){
+          	saida = falso	
+          }
+          
      }
 }
+
+/* $$$ Portugol Studio $$$ 
+ * 
+ * Esta seção do arquivo guarda informações do Portugol Studio.
+ * Você pode apagá-la se estiver utilizando outro editor.
+ * 
+ * @POSICAO-CURSOR = 3654; 
+ * @DOBRAMENTO-CODIGO = [63, 152, 172, 155];
+ * @PONTOS-DE-PARADA = ;
+ * @SIMBOLOS-INSPECIONADOS = {LarguraT, 13, 13, 8}-{AlturaT, 14, 13, 7}-{x, 64, 33, 1}-{y, 64, 44, 1}-{tam, 158, 10, 3};
+ * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
+ * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
+ */
