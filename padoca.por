@@ -1020,6 +1020,11 @@ programa
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+ * @POSICAO-CURSOR = 11326; 
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
 <<<<<<< HEAD
  * @POSICAO-CURSOR = 11326; 
 =======
@@ -1027,6 +1032,7 @@ programa
  * @DOBRAMENTO-CODIGO = [66, 71, 364, 463, 523, 536, 577, 627, 658, 676, 699, 738, 733, 764, 786];
 >>>>>>> fd406edc21d57886cfc639ebe76d3eeb626b3ca1
 =======
+>>>>>>> abcc4d076158f119542c5d1ac7a09ed908900ee3
  * @POSICAO-CURSOR = 1741; 
 =======
  * @POSICAO-CURSOR = 23566; 
@@ -1034,6 +1040,25 @@ programa
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+ * @POSICAO-CURSOR = 933; 
+ * @DOBRAMENTO-CODIGO = [102, 109, 402, 501, 561, 574, 611, 642, 661, 692, 710, 733, 767];
+>>>>>>> 5e90e0a044b6e0b70fca6b25b8c9c353cf224f35
+ * @PONTOS-DE-PARADA = ;
+ * @SIMBOLOS-INSPECIONADOS = ;
+ * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
+ * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
+ */
+=======
+<<<<<<< HEAD
+>>>>>>> fd406edc21d57886cfc639ebe76d3eeb626b3ca1
+=======
+>>>>>>> fd406edc21d57886cfc639ebe76d3eeb626b3ca1
+=======
+>>>>>>> fd406edc21d57886cfc639ebe76d3eeb626b3ca1
+>>>>>>> 4338c882036d010b5e12f209ef465b8159d20518
+>>>>>>> b1d39e156e7921aa36d38535393fc7cd139d5dd3
 =======
  * @POSICAO-CURSOR = 32673; 
  * @DOBRAMENTO-CODIGO = [15, 67, 73, 371, 470, 533, 546, 567, 589, 620, 639, 669, 687, 710, 744, 775, 797];
@@ -1062,6 +1087,7 @@ programa
  * @POSICAO-CURSOR = 933; 
  * @DOBRAMENTO-CODIGO = [102, 109, 402, 501, 561, 574, 611, 642, 661, 692, 710, 733, 767];
 >>>>>>> 5e90e0a044b6e0b70fca6b25b8c9c353cf224f35
+>>>>>>> abcc4d076158f119542c5d1ac7a09ed908900ee3
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
@@ -1070,3 +1096,4 @@ programa
 =======
 }
 >>>>>>> 42e35df2b39bd7b17351cc6c1994165eccf3c02c
+>>>>>>> 5e90e0a044b6e0b70fca6b25b8c9c353cf224f35

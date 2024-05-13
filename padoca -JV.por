@@ -54,6 +54,7 @@ programa
 				pare
 				caso 4:
 					//fechar caixa
+					fechamentoCaixa(password)
 					
 				pare
 				caso 5:
@@ -69,6 +70,36 @@ programa
 		leia(opcao)
 		retorne opcao
 	}
+funcao fechamentoCaixa(cadeia password) {
+    // Solicita a verificação de acesso
+    verifAcess(password)
+    logico formato_12h =verdadeiro
+    // Após a verificação bem-sucedida, você pode prosseguir com o fechamento do caixa
+    escreva("Fechando o caixa...\n")
+
+    // Imprime o menu de opções
+    inteiro opcao = 0
+
+    // Realiza uma venda baseada na opção escolhida
+   // realizarVenda(vetorProd, vetorVend, caminho, linhaOriginal, posicao, vetDeNum)
+
+    // Usando a função totalProduto para calcular o total de produtos
+    escreva("O total de produtos vendidos no dia é: ",  "\n")
+
+    // Registrar a data e hora de fechamento
+    cadeia dia = typ.inteiro_para_cadeia(cal.dia_mes_atual(),10)
+    cadeia mes = typ.inteiro_para_cadeia(cal.mes_atual(),10)
+    cadeia ano = typ.inteiro_para_cadeia(cal.ano_atual(),10)
+    cadeia hora =typ.inteiro_para_cadeia(cal.hora_atual(formato_12h==verdadeiro),10)
+    cadeia minuto = typ.inteiro_para_cadeia(cal.minuto_atual(),10)
+    cadeia dataHoraFechamento = Data(dia, mes, ano,hora,minuto)
+    escreva("Data e hora de fechamento: ", dataHoraFechamento, "\n")
+
+    escreva("Caixa fechado com sucesso!\n")
+}
+funcao cadeia Data(cadeia dia ,cadeia mes,cadeia ano,cadeia hora,cadeia minuto){
+	retorne ""+dia+"/"+mes+"/"+ano+"\t"+hora+":"+minuto
+}
 	funcao realizarVenda(cadeia vetorProd[], cadeia vetorVend[], cadeia caminho[], cadeia linhaOriginal, inteiro posicao,inteiro vetDeNum[]){
 		//se existir produtlo escolhido
 		se(vetorProd[0] != ""){
@@ -818,8 +849,8 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 23566; 
- * @DOBRAMENTO-CODIGO = [66, 71, 364, 463, 523, 536, 577, 627, 658, 676, 699, 738, 733, 764, 786];
+ * @POSICAO-CURSOR = 3038; 
+ * @DOBRAMENTO-CODIGO = [395, 494, 567, 591, 608, 642, 639, 658, 689, 707, 795];
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
