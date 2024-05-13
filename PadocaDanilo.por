@@ -10,30 +10,55 @@ programa
 
 	const inteiro TAM_X_TELA = 1920	
 	const inteiro TAM_Y_TELA = 1080
-	const inteiro PROD = 5
+	const inteiro PROD = 6
 	const inteiro VENDA = 4
+	
+	
 	
 	funcao inicio()
 	{	
-
+		cadeia vetorProd[]
+		cadeia vetorVend[]
+		cadeia caminho[]
+		cadeia linhaOriginal=""
+		inteiro posicao=0
+		inteiro vetDeNum[]
+		inteiro opcaoInterna , saidaLoop = 0//declara variáveis de opção e saida de loop
+		inteiro quantidadeVend = 0//Variável para a quantidade de produtlos que será comprada.
+		real preco = typ.cadeia_para_real(vetorProd[2])//declara variável de preco e dá o preço do produtlo
+		inteiro reposicao  //variavel de quantidade de reposição de estoque
+			
+		cadeia linhaVend = ""//variável que guardará os dados atualizados da venda
+		cadeia linhaVendD = ""
+		cadeia linhaVendOrig = ""// variável que abrigará os dados antigos da venda
+		cadeia linhaVendOrigD = ""
+		cadeia linhaSubsProd = ""// variável que irá guradar os dados atualizados do produtlo
+		real valorTotal = 0.0//variável para o valor total da compra
+		real valorTotalD = 0.0
+		inteiro limite = 0 //variável para o limite de estoque
+			//loop para entrada de quantidade
+		
 		//variaveis
 		inteiro arquivo, mnu=0, qtd_estoque=0, id_produto=0
-		real val_uni=0.0, val_custo=0.0
+		real val_uni=0.0, val_custo=0.0,saldoCaixa=0.0
 		cadeia nome_produto="", vetsrc[5], typdata[2]={"arquivodetexto|txt","arquivodetexto|txt"}, password="admin"
 		inteiro opcao
+		logico saida=verdadeiro
 		escreva("Selecione a sequência de arquivos:\n1-Carrinho\n2-Produtos Registrados\n3-Total de vendas\n4-Vendas do dia\n5-Registro de vendas")
+		
+		
+		//leitura de arquivos
+		
+		//menu de opções
 		para(inteiro c=0;c<5;c++){
 			vetsrc[c] = src.selecionar_arquivo(typdata, verdadeiro)
 		}
 		limpa()
-		//leitura de arquivos
-		
-		//menu de opções
+		faca{
 			imprime_mnu(mnu)
-			limpa()
+			
 			escolha(mnu){
 				caso 1:
-					//Cadastrar produtos
 					verifAcess(password)
 					inteiro y=0
 						escreva("Quantos produtos irá cadastrar?: ")
@@ -42,70 +67,94 @@ programa
 					para(inteiro i=0; i<y; i++){
 						cadastroProduto(vetsrc[1])
 					}
-					inicio()
+					//cadastrar produtos
+					
+					//entrada de dados
+					
+					//processamento
+					
+					//saida de dados
 				pare
 				caso 2:
 					//realizar vendas
+					abrirCaixa (saldoCaixa)
+					//realizarVenda(opcaoInterna, saidaLoop,entradaBaseInteiro,quantidadeVend,preco = typ.cadeia_para_real(vetorProd[2]),reposicao ,linhaVend,linhaVendD,linhaVendOrig,linhaVendOrigD,linhaSubsProd,valorTotal,valorTotalD,limite)
 					
+					//processamento
+					
+					//saida de dados
 				pare
 				caso 3:
 					//relatorio temporario
+					//leiaProduto(valor,j ,x=src.ler_linha(arquivo),texto=txt.substituir(x, "//", ":") ,vetor, arquivo)
+					//entrada de dados
 					
+					//processamento
+					
+					//saida de dados
 				pare
 				caso 4:
-					//fechar caixa
-<<<<<<< HEAD
-					fechamentoCaixa(password)
-=======
->>>>>>> 2e7205b24d3a500a6772ed39023104bff92025a1
+					verifAcess(password)
+					escreva("Deseja mesmo sair?")
 					
+					saida=falso
+					//fechar caixa
+
+					//entrada de dados
+
+					//processamento
+
+					//saida de dados
 				pare
 				caso 5:
 					//verificar acesso
 					
+					//entrada de dados
+					
+					//processamento
+
+					
+					//saida de dados
 				pare
 				caso contrario:
 				inicio()
 			}
+		}enquanto(saida==verdadeiro)
 	}
+	/*funcao verificaBase(logico &basedados, cadeia vetsrc[], cadeia typdata[]){
+			
+	}*/
+	funcao logico nomeProdutoExiste(cadeia nomeProduto, cadeia vetNome[]){// Função para verificar se o nome do produto já existe
+       	inteiro intNumProdutos=0  
+       para(inteiro l=0; l<5; l++){// Loop para percorrer todos os produtos       
+       se(vetNome[l] == nomeProduto){// Se o nome do produto já existe na matriz de produtos            
+       retorne verdadeiro// Retorna verdadeiro indicando que o nome do produto já existe
+         }
+       }
+        retorne falso // Se o nome do produto não foi encontrado na matriz de produtos, retorna falso
+	}
+	funcao real abrirCaixa (real saldoCaixa){
+		escreva ("Abertura de caixa, Quantos reais tem no caixa? ")
+		leia (saldoCaixa)
+		retorne (saldoCaixa)
+	}
+	funcao real balanca (inteiro quantidadeCompraCliente,real compraEmGramas,real valorCobrarCliente,real valorDaG){
+		quantidadeCompraCliente = utl.sorteia(1, 1000)  // sorteando a quantidade que o cliente vai comprar, para simular uma balança 
+		quantidadeCompraCliente = typ.inteiro_para_real(quantidadeCompraCliente) // mudando o valor de inteiro para real para poder usar zero apos a virgula pq o sorteia so roda com inteiro...
+		escreva ("Você comprou ",quantidadeCompraCliente," gramas de pão.\n")
+		compraEmGramas = (quantidadeCompraCliente * 1000) // converter Kg para gramas 
+		valorCobrarCliente = ((valorDaG*compraEmGramas) / 1000) // converte gramas em reais $$ dindin
+		valorCobrarCliente = mat.arredondar(valorCobrarCliente, 7)
+		escreva("Valor a cobrar do cliente é: ",valorCobrarCliente) // mostra o valor na tela a ser cobrado 
+		retorne (valorCobrarCliente)
+		}
 	funcao inteiro imprime_mnu(inteiro &opcao){
 		escreva("Escolha uma opcao \n\n 1) Cadastrar produto         2) Registrar Venda\n 3) Relatorio Atual           4) Fechar Caixa e Sair\n\nDigite o numero referente a opção desejada: ")
 		leia(opcao)
 		retorne opcao
+	}funcao cad_produ(inteiro qtd_estoque,inteiro id_produto, inteiro val_uni,inteiro val_custo,cadeia nome_produto){
+		
 	}
-<<<<<<< HEAD
-funcao fechamentoCaixa(cadeia password) {
-    // Solicita a verificação de acesso
-    verifAcess(password)
-    logico formato_12h =verdadeiro
-    // Após a verificação bem-sucedida, você pode prosseguir com o fechamento do caixa
-    escreva("Fechando o caixa...\n")
-
-    // Imprime o menu de opções
-    inteiro opcao = 0
-
-    // Realiza uma venda baseada na opção escolhida
-   // realizarVenda(vetorProd, vetorVend, caminho, linhaOriginal, posicao, vetDeNum)
-
-    // Usando a função totalProduto para calcular o total de produtos
-    escreva("O total de produtos vendidos no dia é: ",  "\n")
-
-    // Registrar a data e hora de fechamento
-    cadeia dia = typ.inteiro_para_cadeia(cal.dia_mes_atual(),10)
-    cadeia mes = typ.inteiro_para_cadeia(cal.mes_atual(),10)
-    cadeia ano = typ.inteiro_para_cadeia(cal.ano_atual(),10)
-    cadeia hora =typ.inteiro_para_cadeia(cal.hora_atual(formato_12h==verdadeiro),10)
-    cadeia minuto = typ.inteiro_para_cadeia(cal.minuto_atual(),10)
-    cadeia dataHoraFechamento = Data(dia, mes, ano,hora,minuto)
-    escreva("Data e hora de fechamento: ", dataHoraFechamento, "\n")
-
-    escreva("Caixa fechado com sucesso!\n")
-}
-funcao cadeia Data(cadeia dia ,cadeia mes,cadeia ano,cadeia hora,cadeia minuto){
-	retorne ""+dia+"/"+mes+"/"+ano+"\t"+hora+":"+minuto
-}
-=======
->>>>>>> 2e7205b24d3a500a6772ed39023104bff92025a1
 	funcao realizarVenda(cadeia vetorProd[], cadeia vetorVend[], cadeia caminho[], cadeia linhaOriginal, inteiro posicao,inteiro vetDeNum[]){
 		//se existir produtlo escolhido
 		se(vetorProd[0] != ""){
@@ -146,7 +195,7 @@ funcao cadeia Data(cadeia dia ,cadeia mes,cadeia ano,cadeia hora,cadeia minuto){
 				//se estoque foi esgotado
 				se(limite == 0){
 					escreva("Produtlo foi esgotado!! Reposição do estoque foi solicitada\n")
-					reposicao = entradaBaseInteiro("Insira o número da reposicao: ")//reposição recebe a reposição de estoque
+					reposicao = entradaBaseInteiro(texto) escreva("Insira o número da reposicao: ")//reposição recebe a reposição de estoque
 					//loop para receber receber o uma diferença do estoque
 					para(inteiro i = 0; i < PROD; i++){
 						//se iterador for igual a posição do valor do estoque
@@ -600,17 +649,48 @@ funcao cadeia Data(cadeia dia ,cadeia mes,cadeia ano,cadeia hora,cadeia minuto){
 		}
 		//Vetor com idnomes recebe entrada de usuário do nome do produtlo
 		vetor[0] += filtrarCaracteres(entradaBaseCadeia("Digite o nome do produtlo: "))
-		limpa()
+		 escreva ("O produto é vendido na grama ?")
+          caracter evendidonaG
+          leia(evendidonaG)
+          se (evendidonaG == 's'){
+          vetor[4] += entradaBaseGramas("Qual é o valor do Kilo?: ")
+          }senao{
 		//Vetor com id de stock recebe entrada de usuário do número de stock
 		vetor[1] += entradaBaseInteiro("Digite a quantidade do produtlo que tem no estoque de hoje: ")
-		limpa()
           //Vetor com id de precos recebe entrada de usuário do preço do produtlo
           vetor[2] += mat.arredondar(entradaBaseReal("Digite o preço do produtlo: "), 2)
-          limpa()
           //vetor com id de custo recebe entrada de usuário do custo do produtlo
           vetor[3] += entradaBaseReal("Digite o custo do produtlo: ")
-          limpa()
           passeProduto(1, caminho , vetor)//passa os dados do produtlo para o arquivo
+          }
+         
+	}
+	funcao real entradaBaseGramas(cadeia texto){
+		cadeia opcao
+          caracter saida = ' '//variavel de saida
+          real x = 0.0//variavel de retorno
+          //Faça-enquanto para verificar a entrada do usuário.
+          faca 
+          {
+           escreva(texto)//Escreve o texto recebido pelo parâmetro.
+           leia(opcao)//Parâmetro opçao recebe valor do usuário.
+               //Se opcao não for um número real.
+                
+          }enquanto (typ.cadeia_e_real(opcao) == falso e typ.cadeia_e_inteiro(opcao,10) == falso)
+               
+               	//Opção inválida.
+                    escreva("Opção incorreta!! Por favor, somente números reais.\n")
+                    x = typ.cadeia_para_real(opcao)//x recebe coversão de cadeia para real do opcao.
+               	se (x > 0)// se x é maior que 0.
+				{
+                    saida = 'e'//sai do loop.
+				}
+				senao
+				{
+				//opção inválida.
+				escreva("Opção inválida!! Por favor, somente números acima de zero.\n")
+                    }
+		retorne x
 	}
 	funcao cadeia leiaProduto(cadeia vetor[], inteiro arquivo){
 		//loop for para cada elemento da coluna
@@ -711,7 +791,7 @@ funcao cadeia Data(cadeia dia ,cadeia mes,cadeia ano,cadeia hora,cadeia minuto){
 		}
 		
 	}
-	funcao cadeia entradaBaseCadeia(cadeia texto)
+	funcao cadeia entradaBaseCadeia(cadeia texto)//função que trata erros
      {
      	cadeia opcao
           caracter saida = ' '//Váriavel de saída.
@@ -734,7 +814,7 @@ funcao cadeia Data(cadeia dia ,cadeia mes,cadeia ano,cadeia hora,cadeia minuto){
 		//Retorna a valor de entrada do usuário.
           retorne opcao
      }
-	funcao real entradaBaseReal(cadeia texto)
+	funcao real entradaBaseReal(cadeia texto)//tratamento de erro para variavel do tipo real
      {
      	cadeia opcao
           caracter saida = ' '//variavel de saida
@@ -768,7 +848,8 @@ funcao cadeia Data(cadeia dia ,cadeia mes,cadeia ano,cadeia hora,cadeia minuto){
           //retorna variável de retorno x
           retorne x
      }
-     funcao inteiro entradaBaseInteiro(cadeia texto){
+     funcao inteiro entradaBaseInteiro(cadeia texto)//tratamento de erro variavel do tipo inteiro
+     {
      	cadeia opcao
           caracter saida = ' '//variável de saída.
           inteiro x = 0//variável de retorno.
@@ -799,28 +880,6 @@ funcao cadeia Data(cadeia dia ,cadeia mes,cadeia ano,cadeia hora,cadeia minuto){
           //retorna valor de x
           retorne x
      }
-	funcao inteiro escolhas(cadeia texto){
-     	inteiro saidaLoop = 0
-     	faca{
-			escreva(texto)
-			inteiro opcaoInterna = entradaBaseInteiro("Insira a opção: ")//recebe opção do usuário
-			escolha(opcaoInterna){
-				//Sim
-				caso 1:
-					saidaLoop = 2//continua programa
-					pare
-				//Não
-				caso 2:
-					saidaLoop = 1//finaliza o programa
-					pare
-				//Resposta inválida
-				caso contrario:
-					escreva("Opção inválida!! por favor, somente opções válidas.\n")
-					pare
-			}
-		}enquanto(saidaLoop != 1 e saidaLoop != 2)
-		retorne saidaLoop
-     }
      funcao vazio verifAcess (cadeia password){
 		cadeia senha
 		inteiro contador=0
@@ -847,21 +906,40 @@ funcao cadeia Data(cadeia dia ,cadeia mes,cadeia ano,cadeia hora,cadeia minuto){
 				inicio()
 			}
 		}
-	}
+     }
+	funcao inteiro escolhas(cadeia texto){
+     	inteiro saidaLoop = 0
+     	faca{
+			escreva(texto)
+			inteiro opcaoInterna = entradaBaseInteiro("Insira a opção: ")//recebe opção do usuário
+			escolha(opcaoInterna){
+				//Sim
+				caso 1:
+					saidaLoop = 2//continua programa
+					pare
+				//Não
+				caso 2:
+					saidaLoop = 1//finaliza o programa
+					pare
+				//Resposta inválida
+				caso contrario:
+					escreva("Opção inválida!! por favor, somente opções válidas.\n")
+					pare
+			}
+		}enquanto(saidaLoop != 1 e saidaLoop != 2)
+		retorne saidaLoop
+     }
+	
 }
+
 
 /* $$$ Portugol Studio $$$ 
  * 
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
-<<<<<<< HEAD
- * @POSICAO-CURSOR = 3038; 
- * @DOBRAMENTO-CODIGO = [395, 494, 567, 591, 608, 642, 639, 658, 689, 707, 795];
-=======
- * @POSICAO-CURSOR = 23566; 
- * @DOBRAMENTO-CODIGO = [66, 71, 364, 463, 523, 536, 577, 627, 658, 676, 699, 738, 733, 764, 786];
->>>>>>> 2e7205b24d3a500a6772ed39023104bff92025a1
+ * @POSICAO-CURSOR = 28301; 
+ * @DOBRAMENTO-CODIGO = [126, 135, 140, 150, 157, 450, 549, 609, 622, 694, 725, 744, 775, 793, 882, 909];
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
