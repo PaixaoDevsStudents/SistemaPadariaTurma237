@@ -19,16 +19,16 @@ programa
  
 	//Menu     
      inteiro TelaMenu = g.carregar_imagem("C:/Users/AM VM/Documents/imagens/Telas/Menu/telaMenu.png")
-
      //CadastrarProduto
      inteiro TelaVerificaAdm = g.carregar_imagem("C:/Users/AM VM/Documents/imagens/Telas/Cadastrar/Tela_senha.png")
-     /*inteiro TelaAdmNegado = g.carregar_imagem()
-     inteiro TelaCusto = g.carregar_imagem()
-     inteiro TelaPreco = g.carregar_imagem()
-     inteiro TelaQuant = g.carregar_imagem()
+     inteiro TelaAdmNegado = g.carregar_imagem("C:/Users/AM VM/Documents/imagens/Telas/Cadastrar/Acesso_negado.png")
+     inteiro cadastro[3]
+     cadastro[0] = g.carregar_imagem("C:/Users/AM VM/Documents/imagens/Telas/Cadastrar/Custo.png")
+	cadastro[1] = g.carregar_imagem("C:/Users/AM VM/Documents/imagens/Telas/Cadastrar/Preço.png")
+     cadastro[2] = g.carregar_imagem("C:/Users/AM VM/Documents/imagens/Telas/Cadastrar/Quantidade.png")
 
      //RealizarVendas
-     inteiro TelaCodigo = g.carregar_imagem()
+     /*inteiro TelaCodigo = g.carregar_imagem()
      inteiro TelaQuantidade = g.carregar_imagem()
      inteiro TelaQuantErrada = g.carregar_imagem()
      inteiro TelaValor = g.carregar_imagem()
@@ -90,6 +90,7 @@ programa
 			inteiro VerificaAdm = 0
 			inteiro mou = m.ler_botao() 
 			inteiro botao = 0 
+			cadeia senha = "ADMIN"
 			cadeia texto = ""
 			
        	  	
@@ -101,11 +102,20 @@ programa
                }
                se(botao == 1){
                	logico saida = verdadeiro
+               	
                	enquanto(saida){
-               		Apresenta_Menu(Tela(1920, 684, LarguraT),Tela(1080, 850, AlturaT),texto)
+               		Apresenta_Registro(0, Tela(1920, 684, LarguraT),Tela(1080, 850, AlturaT),texto)
                		Escrever(texto, saida)
                	}
-	               
+               	se(texto == senha){
+               		
+               	}senao{
+               		saida = verdadeiro
+               		enquanto(saida){
+               			Apresenta_Registro(1, Tela(1920, 684, LarguraT),Tela(1080, 850, AlturaT),texto)
+               			Escrever(texto, saida)
+               		}
+               	}
                }
                //Função para Realizar Vendas
            	se(mouse(735, 475, 325, 85) == verdadeiro e m.ler_botao() == 1){
@@ -142,12 +152,19 @@ programa
           g.encerrar_modo_grafico()
      }
 
-     funcao vazio Apresenta_Menu(inteiro x, inteiro y,cadeia &texto)// função para aparecer a outra tela 
+     funcao vazio Apresenta_Registro(inteiro id, inteiro x, inteiro y,cadeia &texto)// função para aparecer a outra tela 
      {
-     	inteiro TelaAdm = g.redimensionar_imagem(TelaVerificaAdm, LarguraT, AlturaT, verdadeiro)
-     	g.desenhar_imagem(0, 0, TelaAdm)
-     	g.desenhar_texto(x, y, texto)
-     	g.liberar_imagem(TelaAdm)  
+     	se(id == 0){
+	     	inteiro TelaAdm = g.redimensionar_imagem(TelaVerificaAdm, LarguraT, AlturaT, verdadeiro)
+	     	g.desenhar_imagem(0, 0, TelaAdm)
+	     	g.desenhar_texto(x, y, texto)
+	     	g.liberar_imagem(TelaAdm)
+     	}senao se(id == 1){
+     		inteiro telaAcessoNegado = g.redimensionar_imagem(TelaAdmNegado, LarguraT, AlturaT, verdadeiro)
+     		g.desenhar_imagem(0, 0, telaAcessoNegado)
+     		g.desenhar_texto(x, y, texto)
+     		g.liberar_imagem(telaAcessoNegado)
+     	} 
      	g.renderizar()
      }
 	funcao inteiro Tela(inteiro Base, inteiro posiTam, inteiro tela){
@@ -182,10 +199,10 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 3654; 
- * @DOBRAMENTO-CODIGO = [63, 152, 172, 155];
+ * @POSICAO-CURSOR = 4161; 
+ * @DOBRAMENTO-CODIGO = [63, 154, 169, 189, 172];
  * @PONTOS-DE-PARADA = ;
- * @SIMBOLOS-INSPECIONADOS = {LarguraT, 13, 13, 8}-{AlturaT, 14, 13, 7}-{x, 64, 33, 1}-{y, 64, 44, 1}-{tam, 158, 10, 3};
+ * @SIMBOLOS-INSPECIONADOS = {LarguraT, 13, 13, 8}-{AlturaT, 14, 13, 7}-{x, 64, 33, 1}-{y, 64, 44, 1}-{tam, 178, 10, 3};
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
  * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
  */
