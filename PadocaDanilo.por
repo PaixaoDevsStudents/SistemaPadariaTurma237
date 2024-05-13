@@ -77,8 +77,8 @@ programa
 				pare
 				caso 2:
 					//realizar vendas
-					abrirCaixa (saldoCaixa)
-					//realizarVenda(opcaoInterna, saidaLoop,entradaBaseInteiro,quantidadeVend,preco = typ.cadeia_para_real(vetorProd[2]),reposicao ,linhaVend,linhaVendD,linhaVendOrig,linhaVendOrigD,linhaSubsProd,valorTotal,valorTotalD,limite)
+					
+					realizarVenda(saldoCaixa,vetorProd,vetorVend,caminho,linhaOriginal,posicao,vetDeNum)
 					
 					//processamento
 					
@@ -155,8 +155,9 @@ programa
 	}funcao cad_produ(inteiro qtd_estoque,inteiro id_produto, inteiro val_uni,inteiro val_custo,cadeia nome_produto){
 		
 	}
-	funcao realizarVenda(cadeia vetorProd[], cadeia vetorVend[], cadeia caminho[], cadeia linhaOriginal, inteiro posicao,inteiro vetDeNum[]){
+	funcao realizarVenda(real saldoCaixa, cadeia vetorProd[], cadeia vetorVend[], cadeia caminho[], cadeia linhaOriginal, inteiro posicao,inteiro vetDeNum[]){
 		//se existir produtlo escolhido
+		abrirCaixa(saldoCaixa)
 		se(vetorProd[0] != ""){
 			//define valores default do vetor de vendas
 			para(inteiro i = 0; i < VENDA; i++){
@@ -195,7 +196,7 @@ programa
 				//se estoque foi esgotado
 				se(limite == 0){
 					escreva("Produtlo foi esgotado!! Reposição do estoque foi solicitada\n")
-					reposicao = entradaBaseInteiro(texto) escreva("Insira o número da reposicao: ")//reposição recebe a reposição de estoque
+					reposicao = entradaBaseInteiro("Insira o número da reposicao: ")//reposição recebe a reposição de estoque
 					//loop para receber receber o uma diferença do estoque
 					para(inteiro i = 0; i < PROD; i++){
 						//se iterador for igual a posição do valor do estoque
@@ -587,7 +588,7 @@ programa
 						}
 						//se produtlo foi escolhido, realiza venda e sai
 						senao{
-							realizarVenda(vetInfProd, vetInfVend, caminho, linhaOriginal, j, vetDeNum)
+							realizarVenda(saldoCaixa, vetInfProd, vetInfVend, caminho, linhaOriginal, j, vetDeNum)
 							saidaLoop = 1
 						}
 					}
@@ -649,18 +650,19 @@ programa
 		}
 		//Vetor com idnomes recebe entrada de usuário do nome do produtlo
 		vetor[0] += filtrarCaracteres(entradaBaseCadeia("Digite o nome do produtlo: "))
-		 escreva ("O produto é vendido na grama ?")
-          caracter evendidonaG
-          leia(evendidonaG)
-          se (evendidonaG == 's'){
-          vetor[4] += entradaBaseGramas("Qual é o valor do Kilo?: ")
-          }senao{
 		//Vetor com id de stock recebe entrada de usuário do número de stock
 		vetor[1] += entradaBaseInteiro("Digite a quantidade do produtlo que tem no estoque de hoje: ")
           //Vetor com id de precos recebe entrada de usuário do preço do produtlo
           vetor[2] += mat.arredondar(entradaBaseReal("Digite o preço do produtlo: "), 2)
           //vetor com id de custo recebe entrada de usuário do custo do produtlo
           vetor[3] += entradaBaseReal("Digite o custo do produtlo: ")
+		 escreva ("O produto é vendido na grama ?")
+          caracter evendidonaG
+          leia(evendidonaG)
+          se (evendidonaG == 's'){
+          vetor[4] += entradaBaseGramas("Qual é o valor do Kilo?: ")
+          }senao{
+		
           passeProduto(1, caminho , vetor)//passa os dados do produtlo para o arquivo
           }
          
@@ -938,8 +940,20 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 28301; 
- * @DOBRAMENTO-CODIGO = [126, 135, 140, 150, 157, 450, 549, 609, 622, 694, 725, 744, 775, 793, 882, 909];
+ * @POSICAO-CURSOR = 28424; 
+ * @DOBRAMENTO-CODIGO = [126, 135, 140, 150, 450, 549, 609, 622, 695, 726, 745, 776, 794, 883, 910];
+ * @PONTOS-DE-PARADA = ;
+ * @SIMBOLOS-INSPECIONADOS = ;
+ * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
+ * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
+ */
+/* $$$ Portugol Studio $$$ 
+ * 
+ * Esta seção do arquivo guarda informações do Portugol Studio.
+ * Você pode apagá-la se estiver utilizando outro editor.
+ * 
+ * @POSICAO-CURSOR = 22762; 
+ * @DOBRAMENTO-CODIGO = [126, 135, 140, 150, 451, 610, 623, 696, 727, 746, 777, 795, 818, 852, 884, 911];
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
