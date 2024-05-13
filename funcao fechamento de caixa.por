@@ -21,6 +21,8 @@ programa
 		real val_uni=0.0, val_custo=0.0
 		cadeia nome_produto="", vetsrc[5], typdata[2]={"arquivodetexto|txt","arquivodetexto|txt"}, password = "admin"
 		inteiro opcao
+	     cadeia  vetorProd[5], vetorVend[5], linhaOriginal=""
+	     inteiro posicao=0, vetDeNum[5]
 		cadeia caminho ="./todos os dados dos Produtos"
 		escreva("Selecione a sequência de arquivos:\n1-Carrinho\n2-Produtos Registrados\n3-Total de vendas\n4-Vendas do dia\n5-Registro de vendas")
 		para(inteiro c=0;c<5;c++){
@@ -55,7 +57,7 @@ programa
 				pare
 				caso 4:
 					//fechar caixa
-					fechamentoCaixa(password,caminho)
+					fechamentoCaixa(password,vetorProd,vetorVend,caminho,linhaOriginal,posicao,vetDeNum)
 					
 				pare
 				caso 5:
@@ -70,40 +72,83 @@ programa
 		escreva("Escolha uma opcao \n\n 1) Cadastrar produto         2) Registrar Venda\n 3) Relatorio Atual           4) Fechar Caixa e Sair\n\nDigite o numero referente a opção desejada: ")
 		leia(opcao)
 		retorne opcao
-	}
-funcao fechamentoCaixa(cadeia password,cadeia caminho) {
+	}/*
+// Função para verificar o acesso
+funcao verifAcess(cadeia password) {
+    // Implementação da função verifAcess
+    // Aqui você precisa adicionar o código que verifica se a senha fornecida é correta.
+}
+
+// Função para obter a data e hora atuais
+funcao Data(cadeia dia ,cadeia mes,cadeia ano,cadeia hora,cadeia minuto) {
+    // Implementação da função Data
+    // Aqui você precisa adicionar o código que retorna a data e hora atuais no formato desejado.
+    retorne ""+dia+"/"+mes+"/"+ano+"\t"+hora+":"+minuto
+}
+
+// Função para calcular o total de vendas
+funcao real calcularTotalVendas(cadeia caminho) {
+    // Aqui você precisa adicionar o código que calcula o total de vendas do dia.
+    // Você pode fazer isso abrindo o arquivo de vendas, lendo cada linha, 
+    // e somando o valor de cada venda.
+}
+
+// Função para gerar um relatório de vendas
+funcao vazio gerarRelatorioVendas(cadeia dia ,cadeia mes,cadeia ano,cadeia hora,cadeia minuto,cadeia caminho) {
+    // Aqui você precisa adicionar o código que gera um relatório de vendas.
+    // Você pode fazer isso abrindo o arquivo de vendas, lendo cada linha, 
+    // e imprimindo os detalhes de cada venda.
+}*/
+
+funcao fechamentoCaixa(cadeia password, cadeia vetorProd[], cadeia vetorVend[], cadeia caminho, cadeia linhaOriginal, inteiro posicao, inteiro vetDeNum[]) {
     // Solicita a verificação de acesso
     verifAcess(password)
     logico formato_24h = verdadeiro
-    // Após a verificação bem-sucedida, você pode prosseguir com o fechamento do caixa
+    // Após a verificação bem-sucedida, pergunte ao usuário se ele realmente deseja fechar o caixa
+    escreva("Você realmente deseja fechar o caixa? (S/N)\n-->")
+    caracter resposta
+    leia(resposta)
+    enquanto (resposta != 'S' e resposta != 's' e resposta != 'N' e resposta != 'n') {
+        escreva("Entrada inválida. Por favor, insira 'S' para sim ou 'N' para não.\n-->")
+        leia(resposta)
+    }
+    se (resposta == 'N' ou resposta == 'n') {
+        inicio() // Volta para o menu inicial se o usuário responder 'N' ou 'n'
+    }
+    // Se o usuário responder 'S' ou 's', prossiga com o fechamento do caixa
     escreva("Fechando o caixa...\n")
 
-    // Calcular o total de vendas do dia
-    real totalVendas = calcularTotalVendas(caminho)
-    escreva("O total de vendas do dia é: ", totalVendas, "\n")
+    // Aqui você pode adicionar o código para realizar todas as operações necessárias para fechar o caixa.
+    // Isso pode incluir coisas como calcular o total de vendas do dia, gerar um relatório de vendas,
+    // verificar o estoque restante, realizar uma auditoria de caixa, etc.
 
-    // Gerar um relatório de vendas
-    //gerarRelatorioVendas
-
-    // Verificar o estoque restante
-    //verificarEstoqueRestante
-
-    // Realizar uma auditoria de caixa
-   // realizarAuditoriaCaixa
-
-    // Registrar a data e hora de fechamento
+   // Registrar a data e hora de fechamento
+    cadeia dataHoraFechamento = Data()
+    escreva("Data e hora de fechamento: ", dataHoraFechamento, "\n")
+    
+}
+   funcao cadeia Data() {
     cadeia dia = typ.inteiro_para_cadeia(cal.dia_mes_atual(),10)
     cadeia mes = typ.inteiro_para_cadeia(cal.mes_atual(),10)
     cadeia ano = typ.inteiro_para_cadeia(cal.ano_atual(),10)
-    cadeia hora = typ.inteiro_para_cadeia(cal.hora_atual(formato_24h==verdadeiro),10)
+    cadeia hora = typ.inteiro_para_cadeia(cal.hora_atual(verdadeiro),10) // formato_24h = verdadeiro
     cadeia minuto = typ.inteiro_para_cadeia(cal.minuto_atual(),10)
-    cadeia dataHoraFechamento = Data(dia, mes, ano,hora,minuto)
-    escreva("Data e hora de fechamento: ", dataHoraFechamento, "\n")
 
-    escreva("Caixa fechado com sucesso!\n")
-}
-funcao cadeia Data(cadeia dia ,cadeia mes,cadeia ano,cadeia hora,cadeia minuto){
-	retorne ""+dia+"/"+mes+"/"+ano+"\t"+hora+":"+minuto
+    // Adiciona um zero à esquerda se o dia, mês, hora ou minuto tiverem apenas um dígito
+    se (txt.numero_caracteres(dia) == 1) {
+        dia = "0" + dia
+    }
+    se (txt.numero_caracteres(mes) == 1) {
+        mes = "0" + mes
+    }
+    se (txt.numero_caracteres(hora) == 1) {
+        hora = "0" + hora
+    }
+    se (txt.numero_caracteres(minuto) == 1) {
+        minuto = "0" + minuto
+    }
+
+    retorne ""+dia+"/"+mes+"/"+ano+"\t"+hora+":"+minuto
 }
 funcao real calcularTotalVendas(cadeia caminho) {
     // Abra o arquivo onde os dados de vendas estão armazenados
@@ -133,10 +178,11 @@ funcao real calcularTotalVendas(cadeia caminho) {
 
 funcao vazio gerarRelatorioVendas(cadeia dia ,cadeia mes,cadeia ano,cadeia hora,cadeia minuto,cadeia caminho) {
     // Abra o arquivo onde os dados de vendas estão armazenados
+    cadeia dataHoraFechamento = Data()
     inteiro arquivoVendas = src.abrir_arquivo(caminho, src.MODO_LEITURA)
 
     escreva("=============================================\n")
-    escreva("RELATÓRIO DE VENDAS - DATA: ", Data(dia, mes, ano,hora,minuto), "\n")
+    escreva("RELATÓRIO DE VENDAS - DATA: ", dataHoraFechamento, "\n")
     escreva("=============================================\n\n")
     escreva("PRODUTO\t\tQUANTIDADE VENDIDA\tPREÇO UNITÁRIO\tTOTAL DE VENDAS\n")
 
@@ -194,7 +240,7 @@ funcao vazio gerarRelatorioVendas(cadeia dia ,cadeia mes,cadeia ano,cadeia hora,
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 669; 
+ * @POSICAO-CURSOR = 5326; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
