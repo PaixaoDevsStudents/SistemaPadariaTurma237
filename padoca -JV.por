@@ -54,10 +54,7 @@ programa
 				pare
 				caso 4:
 					//fechar caixa
-<<<<<<< HEAD
 					fechamentoCaixa(password)
-=======
->>>>>>> 2e7205b24d3a500a6772ed39023104bff92025a1
 					
 				pare
 				caso 5:
@@ -73,7 +70,6 @@ programa
 		leia(opcao)
 		retorne opcao
 	}
-<<<<<<< HEAD
 funcao fechamentoCaixa(cadeia password) {
     // Solicita a verificação de acesso
     verifAcess(password)
@@ -104,8 +100,6 @@ funcao fechamentoCaixa(cadeia password) {
 funcao cadeia Data(cadeia dia ,cadeia mes,cadeia ano,cadeia hora,cadeia minuto){
 	retorne ""+dia+"/"+mes+"/"+ano+"\t"+hora+":"+minuto
 }
-=======
->>>>>>> 2e7205b24d3a500a6772ed39023104bff92025a1
 	funcao realizarVenda(cadeia vetorProd[], cadeia vetorVend[], cadeia caminho[], cadeia linhaOriginal, inteiro posicao,inteiro vetDeNum[]){
 		//se existir produtlo escolhido
 		se(vetorProd[0] != ""){
@@ -855,13 +849,8 @@ funcao cadeia Data(cadeia dia ,cadeia mes,cadeia ano,cadeia hora,cadeia minuto){
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
-<<<<<<< HEAD
- * @POSICAO-CURSOR = 3038; 
- * @DOBRAMENTO-CODIGO = [395, 494, 567, 591, 608, 642, 639, 658, 689, 707, 795];
-=======
- * @POSICAO-CURSOR = 23566; 
- * @DOBRAMENTO-CODIGO = [66, 71, 364, 463, 523, 536, 577, 627, 658, 676, 699, 738, 733, 764, 786];
->>>>>>> 2e7205b24d3a500a6772ed39023104bff92025a1
+ * @POSICAO-CURSOR = 1343; 
+ * @DOBRAMENTO-CODIGO = [652];
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
