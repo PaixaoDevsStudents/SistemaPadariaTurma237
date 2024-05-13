@@ -120,7 +120,8 @@ programa
                	saida = verdadeiro
                	texto = ""
                	enquanto(saida){
-               		Apresentar_Cadastro(2,Tela(1920, 684, LarguraT),Tela(1080, 850, AlturaT),texto)
+               		
+               		Apresentar_Cadastro(2,Tela(1920, 694, LarguraT),Tela(1080, 749, AlturaT),texto)
                		Escrever_Num(0,texto, saida)
                		se(typ.cadeia_e_inteiro(texto, 10)){
                			Quantidade = typ.cadeia_para_inteiro(texto,10)
@@ -131,7 +132,9 @@ programa
                	texto = ""
                	saida = verdadeiro
                	enquanto(saida){
-               		Apresentar_Cadastro(0,Tela(1920, 684, LarguraT),Tela(1080, 850, AlturaT),texto)
+               		inteiro x = m.posicao_x()
+					inteiro y = m.posicao_y()
+               		Apresentar_Cadastro(0,Tela(1920, 694, LarguraT),Tela(1080, 765, AlturaT),texto)
                		Escrever_Num(1,texto, saida)
                		se(typ.cadeia_e_real(texto)){
                			Preco = typ.cadeia_para_real(texto)
@@ -143,7 +146,7 @@ programa
                	texto = ""
                	saida = verdadeiro
                	enquanto(saida){
-               		Apresentar_Cadastro(1,Tela(1920, 684, LarguraT),Tela(1080, 850, AlturaT),texto)
+               		Apresentar_Cadastro(1,Tela(1920, 694, LarguraT),Tela(1080, 765, AlturaT),texto)
                		Escrever_Num(1,texto, saida)
                		se(typ.cadeia_e_real(texto)){
                			Custo = typ.cadeia_para_real(texto)
@@ -286,10 +289,10 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 3896; 
- * @DOBRAMENTO-CODIGO = [230];
+ * @POSICAO-CURSOR = 5714; 
+ * @DOBRAMENTO-CODIGO = [233];
  * @PONTOS-DE-PARADA = ;
- * @SIMBOLOS-INSPECIONADOS = {texto, 191, 78, 5}-{x, 191, 57, 1};
+ * @SIMBOLOS-INSPECIONADOS = {x, 135, 25, 1}-{y, 136, 13, 1}-{x, 194, 57, 1}-{texto, 194, 78, 5};
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
  * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
  */
