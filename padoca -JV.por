@@ -814,7 +814,7 @@ programa
 				}
 			}enquanto(contador!=5)
 			se(senha!=password e senha!="x" ou senha=="X"){
-				para(inteiro i=5;i>0;i--){
+				para(inteiro i=30;i>0;i--){
 				escreva("Você errou a senha 5 vezes\nVocê será redirecionado para o menu em ",i," segundos.\n->")
 				utl.aguarde(1000)
 				limpa()
@@ -834,10 +834,10 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 1354; 
+ * @POSICAO-CURSOR = 32668; 
  * @DOBRAMENTO-CODIGO = [67, 73, 371, 470, 533, 546, 567, 589, 620, 639, 669, 687, 710, 749, 744, 775];
  * @PONTOS-DE-PARADA = ;
- * @SIMBOLOS-INSPECIONADOS = ;
+ * @SIMBOLOS-INSPECIONADOS = {y, 42, 13, 1}-{i, 46, 18, 1};
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
  * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
  */
