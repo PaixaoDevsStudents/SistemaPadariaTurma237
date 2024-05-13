@@ -12,9 +12,9 @@ programa
      const inteiro ALTURAT = 1080
      const cadeia SENHA = "ADMIN"
 
-	inteiro tela_menu_bg = g.carregar_imagem("D:/Projetos/curso-senai/SistemaPadariaTurma237/midia/imagens/Telas/Menu/telaMenu.png")
-	inteiro tela_verificar_adm_bg = g.carregar_imagem("D:/Projetos/curso-senai/SistemaPadariaTurma237/midia/imagens/Telas/Cadastrar/Tela_senha.png")
-	inteiro tela_acesso_negado_bg = g.carregar_imagem("D:/Projetos/curso-senai/SistemaPadariaTurma237/midia/imagens/Telas/Cadastrar/tela_acesso_negado.png")
+	inteiro tela_menu_bg = g.carregar_imagem("C:/Users/Aluno/Documents/aluno1/Projetos/SistemaPadariaTurma237/midia/imagens/Telas/Menu/telaMenu.png")
+	inteiro tela_verificar_adm_bg = g.carregar_imagem("C:/Users/Aluno/Documents/aluno1/Projetos/SistemaPadariaTurma237/midia/imagens/Telas/Cadastrar/Tela_senha.png")
+	inteiro tela_acesso_negado_bg = g.carregar_imagem("C:/Users/Aluno/Documents/aluno1/Projetos/SistemaPadariaTurma237/midia/imagens/Telas/Cadastrar/tela_acesso_negado.png")
 	
 	funcao inicio()
 	{
@@ -162,7 +162,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 4602; 
+ * @POSICAO-CURSOR = 823; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
