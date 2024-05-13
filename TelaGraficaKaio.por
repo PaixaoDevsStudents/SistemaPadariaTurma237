@@ -1,7 +1,7 @@
 programa
 {
-	//Bibliotecas
-	inclua biblioteca Util --> u
+	//Bibliotecas
+	inclua biblioteca Util --> u
      inclua biblioteca Graficos --> g
      inclua biblioteca Mouse --> m
      inclua biblioteca Calendario --> c
@@ -10,11 +10,11 @@ programa
 
 	const inteiro LARGURAT= 1920
      const inteiro ALTURAT = 1080
-     const cadeia senha = "admin"
+     const cadeia SENHA = "ADMIN"
 
 	inteiro tela_menu_bg = g.carregar_imagem("D:/Projetos/curso-senai/SistemaPadariaTurma237/midia/imagens/Telas/Menu/telaMenu.png")
 	inteiro tela_verificar_adm_bg = g.carregar_imagem("D:/Projetos/curso-senai/SistemaPadariaTurma237/midia/imagens/Telas/Cadastrar/Tela_senha.png")
-	inteiro tela_acesso_negado_bg = g.carregar_imagem("D:/Projetos/curso-senai/SistemaPadariaTurma237/midia/imagens/Telas/Cadastrar/Acesso_negado.png")
+	inteiro tela_acesso_negado_bg = g.carregar_imagem("D:/Projetos/curso-senai/SistemaPadariaTurma237/midia/imagens/Telas/Cadastrar/tela_acesso_negado.png")
 	
 	funcao inicio()
 	{
@@ -60,7 +60,6 @@ programa
 				g.definir_cor(g.COR_BRANCO)
      			cadastro_de_produtos(verificador_de_acesso)
      		}senao se(posicaoMouse(745, 480, 305, 84) == verdadeiro e ler_mouse == m.BOTAO_ESQUERDO){
-				
 				g.definir_cor(g.COR_VERDE)
 				g.desenhar_retangulo(745, 480, 305, 84, verdadeiro, falso)
 		     	g.definir_tamanho_texto(20.0)
@@ -95,16 +94,13 @@ programa
 		}
 	}
 
-	  funcao vazio f_verificar_acesso (cadeia senha){
-		cadeia valorSenha
+	funcao vazio f_verificar_acesso (cadeia valorSenha, cadeia senha_a_verificar){
 		inteiro contador=0
-		escreva("Verificação de Acesso\n\nDigite a senha para continuar:\n->")
-		leia(valorSenha)
-		limpa()
+		//escreva("Verificação de Acesso\n\nDigite a senha para continuar:\n->")
 		se(valorSenha=="x" ou valorSenha=="X"){
 			inicio()
 		}
-		enquanto(valorSenha!=senha){
+		enquanto(valorSenha!=senha_a_verificar){
 			contador++
 			se(contador==5){
 				para(inteiro i=30;i>0;i--){
@@ -114,14 +110,18 @@ programa
 				}
 				limpa()
 			}
+			g.liberar_imagem(tela_verificar_adm_bg)
+			g.limpar()
+			g.desenhar_imagem(0, 0, g.redimensionar_imagem(tela_acesso_negado_bg, LARGURAT, ALTURAT,verdadeiro))
+			g.renderizar()
 			escreva("Senha incorreta!Tente novamente:\n->")
-			leia(valorSenha)
+			valorSenha = f_escrever_texto()
 			limpa()
 			se(valorSenha=="x" ou valorSenha=="X"){
 				inicio()
 			}
 		}
-	}	
+	}
 
 	funcao vazio cadastro_de_produtos(inteiro verificador_de_acesso){
 		cadeia texto = "" 
@@ -129,7 +129,8 @@ programa
 		g.renderizar()
 		g.definir_cor(g.COR_PRETO)
 		texto = f_escrever_texto()
-		f_verificar_acesso(texto)
+		f_verificar_acesso(texto, SENHA)
+		
 	}
 
 	funcao cadeia f_escrever_texto(){
@@ -149,7 +150,8 @@ programa
 			}
 			g.liberar_imagem(tela_menu_bg)
 			g.desenhar_imagem(0, 0, g.redimensionar_imagem(tela_verificar_adm_bg, LARGURAT, ALTURAT,verdadeiro))
-			g.desenhar_texto(680, 850, texto_digitado+"|")
+			g.definir_tamanho_texto(26.0)
+			g.desenhar_texto(720, 845, texto_digitado+"|")
 			g.renderizar()
 		}
 		retorne texto_digitado
@@ -160,7 +162,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 4423; 
+ * @POSICAO-CURSOR = 4602; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
