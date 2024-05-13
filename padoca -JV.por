@@ -36,9 +36,8 @@ programa
 			escolha(mnu){
 				caso 1:
 					//cadastrar produtos
-					enquanto(teste==falso){
 					verifAcess(password,teste)
-					}
+					enquanto(teste==falso){
 					inteiro y=0
 						escreva("Quantos produtos irá cadastrar?: ")
 						leia(y)
@@ -46,6 +45,7 @@ programa
 					para(inteiro i=0; i<y; i++){
 						numDeVet[0]++
 						cadastroProduto(vetsrc[1], numDeVet[0])
+					}
 					}
 				pare
 				caso 2:
@@ -800,28 +800,30 @@ programa
 		escreva("Verificação de acesso\nInforme a senha de segurança\n->")
 		leia(senha)
 		limpa()
-		se(senha=="x" ou senha =="X"){
-			teste=verdadeiro
-			retorne teste
-		}
-		enquanto(senha!=password){
+		se(senha!="x"){
+			enquanto(senha!=password){
 			faca{
 				contador++
 				escreva("Senha incorreta\nInforme a senha novamente\n->")
 				leia(senha)
 				limpa()
-				se(senha=="x" ou senha =="X"){
+				se(senha=="x"){
 					teste=verdadeiro
-					retorne teste
+					pare
 				}
 			}enquanto(contador!=5)
-			para(inteiro i=5;i>0;i--){
-				escreva("Você errou a senha 5 vezes\nAguarde ",i," segundos antes de tentar novamente\n->")
+			se(senha!=password e senha!="x"){
+				para(inteiro i=5;i>0;i--){
+				escreva("Você errou a senha 5 vezes\nVocê será redirecionado para o menu em ",i," segundos.\n->")
 				utl.aguarde(1000)
 				limpa()
 			}
+			}
 			contador=0
+			pare
 		}
+		}
+		teste=verdadeiro
 		retorne teste
      }
 }
@@ -831,7 +833,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 1236; 
+ * @POSICAO-CURSOR = 32713; 
  * @DOBRAMENTO-CODIGO = [72, 370, 469, 532, 545, 566, 588, 619, 638, 668, 686, 709, 748, 743, 774];
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
