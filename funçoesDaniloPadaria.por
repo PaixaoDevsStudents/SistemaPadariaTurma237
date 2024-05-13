@@ -42,8 +42,32 @@ programa
                     }
 		retorne x
 	}
-	
+	funcao cadastroProduto(cadeia caminho){
+		cadeia vetor[PROD]
+		//loop para limpar o vetor de valores vazios
+		para(inteiro i = 0; i< PROD; i++){
+			vetor[i] = ""
+		}
+		//Vetor com idnomes recebe entrada de usuário do nome do produtlo
+		vetor[0] += filtrarCaracteres(entradaBaseCadeia("Digite o nome do produtlo: "))
+		//Vetor com id de stock recebe entrada de usuário do número de stock
+		vetor[1] += entradaBaseInteiro("Digite a quantidade do produtlo que tem no estoque de hoje: ")
+          //Vetor com id de precos recebe entrada de usuário do preço do produtlo
+          vetor[2] += mat.arredondar(entradaBaseReal("Digite o preço do produtlo: "), 2)
+          //vetor com id de custo recebe entrada de usuário do custo do produtlo
+          vetor[3] += entradaBaseReal("Digite o custo do produtlo: ")
+		 escreva ("O produto é vendido na grama ?")
+          caracter evendidonaG
+          leia(evendidonaG)
+          se (evendidonaG == 's'){
+          vetor[4] += entradaBaseGramas("Qual é o valor do Kilo?: ")
+          }senao{
+          passeProduto(1, caminho , vetor)//passa os dados do produtlo para o arquivo
+          }
+         
+	}
 	funcao inicio()
+	
 	{
 	
 		escreva("Olá Mundo")
@@ -54,8 +78,8 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 2106; 
- * @DOBRAMENTO-CODIGO = [2, 7, 17];
+ * @POSICAO-CURSOR = 3245; 
+ * @DOBRAMENTO-CODIGO = [2, 7, 17, 44];
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
