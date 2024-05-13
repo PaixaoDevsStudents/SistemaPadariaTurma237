@@ -23,21 +23,22 @@ programa
 		inteiro numDeVet[3]
 		logico saida = verdadeiro, teste=falso
 		//leitura de arquivos
-		/*para(inteiro c=0;c<5;c++){
-			escreva("Selecione a sequência de arquivos:\n1-Carrinho\n2-Produtos Registrados\n3-Total de vendas\n4-Vendas do dia\n5-Registro de vendas")
+		para(inteiro c=0;c<5;c++){
+			escreva("Selecione a sequência de arquivos:\n1-Histórico\n2-Produtos Registrados\n3-Total de vendas\n4-Vendas do dia\n5-Registro de vendas")
 			vetsrc[c] = src.selecionar_arquivo(typdata, verdadeiro)
-		}*/
+			limpa()
+		}
 		//menu de opções
 		faca{
-			/*numDeVet[0] = totalProdutos(vetsrc[1])
+			numDeVet[0] = totalProdutos(vetsrc[1])
 			numDeVet[1] = totalProdutos(vetsrc[2])
-			numDeVet[2] = totalProdutos(vetsrc[3])*/
+			numDeVet[2] = totalProdutos(vetsrc[3])
 			imprime_mnu(mnu)
 			escolha(mnu){
 				caso 1:
 					//cadastrar produtos
 					verifAcess(password,teste)
-					enquanto(teste==falso){
+					se(teste==verdadeiro){
 					inteiro y=0
 						escreva("Quantos produtos irá cadastrar?: ")
 						leia(y)
@@ -833,8 +834,8 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 1093; 
- * @DOBRAMENTO-CODIGO = [72, 370, 469, 532, 545, 566, 588, 619, 638, 668, 686, 709, 748, 743, 774, 796];
+ * @POSICAO-CURSOR = 1354; 
+ * @DOBRAMENTO-CODIGO = [67, 73, 371, 470, 533, 546, 567, 589, 620, 639, 669, 687, 710, 749, 744, 775];
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
