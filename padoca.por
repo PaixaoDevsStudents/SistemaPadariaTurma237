@@ -50,8 +50,10 @@ programa
 					}
 				pare
 				caso 2:
+					
 					//realizar vendas
-					pesquisarProduto(0,vetsrc,numDeVet)
+					real saldoCaixa = abrirCaixa(0.0)
+					pesquisarProduto(0,vetsrc,numDeVet, saldoCaixa)
 				pare
 				caso 3:
 					//relatorio temporario
@@ -74,7 +76,7 @@ programa
 		limpa()
 		retorne opcao
 	}
-	funcao realizarVenda(cadeia vetorProd[], cadeia vetorVend[], cadeia caminho[], cadeia linhaOriginal, inteiro posicao,inteiro vetDeNum[]){
+	funcao realizarVenda(cadeia vetorProd[], cadeia vetorVend[], cadeia caminho[], cadeia linhaOriginal, inteiro posicao,inteiro vetDeNum[], real saldoCaixa){
 		//se existir produto escolhido
 		se(vetorProd[0] != ""){
 			//define valores default do vetor de vendas
@@ -161,15 +163,14 @@ programa
 					se(opcaoInterna == 1){escreva("Forma de pagamento em dinheiro foi escolhido.\n10% de desconto foi acrescentado ao valor da compra.\n")}
 					//se opção for PIX escreve texto sobre a escolha
 					se(opcaoInterna == 2){escreva("Forma de pagamento em PIX foi escolhido.\n10% de desconto de acrescimo foi acrescentado ao valor da compra.\n")}
-					valorTotal += (preco * quantidadeVend)//valorTotal recebe o valor da compra
-					
+					valorTotal += (preco * quantidadeVend) - (preco * quantidadeVend)*0.1//valorTotal recebe o valor da compra
 					valorTotalD += valorTotal
 					pare
 				// caso cartão: acréscimo de 3%
 				caso 3:
 					//opção foi cartão, escreve texto sobre escolha
 					escreva("Forma de pagamento em cartão de crédito/débito foi escolhido.\n3% de acrescimo foi acrescentado ao valor da compra.\n")
-					valorTotal += (preco * quantidadeVend)//valorTotal recebe o valor da compra
+					valorTotal += (preco * quantidadeVend) + (preco * quantidadeVend)*0.03//valorTotal recebe o valor da compra
 					valorTotalD += valorTotal
 					pare
 			}
@@ -372,6 +373,20 @@ programa
 			}enquanto(saidaLoop != 1)
 		}
 	}
+	funcao real balanca (inteiro quantidadeCompraCliente,real compraEmGramas,real valorCobrarCliente,real valorDaG){
+		quantidadeCompraCliente = utl.sorteia(1, 1000)  // sorteando a quantidade que o cliente vai comprar, para simular uma balança 
+		quantidadeCompraCliente = typ.inteiro_para_real(quantidadeCompraCliente) // mudando o valor de inteiro para real para poder usar zero apos a virgula pq o sorteia so roda com inteiro...
+		escreva ("Você comprou ",quantidadeCompraCliente," gramas de pão.\n")
+		compraEmGramas = (quantidadeCompraCliente * 1000) // converter Kg para gramas 
+		valorCobrarCliente = ((valorDaG*compraEmGramas) / 1000) // converte gramas em reais $$ dindin
+		valorCobrarCliente = mat.arredondar(valorCobrarCliente, 7)
+		escreva("Valor a cobrar do cliente é: ",valorCobrarCliente) // mostra o valor na tela a ser cobrado 
+		retorne (valorCobrarCliente)
+	}
+	funcao real abrirCaixa (real saldoCaixa){
+		saldoCaixa = entradaBaseReal("Abertura de caixa, Quantos reais tem no caixa?: ")
+		retorne saldoCaixa
+	}
      funcao cadeia filtrarCaracteres(cadeia nome){
 		para(inteiro i = 0; i < txt.numero_caracteres(nome); i++){
 			caracter x = txt.obter_caracter(nome, i)// caracter a ser analisado
@@ -471,7 +486,7 @@ programa
 		}
 		retorne nome
 	}
-	funcao pesquisarProduto(inteiro id,cadeia caminho[], inteiro vetDeNum[]){
+	funcao pesquisarProduto(inteiro id,cadeia caminho[], inteiro vetDeNum[], real saldoCaixa){
 		inteiro opcaoInterna, arquivo, saidaLoop, j = 1
 		cadeia vetInfProd[5]
 		cadeia vetInfVend[4]
@@ -514,7 +529,7 @@ programa
 						}
 						//se produto foi escolhido, realiza venda e sai
 						senao{
-							realizarVenda(vetInfProd, vetInfVend, caminho, linhaOriginal, j, vetDeNum)
+							realizarVenda(vetInfProd, vetInfVend, caminho, linhaOriginal, j, vetDeNum, saldoCaixa)
 							saidaLoop = 1
 						}
 					}
@@ -875,8 +890,8 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 28022; 
- * @DOBRAMENTO-CODIGO = [76, 374, 473, 549, 570, 592, 623, 642, 715, 733, 756, 790, 821, 843];
+ * @POSICAO-CURSOR = 20600; 
+ * @DOBRAMENTO-CODIGO = [226, 232, 236, 241, 245, 256, 293, 220, 375, 385, 389, 488, 551, 564, 585, 607, 638, 657, 730, 748, 771, 805, 836, 858];
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
