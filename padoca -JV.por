@@ -800,19 +800,19 @@ programa
 		escreva("Verificação de acesso\nInforme a senha de segurança\n->")
 		leia(senha)
 		limpa()
-		se(senha!="x"){
+		se(senha!="x" ou senha=="X"){
 			enquanto(senha!=password){
 			faca{
 				contador++
 				escreva("Senha incorreta\nInforme a senha novamente\n->")
 				leia(senha)
 				limpa()
-				se(senha=="x"){
+				se(senha=="x" ou senha=="X"){
 					teste=verdadeiro
 					pare
 				}
 			}enquanto(contador!=5)
-			se(senha!=password e senha!="x"){
+			se(senha!=password e senha!="x" ou senha=="X"){
 				para(inteiro i=5;i>0;i--){
 				escreva("Você errou a senha 5 vezes\nVocê será redirecionado para o menu em ",i," segundos.\n->")
 				utl.aguarde(1000)
@@ -833,7 +833,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 32713; 
+ * @POSICAO-CURSOR = 32640; 
  * @DOBRAMENTO-CODIGO = [72, 370, 469, 532, 545, 566, 588, 619, 638, 668, 686, 709, 748, 743, 774];
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
