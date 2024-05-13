@@ -1,5 +1,5 @@
 # Exemplos Adicionais:
-
+:
 ## feat / talento
 * feat: (nova funcionalidade para o usuário, não uma nova funcionalidade para o script de compilação)
 * talento: (novo recurso para o usuário, não um novo recurso para script de compilação)
