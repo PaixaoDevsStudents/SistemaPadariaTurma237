@@ -568,7 +568,7 @@ programa
 		//loop para limpar o vetor de valores vazios
 		para(inteiro i = 0; i< PROD; i++){
 			vetor[i] = ""
-		}
+		} 
 		vetor[0] += (numDeProd+1)
 		f_front_cadastro(senha, vetor)
           passeProduto(1, caminho , vetor)//passa os dados do produto para o arquivo
@@ -1176,7 +1176,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 37572; 
+ * @POSICAO-CURSOR = 24733; 
  * @DOBRAMENTO-CODIGO = [44, 52, 206, 212, 216, 221, 225, 236, 273, 200, 58, 355, 365, 369, 468, 531, 544, 575, 606, 625, 658, 697, 715, 738, 772, 803, 825, 854, 954, 1053, 1069, 1116, 1119, 1141];
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = {texto, 957, 9, 5};
