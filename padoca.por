@@ -912,9 +912,6 @@ programa
 					//fechar caixa
 
 				pare
-				caso 5:
-					exportarVendas(1,1, numDeVet[2],vetsrc[3])
-				pare
 			}
                
                //Função para Realizar Vendas
@@ -1176,10 +1173,10 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 24733; 
- * @DOBRAMENTO-CODIGO = [44, 52, 206, 212, 216, 221, 225, 236, 273, 200, 58, 355, 365, 369, 468, 531, 544, 575, 606, 625, 658, 697, 715, 738, 772, 803, 825, 854, 954, 1053, 1069, 1116, 1119, 1141];
+ * @POSICAO-CURSOR = 38004; 
+ * @DOBRAMENTO-CODIGO = [44, 52, 206, 212, 216, 221, 225, 236, 273, 200, 58, 355, 365, 369, 468, 531, 544, 575, 606, 625, 658, 697, 715, 738, 772, 803, 825, 854, 951, 1050, 1066, 1113, 1116, 1138];
  * @PONTOS-DE-PARADA = ;
- * @SIMBOLOS-INSPECIONADOS = {texto, 957, 9, 5};
+ * @SIMBOLOS-INSPECIONADOS = {texto, 954, 9, 5};
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
  * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
  */

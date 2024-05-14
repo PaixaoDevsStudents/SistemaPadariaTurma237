@@ -126,44 +126,7 @@ programa
                	botao = 4
                }
                faca{
-			numDeVet[0] = totalProdutos(vetsrc[1])
-			numDeVet[1] = totalProdutos(vetsrc[2])
-			numDeVet[2] = totalProdutos(vetsrc[3])
-			escolha(botao){
-				caso 1:
-					//cadastrar produtos
-					verifAcess(password)
-					inteiro y=0
-						escreva("Quantos produtos irá cadastrar?: ")
-						leia(y)
-						limpa()
-					para(inteiro i=0; i<y; i++){
-						numDeVet[0]++
-						cadastroProduto(vetsrc[1], numDeVet[0])
-						
-					}
-				pare
-				caso 2:
-					
-					//realizar vendas
-					real saldoCaixa = abrirCaixa(0.0)
-					pesquisarProduto(0,vetsrc,numDeVet, saldoCaixa)
-				pare
-				caso 3:
-					//relatorio temporario
-					ordenacaoVend(1,1,numDeVet[2],vetsrc[3])
-				pare
-				caso 4:
-					saida=falso
-					//fechar caixa
-
-				pare
-				caso 5:
-					exportarVendas(1,1, numDeVet[2],vetsrc[3])
-				pare
-			}
-               
-               //Função para Realizar Vendas
+			//Função para Realizar Vendas
            	//se(mouse(735, 475, 325, 85) == verdadeiro 
            	/*se (mouse(735, 620, 325, 85) == verdadeiro e mou == m.BOTAO_ESQUERDO){
            	 	g.definir_cor(g.COR_VERDE)
@@ -416,8 +379,8 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 404; 
- * @DOBRAMENTO-CODIGO = [109, 199, 294, 310, 357, 360, 382];
+ * @POSICAO-CURSOR = 5370; 
+ * @DOBRAMENTO-CODIGO = [109, 162, 257, 273, 320, 323, 345];
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = {x, 73, 33, 1}-{y, 73, 44, 1}-{botao, 100, 11, 5}-{Produto, 112, 20, 7};
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
