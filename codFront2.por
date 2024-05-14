@@ -17,20 +17,20 @@ programa
 //--------------------------------------------------------------------
  
  /*TELAS*/
- 
+ 	cadeia computador =  utl.obter_diretorio_usuario()
 	//Menu 
-	inteiro ImgMenu = g.carregar_imagem("C:/Users/AM VM/Downloads/Sistema Padaria 2.0/Menu.png")
+	inteiro ImgMenu = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\Menu.png")
      //Login e Senha
-     inteiro ImgAcesso = g.carregar_imagem("C:/Users/AM VM/Downloads/Sistema Padaria 2.0/VerificarAcesso.png")
-     inteiro ImgAcessoNegado = g.carregar_imagem("C:/Users/AM VM/Downloads/Sistema Padaria 2.0/AcessoNegado.png")
+     inteiro ImgAcesso = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\VerificarAcesso.png")
+     inteiro ImgAcessoNegado = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\AcessoNegado.png")
      //cadastro
-     inteiro ImgNome = g.carregar_imagem("C:/Users/AM VM/Downloads/Sistema Padaria 2.0/Nome.png")
-    	inteiro ImgCusto = g.carregar_imagem("C:/Users/AM VM/Downloads/Sistema Padaria 2.0/Custo.png")
-	inteiro ImgPesoUnitario = g.carregar_imagem("C:/Users/AM VM/Downloads/Sistema Padaria 2.0/PesoUnitario.png")
-	inteiro ImgPeso = g.carregar_imagem("C:/Users/AM VM/Downloads/Sistema Padaria 2.0/Peso.png")
-	inteiro ImgUnitario = g.carregar_imagem("C:/Users/AM VM/Downloads/Sistema Padaria 2.0/Unitario.png")
-	inteiro ImgQuantidade = g.carregar_imagem("C:/Users/AM VM/Downloads/Sistema Padaria 2.0/Quantidade.png")
-     inteiro ImgCadastroSucesso = g.carregar_imagem("C:/Users/AM VM/Downloads/Sistema Padaria 2.0/CadastradoSucesso.png")
+     inteiro ImgNome = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\Nome.png")
+    	inteiro ImgCusto = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\Custo.png")
+	inteiro ImgPesoUnitario = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\PesoUnitario.png")
+	inteiro ImgPeso = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\Peso.png")
+	inteiro ImgUnitario = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\Unitario.png")
+	inteiro ImgQuantidade = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\Quantidade.png")
+     inteiro ImgCadastroSucesso = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\CadastradoSucesso.png")
 	
      
      //RealizarVendas
@@ -90,7 +90,6 @@ programa
           	
                
                inteiro telaMenu = g.redimensionar_imagem(ImgMenu, LarguraT, AlturaT, verdadeiro) // variavel que recebe a foto da variavel (telaMenu) e redimensiona para cobrir toda a janela.
-               
                g.desenhar_imagem(0,0, telaMenu)
                g.liberar_imagem(telaMenu)  // libera o cache dessa imagem da memoria RAM 
 			g.renderizar()
@@ -126,6 +125,43 @@ programa
                se(mouse(Tela(1920,735,LarguraT), Tela(1080,765,AlturaT), Tela(1920,325,LarguraT), Tela(1080,85,AlturaT)) e mou == m.BOTAO_ESQUERDO){
                	botao = 4
                }
+               faca{
+			numDeVet[0] = totalProdutos(vetsrc[1])
+			numDeVet[1] = totalProdutos(vetsrc[2])
+			numDeVet[2] = totalProdutos(vetsrc[3])
+			escolha(botao){
+				caso 1:
+					//cadastrar produtos
+					verifAcess(password)
+					inteiro y=0
+						escreva("Quantos produtos irá cadastrar?: ")
+						leia(y)
+						limpa()
+					para(inteiro i=0; i<y; i++){
+						numDeVet[0]++
+						cadastroProduto(vetsrc[1], numDeVet[0])
+						
+					}
+				pare
+				caso 2:
+					
+					//realizar vendas
+					real saldoCaixa = abrirCaixa(0.0)
+					pesquisarProduto(0,vetsrc,numDeVet, saldoCaixa)
+				pare
+				caso 3:
+					//relatorio temporario
+					ordenacaoVend(1,1,numDeVet[2],vetsrc[3])
+				pare
+				caso 4:
+					saida=falso
+					//fechar caixa
+
+				pare
+				caso 5:
+					exportarVendas(1,1, numDeVet[2],vetsrc[3])
+				pare
+			}
                
                //Função para Realizar Vendas
            	//se(mouse(735, 475, 325, 85) == verdadeiro 
@@ -218,7 +254,7 @@ programa
 			enquanto(saida){
 				inteiro x = m.posicao_x()
 				inteiro y = m.posicao_y()
-				Apresentar_Cadastro(3,Tela(1920, 694, LarguraT),Tela(1080, 750, AlturaT),texto)
+				Apresentar_Cadastro(4,Tela(1920, 694, LarguraT),Tela(1080, 750, AlturaT),texto)
 				Escrever_Num(1,texto, saida)
 				se(typ.cadeia_e_real(texto) ou typ.cadeia_e_inteiro(texto, 10)){
 					vetor[4] += typ.cadeia_para_real(texto)
@@ -230,7 +266,7 @@ programa
 		}
 		senao se(descisao == 2){
 			enquanto(saida){
-				Apresentar_Cadastro(4,Tela(1920, 694, LarguraT),Tela(1080, 750, AlturaT),texto)
+				Apresentar_Cadastro(3,Tela(1920, 694, LarguraT),Tela(1080, 750, AlturaT),texto)
 				Escrever_Num(1,texto, saida)
 				se(typ.cadeia_e_real(texto) ou typ.cadeia_e_inteiro(texto, 10)){
 					vetor[4] += typ.cadeia_para_real(texto)
@@ -245,7 +281,7 @@ programa
 		enquanto(saida){
 			Apresentar_Cadastro(5,Tela(1920, 694, LarguraT),Tela(1080, 765, AlturaT),texto)
 			Escrever_Num(1,texto, saida)
-			se(typ.cadeia_e_real(texto)){
+			se(typ.cadeia_e_real(texto) ou typ.cadeia_e_inteiro(texto, 10)){
 				vetor[5] += typ.cadeia_para_real(texto)
 			}
 			senao{
@@ -380,9 +416,10 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 4701; 
+ * @POSICAO-CURSOR = 404; 
+ * @DOBRAMENTO-CODIGO = [109, 199, 294, 310, 357, 360, 382];
  * @PONTOS-DE-PARADA = ;
- * @SIMBOLOS-INSPECIONADOS = {x, 73, 33, 1}-{y, 73, 44, 1};
+ * @SIMBOLOS-INSPECIONADOS = {x, 73, 33, 1}-{y, 73, 44, 1}-{botao, 100, 11, 5}-{Produto, 112, 20, 7};
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
  * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
  */
