@@ -38,7 +38,7 @@ programa
 		//variaveis
 		inteiro arquivo, mnu=0, qtd_estoque=0, id_produto=0
 		real val_uni=0.0, val_custo=0.0
-		cadeia nome_produto="", vetsrc[5], typdata[2]={"arquivo de dados|dados","arquivo de dados|dados"}, password="admin"
+		cadeia nome_produto="", vetsrc[5], typdata[2]={"arquivo de dados|txt","arquivo de dados|txt"}
 		inteiro opcao
 		inteiro numDeVet[3]
 		//leitura de arquivos
@@ -1173,7 +1173,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 38004; 
+ * @POSICAO-CURSOR = 1902; 
  * @DOBRAMENTO-CODIGO = [44, 52, 206, 212, 216, 221, 225, 236, 273, 200, 58, 355, 365, 369, 468, 531, 544, 575, 606, 625, 658, 697, 715, 738, 772, 803, 825, 854, 951, 1050, 1066, 1113, 1116, 1138];
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = {texto, 954, 9, 5};
