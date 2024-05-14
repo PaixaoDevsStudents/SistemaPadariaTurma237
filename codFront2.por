@@ -1,6 +1,5 @@
 programa
 {
-	
 	//Bibliotecas
      inclua biblioteca Graficos --> g
      inclua biblioteca Mouse --> m
@@ -8,6 +7,7 @@ programa
      inclua biblioteca Teclado --> tec
      inclua biblioteca Texto --> txt
      inclua biblioteca Tipos --> typ
+     inclua biblioteca Util --> utl
 //------------------------------------------------------------------
 
      //Altura e Largura da janela de exibição
@@ -18,15 +18,20 @@ programa
  
  /*TELAS*/
  
-	//Menu     
-     inteiro TelaMenu = g.carregar_imagem("C:/Users/Aluno/Desktop/SistemaPadariaTurma237-1/midia/imagens/Telas/Menu/telaMenu.png")
-     
-     //CadastrarProduto
-     inteiro TelaVerificaAdm = g.carregar_imagem("C:/Users/Aluno/Desktop/SistemaPadariaTurma237-1/midia/imagens/Telas/Cadastrar/Tela_senha.png")
-     inteiro TelaAdmNegado = g.carregar_imagem("C:/Users/Aluno/Desktop/SistemaPadariaTurma237-1/midia/imagens/Telas/Cadastrar/Acesso_negado.png")
-    	inteiro TelaCusto = g.carregar_imagem("C:/Users/Aluno/Desktop/SistemaPadariaTurma237-1/midia/imagens/Telas/Cadastrar/Custo.png")
-	inteiro TelaPreco = g.carregar_imagem("C:/Users/Aluno/Desktop/SistemaPadariaTurma237-1/midia/imagens/Telas/Cadastrar/Preço.png")
-     inteiro TelaQuantidade = g.carregar_imagem("C:/Users/Aluno/Desktop/SistemaPadariaTurma237-1/midia/imagens/Telas/Cadastrar/Quantidade.png")
+	//Menu 
+	inteiro ImgMenu = g.carregar_imagem("C:/Users/AM VM/Downloads/Sistema Padaria 2.0/Menu.png")
+     //Login e Senha
+     inteiro ImgAcesso = g.carregar_imagem("C:/Users/AM VM/Downloads/Sistema Padaria 2.0/VerificarAcesso.png")
+     inteiro ImgAcessoNegado = g.carregar_imagem("C:/Users/AM VM/Downloads/Sistema Padaria 2.0/AcessoNegado.png")
+     //cadastro
+     inteiro ImgNome = g.carregar_imagem("C:/Users/AM VM/Downloads/Sistema Padaria 2.0/Nome.png")
+    	inteiro ImgCusto = g.carregar_imagem("C:/Users/AM VM/Downloads/Sistema Padaria 2.0/Custo.png")
+	inteiro ImgPesoUnitario = g.carregar_imagem("C:/Users/AM VM/Downloads/Sistema Padaria 2.0/PesoUnitario.png")
+	inteiro ImgPeso = g.carregar_imagem("C:/Users/AM VM/Downloads/Sistema Padaria 2.0/Peso.png")
+	inteiro ImgUnitario = g.carregar_imagem("C:/Users/AM VM/Downloads/Sistema Padaria 2.0/Unitario.png")
+	inteiro ImgQuantidade = g.carregar_imagem("C:/Users/AM VM/Downloads/Sistema Padaria 2.0/Quantidade.png")
+     inteiro ImgCadastroSucesso = g.carregar_imagem("C:/Users/AM VM/Downloads/Sistema Padaria 2.0/CadastradoSucesso.png")
+	
      
      //RealizarVendas
      /*inteiro TelaCodigo = g.carregar_imagem()
@@ -54,7 +59,10 @@ programa
  //---------------------------------------------------------------------------
 
      funcao inicio()
-     {
+     {	
+     	
+     	
+          
           g.definir_cor(Graficos.COR_BRANCO)
           interacaoBotaoLogar()
      }
@@ -81,10 +89,10 @@ programa
           enquanto (verdadeiro) {
           	
                
-               inteiro TelaMenu2 = g.redimensionar_imagem(TelaMenu, LarguraT, AlturaT, verdadeiro) // variavel que recebe a foto da variavel (telaMenu) e redimensiona para cobrir toda a janela.
+               inteiro telaMenu = g.redimensionar_imagem(ImgMenu, LarguraT, AlturaT, verdadeiro) // variavel que recebe a foto da variavel (telaMenu) e redimensiona para cobrir toda a janela.
                
-               g.desenhar_imagem(0,0, TelaMenu2)
-               g.liberar_imagem(TelaMenu2)  // libera o cache dessa imagem da memoria RAM 
+               g.desenhar_imagem(0,0, telaMenu)
+               g.liberar_imagem(telaMenu)  // libera o cache dessa imagem da memoria RAM 
 			g.renderizar()
 			//Função para Cadastrar Produtos
 
@@ -92,7 +100,7 @@ programa
 			inteiro mou = m.ler_botao() 
 			inteiro botao = 0 , Quantidade = 0
 			cadeia senha = "ADMIN"
-			cadeia texto = ""
+			cadeia texto = "", Nome = ""
 			real Preco = 0.0, Custo= 0.0
 			
 			
@@ -102,7 +110,7 @@ programa
 			
            	se(mouse(Tela(1920,735,LarguraT), Tela(1080,330,AlturaT), Tela(1920,325,LarguraT), Tela(1080,85,AlturaT)) e mou == m.BOTAO_ESQUERDO){
            		botao = 1
-           		f_front_cadastro(texto, senha, Quantidade, Preco, Custo)
+           		f_front_cadastro(senha, Quantidade, Preco, Custo, Nome)
                }
                
                se(mouse(Tela(1920,735,LarguraT), Tela(1080,480,AlturaT), Tela(1920,325,LarguraT), Tela(1080,85,AlturaT)) e mou == m.BOTAO_ESQUERDO){
@@ -149,73 +157,111 @@ programa
           g.encerrar_modo_grafico()
      }
      funcao f_front_venda(){}
-	funcao f_front_cadastro(cadeia &texto, cadeia senha, inteiro &Quantidade, real &Preco, real &Custo){
-               	logico saida = verdadeiro
-               	enquanto(saida){
-               		Apresenta_Registro(0, Tela(1920, 684, LarguraT),Tela(1080, 850, AlturaT),texto)//para login e senha
-               		Escrever(texto, saida)
-               	}
-               	se(texto != senha){
-               		saida = verdadeiro
-               		enquanto(saida){
-               			Apresenta_Registro(1, Tela(1920, 684, LarguraT),Tela(1080, 850, AlturaT),texto)
-               			Escrever(texto, saida)
-               			se(texto != senha){
-               				saida = verdadeiro
-               			}
-               		}
-               	}
-               	saida = verdadeiro
-               	texto = ""
-               	enquanto(saida){
-               		
-               		Apresentar_Cadastro(2,Tela(1920, 694, LarguraT),Tela(1080, 749, AlturaT),texto)
-               		Escrever_Num(0,texto, saida)
-               		se(typ.cadeia_e_inteiro(texto, 10)){
-               			Quantidade = typ.cadeia_para_inteiro(texto,10)
-               		}senao{
-               			saida = verdadeiro
-               		}
-               	}
-               	texto = ""
-               	saida = verdadeiro
-               	enquanto(saida){
-               		inteiro x = m.posicao_x()
-					inteiro y = m.posicao_y()
-               		Apresentar_Cadastro(0,Tela(1920, 694, LarguraT),Tela(1080, 765, AlturaT),texto)
-               		Escrever_Num(1,texto, saida)
-               		se(typ.cadeia_e_real(texto)){
-               			Preco = typ.cadeia_para_real(texto)
-               		}
-               		senao{
-               			saida = verdadeiro
-               		}
-               	}
-               	texto = ""
-               	saida = verdadeiro
-               	enquanto(saida){
-               		Apresentar_Cadastro(1,Tela(1920, 694, LarguraT),Tela(1080, 765, AlturaT),texto)
-               		Escrever_Num(1,texto, saida)
-               		se(typ.cadeia_e_real(texto) ou typ.cadeia_e_inteiro(texto,10)){
-               			Custo = typ.cadeia_para_real(texto)
-               		}
-               		senao{
-               			saida = verdadeiro
-               		}
-               	}
+	funcao f_front_cadastro(cadeia senha, inteiro &Quantidade, real &Preco, real &Custo, cadeia &Nome){
+		logico saida = verdadeiro
+		cadeia texto = ""
+		enquanto(saida){
+			Apresenta_Registro(0, Tela(1920, 684, LarguraT),Tela(1080, 850, AlturaT),texto)//para login e senha
+			Escrever(texto, saida)
+		}
+		se(texto != senha){
+			saida = verdadeiro
+			enquanto(saida){
+				Apresenta_Registro(1, Tela(1920, 684, LarguraT),Tela(1080, 850, AlturaT),texto)
+				Escrever(texto, saida)
+				se(texto != senha){
+					saida = verdadeiro
+				}
+			}
+		}
+		saida = verdadeiro
+		texto = ""
+		enquanto(saida){
+			Apresentar_Cadastro(0, Tela(1920, 694, LarguraT),Tela(1080, 749, AlturaT),texto)//para login e senha
+			Escrever(texto, saida)
+			Nome = texto
+		}
+		saida = verdadeiro
+		texto = ""
+		enquanto(saida){
+			Apresentar_Cadastro(1,Tela(1920, 694, LarguraT),Tela(1080, 745, AlturaT),texto)
+			Escrever_Num(0,texto, saida)
+			se(typ.cadeia_e_inteiro(texto, 10)){
+				Quantidade = typ.cadeia_para_inteiro(texto,10)
+			}
+			senao{
+				saida = verdadeiro
+			}
+		}
+		texto = ""
+		saida = verdadeiro
+		inteiro descisao = 0
+		enquanto(descisao == 0){
+			Apresentar_Cadastro(2,Tela(1920, 694, LarguraT),Tela(1080, 765, AlturaT),texto)
+			inteiro mou = m.ler_botao()
+			se(mouse(Tela(1920,798,LarguraT), Tela(1080,721,AlturaT), Tela(1920,140,LarguraT), Tela(1080,53,AlturaT))e mou == m.BOTAO_ESQUERDO){
+				descisao = 1
+			}
+			senao se(mouse(Tela(1920,951,LarguraT), Tela(1080,721,AlturaT), Tela(1920,140,LarguraT), Tela(1080,53,AlturaT))e mou == m.BOTAO_ESQUERDO){
+				descisao = 2
+			}
+		}
+		texto = ""
+		saida = verdadeiro
+		se(descisao == 1){
+			enquanto(saida){
+				inteiro x = m.posicao_x()
+				inteiro y = m.posicao_y()
+				Apresentar_Cadastro(3,Tela(1920, 694, LarguraT),Tela(1080, 750, AlturaT),texto)
+				Escrever_Num(1,texto, saida)
+				se(typ.cadeia_e_real(texto) ou typ.cadeia_e_inteiro(texto, 10)){
+					Preco = typ.cadeia_para_real(texto)
+				}
+				senao{
+					saida = verdadeiro
+				}
+			}
+		}
+		senao se(descisao == 2){
+			enquanto(saida){
+				Apresentar_Cadastro(4,Tela(1920, 694, LarguraT),Tela(1080, 750, AlturaT),texto)
+				Escrever_Num(1,texto, saida)
+				se(typ.cadeia_e_real(texto) ou typ.cadeia_e_inteiro(texto, 10)){
+					Preco = typ.cadeia_para_real(texto)
+				}
+				senao{
+					saida = verdadeiro
+				}
+			}
+		}
+		texto = ""
+		saida = verdadeiro
+		enquanto(saida){
+			Apresentar_Cadastro(5,Tela(1920, 694, LarguraT),Tela(1080, 765, AlturaT),texto)
+			Escrever_Num(1,texto, saida)
+			se(typ.cadeia_e_real(texto)){
+				Preco = typ.cadeia_para_real(texto)
+			}
+			senao{
+				saida = verdadeiro
+			}
+		}
+		texto = ""
+		Apresentar_Cadastro(6,0,0,texto)
+		utl.aguarde(3500)
 	}
      funcao vazio Apresenta_Registro(inteiro id, inteiro x, inteiro y,cadeia &texto)// função para aparecer a outra tela 
      {
      	se(id == 0){
-	     	inteiro TelaAdm = g.redimensionar_imagem(TelaVerificaAdm, LarguraT, AlturaT, verdadeiro)
-	     	g.desenhar_imagem(0, 0, TelaAdm)
-	     	g.desenhar_texto(x, y, texto)
-	     	g.liberar_imagem(TelaAdm)
+     		inteiro telaAcesso = g.redimensionar_imagem(ImgAcesso, LarguraT, AlturaT, verdadeiro)
+	     	g.desenhar_imagem(0, 0, telaAcesso)
+	     	g.desenhar_texto(x, y, texto+"_")
+	     	g.liberar_imagem(telaAcesso)
      	}
      	senao se(id == 1){
-     		inteiro telaAcessoNegado = g.redimensionar_imagem(TelaAdmNegado, LarguraT, AlturaT, verdadeiro)
+     		inteiro telaAcessoNegado = g.redimensionar_imagem(ImgAcessoNegado, LarguraT, AlturaT, verdadeiro)
      		g.desenhar_imagem(0, 0, telaAcessoNegado)
-     		g.desenhar_texto(x, y, texto)
+     		g.desenhar_texto(x, y, texto+"_")
      		g.liberar_imagem(telaAcessoNegado)
      	} 
      	g.renderizar()
@@ -223,24 +269,50 @@ programa
 	funcao Apresentar_Cadastro(inteiro id, inteiro x, inteiro y,cadeia &texto){
 		escolha(id){
 			caso 0:
-				inteiro telaCustoR = g.redimensionar_imagem(TelaCusto, LarguraT, AlturaT, verdadeiro)
-			     g.desenhar_imagem(0, 0, telaCustoR)
-			     g.liberar_imagem(telaCustoR)
-		     	pare
-		     caso 1:
-		     	inteiro telaPrecoR = g.redimensionar_imagem(TelaPreco, LarguraT, AlturaT, verdadeiro)
-			     g.desenhar_imagem(0, 0, telaPrecoR)
-			     g.liberar_imagem(telaPrecoR)
-		     	pare
-		     caso 2:
-		     	inteiro telaQuantidade = g.redimensionar_imagem(TelaQuantidade, LarguraT, AlturaT, verdadeiro)
+				inteiro telaNome = g.redimensionar_imagem(ImgNome, LarguraT, AlturaT, verdadeiro)
+				g.desenhar_imagem(0, 0, telaNome)
+				g.desenhar_texto(x, y, texto+"_")
+			     g.liberar_imagem(telaNome)
+				pare
+			caso 1:
+				inteiro telaQuantidade = g.redimensionar_imagem(ImgQuantidade, LarguraT, AlturaT, verdadeiro)
 			     g.desenhar_imagem(0, 0, telaQuantidade)
+			     g.desenhar_texto(x, y, texto+"_")
 			     g.liberar_imagem(telaQuantidade)
 		     	pare
+		     caso 2:
+		     	inteiro telaPesoUnitario = g.redimensionar_imagem(ImgPesoUnitario, LarguraT, AlturaT, verdadeiro)
+			     g.desenhar_imagem(0, 0, telaPesoUnitario)
+			     g.liberar_imagem(telaPesoUnitario)
+		     	pare
+		     caso 3:
+		     	inteiro telaPeso = g.redimensionar_imagem(ImgPeso, LarguraT, AlturaT, verdadeiro)
+		     	g.desenhar_imagem(0, 0, telaPeso)
+		     	g.desenhar_texto(x, y, texto+"_")
+		     	g.liberar_imagem(telaPeso)
+		     	pare
+		     caso 4:
+		     	inteiro telaUnitario = g.redimensionar_imagem(ImgUnitario, LarguraT, AlturaT, verdadeiro)
+		     	g.desenhar_imagem(0, 0, telaUnitario)
+		     	g.desenhar_texto(x, y, texto+"_")
+		     	g.liberar_imagem(telaUnitario)
+		     	pare
+		     caso 5:
+		     	inteiro telaCusto = g.redimensionar_imagem(ImgCusto, LarguraT, AlturaT, verdadeiro)
+			     g.desenhar_imagem(0, 0, telaCusto)
+			     g.desenhar_texto(x, y, texto+"_")
+			     g.liberar_imagem(telaCusto)
+		     	pare
+		      caso 6:
+		     	inteiro telaCadastroSucesso = g.redimensionar_imagem(ImgCadastroSucesso, LarguraT, AlturaT, verdadeiro)
+			     g.desenhar_imagem(0, 0, telaCadastroSucesso)
+			     g.liberar_imagem(telaCadastroSucesso)
+		     	pare
 		}
-		g.desenhar_texto(x, y, texto)
+		
 		g.renderizar()
 	}
+	
 	funcao inteiro Tela(inteiro Base, inteiro posiTam, inteiro tela){
 		retorne ((tela*posiTam)/Base)
 	}
@@ -297,3 +369,14 @@ programa
      }
 	
 }
+/* $$$ Portugol Studio $$$ 
+ * 
+ * Esta seção do arquivo guarda informações do Portugol Studio.
+ * Você pode apagá-la se estiver utilizando outro editor.
+ * 
+ * @POSICAO-CURSOR = 13724; 
+ * @PONTOS-DE-PARADA = ;
+ * @SIMBOLOS-INSPECIONADOS = {x, 73, 33, 1}-{y, 73, 44, 1};
+ * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
+ * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
+ */
