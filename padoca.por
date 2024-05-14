@@ -40,10 +40,11 @@ programa
 					verifAcess(password,teste)
 					se(teste==verdadeiro){
 					inteiro y=0
-						escreva("Quantos produtos irá cadastrar?: ")
-						leia(y)
+					cadeia texto="Quantos produtos irá cadastrar?:\n->"
+						/*escreva("Quantos produtos irá cadastrar?: ")
+						leia(y)*/
 						limpa()
-					para(inteiro i=0; i<y; i++){
+					para(inteiro i=0; i<entradaBaseInteiro(texto); i++){
 						numDeVet[0]++
 						cadastroProduto(vetsrc[1], numDeVet[0])
 					}
@@ -693,6 +694,7 @@ programa
           faca {
                escreva(texto)//Escreve o texto recebido pelo parâmetro.
                leia(opcao)//Parâmetro opçao recebe valor do usuário.
+               limpa()
                //Se opcao for real ou inteiro ou vazio.
                se (typ.cadeia_e_real(opcao) == verdadeiro ou typ.cadeia_e_inteiro(opcao, 10) == verdadeiro ou opcao == "")
                {
@@ -718,6 +720,7 @@ programa
           {
                escreva(texto)//Escreve o texto recebido pelo parâmetro.
                leia(opcao)//Parâmetro opçao recebe valor do usuário.
+               limpa()
                //Se opcao não for um número real.
                se (typ.cadeia_e_real(opcao) == falso e typ.cadeia_e_inteiro(opcao,10) == falso)
                {
@@ -750,6 +753,7 @@ programa
           faca {
                escreva(texto)//escreve o texto do parâmetro texto.
                leia(opcao)//opcao lê e recebe entrada de usuário.
+               limpa()
                //se opcao não for inteiro 
                se (typ.cadeia_e_inteiro(opcao, 10) == falso) {
               		//Opção inválida. 
@@ -809,10 +813,13 @@ programa
 				leia(senha)
 				limpa()
 				se(senha=="x" ou senha=="X"){
+					teste=falso
+					retorne teste
+				}senao se(senha==password){
 					teste=verdadeiro
-					pare
+					retorne teste
 				}
-			}enquanto(contador!=5)
+			}enquanto(contador!=5 ou senha=="x" ou senha=="X")
 			se(senha!=password e senha!="x" ou senha=="X"){
 				para(inteiro i=30;i>0;i--){
 				escreva("Você errou a senha 5 vezes\nVocê será redirecionado para o menu em ",i," segundos.\n->")
@@ -823,8 +830,10 @@ programa
 			contador=0
 			pare
 		}
-		}
 		teste=verdadeiro
+		retorne teste
+		}
+		teste=falso
 		retorne teste
      }
 }
@@ -833,10 +842,10 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 28096; 
- * @DOBRAMENTO-CODIGO = [67, 73, 371, 470, 533, 546, 567, 589, 620, 639, 669, 687, 710, 744, 775, 797];
+ * @POSICAO-CURSOR = 975; 
+ * @DOBRAMENTO-CODIGO = [68, 74, 372, 471, 534, 547, 568, 590, 621, 640, 670, 688, 712, 747, 779, 801];
  * @PONTOS-DE-PARADA = ;
- * @SIMBOLOS-INSPECIONADOS = ;
+ * @SIMBOLOS-INSPECIONADOS = {contador, 804, 10, 8};
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
  * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
  */
