@@ -1,4 +1,0 @@
-/1//PAO DE FORMA//150//true//7.59//5.4/
-/2//SORVETE DE BAUNILHA//150//true//22.0//12.0/
-/3//BOLO//150//true//44.0//22.0/
-/4//LEITE//150//true//5.99//4.99/
