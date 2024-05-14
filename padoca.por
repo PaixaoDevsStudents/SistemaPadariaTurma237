@@ -39,12 +39,9 @@ programa
 					//cadastrar produtos
 					verifAcess(password,teste)
 					se(teste==verdadeiro){
-					inteiro y=0
 					cadeia texto="Quantos produtos irá cadastrar?:\n->"
-						/*escreva("Quantos produtos irá cadastrar?: ")
-						leia(y)*/
-						limpa()
-					para(inteiro i=0; i<entradaBaseInteiro(texto); i++){
+					inteiro y=entradaBaseInteiro(texto)
+					para(inteiro i=0; i<y; i++){
 						numDeVet[0]++
 						cadastroProduto(vetsrc[1], numDeVet[0])
 					}
@@ -842,10 +839,10 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 1375; 
- * @DOBRAMENTO-CODIGO = [68, 74, 372, 471, 534, 547, 568, 590, 621, 640, 670, 688, 712, 747, 779, 801];
+ * @POSICAO-CURSOR = 1430; 
+ * @DOBRAMENTO-CODIGO = [65, 71, 369, 468, 531, 544, 565, 587, 618, 637, 667, 685, 709, 744, 776, 798];
  * @PONTOS-DE-PARADA = ;
- * @SIMBOLOS-INSPECIONADOS = {contador, 804, 10, 8};
+ * @SIMBOLOS-INSPECIONADOS = {i, 44, 18, 1}-{x, 748, 18, 1}-{contador, 801, 10, 8};
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
  * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
  */
