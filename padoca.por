@@ -34,7 +34,6 @@ programa
 	
 	funcao inicio()
 	{	
-
 		//variaveis
 		inteiro arquivo, mnu=0, qtd_estoque=0, id_produto=0
 		real val_uni=0.0, val_custo=0.0
@@ -80,6 +79,7 @@ programa
 			inteiro opcaoInterna , saidaLoop = 0//declara variáveis de opção e saida de loop
 			inteiro quantidadeVend = 0//Variável para a quantidade de produtos que será comprada.
 			real preco = typ.cadeia_para_real(vetorProd[3])//declara variável de preco e dá o preço do produto
+
 			inteiro reposicao //variavel de quantidade de reposição de estoque
 			
 			cadeia linhaVend = ""//variável que guardará os dados atualizados da venda
@@ -143,18 +143,19 @@ programa
 					se(opcaoInterna == 1){escreva("Forma de pagamento em dinheiro foi escolhido.\n10% de desconto foi acrescentado ao valor da compra.\n")}
 					//se opção for PIX escreve texto sobre a escolha
 					se(opcaoInterna == 2){escreva("Forma de pagamento em PIX foi escolhido.\n10% de desconto de acrescimo foi acrescentado ao valor da compra.\n")}
-					valorTotal += (preco * quantidadeVend) - (preco * quantidadeVend)*0.1//valorTotal recebe o valor da compra
+					valorTotal += (preco * quantidadeVend)//valorTotal recebe o valor da compra
+					
 					valorTotalD += valorTotal
 					pare
 				// caso cartão: acréscimo de 3%
 				caso 3:
 					//opção foi cartão, escreve texto sobre escolha
 					escreva("Forma de pagamento em cartão de crédito/débito foi escolhido.\n3% de acrescimo foi acrescentado ao valor da compra.\n")
-					valorTotal += (preco * quantidadeVend) + (preco * quantidadeVend)*0.03//valorTotal recebe o valor da compra
+					valorTotal += (preco * quantidadeVend)//valorTotal recebe o valor da compra
 					valorTotalD += valorTotal
 					pare
 			}
-			
+
 			vetorProd[2] = ""//vetor de produto com id de estoque é limpo
 			vetorProd[2] += (limite - quantidadeVend)//vetor de produto com id de estoque recebe o estoque diminuído
 			
@@ -172,7 +173,6 @@ programa
 			escreva("|Código: ",vetorVend[0],"\n|Nome: ",vetorVend[1],"\n|Quantidade: ",quantidadeVend,"\n|Preço da compra do produto: ",valorTotal,"\n")
 			escreva("======================\n")
 			
-
 			linhaSubsProd = ""//linhaSubsProd é limpo
 			//loop para concatenar dados de produto a linha de atualização do produto
 			para(inteiro i = 0; i < PROD; i++){
@@ -234,6 +234,7 @@ programa
 					arqVenda = src.abrir_arquivo(caminho[2], src.MODO_ACRESCENTAR)//abre PRODBase de vendas e armazena endereço de memória na variável arqVendas em modo de acréscimo
 					arqVendaDiaria = src.abrir_arquivo(caminho[3], src.MODO_ACRESCENTAR)//abre PRODBase de vendas e armazena endereço de memória na variável arqVendas em modo de acréscimo
 					//se venda de produto com código ainda não foi registrado 
+
 					se(cod == 0 ou codD == 0){
 						//loop para atribuir dados de venda a vetorVend
 						para(inteiro j = 0; j < VENDA; j++){
@@ -307,6 +308,7 @@ programa
 						}
 					}
 					//substitui os dados antigos do produto vendido pelos novos dados atualizados
+
 					src.substituir_texto(caminho[1], linhaOriginal, linhaSubsProd, verdadeiro)
 					src.fechar_arquivo(arqVendaDiaria)//fecha arquivo
 					src.fechar_arquivo(arqVenda)//fecha arquivo
@@ -466,6 +468,7 @@ programa
 		}
 		retorne nome
 	}
+
 	funcao pesquisarProduto(inteiro id,cadeia caminho[], inteiro vetDeNum[], real saldoCaixa){
 		inteiro opcaoInterna, arquivo, saidaLoop, j = 1
 		cadeia vetInfProd[5]
@@ -721,6 +724,7 @@ programa
           faca {
                escreva(texto)//Escreve o texto recebido pelo parâmetro.
                leia(opcao)//Parâmetro opçao recebe valor do usuário.
+               limpa()
                //Se opcao for real ou inteiro ou vazio.
                se (typ.cadeia_e_real(opcao) == verdadeiro ou typ.cadeia_e_inteiro(opcao, 10) == verdadeiro ou opcao == "")
                {
@@ -746,6 +750,7 @@ programa
           {
                escreva(texto)//Escreve o texto recebido pelo parâmetro.
                leia(opcao)//Parâmetro opçao recebe valor do usuário.
+               limpa()
                //Se opcao não for um número real.
                se (typ.cadeia_e_real(opcao) == falso e typ.cadeia_e_inteiro(opcao,10) == falso)
                {
@@ -778,6 +783,7 @@ programa
           faca {
                escreva(texto)//escreve o texto do parâmetro texto.
                leia(opcao)//opcao lê e recebe entrada de usuário.
+               limpa()
                //se opcao não for inteiro 
                se (typ.cadeia_e_inteiro(opcao, 10) == falso) {
               		//Opção inválida. 
@@ -823,7 +829,7 @@ programa
 		}enquanto(saidaLoop != 1 e saidaLoop != 2)
 		retorne saidaLoop
      }
-     funcao vazio verifAcess (cadeia password){
+    funcao vazio verifAcess (cadeia password){
 		cadeia senha
 		inteiro contador=0
 		escreva("Verificação de Acesso\n\nDigite a senha para continuar:\n->")
@@ -1166,17 +1172,17 @@ programa
           
      }
 	
-}
 
+}
 /* $$$ Portugol Studio $$$ 
  * 
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
- * 
- * @POSICAO-CURSOR = 1902; 
- * @DOBRAMENTO-CODIGO = [44, 52, 206, 212, 216, 221, 225, 236, 273, 200, 58, 355, 365, 369, 468, 531, 544, 575, 606, 625, 658, 697, 715, 738, 772, 803, 825, 854, 951, 1050, 1066, 1113, 1116, 1138];
+ *
+ * @POSICAO-CURSOR = 1430; 
+ * @DOBRAMENTO-CODIGO = [65, 71, 369, 468, 531, 544, 565, 587, 618, 637, 667, 685, 709, 744, 776, 798];
  * @PONTOS-DE-PARADA = ;
- * @SIMBOLOS-INSPECIONADOS = {texto, 954, 9, 5};
+ * @SIMBOLOS-INSPECIONADOS = {i, 44, 18, 1}-{x, 748, 18, 1}-{contador, 801, 10, 8};
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
  * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
  */
