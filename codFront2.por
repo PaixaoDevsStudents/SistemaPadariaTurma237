@@ -110,7 +110,11 @@ programa
 			
            	se(mouse(Tela(1920,735,LarguraT), Tela(1080,330,AlturaT), Tela(1920,325,LarguraT), Tela(1080,85,AlturaT)) e mou == m.BOTAO_ESQUERDO){
            		botao = 1
-           		f_front_cadastro(senha, Quantidade, Preco, Custo, Nome)
+           		cadeia Produto[6]
+           		para(inteiro i = 0; i < 6; i++){
+           			Produto[i] = ""
+           		}
+           		f_front_cadastro(senha, Produto)
                }
                
                se(mouse(Tela(1920,735,LarguraT), Tela(1080,480,AlturaT), Tela(1920,325,LarguraT), Tela(1080,85,AlturaT)) e mou == m.BOTAO_ESQUERDO){
@@ -157,7 +161,7 @@ programa
           g.encerrar_modo_grafico()
      }
      funcao f_front_venda(){}
-	funcao f_front_cadastro(cadeia senha, inteiro &Quantidade, real &Preco, real &Custo, cadeia &Nome){
+	funcao f_front_cadastro(cadeia senha, cadeia &vetor[]){
 		logico saida = verdadeiro
 		cadeia texto = ""
 		enquanto(saida){
@@ -179,7 +183,7 @@ programa
 		enquanto(saida){
 			Apresentar_Cadastro(0, Tela(1920, 694, LarguraT),Tela(1080, 749, AlturaT),texto)//para login e senha
 			Escrever(texto, saida)
-			Nome = texto
+			vetor[1] = texto
 		}
 		saida = verdadeiro
 		texto = ""
@@ -187,7 +191,7 @@ programa
 			Apresentar_Cadastro(1,Tela(1920, 694, LarguraT),Tela(1080, 745, AlturaT),texto)
 			Escrever_Num(0,texto, saida)
 			se(typ.cadeia_e_inteiro(texto, 10)){
-				Quantidade = typ.cadeia_para_inteiro(texto,10)
+				vetor[2] += typ.cadeia_para_inteiro(texto,10)
 			}
 			senao{
 				saida = verdadeiro
@@ -201,9 +205,11 @@ programa
 			inteiro mou = m.ler_botao()
 			se(mouse(Tela(1920,798,LarguraT), Tela(1080,721,AlturaT), Tela(1920,140,LarguraT), Tela(1080,53,AlturaT))e mou == m.BOTAO_ESQUERDO){
 				descisao = 1
+				vetor[3] += verdadeiro
 			}
 			senao se(mouse(Tela(1920,951,LarguraT), Tela(1080,721,AlturaT), Tela(1920,140,LarguraT), Tela(1080,53,AlturaT))e mou == m.BOTAO_ESQUERDO){
 				descisao = 2
+				vetor[3] += falso
 			}
 		}
 		texto = ""
@@ -215,7 +221,7 @@ programa
 				Apresentar_Cadastro(3,Tela(1920, 694, LarguraT),Tela(1080, 750, AlturaT),texto)
 				Escrever_Num(1,texto, saida)
 				se(typ.cadeia_e_real(texto) ou typ.cadeia_e_inteiro(texto, 10)){
-					Preco = typ.cadeia_para_real(texto)
+					vetor[4] += typ.cadeia_para_real(texto)
 				}
 				senao{
 					saida = verdadeiro
@@ -227,7 +233,7 @@ programa
 				Apresentar_Cadastro(4,Tela(1920, 694, LarguraT),Tela(1080, 750, AlturaT),texto)
 				Escrever_Num(1,texto, saida)
 				se(typ.cadeia_e_real(texto) ou typ.cadeia_e_inteiro(texto, 10)){
-					Preco = typ.cadeia_para_real(texto)
+					vetor[4] += typ.cadeia_para_real(texto)
 				}
 				senao{
 					saida = verdadeiro
@@ -240,7 +246,7 @@ programa
 			Apresentar_Cadastro(5,Tela(1920, 694, LarguraT),Tela(1080, 765, AlturaT),texto)
 			Escrever_Num(1,texto, saida)
 			se(typ.cadeia_e_real(texto)){
-				Preco = typ.cadeia_para_real(texto)
+				vetor[5] += typ.cadeia_para_real(texto)
 			}
 			senao{
 				saida = verdadeiro
@@ -374,7 +380,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 13724; 
+ * @POSICAO-CURSOR = 4701; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = {x, 73, 33, 1}-{y, 73, 44, 1};
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
