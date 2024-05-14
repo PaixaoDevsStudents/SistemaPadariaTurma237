@@ -23,31 +23,28 @@ programa
 		inteiro numDeVet[3]
 		logico saida = verdadeiro, teste=falso
 		//leitura de arquivos
-		para(inteiro c=0;c<5;c++){
+		/*para(inteiro c=0;c<5;c++){
 			escreva("Selecione a sequência de arquivos:\n1-Histórico\n2-Produtos Registrados\n3-Total de vendas\n4-Vendas do dia\n5-Registro de vendas")
 			vetsrc[c] = src.selecionar_arquivo(typdata, verdadeiro)
 			limpa()
-		}
+		}*/
 		//menu de opções
 		faca{
-			numDeVet[0] = totalProdutos(vetsrc[1])
+			/*numDeVet[0] = totalProdutos(vetsrc[1])
 			numDeVet[1] = totalProdutos(vetsrc[2])
-			numDeVet[2] = totalProdutos(vetsrc[3])
+			numDeVet[2] = totalProdutos(vetsrc[3])*/
 			imprime_mnu(mnu)
 			escolha(mnu){
 				caso 1:
 					//cadastrar produtos
 					verifAcess(password,teste)
 					se(teste==verdadeiro){
-					inteiro y=0
-					cadeia texto="Quantos produtos irá cadastrar?:\n->"
-						/*escreva("Quantos produtos irá cadastrar?: ")
-						leia(y)*/
-						limpa()
-					para(inteiro i=0; i<entradaBaseInteiro(texto); i++){
-						numDeVet[0]++
-						cadastroProduto(vetsrc[1], numDeVet[0])
-					}
+						cadeia texto="Quantos produtos irá cadastrar?:\n->"
+						inteiro y=entradaBaseInteiro(texto)
+						para(inteiro i=0; i<y; i++){
+							numDeVet[0]++
+							cadastroProduto(vetsrc[1], numDeVet[0])
+						}
 					}
 				pare
 				caso 2:
@@ -61,7 +58,7 @@ programa
 				caso 4:
 					saida=falso
 					//fechar caixa
-
+					
 				pare
 			}//
 		}enquanto(saida==verdadeiro)
@@ -800,17 +797,14 @@ programa
 		retorne saidaLoop
      }
      funcao logico verifAcess (cadeia password, logico &teste){
-		cadeia senha=""
+		cadeia senha="",texto="Verificação de acesso\nInforme a senha de segurança\n->"
 		inteiro contador=1
-		escreva("Verificação de acesso\nInforme a senha de segurança\n->")
-		leia(senha)
-		limpa()
+		senha=entradaBaseCadeia(texto)
 		se(senha!="x" ou senha=="X"){
 			enquanto(senha!=password){
 			faca{
 				contador++
-				escreva("Senha incorreta\nInforme a senha novamente\n->")
-				leia(senha)
+				senha=entradaBaseCadeia(texto)
 				limpa()
 				se(senha=="x" ou senha=="X"){
 					teste=falso
@@ -842,10 +836,10 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 975; 
- * @DOBRAMENTO-CODIGO = [68, 74, 372, 471, 534, 547, 568, 590, 621, 640, 670, 688, 712, 747, 779, 801];
+ * @POSICAO-CURSOR = 33082; 
+ * @DOBRAMENTO-CODIGO = [65, 71, 369, 468, 531, 544, 565, 587, 618, 637, 667, 685, 709, 744, 776];
  * @PONTOS-DE-PARADA = ;
- * @SIMBOLOS-INSPECIONADOS = {contador, 804, 10, 8};
+ * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
  * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
  */
