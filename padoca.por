@@ -563,13 +563,14 @@ programa
 		retorne entrada
 		
 	}
-	funcao cadastroProduto(cadeia caminho, inteiro numDeProd){
-		cadeia vetor[PROD]
+	funcao cadastroProduto(cadeia caminho, inteiro numDeProd, cadeia senha){
+		cadeia vetor[6]
 		//loop para limpar o vetor de valores vazios
 		para(inteiro i = 0; i< PROD; i++){
 			vetor[i] = ""
 		}
-		f_front_produto()
+		vetor[0] += (numDeProd+1)
+		f_front_cadastro(senha, vetor)
           passeProduto(1, caminho , vetor)//passa os dados do produto para o arquivo
 	}
 	funcao cadeia leiaProduto(cadeia vetor[], inteiro arquivo){
@@ -874,25 +875,12 @@ programa
 
 			inteiro VerificaAdm = 0
 			inteiro mou = m.ler_botao() 
-			inteiro botao = 0 , Quantidade = 0
+			inteiro botao = 0
 			cadeia senha = "ADMIN"
-			cadeia texto = "", Nome = ""
-			real Preco = 0.0, Custo= 0.0
-			
-			
-       	  	//745, 480, 305, 84
-       	  	//mouse(posicao x onde botão será criado,posicao y onde botão será criado,largura do botão que será criado, altura do botão que será criado )
-			////////////////////////////
-			
+
            	se(mouse(Tela(1920,735,LarguraT), Tela(1080,330,AlturaT), Tela(1920,325,LarguraT), Tela(1080,85,AlturaT)) e mou == m.BOTAO_ESQUERDO){
            		botao = 1
-           		cadeia Produto[6]
-           		para(inteiro i = 0; i < 6; i++){
-           			Produto[i] = ""
-           		}
-           		f_front_cadastro(senha, Produto)
                }
-               
                se(mouse(Tela(1920,735,LarguraT), Tela(1080,480,AlturaT), Tela(1920,325,LarguraT), Tela(1080,85,AlturaT)) e mou == m.BOTAO_ESQUERDO){
                	botao = 2
                }
@@ -902,13 +890,15 @@ programa
                se(mouse(Tela(1920,735,LarguraT), Tela(1080,765,AlturaT), Tela(1920,325,LarguraT), Tela(1080,85,AlturaT)) e mou == m.BOTAO_ESQUERDO){
                	botao = 4
                }
+               numDeVet[0] = totalProdutos(vetsrc[1])
+               numDeVet[1] = totalProdutos(vetsrc[2])
+			numDeVet[2] = totalProdutos(vetsrc[3])
                escolha(botao){
 				caso 1:
 					//cadastrar produtos
-					cadastroProduto(vetsrc[1], numDeVet[0])
+					cadastroProduto(vetsrc[1], numDeVet[0], senha)
 				pare
 				caso 2:
-					
 					//realizar vendas
 					real saldoCaixa = abrirCaixa(0.0)
 					pesquisarProduto(0,vetsrc,numDeVet, saldoCaixa)
@@ -984,6 +974,7 @@ programa
 		enquanto(saida){
 			Apresentar_Cadastro(0, Tela(1920, 694, LarguraT),Tela(1080, 749, AlturaT),texto)//para login e senha
 			Escrever(texto, saida)
+			
 			vetor[1] = texto
 		}
 		saida = verdadeiro
@@ -992,7 +983,7 @@ programa
 			Apresentar_Cadastro(1,Tela(1920, 694, LarguraT),Tela(1080, 745, AlturaT),texto)
 			Escrever_Num(0,texto, saida)
 			se(typ.cadeia_e_inteiro(texto, 10)){
-				vetor[2] += typ.cadeia_para_inteiro(texto,10)
+				vetor[2] = texto
 			}
 			senao{
 				saida = verdadeiro
@@ -1022,7 +1013,8 @@ programa
 				Apresentar_Cadastro(4,Tela(1920, 694, LarguraT),Tela(1080, 750, AlturaT),texto)
 				Escrever_Num(1,texto, saida)
 				se(typ.cadeia_e_real(texto) ou typ.cadeia_e_inteiro(texto, 10)){
-					vetor[4] += typ.cadeia_para_real(texto)
+					real valor = typ.cadeia_para_real(texto)
+					vetor[4] = typ.real_para_cadeia(valor)
 				}
 				senao{
 					saida = verdadeiro
@@ -1034,7 +1026,8 @@ programa
 				Apresentar_Cadastro(3,Tela(1920, 694, LarguraT),Tela(1080, 750, AlturaT),texto)
 				Escrever_Num(1,texto, saida)
 				se(typ.cadeia_e_real(texto) ou typ.cadeia_e_inteiro(texto, 10)){
-					vetor[4] += typ.cadeia_para_real(texto)
+					real valor = typ.cadeia_para_real(texto)
+					vetor[4] = typ.real_para_cadeia(valor)
 				}
 				senao{
 					saida = verdadeiro
@@ -1047,7 +1040,8 @@ programa
 			Apresentar_Cadastro(5,Tela(1920, 694, LarguraT),Tela(1080, 765, AlturaT),texto)
 			Escrever_Num(1,texto, saida)
 			se(typ.cadeia_e_real(texto) ou typ.cadeia_e_inteiro(texto, 10)){
-				vetor[5] += typ.cadeia_para_real(texto)
+				real valor = typ.cadeia_para_real(texto)
+				vetor[5] = typ.real_para_cadeia(valor)
 			}
 			senao{
 				saida = verdadeiro
@@ -1182,10 +1176,10 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 24741; 
- * @DOBRAMENTO-CODIGO = [44, 52, 206, 212, 216, 221, 225, 236, 273, 200, 58, 355, 365, 369, 468, 531, 544, 574, 605, 624, 657, 696, 714, 737, 771, 802, 824, 853, 964, 1059, 1075, 1122, 1125, 1147];
+ * @POSICAO-CURSOR = 37572; 
+ * @DOBRAMENTO-CODIGO = [44, 52, 206, 212, 216, 221, 225, 236, 273, 200, 58, 355, 365, 369, 468, 531, 544, 575, 606, 625, 658, 697, 715, 738, 772, 803, 825, 854, 954, 1053, 1069, 1116, 1119, 1141];
  * @PONTOS-DE-PARADA = ;
- * @SIMBOLOS-INSPECIONADOS = ;
+ * @SIMBOLOS-INSPECIONADOS = {texto, 957, 9, 5};
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
  * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
  */
