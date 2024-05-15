@@ -17,6 +17,7 @@ programa
 //--------------------------------------------------------------------
  
  /*TELAS*/
+ 	//Caminho base
  	cadeia computador =  utl.obter_diretorio_usuario()
 	//Menu 
 	inteiro ImgMenu = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\Menu.png")
@@ -34,18 +35,19 @@ programa
 	
      
      //RealizarVendas
-     /*inteiro TelaCodigo = g.carregar_imagem()
-     inteiro TelaQuantidade = g.carregar_imagem()
-     inteiro TelaQuantErrada = g.carregar_imagem()
-     inteiro TelaValor = g.carregar_imagem()
-     inteiro TelaTroco = g.carregar_imagem()
-     inteiro TelaFormaPag = g.carregar_imagem()
-     inteiro TelaPagCart = g.carregar_imagem()
-     inteiro TelaOpcCart = g.carregar_imagem()
-     inteiro TelaPagCartConc = g.carregar_imagem()
-     inteiro TelaPagPix = g.carregar_imagem()
-     inteiro TelaPagPixConc = g.carregar_imagem()
+     inteiro TelaCodigo = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\g ")
+     inteiro TelaQuantidade = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\")
+     inteiro TelaQuantErrada = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\")
+     inteiro TelaValor = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\")
+     inteiro TelaTroco = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\")
+     inteiro TelaFormaPag = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\")
+     inteiro TelaPagCart = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\")
+     inteiro TelaOpcCart = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\")
+     inteiro TelaPagCartConc = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\")
+     inteiro TelaPagPix = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\")
+     inteiro TelaPagPixConc = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\")
 
+     /*
      //Relatório
      inteiro TelaRelatDia = g.carregar_imagem()
      inteiro TelaVerificaAdm = g.carregar_imagem()
@@ -379,10 +381,10 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 5370; 
- * @DOBRAMENTO-CODIGO = [109, 162, 257, 273, 320, 323, 345];
+ * @POSICAO-CURSOR = 650; 
+ * @DOBRAMENTO-CODIGO = [111, 164, 259, 275, 322, 325, 347];
  * @PONTOS-DE-PARADA = ;
- * @SIMBOLOS-INSPECIONADOS = {x, 73, 33, 1}-{y, 73, 44, 1}-{botao, 100, 11, 5}-{Produto, 112, 20, 7};
+ * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
  * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
  */
