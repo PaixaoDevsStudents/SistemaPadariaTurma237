@@ -16,24 +16,28 @@ programa
 	const inteiro VENDA = 4
      inteiro LarguraT = grf.largura_tela()
      inteiro AlturaT = grf.altura_tela()
-	cadeia computador =  utl.obter_diretorio_usuario()
-	//Menu 
-	inteiro ImgMenu = grf.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\Menu.png")
-     //Login e Senha
-     inteiro ImgAcesso = grf.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\VerificarAcesso.png")
-     inteiro ImgAcessoNegado = grf.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\AcessoNegado.png")
-     //cadastro
-     inteiro ImgNome = grf.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\Nome.png")
-    	inteiro ImgCusto = grf.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\Custo.png")
-	inteiro ImgPesoUnitario = grf.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\PesoUnitario.png")
-	inteiro ImgPeso = grf.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\Peso.png")
-	inteiro ImgUnitario = grf.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\Unitario.png")
-	inteiro ImgQuantidade = grf.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\Quantidade.png")
-     inteiro ImgCadastroSucesso = grf.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\CadastradoSucesso.png")
+     
+	inteiro ImgMenu = grf.carregar_imagem("./SistemaPadariaTurma237midia/imagens/Sistema Padaria 2.0/Menu.png")
+	//Login e Senha
+	inteiro ImgAcesso = grf.carregar_imagem("./SistemaPadariaTurma237/midia/imagens/Sistema Padaria 2.0/VerificarAcesso.png")
+	inteiro ImgAcessoNegado = grf.carregar_imagem("./SistemaPadariaTurma237/midia/imagens/Sistema Padaria 2.0/AcessoNegado.png")
+	//cadastro
+	inteiro ImgNome = grf.carregar_imagem("./SistemaPadariaTurma237/midia/imagens/Sistema Padaria 2.0/Nome.png")
+	inteiro ImgCusto = grf.carregar_imagem("./SistemaPadariaTurma237/midia/imagens/Sistema Padaria 2.0/Custo.png")
+	inteiro ImgPesoUnitario = grf.carregar_imagem("./SistemaPadariaTurma237/midia/imagens/Sistema Padaria 2.0/PesoUnitario.png")
+	inteiro ImgPeso = grf.carregar_imagem("./SistemaPadariaTurma237/midia/imagens/Sistema Padaria 2.0/Peso.png")
+	inteiro ImgUnitario = grf.carregar_imagem("./SistemaPadariaTurma237/midia/imagens/Sistema Padaria 2.0/Unitario.png")
+	inteiro ImgQuantidade = grf.carregar_imagem("./SistemaPadariaTurma237/midia/imagens/Sistema Padaria 2.0/Quantidade.png")
+	inteiro ImgCadastroSucesso = grf.carregar_imagem("./SistemaPadariaTurma237/midia/imagens/Sistema Padaria 2.0/CadastradoSucesso.png")
+     cadeia pastas[24]
 	
 	
 	funcao inicio()
 	{	
+		src.listar_arquivos("./SistemaPadariaTurma237/midia/imagens/Sistema Padaria 2.0/", pastas)
+		para(inteiro i = 0; i < utl.numero_elementos(pastas); i++){
+			escreva(pastas[i])
+		}
 		//variaveis
 		inteiro arquivo, mnu=0, qtd_estoque=0, id_produto=0
 		real val_uni=0.0, val_custo=0.0
@@ -1178,11 +1182,11 @@ programa
  * 
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
- *
- * @POSICAO-CURSOR = 1430; 
- * @DOBRAMENTO-CODIGO = [65, 71, 369, 468, 531, 544, 565, 587, 618, 637, 667, 685, 709, 744, 776, 798];
+ * 
+ * @POSICAO-CURSOR = 515; 
+ * @DOBRAMENTO-CODIGO = [802];
  * @PONTOS-DE-PARADA = ;
- * @SIMBOLOS-INSPECIONADOS = {i, 44, 18, 1}-{x, 748, 18, 1}-{contador, 801, 10, 8};
+ * @SIMBOLOS-INSPECIONADOS = {i, 185, 11, 1}-{x, 378, 12, 1};
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
  * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
  */
