@@ -1,50 +1,52 @@
-programa
-{    
 
-	inteiro quantidade
-       inteiro estoque
-	funcao inicio()
-	programa
-{    
 
-	inteiro quantidade
-       inteiro estoque
-	funcao inicio()
-	{
-		quantidadeEstoque()
-		calcularBaixaEstoque()
+		inteiro estoque 
+		inteiro quantidade
 		
-	}   
-	funcao vazio quantidadeEstoque(){
+	funcao vazio quantidadeEstoque(){// --> função de calcular estoque e  a quantidade.
 		escreva("\n------------------calcular a quantidade de estoque--------------------------\n")
   
-		escreva("Digite o número de estoque : ")
-		leia(estoque)
-
-         escreva("Digite o  número de quantidade : ")
-		leia(quantidade)
-
-		quantidade = estoque - quantidade
-
-	escreva("\nResultado : " , quantidade , "  \n")
-	}
-	funcao vazio calcularBaixaEstoque(){
+		escreva("Digite o número de estoque : ")//-->  essa e a parte que deve digitar o número de estoque.
+		leia(estoque)// --> essa e a parte que o programa vai ler o número que foi digitado(estoque).
 		
-		se (estoque > quantidade){
-			
-			escreva(estoque+ " = estoque e maior que quantidade : "+quantidade )
+          escreva("Digite o  número de quantidade : ")// --> essa e a parte que deve digitar o número de quantidade.
+		leia(quantidade)//--> essa e a parte que o programa vai ler o número que foi digitado(quantidade).
+
+		          quantidade = estoque - quantidade // --> Aqui vai calcular o estoque menos(-) a quantidade.
+
+	     escreva("\nResultado : " , quantidade , "  \n")// -->Aqui vai ser mostrado o valor de quantidade menos(-) a quantidade.
+	}
+	funcao vazio calcularBaixaEstoque()// ---> função de calcular baixa no estoque : mostrar no programa se quantidade igual a estoque,se estoque e maior que quantidade e se quantidade e maior que estoque.
+	{
+		
+		se
+		        (estoque > quantidade) // ---> Esse e a operação logica para que a mensagem seja mostrada no programa.Ex: se produto e maior que preço, senão preço e maior que produto ou se produto e igual a preço. 
+		{
+			escreva(estoque+ " = estoque e maior que quantidade : "+quantidade )// ---> Essa mensagem vai ser mostrada no programa se estoque for maior que quantidade.
 		}
-		senao se (quantidade > estoque){
-			escreva(quantidade+ " quantidade maior que estoque : " )
+		senao se 
+		        (quantidade > estoque) // --> Esse e a operação logica para que a mensagem seja mostrada no programa.
+		{
+			escreva(quantidade+ " quantidade maior que estoque : " +estoque)// --> Essa é a mensagem que deve ser mostrada no programa caso a afirmação  for correta.
 		}
 		senao
 		{
-			escreva(estoque+ " estoque e igual a quantidade : " )
-		} 
-		se(estoque == 0 ){
-		escreva(estoque+ "\n seu estoque acabou : " )
+			escreva(estoque+ " estoque e igual a quantidade : " +quantidade)// --> Essa é a mensagem que deve ser mostrada no programa caso  estoque for igual a quantidade.
 		}
-		senao se(estoque == 1 )
-		escreva( " seu estoque e esse : " + quantidade)
-		}    
+		
+		se
+		        (estoque == 0 )// --> Essa é a parte que vai mostrar se o estoque(-) a quantidade for igual a zero.
+		{
+		     escreva("\n seu estoque acabou : " +quantidade)// --> Essa é a mensagem que deve ser mostrada no programa caso a afirmação  for correta.
+		
+		}
+		senao se
+		        (estoque == 1 ) // --> Essa é a mensagem que deve ser mostrada no programa caso o estoque for igual a um(1).
+	{
+		
+		     escreva("\n seu estoque e esse : " + quantidade)// --> Essa é a mensagem que deve ser mostrada no programa caso a afirmação  for correta.
+		}
+		
+		
+	 }
 	 	}
