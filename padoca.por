@@ -573,9 +573,54 @@ programa
 			vetor[i] = ""
 		} 
 		vetor[0] += (numDeProd+1)
-		f_front_cadastro(senha, vetor)
+        f_front_cadastro(senha, vetor)
+        // Antes de passar o produto, verifique se o produto já existe
+        // Esta linha chama a função produtoExiste para verificar se o produto já existe no arquivo
+        se (produtoExiste(vetor[1], caminho) == falso) {
+            // Validação de quantidade de produtos
+            // Esta parte garante que a quantidade de produtos inserida seja um número inteiro maior que zero
+            inteiro quantidade
+            faca {
+                quantidade = entradaBaseInteiro("Insira a quantidade do produto: ")
+            } enquanto (quantidade <= 0)
+            vetor[2] = typ.inteiro_para_cadeia(quantidade, 10)
+
+            // Validação de valores de produtos
+            // Esta parte garante que o valor de custo do produto não seja maior que o valor do produto
+            real valor_custo, valor_produto
+            faca {
+                valor_custo = entradaBaseReal("Insira o valor de custo do produto: ")
+                valor_produto = entradaBaseReal("Insira o valor do produto: ")
+                se (valor_custo > valor_produto) {
+                    escreva("O valor de custo não pode ser maior que o valor do produto. Por favor, tente novamente.")
+                }
+            } enquanto (valor_custo > valor_produto)
+            vetor[3] = typ.real_para_cadeia(valor_produto)
+            vetor[4] = typ.real_para_cadeia(valor_custo)
+
+            passeProduto(1, caminho , vetor)//passa os dados do produto para o arquivo
+        } senao {
+            escreva("O produto já existe. Por favor, tente novamente com um produto diferente.")
+        }
+    
           passeProduto(1, caminho , vetor)//passa os dados do produto para o arquivo
 	}
+        funcao logico produtoExiste(cadeia nomeProduto, cadeia caminho) {
+        // Abra o arquivo em modo de leitura
+        inteiro arquivo = src.abrir_arquivo(caminho, src.MODO_LEITURA)
+        cadeia linha = src.ler_linha(arquivo)
+        // Enquanto não for o fim do arquivo
+        enquanto (src.fim_arquivo(arquivo) == falso) {
+            // Se o nome do produto existir na linha, retorne verdadeiro
+            // Esta linha verifica se o nome do produto existe na linha do arquivo
+            se (txt.posicao_texto(linha, nomeProduto, 1) != -1) {
+                retorne verdadeiro
+            }
+            linha = src.ler_linha(arquivo)
+        }
+        // Se o produto não foi encontrado, retorne falso
+        retorne falso
+    }
 	funcao cadeia leiaProduto(cadeia vetor[], inteiro arquivo){
 		//loop for para cada elemento da coluna
 		cadeia valor = "" //váriavel para colocar os valores retirados das matrizes dentro arquivo, começa limpa
@@ -1178,11 +1223,11 @@ programa
  * 
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
- *
- * @POSICAO-CURSOR = 1430; 
- * @DOBRAMENTO-CODIGO = [65, 71, 369, 468, 531, 544, 565, 587, 618, 637, 667, 685, 709, 744, 776, 798];
+ * 
+ * @POSICAO-CURSOR = 26400; 
+ * @DOBRAMENTO-CODIGO = [34, 57, 357, 367, 371, 471, 534, 547, 654, 673, 706, 745, 763, 787, 843, 822, 854, 876, 905, 913, 1002, 1101, 1117, 1164, 1167, 1189];
  * @PONTOS-DE-PARADA = ;
- * @SIMBOLOS-INSPECIONADOS = {i, 44, 18, 1}-{x, 748, 18, 1}-{contador, 801, 10, 8};
+ * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
  * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
  */
