@@ -594,22 +594,75 @@ programa
 		
 	}
 	funcao cadastroProduto(cadeia caminho){
-		cadeia vetor[PROD]
-		//loop para limpar o vetor de valores vazios
-		para(inteiro i = 0; i< PROD; i++){
-			vetor[i] = ""
-		}
-		//Vetor com idnomes recebe entrada de usuário do nome do produtlo
-		vetor[0] += filtrarCaracteres(entradaBaseCadeia("Digite o nome do produtlo: "))
-		//Vetor com id de stock recebe entrada de usuário do número de stock
-		vetor[1] += entradaBaseInteiro("Digite a quantidade do produtlo que tem no estoque de hoje: ")
-          //Vetor com id de precos recebe entrada de usuário do preço do produtlo
-          vetor[2] += mat.arredondar(entradaBaseReal("Digite o preço do produtlo: "), 2)
-          //vetor com id de custo recebe entrada de usuário do custo do produtlo
-          vetor[3] += entradaBaseReal("Digite o custo do produtlo: ")
-          passeProduto(1, caminho , vetor)//passa os dados do produtlo para o arquivo
-	}
-	funcao cadeia leiaProduto(cadeia vetor[], inteiro arquivo){
+    cadeia vetor[PROD]
+    // Loop para limpar o vetor de valores vazios
+    para(inteiro i = 0; i< PROD; i++){
+        vetor[i] = "@"
+    }
+    logico nomeValido = verdadeiro // Inicializa uma variável nomeValido como verdadeiro
+    faca{
+        vetor[0] = filtrarCaracteres(entradaBaseCadeia("\nNome do Produto: ")) // Solicita ao usuário que insira o nome do produto e lê a entrada do usuário
+        se(vetor[0]==""){ // Verifica se o usuário digitou algo
+            escreva("Digite um nome\n") // Se o usuário não digitou nada, pedimos que ele digite o nome do produto
+        } senao se(nomeProdutoExiste(vetor[0],vetor)){ // Usa sua função para verificar se o nome do produto já existe
+            limpa()
+            escreva("Este produto ja foi Cadrastrado\n") // Se o nome do produto já existir, informa ao usuário
+        } senao{
+            nomeValido = falso // Define nomeValido como falso
+        }
+    } enquanto(nomeValido == verdadeiro) // Repete o loop até que o usuário digite um nome de produto válido
+
+    inteiro quantidade // Define uma variável inteira 'quantidade'
+    faca{
+        quantidade = entradaBaseInteiro("Digite a quantidade: ") // Lê a entrada do usuário e converte para um número inteiro
+        se(quantidade <= 0){ // Verifica se a quantidade é maior que zero
+            escreva("Digite numero inteiro de Quantidade maior que zero\n") // Se a quantidade não for maior que zero, informa ao usuário
+        } senao {
+            vetor[1] = typ.inteiro_para_cadeia(quantidade, 10) // Converte a quantidade para uma cadeia e armazena no vetor
+        }
+    } enquanto(quantidade <= 0) // Repete o loop até que o usuário digite um valor de quantidade válido
+
+    real precoProduto, custoProduto // Define variáveis reais 'precoProduto' e 'custoProduto'
+    faca{
+        precoProduto = entradaBaseReal("Digite o preço do produtlo: ") // Lê a entrada do usuário e converte para um número real
+        vetor[2] = typ.real_para_cadeia(mat.arredondar(precoProduto, 2)) // Arredonda o preço do produto, converte para uma cadeia e armazena no vetor
+        custoProduto = entradaBaseReal("Digite o custo do produtlo: ") // Lê a entrada do usuário e converte para um número real
+        se(custoProduto > precoProduto){ // Verifica se o custo do produto é maior que o preço do produto
+            escreva("O custo do produto não pode ser maior que o preço do produto. Por favor, digite novamente.\n") // Se o custo for maior, informa ao usuário
+        } senao {
+            vetor[3] = typ.real_para_cadeia(custoProduto) // Converte o custo do produto para uma cadeia e armazena no vetor
+        }
+    } enquanto(custoProduto > precoProduto) // Repete o loop até que o usuário digite um custo de produto válido
+
+    passeProduto(1, caminho , vetor) // Passa os dados do produto para o arquivo
+}
+funcao logico nomeProdutoExiste(cadeia nomeProduto, cadeia caminho){
+    cadeia conteudoArquivo = lerTodoArquivo(caminho)
+    vetor cadeia linhas = txt_dividir(conteudoArquivo, "\n") // Divide o conteúdo do arquivo em linhas
+    para(inteiro i=0; i<tamanho(linhas); i++){
+        vetor cadeia campos = txt_dividir(linhas[i], "/") // Divide cada linha em campos
+        se (campos[0] == nomeProduto) { // Compara o campo do nome do produto com o nome do produto fornecido
+            retorne verdadeiro // Retorna verdadeiro se o nome do produto já existir
+        }
+    }
+    retorne falso // Retorna falso se o nome do produto não existir
+}
+
+funcao cadeia lerTodoArquivo(cadeia caminho){
+    se (src.arquivo_existe(caminho)) { // Verifica se o arquivo existe
+        escreva("O arquivo não existe: ", caminho)
+        retorne "" // Retorna uma string vazia se o arquivo não existir
+    }
+    inteiro arquivo = src.abrir_arquivo(caminho,src.) // Abre o arquivo no modo de leitura
+    cadeia conteudoArquivo = ""
+    enquanto(src.fim_arquivo(arquivo)){ // Lê cada linha do arquivo
+        cadeia linha = src.ler_linha(arquivo)
+        conteudoArquivo += linha + "\n" // Adiciona a linha ao conteúdo do arquivo
+    }
+    src.fechar_arquivo(arquivo) // Fecha o arquivo
+    retorne conteudoArquivo
+}
+funcao cadeia leiaProduto(cadeia vetor[], inteiro arquivo){
 		//loop for para cada elemento da coluna
 		cadeia valor = "" //váriavel para colocar os valores retirados das matrizes dentro arquivo, começa limpa
 		inteiro j = 0// variável para iterar linhas
@@ -855,8 +908,8 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 27478; 
- * @DOBRAMENTO-CODIGO = [102, 109, 402, 501, 561, 574, 611, 642, 661, 692, 733, 767];
+ * @POSICAO-CURSOR = 27122; 
+ * @DOBRAMENTO-CODIGO = [102, 109, 402, 501, 561, 574, 695, 714, 745, 786, 820, 852, 879];
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;

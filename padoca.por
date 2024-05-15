@@ -160,6 +160,11 @@ programa
 		leia(opcao)
 		limpa()
 		retorne opcao
+<<<<<<< HEAD
+=======
+	}
+	funcao cad_produ(inteiro qtd_estoque,inteiro id_produto, inteiro val_uni,inteiro val_custo,cadeia nome_produto){
+>>>>>>> c709307561794c6d8b2db4ba25410de09d99d11e
 	}
 <<<<<<< HEAD
 	
@@ -901,7 +906,6 @@ programa
 				inicio()
 			}
 		}
-<<<<<<< HEAD
      }
 =======
 >>>>>>> b2bcef8b3717f232285b815cf900068dfe638ed1
@@ -928,8 +932,11 @@ programa
 		retorne saidaLoop
      }
 <<<<<<< HEAD
+<<<<<<< HEAD
 	
 
+=======
+>>>>>>> c709307561794c6d8b2db4ba25410de09d99d11e
 	funcao vazio quantidadeEstoque(){
 		inteiro estoque1
 		inteiro quantidade1
@@ -946,17 +953,14 @@ programa
 
 	escreva("\nResultado : " , quantidade1 , "  \n")
 	}
-	  funcao vazio calcularBaixaEstoque() 
+	funcao vazio calcularBaixaEstoque() 
 	{ 
 		inteiro estoque2
 	     inteiro quantidade2
-		
 		escreva("Digite o número de estoque1 : ")
 		leia(estoque2)
-
-         escreva("Digite o  número de quantidade1 : ")
+          escreva("Digite o  número de quantidade1 : ")
 		leia(quantidade2)
-		
 		se (estoque2 > quantidade2) 
 		{
 			escreva(estoque2+ " = estoque e maior que quantidade : "+quantidade2 )// essa mensagem mostrar se estoque e maior que quantidade.
@@ -978,6 +982,7 @@ programa
 		{
 		escreva("\n seu estoque e esse : " + quantidade2)// essa mansagem será mostrada no programa se sobrou estoque no programa e mostrar a quantidade.
 		}
+<<<<<<< HEAD
 		} 
 	 
 
@@ -1012,11 +1017,15 @@ programa
 }
 >>>>>>> b2bcef8b3717f232285b815cf900068dfe638ed1
 
+=======
+	}
+>>>>>>> c709307561794c6d8b2db4ba25410de09d99d11e
 /* $$$ Portugol Studio $$$ 
  * 
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1088,12 +1097,20 @@ programa
  * @DOBRAMENTO-CODIGO = [102, 109, 402, 501, 561, 574, 611, 642, 661, 692, 710, 733, 767];
 >>>>>>> 5e90e0a044b6e0b70fca6b25b8c9c353cf224f35
 >>>>>>> abcc4d076158f119542c5d1ac7a09ed908900ee3
+=======
+ * @POSICAO-CURSOR = 33665; 
+ * @DOBRAMENTO-CODIGO = [102, 107, 109, 402, 501, 561, 574, 595, 611, 642, 661, 692, 710, 733, 767, 799, 826, 848, 864];
+>>>>>>> c709307561794c6d8b2db4ba25410de09d99d11e
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
  * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
+<<<<<<< HEAD
  */
 =======
 }
 >>>>>>> 42e35df2b39bd7b17351cc6c1994165eccf3c02c
 >>>>>>> 5e90e0a044b6e0b70fca6b25b8c9c353cf224f35
+=======
+ */
+>>>>>>> c709307561794c6d8b2db4ba25410de09d99d11e
