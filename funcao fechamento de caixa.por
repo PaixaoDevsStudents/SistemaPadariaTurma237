@@ -57,11 +57,8 @@ programa
 				pare
 				caso 4:
 					//fechar caixa
-<<<<<<< HEAD
 					fechamentoCaixa(password,vetorProd,vetorVend,caminho,linhaOriginal,posicao,vetDeNum)
-=======
 					fechamentoCaixa(password,vetsrc)
->>>>>>> 7e3a0afec19af0665c727bd6aeff035ae978be4e
 					
 				pare
 				caso 5:
@@ -76,7 +73,6 @@ programa
 		escreva("Escolha uma opcao \n\n 1) Cadastrar produto         2) Registrar Venda\n 3) Relatorio Atual           4) Fechar Caixa e Sair\n\nDigite o numero referente a opção desejada: ")
 		leia(opcao)
 		retorne opcao
-<<<<<<< HEAD
 	}/*
 // Função para verificar o acesso
 funcao verifAcess(cadeia password) {
@@ -106,10 +102,8 @@ funcao vazio gerarRelatorioVendas(cadeia dia ,cadeia mes,cadeia ano,cadeia hora,
 }*/
 
 funcao fechamentoCaixa(cadeia password, cadeia vetorProd[], cadeia vetorVend[], cadeia caminho, cadeia linhaOriginal, inteiro posicao, inteiro vetDeNum[]) {
-=======
 	}
      funcao fechamentoCaixa(cadeia password,cadeia vetsrc[]) {
->>>>>>> 7e3a0afec19af0665c727bd6aeff035ae978be4e
     // Solicita a verificação de acesso
     verifAcess(password)
     logico formato_24h = verdadeiro
@@ -130,14 +124,10 @@ funcao fechamentoCaixa(cadeia password, cadeia vetorProd[], cadeia vetorVend[], 
     // realizar todas as operações necessárias para fechar o caixa
     // Isso pode incluir coisas como calcular o total de vendas do dia, gerar um relatório de vendas
     // verificar o estoque restante, realizar uma auditoria de caixa
-
-<<<<<<< HEAD
     // Aqui você pode adicionar o código para realizar todas as operações necessárias para fechar o caixa.
     // Isso pode incluir coisas como calcular o total de vendas do dia, gerar um relatório de vendas,
     // verificar o estoque restante, realizar uma auditoria de caixa, etc.
 
-=======
->>>>>>> 7e3a0afec19af0665c727bd6aeff035ae978be4e
    // Registrar a data e hora de fechamento
     cadeia dataHoraFechamento = Data()
     escreva("Data e hora de fechamento: ", dataHoraFechamento, "\n")
@@ -162,7 +152,6 @@ funcao fechamentoCaixa(cadeia password, cadeia vetorProd[], cadeia vetorVend[], 
     }
     se (txt.numero_caracteres(minuto) == 1) {
         minuto = "0" + minuto
-<<<<<<< HEAD
     }
 
     retorne ""+dia+"/"+mes+"/"+ano+"\t"+hora+":"+minuto
@@ -186,19 +175,15 @@ funcao real calcularTotalVendas(cadeia caminho) {
 
         // Leia a próxima linha no arquivo de vendas
         linhaVenda = src.ler_linha(arquivoVendas)
-=======
->>>>>>> 7e3a0afec19af0665c727bd6aeff035ae978be4e
+
     }
 
     retorne ""+dia+"/"+mes+"/"+ano+"\t"+hora+":"+minuto
 }
 funcao vazio gerarRelatorioVendas(cadeia vetsrc[]) {
     // Abra o arquivo onde os dados de vendas estão armazenados
-<<<<<<< HEAD
-=======
     inteiro c = 0
     cadeia caminho = vetsrc[c]
->>>>>>> 7e3a0afec19af0665c727bd6aeff035ae978be4e
     cadeia dataHoraFechamento = Data()
     inteiro arquivoVendas = src.abrir_arquivo(caminho, src.MODO_LEITURA)
 
@@ -261,12 +246,7 @@ funcao vazio gerarRelatorioVendas(cadeia vetsrc[]) {
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
-<<<<<<< HEAD
- * @POSICAO-CURSOR = 5326; 
-=======
- * @POSICAO-CURSOR = 1915; 
- * @DOBRAMENTO-CODIGO = [70];
->>>>>>> 7e3a0afec19af0665c727bd6aeff035ae978be4e
+ * @POSICAO-CURSOR = 109; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;

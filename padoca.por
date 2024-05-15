@@ -18,19 +18,18 @@ programa
      inteiro AlturaT = grf.altura_tela()
 	cadeia computador =  utl.obter_diretorio_usuario()
 	//Menu 
-	inteiro ImgMenu = grf.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\Menu.png")
+	inteiro ImgMenu = grf.carregar_imagem(computador+"./midia/imagens/Sistema Padaria 2.0/Menu.png")
      //Login e Senha
-     inteiro ImgAcesso = grf.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\VerificarAcesso.png")
-     inteiro ImgAcessoNegado = grf.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\AcessoNegado.png")
+     inteiro ImgAcesso = grf.carregar_imagem(computador+".midia/imagens/Sistema Padaria 2.0/VerificarAcesso.png")
+     inteiro ImgAcessoNegado = grf.carregar_imagem(computador+"./midia/imagens/Sistema Padaria 2.0/AcessoNegado.png")
      //cadastro
-     inteiro ImgNome = grf.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\Nome.png")
-    	inteiro ImgCusto = grf.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\Custo.png")
-	inteiro ImgPesoUnitario = grf.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\PesoUnitario.png")
-	inteiro ImgPeso = grf.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\Peso.png")
-	inteiro ImgUnitario = grf.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\Unitario.png")
-	inteiro ImgQuantidade = grf.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\Quantidade.png")
-     inteiro ImgCadastroSucesso = grf.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\CadastradoSucesso.png")
-	
+     inteiro ImgNome = grf.carregar_imagem(computador+"./midia/imagens/Sistema Padaria 2.0/Nome.png")
+    	inteiro ImgCusto = grf.carregar_imagem(computador+"./midia/imagens/Sistema Padaria 2.0/Custo.png")
+	inteiro ImgPesoUnitario = grf.carregar_imagem(computador+"./midia/imagens/Sistema Padaria 2.0/PesoUnitario.png")
+	inteiro ImgPeso = grf.carregar_imagem(computador+"./midia/imagens/Sistema Padaria 2.0/Peso.png")
+	inteiro ImgUnitario = grf.carregar_imagem(computador+"./midia/imagens/Sistema Padaria 2.0/Unitario.png")
+	inteiro ImgQuantidade = grf.carregar_imagem(computador+"./midia/imagens/Sistema Padaria 2.0/Quantidade.png")
+     inteiro ImgCadastroSucesso = grf.carregar_imagem(computador+"./midia/imagens/Sistema Padaria 2.0/CadastradoSucesso.png")
 	
 	funcao inicio()
 	{	
@@ -468,7 +467,6 @@ programa
 		}
 		retorne nome
 	}
-
 	funcao pesquisarProduto(inteiro id,cadeia caminho[], inteiro vetDeNum[], real saldoCaixa){
 		inteiro opcaoInterna, arquivo, saidaLoop, j = 1
 		cadeia vetInfProd[5]
@@ -605,7 +603,7 @@ programa
     
           passeProduto(1, caminho , vetor)//passa os dados do produto para o arquivo
 	}
-        funcao logico produtoExiste(cadeia nomeProduto, cadeia caminho) {
+     funcao logico produtoExiste(cadeia nomeProduto, cadeia caminho) {
         // Abra o arquivo em modo de leitura
         inteiro arquivo = src.abrir_arquivo(caminho, src.MODO_LEITURA)
         cadeia linha = src.ler_linha(arquivo)
@@ -874,7 +872,7 @@ programa
 		}enquanto(saidaLoop != 1 e saidaLoop != 2)
 		retorne saidaLoop
      }
-    funcao vazio verifAcess (cadeia password){
+     funcao vazio verifAcess (cadeia password){
 		cadeia senha
 		inteiro contador=0
 		escreva("Verificação de Acesso\n\nDigite a senha para continuar:\n->")
@@ -901,7 +899,6 @@ programa
 			}
 		}
 	}
-
 	//front end
 	funcao logico mouse(inteiro x, inteiro y, inteiro a, inteiro b)
      {
@@ -910,7 +907,6 @@ programa
           }
           retorne falso
      }
-
 	funcao Menu(inteiro numDeVet[],cadeia vetsrc[])
      {
           grf.iniciar_modo_grafico(verdadeiro)
@@ -997,8 +993,7 @@ programa
                }*/
           }
           grf.encerrar_modo_grafico()
-     }
-     
+     }    
 	funcao f_front_venda(){}
 	funcao f_front_cadastro(cadeia senha, cadeia &vetor[]){
 		logico saida = verdadeiro
@@ -1160,8 +1155,7 @@ programa
 		}
 		
 		grf.renderizar()
-	}
-	
+	}	
 	funcao inteiro Tela(inteiro Base, inteiro posiTam, inteiro tela){
 		retorne ((tela*posiTam)/Base)
 	}
@@ -1215,17 +1209,15 @@ programa
           	saida = falso	
           }
           
-     }
-	
-
+     }	
 }
 /* $$$ Portugol Studio $$$ 
  * 
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 17744; 
- * @DOBRAMENTO-CODIGO = [51, 57, 357, 371, 471, 547, 607, 623, 654, 673, 706, 745, 763, 787, 822, 854, 876, 905, 913, 1002, 1101, 1117, 1164, 1167, 1189];
+ * @POSICAO-CURSOR = 1639; 
+ * @DOBRAMENTO-CODIGO = [33, 50, 56, 356, 366, 370, 469, 532, 545, 566, 605, 621, 652, 671, 704, 743, 761, 785, 820, 852, 874, 902, 909, 997, 1096, 1112, 1158, 1161, 1183];
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
