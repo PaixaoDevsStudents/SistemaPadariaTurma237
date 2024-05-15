@@ -18,18 +18,18 @@ programa
      inteiro AlturaT = grf.altura_tela()
 	cadeia computador =  utl.obter_diretorio_usuario()
 	//Menu 
-	inteiro ImgMenu = grf.carregar_imagem("D:/MagoDigital/Web/MD/SistemaPadariaTurma237/midia/imagens/Sistema Padaria 2.0/Menu.png")
+	inteiro ImgMenu = grf.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/Menu.png")
      //Login e Senha
-     inteiro ImgAcesso = grf.carregar_imagem("D:/MagoDigital/Web/MD/SistemaPadariaTurma237/midia/imagens/Sistema Padaria 2.0/VerificarAcesso.png")
-     inteiro ImgAcessoNegado = grf.carregar_imagem("D:/MagoDigital/Web/MD/SistemaPadariaTurma237/midia/imagens/Sistema Padaria 2.0/AcessoNegado.png")
+     inteiro ImgAcesso = grf.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/VerificarAcesso.png")
+     inteiro ImgAcessoNegado = grf.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/AcessoNegado.png")
      //cadastro
-     inteiro ImgNome = grf.carregar_imagem("D:/MagoDigital/Web/MD/SistemaPadariaTurma237/midia/imagens/Sistema Padaria 2.0/Nome.png")
-    	inteiro ImgCusto = grf.carregar_imagem("D:/MagoDigital/Web/MD/SistemaPadariaTurma237/midia/imagens/Sistema Padaria 2.0/Custo.png")
-	inteiro ImgPesoUnitario = grf.carregar_imagem("D:/MagoDigital/Web/MD/SistemaPadariaTurma237/midia/imagens/Sistema Padaria 2.0/PesoUnitario.png")
-	inteiro ImgPeso = grf.carregar_imagem("D:/MagoDigital/Web/MD/SistemaPadariaTurma237/midia/imagens/Sistema Padaria 2.0/Peso.png")
-	inteiro ImgUnitario = grf.carregar_imagem("D:/MagoDigital/Web/MD/SistemaPadariaTurma237/midia/imagens/Sistema Padaria 2.0/Unitario.png")
-	inteiro ImgQuantidade = grf.carregar_imagem("D:/MagoDigital/Web/MD/SistemaPadariaTurma237/midia/imagens/Sistema Padaria 2.0/Quantidade.png")
-     inteiro ImgCadastroSucesso = grf.carregar_imagem("D:/MagoDigital/Web/MD/SistemaPadariaTurma237/midia/imagens/Sistema Padaria 2.0/CadastradoSucesso.png")
+     inteiro ImgNome = grf.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/Nome.png")
+    	inteiro ImgCusto = grf.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/Custo.png")
+	inteiro ImgPesoUnitario = grf.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/PesoUnitario.png")
+	inteiro ImgPeso = grf.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/Peso.png")
+	inteiro ImgUnitario = grf.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/Unitario.png")
+	inteiro ImgQuantidade = grf.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/Quantidade.png")
+     inteiro ImgCadastroSucesso = grf.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/CadastradoSucesso.png")
 	
 	
 	funcao inicio()
@@ -866,27 +866,33 @@ programa
 		}
 	}
 	funcao real fluxoCaixa(real matCaixa[][]){
-		real saldoInicial, saldoFinal=0.0, saldoAnterior=0.0, saldo=0.0
-		inteiro entrada=src.abrir_arquivo("/sourceDaPadaria/sfluxoCaixa.txt", src.MODO_ESCRITA)
-		
-		
-		cadeia linha=src.ler_linha(1)
-		src.fechar_arquivo(1)
-		real l=typ.cadeia_para_real(linha)
+		real saldoInicial, saldoFinal=0.0, saldoAnterior=0.0, saldo=0.0, l=0.0
+		inteiro entrada=src.abrir_arquivo("./sourceDaPadaria/sfluxoCaixa.txt", src.MODO_LEITURA)
+		enquanto (src.fim_arquivo(entrada)==falso){
+			cadeia linha=src.ler_linha(entrada)
+			se(typ.cadeia_e_real(linha)){
+				l=typ.cadeia_para_real(linha)
+			}
+		}
 		saldoAnterior=l
-		
-		escreva("Digite o saldo inicial: R$")
+		src.fechar_arquivo(entrada)
+		src.abrir_arquivo("./sourceDaPadaria/sfluxoCaixa.txt", src.MODO_ACRESCENTAR)
+		escreva("\nDigite o saldo inicial: R$")
 		leia(saldoInicial)
 		matCaixa[0][0]=saldoInicial
+		src.escrever_linha(typ.real_para_cadeia(matCaixa[0][0]), entrada)
 		se(saldoAnterior==0.0){
 			
 			matCaixa[0][1]=saldoAnterior
+			src.escrever_linha(typ.real_para_cadeia(matCaixa[0][1]), entrada)
 			
 		}senao{
 			matCaixa[0][0]=saldoAnterior+saldoInicial
-			
+			src.escrever_linha(typ.real_para_cadeia(matCaixa[0][0]), entrada)
+			escreva("O saldo Inicial é de: R$"+matCaixa[0][0])
 		}
 		saldo=matCaixa[0][0]
+		
 		retorne saldo
 	}
 
@@ -1207,3 +1213,16 @@ programa
      }
 	
 }
+
+/* $$$ Portugol Studio $$$ 
+ * 
+ * Esta seção do arquivo guarda informações do Portugol Studio.
+ * Você pode apagá-la se estiver utilizando outro editor.
+ * 
+ * @POSICAO-CURSOR = 14601; 
+ * @DOBRAMENTO-CODIGO = [618, 637, 670, 709, 727, 751, 786, 818, 840, 899, 997, 1096, 1112, 1159, 1162, 1184];
+ * @PONTOS-DE-PARADA = ;
+ * @SIMBOLOS-INSPECIONADOS = ;
+ * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
+ * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
+ */
