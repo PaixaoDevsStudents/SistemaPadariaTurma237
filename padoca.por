@@ -572,8 +572,8 @@ programa
 		para(inteiro i = 0; i< PROD; i++){
 			vetor[i] = ""
 		} 
-		vetor[0] += (numDeProd+1)
         f_front_cadastro(senha, vetor)
+            vetor[0] += (numDeProd+1)
         // Antes de passar o produto, verifique se o produto já existe
         // Esta linha chama a função produtoExiste para verificar se o produto já existe no arquivo
         se (produtoExiste(vetor[1], caminho) == falso) {
@@ -1224,8 +1224,8 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 26400; 
- * @DOBRAMENTO-CODIGO = [34, 57, 357, 367, 371, 471, 534, 547, 654, 673, 706, 745, 763, 787, 843, 822, 854, 876, 905, 913, 1002, 1101, 1117, 1164, 1167, 1189];
+ * @POSICAO-CURSOR = 17744; 
+ * @DOBRAMENTO-CODIGO = [51, 57, 357, 371, 471, 547, 607, 623, 654, 673, 706, 745, 763, 787, 822, 854, 876, 905, 913, 1002, 1101, 1117, 1164, 1167, 1189];
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
