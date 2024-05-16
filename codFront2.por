@@ -20,32 +20,32 @@ programa
  	//Caminho base
  	cadeia computador =  utl.obter_diretorio_usuario()
 	//Menu 
-	inteiro ImgMenu = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\Menu.png")
-     //Login e Senha
-     inteiro ImgAcesso = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\VerificarAcesso.png")
-     inteiro ImgAcessoNegado = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\AcessoNegado.png")
-     //cadastro
-     inteiro ImgNome = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\Nome.png")
-    	inteiro ImgCusto = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\Custo.png")
-	inteiro ImgPesoUnitario = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\PesoUnitario.png")
-	inteiro ImgPeso = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\Peso.png")
-	inteiro ImgUnitario = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\Unitario.png")
-	inteiro ImgQuantidade = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\Quantidade.png")
-     inteiro ImgCadastroSucesso = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\CadastradoSucesso.png")
-	
+	inteiro ImgMenu = grf.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/Menu.png")
+	//Login e Senha
+	inteiro ImgAcesso = grf.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/VerificarAcesso.png")
+	inteiro ImgAcessoNegado = grf.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/AcessoNegado.png")
+	//cadastro
+	inteiro ImgNome = grf.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/Nome.png")
+	inteiro ImgCusto = grf.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/Custo.png")
+	inteiro ImgPesoUnitario = grf.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/PesoUnitario.png")
+	inteiro ImgPeso = grf.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/Peso.png")
+	inteiro ImgUnitario = grf.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/Unitario.png")
+	inteiro ImgQuantidade = grf.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/Quantidade.png")
+	inteiro ImgCadastroSucesso = grf.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/CadastradoSucesso.png")
+
      
      //RealizarVendas
-     inteiro TelaCodigo = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\g ")
-     inteiro TelaQuantidade = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\")
-     inteiro TelaQuantErrada = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\")
-     inteiro TelaValor = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\")
-     inteiro TelaTroco = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\")
-     inteiro TelaFormaPag = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\")
-     inteiro TelaPagCart = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\")
-     inteiro TelaOpcCart = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\")
-     inteiro TelaPagCartConc = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\")
-     inteiro TelaPagPix = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\")
-     inteiro TelaPagPixConc = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\")
+     inteiro TelaCodigo = g.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/")
+     inteiro TelaQuantidade = g.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/")
+     inteiro TelaQuantErrada = g.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/")
+     inteiro TelaValor = g.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/")
+     inteiro TelaTroco = g.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/")
+     inteiro TelaFormaPag = g.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/")
+     inteiro TelaPagCart = g.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/")
+     inteiro TelaOpcCart = g.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/")
+     inteiro TelaPagCartConc = g.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/")
+     inteiro TelaPagPix = g.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/")
+     inteiro TelaPagPixConc = g.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/")
 
      /*
      //Relatório
@@ -127,7 +127,7 @@ programa
                se(mouse(Tela(1920,735,LarguraT), Tela(1080,765,AlturaT), Tela(1920,325,LarguraT), Tela(1080,85,AlturaT)) e mou == m.BOTAO_ESQUERDO){
                	botao = 4
                }
-               faca{
+              	
 			//Função para Realizar Vendas
            	//se(mouse(735, 475, 325, 85) == verdadeiro 
            	/*se (mouse(735, 620, 325, 85) == verdadeiro e mou == m.BOTAO_ESQUERDO){
@@ -381,7 +381,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 650; 
+ * @POSICAO-CURSOR = 5703; 
  * @DOBRAMENTO-CODIGO = [111, 164, 259, 275, 322, 325, 347];
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;

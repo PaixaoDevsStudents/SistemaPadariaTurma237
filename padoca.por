@@ -17,38 +17,41 @@ programa
      inteiro LarguraT = grf.largura_tela()
      inteiro AlturaT = grf.altura_tela()
      
-	inteiro ImgMenu = grf.carregar_imagem("./SistemaPadariaTurma237midia/imagens/Sistema Padaria 2.0/Menu.png")
+	inteiro ImgMenu = grf.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/Menu.png")
 	//Login e Senha
-	inteiro ImgAcesso = grf.carregar_imagem("./SistemaPadariaTurma237/midia/imagens/Sistema Padaria 2.0/VerificarAcesso.png")
-	inteiro ImgAcessoNegado = grf.carregar_imagem("./SistemaPadariaTurma237/midia/imagens/Sistema Padaria 2.0/AcessoNegado.png")
+	inteiro ImgAcesso = grf.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/VerificarAcesso.png")
+	inteiro ImgAcessoNegado = grf.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/AcessoNegado.png")
 	//cadastro
-	inteiro ImgNome = grf.carregar_imagem("./SistemaPadariaTurma237/midia/imagens/Sistema Padaria 2.0/Nome.png")
-	inteiro ImgCusto = grf.carregar_imagem("./SistemaPadariaTurma237/midia/imagens/Sistema Padaria 2.0/Custo.png")
-	inteiro ImgPesoUnitario = grf.carregar_imagem("./SistemaPadariaTurma237/midia/imagens/Sistema Padaria 2.0/PesoUnitario.png")
-	inteiro ImgPeso = grf.carregar_imagem("./SistemaPadariaTurma237/midia/imagens/Sistema Padaria 2.0/Peso.png")
-	inteiro ImgUnitario = grf.carregar_imagem("./SistemaPadariaTurma237/midia/imagens/Sistema Padaria 2.0/Unitario.png")
-	inteiro ImgQuantidade = grf.carregar_imagem("./SistemaPadariaTurma237/midia/imagens/Sistema Padaria 2.0/Quantidade.png")
-	inteiro ImgCadastroSucesso = grf.carregar_imagem("./SistemaPadariaTurma237/midia/imagens/Sistema Padaria 2.0/CadastradoSucesso.png")
-     cadeia pastas[24]
+	inteiro ImgNome = grf.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/Nome.png")
+	inteiro ImgCusto = grf.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/Custo.png")
+	inteiro ImgPesoUnitario = grf.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/PesoUnitario.png")
+	inteiro ImgPeso = grf.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/Peso.png")
+	inteiro ImgUnitario = grf.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/Unitario.png")
+	inteiro ImgQuantidade = grf.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/Quantidade.png")
+	inteiro ImgCadastroSucesso = grf.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/CadastradoSucesso.png")
+
 	
-	
+	//realizar venda
+	inteiro TelaCodigo = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\")
+     inteiro TelaQuantidade = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\")
+     inteiro TelaQuantErrada = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\")
+     inteiro TelaValor = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\")
+     inteiro TelaTroco = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\")
+     inteiro TelaFormaPag = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\")
+     inteiro TelaPagCart = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\")
+     inteiro TelaOpcCart = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\")
+     inteiro TelaPagCartConc = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\")
+     inteiro TelaPagPix = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\")
+     inteiro TelaPagPixConc = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\")
 	funcao inicio()
 	{	
-		src.listar_arquivos("./SistemaPadariaTurma237/midia/imagens/Sistema Padaria 2.0/", pastas)
-		para(inteiro i = 0; i < utl.numero_elementos(pastas); i++){
-			escreva(pastas[i])
-		}
 		//variaveis
 		inteiro arquivo, mnu=0, qtd_estoque=0, id_produto=0
 		real val_uni=0.0, val_custo=0.0
-		cadeia nome_produto="", vetsrc[5], typdata[2]={"arquivo de dados|txt","arquivo de dados|txt"}
-		inteiro opcao
+		cadeia nome_produto="", vetsrc[5]
 		inteiro numDeVet[3]
 		//leitura de arquivos
-		para(inteiro c=0;c<5;c++){
-			escreva("Selecione a sequência de arquivos:\n1-Carrinho\n2-Produtos Registrados\n3-Total de vendas\n4-Vendas do dia\n5-Registro de vendas")
-			vetsrc[c] = src.selecionar_arquivo(typdata, verdadeiro)
-		}
+		src.listar_arquivos("./sourceDaPadaria", vetsrc)
 		//menu de opções
 		Menu(numDeVet,vetsrc)
 	}
@@ -538,7 +541,7 @@ programa
 	}
 	funcao inteiro totalProdutos(cadeia caminho){
 		cadeia linha = ""//variável para receber linha do arquivo
-		inteiro arquivo = src.abrir_arquivo(caminho, src.MODO_LEITURA)//váriavel arquivo recebe permissão para abrir e somente ler o arquivo com matrizes
+		inteiro arquivo = src.abrir_arquivo("sourceDaPadaria\\"+caminho, src.MODO_LEITURA)//váriavel arquivo recebe permissão para abrir e somente ler o arquivo com matrizes
 		inteiro numDeLinhas = -1//o número de linhas utlilizadas
 		//loop para contar o número de linhas que tem abertas no arquivo
 		faca{
@@ -548,27 +551,6 @@ programa
 		src.fechar_arquivo(arquivo)//fecha arquivo
 		//retorna a quantidade de matrizes
 		retorne numDeLinhas
-	}
-	funcao cadeia caminhoDoArquivo(cadeia texto){
-		cadeia entrada = ""//cadeia que recebe caminho do usuário
-		inteiro saidaLoop = 0
-		//faz enquanto o valor saidaloop != 1
-		faca{
-			escreva(texto)
-			cadeia tiposArq[2] = {"Arquivo de texto|txt", "Arquivo de texto|txt"}
-			entrada = src.selecionar_arquivo(tiposArq, verdadeiro)
-			//se caminho é válido
-			se(src.arquivo_existe(entrada) == verdadeiro){
-				saidaLoop = 1//sai do loop
-			}
-			//senão, o caminho é inválido
-			senao{
-				escreva("Caminho inválido!! Insira um caminho que possua um arquivo que exista!!\n")
-			}
-		}enquanto(saidaLoop != 1)
-		//retorna caminho
-		retorne entrada
-		
 	}
 	funcao cadastroProduto(cadeia caminho, inteiro numDeProd, cadeia senha){
 		cadeia vetor[6]
@@ -869,7 +851,7 @@ programa
           }
           retorne falso
      }
-
+	
 	funcao Menu(inteiro numDeVet[],cadeia vetsrc[])
      {
           grf.iniciar_modo_grafico(verdadeiro)
@@ -953,10 +935,12 @@ programa
 		          grf.desenhar_texto(LarguraT/4, AlturaT / 1.22,"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
 		     	
 			
-               }*/
+               }
+               */
           }
           grf.encerrar_modo_grafico()
      }
+     
      
 	funcao f_front_venda(){}
 	funcao f_front_cadastro(cadeia senha, cadeia &vetor[]){
@@ -1058,6 +1042,7 @@ programa
 		Apresentar_Cadastro(6,0,0,texto)
 		utl.aguarde(3500)
 	}
+	
      funcao vazio Apresenta_Registro(inteiro id, inteiro x, inteiro y,cadeia &texto)// função para aparecer a outra tela 
      {
      	se(id == 0){
@@ -1074,6 +1059,7 @@ programa
      	} 
      	grf.renderizar()
      }
+     
 	funcao Apresentar_Cadastro(inteiro id, inteiro x, inteiro y,cadeia &texto){
 		escolha(id){
 			caso 0:
@@ -1183,10 +1169,10 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 515; 
- * @DOBRAMENTO-CODIGO = [802];
+ * @POSICAO-CURSOR = 1526; 
+ * @DOBRAMENTO-CODIGO = [64, 378, 478, 541, 554, 784];
  * @PONTOS-DE-PARADA = ;
- * @SIMBOLOS-INSPECIONADOS = {i, 185, 11, 1}-{x, 378, 12, 1};
+ * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
  * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
  */
