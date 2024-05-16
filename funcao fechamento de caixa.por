@@ -125,8 +125,8 @@ funcao fechamentoCaixa(cadeia password, cadeia vetorProd[], cadeia vetorVend[], 
 
 funcao vazio gerarRelatorioVendas(cadeia vetsrc[]) {
     // Abra o arquivo onde os dados de vendas estão armazenados
-    inteiro c = 0
-    cadeia caminho = vetsrc[c]
+    inteiro c = 2
+    cadeia caminho = "C:/Users/Aluno/Documents/aluno1/Projetos/SistemaPadariaTurma237/sourceDaPadaria/DataBaseDeVendasEmTotal.txt"
     cadeia dataHoraFechamento = Data()
     inteiro arquivoVendas = src.abrir_arquivo(caminho, src.MODO_LEITURA)
 
@@ -143,6 +143,7 @@ funcao vazio gerarRelatorioVendas(cadeia vetsrc[]) {
 
         // Imprima os detalhes de cada venda
        
+        escreva(linhaVenda)
 
         // Leia a próxima linha no arquivo de vendas
         linhaVenda = src.ler_linha(arquivoVendas)
@@ -189,10 +190,10 @@ funcao vazio gerarRelatorioVendas(cadeia vetsrc[]) {
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 1968; 
- * @DOBRAMENTO-CODIGO = [157];
+ * @POSICAO-CURSOR = 4142; 
+ * @DOBRAMENTO-CODIGO = [158];
  * @PONTOS-DE-PARADA = ;
- * @SIMBOLOS-INSPECIONADOS = ;
+ * @SIMBOLOS-INSPECIONADOS = {linhaVenda, 138, 11, 10};
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
  * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
  */
