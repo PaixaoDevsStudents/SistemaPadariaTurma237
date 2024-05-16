@@ -73,7 +73,6 @@ programa
 		leia(opcao)
 		retorne opcao
 	}
-
 funcao fechamentoCaixa(cadeia password, cadeia vetorProd[], cadeia vetorVend[], cadeia caminho, cadeia linhaOriginal, inteiro posicao, inteiro vetDeNum[],cadeia vetsrc[]) {
 	
     // Solicita a verificação de acesso
@@ -89,15 +88,15 @@ funcao fechamentoCaixa(cadeia password, cadeia vetorProd[], cadeia vetorVend[], 
     }
     se (resposta == 'N' ou resposta == 'n') {
         inicio() // Volta para o menu inicial se o usuário responder 'N' ou 'n'
-    }
+    }senao{
     // Se o usuário responder 'S' ou 's', prossiga com o fechamento do caixa
     escreva("Fechando o caixa...\n")
-     gerarRelatorioVendas(vetsrc)
-
+      gerarRelatorioVendas(vetsrc)
+    
    // Registrar a data e hora de fechamento
     cadeia dataHoraFechamento = Data()
     escreva("Data e hora de fechamento: ", dataHoraFechamento, "\n")
-    
+    }
 }
    funcao cadeia Data() {
     cadeia dia = typ.inteiro_para_cadeia(cal.dia_mes_atual(),10)
@@ -125,8 +124,8 @@ funcao fechamentoCaixa(cadeia password, cadeia vetorProd[], cadeia vetorVend[], 
 
 funcao vazio gerarRelatorioVendas(cadeia vetsrc[]) {
     // Abra o arquivo onde os dados de vendas estão armazenados
-    inteiro c = 0
-    cadeia caminho = vetsrc[c]
+    
+    cadeia caminho = "C:/Users/Aluno/Documents/igor f/projeto turma/SistemaPadariaTurma237/sourceDaPadaria/DataBaseDeVendasEmTotal.txt"
     cadeia dataHoraFechamento = Data()
     inteiro arquivoVendas = src.abrir_arquivo(caminho, src.MODO_LEITURA)
 
@@ -149,10 +148,11 @@ funcao vazio gerarRelatorioVendas(cadeia vetsrc[]) {
     }
 
     escreva("\n=============================================\n")
-    escreva("TOTAL DE VENDAS DO DIA: " + "\n")
+    escreva("TOTAL DE VENDAS DO DIA: "+  +"\n")
     escreva("=============================================\n")
 
     // Feche o arquivo de vendas
+    
     src.fechar_arquivo(arquivoVendas)
 }
      funcao vazio verifAcess (cadeia password){
@@ -189,8 +189,7 @@ funcao vazio gerarRelatorioVendas(cadeia vetsrc[]) {
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 1968; 
- * @DOBRAMENTO-CODIGO = [157];
+ * @POSICAO-CURSOR = 4064; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
