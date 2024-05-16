@@ -32,6 +32,7 @@ programa
 
 	
 	//realizar venda
+	/*
 	inteiro TelaCodigo = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\")
      inteiro TelaQuantidade = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\")
      inteiro TelaQuantErrada = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\")
@@ -43,6 +44,7 @@ programa
      inteiro TelaPagCartConc = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\")
      inteiro TelaPagPix = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\")
      inteiro TelaPagPixConc = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\")
+     */
 	funcao inicio()
 	{	
 		//variaveis
@@ -85,7 +87,7 @@ programa
 			
 			inteiro opcaoInterna , saidaLoop = 0//declara variáveis de opção e saida de loop
 			inteiro quantidadeVend = 0//Variável para a quantidade de produtos que será comprada.
-			real preco = typ.cadeia_para_real(vetorProd[3])//declara variável de preco e dá o preço do produto
+			real preco = typ.cadeia_para_real(vetorProd[4])//declara variável de preco e dá o preço do produto
 
 			inteiro reposicao //variavel de quantidade de reposição de estoque
 			
@@ -98,6 +100,7 @@ programa
 			real valorTotalD = 0.0
 			inteiro limite = 0 //variável para o limite de estoque
 			//loop para entrada de quantidade
+			se(vetorProd[3] == "true"){
 			faca{
 				limite = typ.cadeia_para_inteiro(vetorProd[2], 10)//váriavel limite de estoque recebe limite de estoque
 				//se estoque foi esgotado
@@ -127,6 +130,7 @@ programa
 					escreva("Quantidade inválida!! Está igual ou abaixo de zero.\n")
 				}
 			}enquanto(quantidadeVend <= 0 ou quantidadeVend > limite e saidaLoop != 1)
+			}
 			escreva(linhaSubsProd)
 			//texto de opções de pagamento
 			escreva("===================\n")
@@ -150,15 +154,21 @@ programa
 					se(opcaoInterna == 1){escreva("Forma de pagamento em dinheiro foi escolhido.\n10% de desconto foi acrescentado ao valor da compra.\n")}
 					//se opção for PIX escreve texto sobre a escolha
 					se(opcaoInterna == 2){escreva("Forma de pagamento em PIX foi escolhido.\n10% de desconto de acrescimo foi acrescentado ao valor da compra.\n")}
-					valorTotal += (preco * quantidadeVend)//valorTotal recebe o valor da compra
-					
+					se(vetorProd[3] == "true"){
+						valorTotal += (preco * quantidadeVend)//valorTotal recebe o valor da compra
+					}
+					senao{
+						valorTotal += balanca(quantidadeVend, preco)
+					}
 					valorTotalD += valorTotal
 					pare
 				// caso cartão: acréscimo de 3%
 				caso 3:
 					//opção foi cartão, escreve texto sobre escolha
 					escreva("Forma de pagamento em cartão de crédito/débito foi escolhido.\n3% de acrescimo foi acrescentado ao valor da compra.\n")
-					valorTotal += (preco * quantidadeVend)//valorTotal recebe o valor da compra
+					
+						valorTotal += (preco * quantidadeVend)//valorTotal recebe o valor da compra
+					}
 					valorTotalD += valorTotal
 					pare
 			}
@@ -192,8 +202,8 @@ programa
 			vetorOrigD[] = {"0","","0","0"},
 			vetorVendD[] = {"0","","0","0"}
 			
-			inteiro arqVenda = src.abrir_arquivo(caminho[2], src.MODO_LEITURA)//abre PRODBase de vendas e armazena endereço de memória na variável arqVendas em modo de leitura
-			,arqVendaDiaria = src.abrir_arquivo(caminho[3], src.MODO_LEITURA)
+			inteiro arqVenda = src.abrir_arquivo("sourceDaPadaria\\"+caminho[2], src.MODO_LEITURA)//abre PRODBase de vendas e armazena endereço de memória na variável arqVendas em modo de leitura
+			,arqVendaDiaria = src.abrir_arquivo("sourceDaPadaria\\"+caminho[3], src.MODO_LEITURA)
 			
 			leiaProduto(vetorOrigD, arqVendaDiaria)//lê primeiro produto temporário e passa para vetor vetorOrigD
 			leiaProduto(vetorOrig, arqVenda)//lê primeiro produto e passa para veto vetorOrig
@@ -238,8 +248,8 @@ programa
 					src.fechar_arquivo(arqVendaDiaria)//fechando PRODBase de vendas em modo de leitura
 					src.fechar_arquivo(arqVenda)//fechando PRODBase de vendas em modo de leitura
 					
-					arqVenda = src.abrir_arquivo(caminho[2], src.MODO_ACRESCENTAR)//abre PRODBase de vendas e armazena endereço de memória na variável arqVendas em modo de acréscimo
-					arqVendaDiaria = src.abrir_arquivo(caminho[3], src.MODO_ACRESCENTAR)//abre PRODBase de vendas e armazena endereço de memória na variável arqVendas em modo de acréscimo
+					arqVenda = src.abrir_arquivo("sourceDaPadaria\\"+caminho[2], src.MODO_ACRESCENTAR)//abre PRODBase de vendas e armazena endereço de memória na variável arqVendas em modo de acréscimo
+					arqVendaDiaria = src.abrir_arquivo("sourceDaPadaria\\"+caminho[3], src.MODO_ACRESCENTAR)//abre PRODBase de vendas e armazena endereço de memória na variável arqVendas em modo de acréscimo
 					//se venda de produto com código ainda não foi registrado 
 
 					se(cod == 0 ou codD == 0){
@@ -308,15 +318,15 @@ programa
 						}
 						//substitui os dados antigos de venda do produto pelos novos dados atualizados
 						se(cod == posicao){
-							src.substituir_texto(caminho[2], linhaVendOrig, linhaVend, verdadeiro)
+							src.substituir_texto("sourceDaPadaria\\"+caminho[2], linhaVendOrig, linhaVend, verdadeiro)
 						}
 						se(codD == posicao){
-							src.substituir_texto(caminho[3], linhaVendOrigD, linhaVendD, verdadeiro)
+							src.substituir_texto("sourceDaPadaria\\"+caminho[3], linhaVendOrigD, linhaVendD, verdadeiro)
 						}
 					}
 					//substitui os dados antigos do produto vendido pelos novos dados atualizados
 
-					src.substituir_texto(caminho[1], linhaOriginal, linhaSubsProd, verdadeiro)
+					src.substituir_texto("sourceDaPadaria\\"+caminho[1], linhaOriginal, linhaSubsProd, verdadeiro)
 					src.fechar_arquivo(arqVendaDiaria)//fecha arquivo
 					src.fechar_arquivo(arqVenda)//fecha arquivo
 					saidaLoop = 1 //sai do loop
@@ -362,123 +372,23 @@ programa
 			}enquanto(saidaLoop != 1)
 		}
 	}
-	funcao real balanca (inteiro quantidadeCompraCliente,real compraEmGramas,real valorCobrarCliente,real valorDaG){
-		quantidadeCompraCliente = utl.sorteia(1, 1000)  // sorteando a quantidade que o cliente vai comprar, para simular uma balança 
-		quantidadeCompraCliente = typ.inteiro_para_real(quantidadeCompraCliente) // mudando o valor de inteiro para real para poder usar zero apos a virgula pq o sorteia so roda com inteiro...
-		escreva ("Você comprou ",quantidadeCompraCliente," gramas de pão.\n")
-		compraEmGramas = (quantidadeCompraCliente * 1000) // converter Kg para gramas 
-		valorCobrarCliente = ((valorDaG*compraEmGramas) / 1000) // converte gramas em reais $$ dindin
+	funcao real balanca (inteiro quantidadeCompraCliente,real valorDaKg){
+		inteiro peso = utl.sorteia(1, 1000) // sorteando a quantidade que o cliente vai comprar, para simular uma balança 
+		real l = typ.inteiro_para_real(peso) // mudando o valor de inteiro para real para poder usar zero apos a virgula pq o sorteia so roda com inteiro...
+		escreva ("Você comprou ",l," gramas de pão.\n")
+		real precoEmGramas =(valorDaKg/1000)
+		real valorCobrarCliente = ((precoEmGramas*peso)) // converte gramas em reais $$ dindin
 		valorCobrarCliente = mat.arredondar(valorCobrarCliente, 7)
 		escreva("Valor a cobrar do cliente é: ",valorCobrarCliente) // mostra o valor na tela a ser cobrado 
-		retorne (valorCobrarCliente)
+		retorne valorCobrarCliente
 	}
 	funcao real abrirCaixa (real saldoCaixa){
 		saldoCaixa = entradaBaseReal("Abertura de caixa, Quantos reais tem no caixa?: ")
 		retorne saldoCaixa
 	}
-     funcao cadeia filtrarCaracteres(cadeia nome){
-		para(inteiro i = 0; i < txt.numero_caracteres(nome); i++){
-			caracter x = txt.obter_caracter(nome, i)// caracter a ser analisado
-			cadeia letra //cadeia que representa caracter analisado
-			//escolha para substituir caracteres especiais indesejados e pelos seu naturais ou desejados
-			escolha(x){
-				//filtra a
-				caso 'ã':caso 'â':caso 'á':caso 'à':caso 'ä':
-					letra = typ.caracter_para_cadeia(x)
-					nome = txt.substituir(nome, letra, "a")
-					pare
-				//filtra A
-				caso 'Ã':caso 'Â':caso 'Á':caso 'À':caso 'Ä':
-					letra = typ.caracter_para_cadeia(x)
-					nome = txt.substituir(nome, letra, "A")
-					pare
-				//filtra e
-				caso 'ê':caso 'ë':caso 'é':caso 'è':
-					letra = typ.caracter_para_cadeia(x)
-					nome = txt.substituir(nome, letra, "e")
-					pare
-				//filtra E
-				caso 'Ê':caso 'Ë':caso 'É':caso 'È':
-					letra = typ.caracter_para_cadeia(x)
-					nome = txt.substituir(nome, letra, "E")
-					pare
-				//filtra o
-				caso 'õ':caso 'ô':caso 'ó':caso 'ò':caso 'ö':
-					letra = typ.caracter_para_cadeia(x)
-					nome = txt.substituir(nome, letra, "o")
-					pare
-				//filtra O
-				caso 'Õ':caso 'Ô':caso 'Ó':caso 'Ò':caso 'Ö':
-					letra = typ.caracter_para_cadeia(x)
-					nome = txt.substituir(nome, letra, "O")
-					pare
-				//filtra i
-				caso 'î':caso 'í':caso 'ì':caso 'ï':
-					letra = typ.caracter_para_cadeia(x)
-					nome = txt.substituir(nome, letra, "i")
-					pare
-				//filtra I
-				caso 'Î':caso 'Í':caso 'Ì':caso 'Ï':
-					letra = typ.caracter_para_cadeia(x)
-					nome = txt.substituir(nome, letra, "I")
-					pare
-				//filtra u
-				caso 'û':caso 'ú':caso 'ù':caso 'ü':
-					letra = typ.caracter_para_cadeia(x)
-					nome = txt.substituir(nome, letra, "u")
-					pare
-				//filtra U
-				caso 'Û':caso 'Ú':caso 'Ù':caso 'Ü':
-					letra = typ.caracter_para_cadeia(x)
-					nome = txt.substituir(nome, letra, "U")
-					pare
-				//filtra n
-				caso 'ñ':
-					letra = typ.caracter_para_cadeia(x)
-					nome = txt.substituir(nome, letra, "n")
-					pare
-				//filtra N
-				caso 'Ñ':
-					letra = typ.caracter_para_cadeia(x)
-					nome = txt.substituir(nome, letra, "N")
-					pare
-				//filtra c
-				caso 'ç':
-					letra = typ.caracter_para_cadeia(x)
-					nome = txt.substituir(nome, letra, "c")
-				//filtra C
-				caso 'Ç':
-					letra = typ.caracter_para_cadeia(x)
-					nome = txt.substituir(nome, letra, "C")
-					pare
-				//filtra Y
-				caso 'Ý':
-					letra = typ.caracter_para_cadeia(x)
-					nome = txt.substituir(nome, letra, "Y")
-					pare
-				//filtra y
-				caso 'ý': caso 'ÿ':
-					letra = typ.caracter_para_cadeia(x)
-					nome = txt.substituir(nome, letra, "y")
-					pare
-				//filtra caracteres indesejados
-				caso '|':caso '\\':caso '/':
-					letra = typ.caracter_para_cadeia(x)
-					nome = txt.substituir(nome, letra, "")
-					pare
-				//filtra caracter de separação de dados
-				caso ':':
-					letra = typ.caracter_para_cadeia(x)
-					nome = txt.substituir(nome, letra, "-")
-					pare
-			}
-		}
-		retorne nome
-	}
-
 	funcao pesquisarProduto(inteiro id,cadeia caminho[], inteiro vetDeNum[], real saldoCaixa){
 		inteiro opcaoInterna, arquivo, saidaLoop, j = 1
-		cadeia vetInfProd[5]
+		cadeia vetInfProd[6]
 		cadeia vetInfVend[4]
 		faca{
           	saidaLoop = 0
@@ -494,7 +404,7 @@ programa
 						escreva("Número de inválido!!\n")
 					}
 				}enquanto(opcaoInterna <= 0 ou opcaoInterna > vetDeNum[0])
-				arquivo = src.abrir_arquivo(caminho[1], src.MODO_LEITURA)
+				arquivo = src.abrir_arquivo("sourceDaPadaria\\"+caminho[1], src.MODO_LEITURA)
 				//verificar o produto
 				faca{
 					//se opcaoInterna for igual a posição da linha do produto escolhido
@@ -599,11 +509,11 @@ programa
 		escolha(id){
 			//MODO ESCRITA
 			caso 0:
-				arquivo = src.abrir_arquivo(caminho, src.MODO_ESCRITA)//variável arquivo recebe permissão para abrir e somente escrever no arquivo com matrizes
+				arquivo = src.abrir_arquivo("sourceDaPadaria\\"+caminho, src.MODO_ESCRITA)//variável arquivo recebe permissão para abrir e somente escrever no arquivo com matrizes
 				pare
 			//MODO ACRESCENTAR 
 			caso 1:
-				arquivo = src.abrir_arquivo(caminho, src.MODO_ACRESCENTAR)//variável arquivo recebe permissão para abrir e somente acrescentar no arquivo com matrizes
+				arquivo = src.abrir_arquivo("sourceDaPadaria\\"+caminho, src.MODO_ACRESCENTAR)//variável arquivo recebe permissão para abrir e somente acrescentar no arquivo com matrizes
 				pare
 		}
 		para(inteiro i = 0; i < utl.numero_elementos(vetor); i++){
@@ -815,7 +725,7 @@ programa
 		}enquanto(saidaLoop != 1 e saidaLoop != 2)
 		retorne saidaLoop
      }
-    funcao vazio verifAcess (cadeia password){
+    	funcao vazio verifAcess (cadeia password){
 		cadeia senha
 		inteiro contador=0
 		escreva("Verificação de Acesso\n\nDigite a senha para continuar:\n->")
@@ -1169,8 +1079,8 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 1526; 
- * @DOBRAMENTO-CODIGO = [64, 378, 478, 541, 554, 784];
+ * @POSICAO-CURSOR = 6180; 
+ * @DOBRAMENTO-CODIGO = [103, 384, 451, 464, 505, 524, 557, 596, 614, 638, 694, 673, 705, 727, 756, 764, 855, 955, 972, 1019, 1022, 1044];
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
