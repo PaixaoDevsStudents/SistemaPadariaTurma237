@@ -37,7 +37,6 @@ programa
 		//variaveis
 		inteiro arquivo, mnu=0, qtd_estoque=0, id_produto=0
 		real val_uni=0.0, val_custo=0.0
-<<<<<<< HEAD
 		cadeia nome_produto="", vetsrc[5], typdata[2]={"arquivodetexto|txt","arquivodetexto|txt"}, password="admin"
 		inteiro opcao
 		inteiro numDeVet[3]
@@ -108,7 +107,6 @@ programa
 						vetorVend[i] = "0"
 						pare
 				}
-=======
 		cadeia nome_produto="", vetsrc[5], typdata[2]={"arquivo de dados|txt","arquivo de dados|txt"}
 		inteiro opcao
 		inteiro numDeVet[3]
@@ -539,8 +537,7 @@ programa
 			}
 		}
 		retorne nome
-	}
-
+     }
 	funcao pesquisarProduto(inteiro id,cadeia caminho[], inteiro vetDeNum[], real saldoCaixa){
 		inteiro opcaoInterna, arquivo, saidaLoop, j = 1
 		cadeia vetInfProd[5]
@@ -901,7 +898,7 @@ programa
 		}enquanto(saidaLoop != 1 e saidaLoop != 2)
 		retorne saidaLoop
      }
-    funcao vazio verifAcess (cadeia password){
+     funcao vazio verifAcess (cadeia password){
 		cadeia senha
 		inteiro contador=0
 		escreva("Verificação de Acesso\n\nDigite a senha para continuar:\n->")
@@ -919,9 +916,7 @@ programa
 					utl.aguarde(1000)
 				}
 				limpa()
->>>>>>> a7b6455b267cbe3759fa1e44c52600a515c3f878
 			}
-			
 			inteiro opcaoInterna , saidaLoop = 0//declara variáveis de opção e saida de loop
 			inteiro quantidadeVend = 0//Variável para a quantidade de produtlos que será comprada.
 			real preco = typ.cadeia_para_real(vetorProd[3])//declara variável de preco e dá o preço do produtlo
@@ -1193,13 +1188,10 @@ programa
 						}
 					}
 					i++// iterador de produtlo é incrementado +1
-					 
-					
 				}
 			}enquanto(saidaLoop != 1)
 		}
 	}
-<<<<<<< HEAD
      funcao cadeia filtrarCaracteres(cadeia nome){
 		para(inteiro i = 0; i < txt.numero_caracteres(nome); i++){
 			caracter x = txt.obter_caracter(nome, i)// caracter a ser analisado
@@ -1663,8 +1655,6 @@ programa
 		teste=falso
 		retorne teste
      }
-=======
-
 	//front end
 	funcao logico mouse(inteiro x, inteiro y, inteiro a, inteiro b)
      {
@@ -1673,7 +1663,6 @@ programa
           }
           retorne falso
      }
-
 	funcao Menu(inteiro numDeVet[],cadeia vetsrc[])
      {
           grf.iniciar_modo_grafico(verdadeiro)
@@ -1761,7 +1750,6 @@ programa
           }
           grf.encerrar_modo_grafico()
      }
-     
 	funcao f_front_venda(){}
 	funcao f_front_cadastro(cadeia senha, cadeia &vetor[]){
 		logico saida = verdadeiro
@@ -1924,7 +1912,6 @@ programa
 		
 		grf.renderizar()
 	}
-	
 	funcao inteiro Tela(inteiro Base, inteiro posiTam, inteiro tela){
 		retorne ((tela*posiTam)/Base)
 	}
@@ -1979,25 +1966,16 @@ programa
           }
           
      }
-	
-
->>>>>>> a7b6455b267cbe3759fa1e44c52600a515c3f878
 }
 /* $$$ Portugol Studio $$$ 
  * 
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
-<<<<<<< HEAD
  * 
- * @POSICAO-CURSOR = 33082; 
- * @DOBRAMENTO-CODIGO = [65, 71, 369, 468, 531, 544, 565, 587, 618, 637, 667, 685, 709, 744, 776];
-=======
- *
- * @POSICAO-CURSOR = 1430; 
- * @DOBRAMENTO-CODIGO = [65, 71, 369, 468, 531, 544, 565, 587, 618, 637, 667, 685, 709, 744, 776, 798];
->>>>>>> a7b6455b267cbe3759fa1e44c52600a515c3f878
+ * @POSICAO-CURSOR = 4567; 
+ * @DOBRAMENTO-CODIGO = [84, 367, 127, 427, 437, 441, 562, 540, 603, 616, 637, 664, 647, 678, 697, 730, 769, 787, 811, 846, 878, 900, 1194, 1293, 1356, 1369, 1390, 1412, 1443, 1462, 1492, 1510, 1534, 1569, 1601, 1623, 1658, 1665, 1753, 1852, 1868, 1914, 1917, 1939];
  * @PONTOS-DE-PARADA = ;
- * @SIMBOLOS-INSPECIONADOS = {i, 44, 18, 1}-{x, 748, 18, 1}-{contador, 801, 10, 8};
+ * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
  * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
  */
