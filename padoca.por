@@ -42,16 +42,16 @@ programa
 		inteiro numDeVet[3]
 		logico saida = verdadeiro, teste=falso
 		//leitura de arquivos
-		/*para(inteiro c=0;c<5;c++){
+		para(inteiro c=0;c<5;c++){
 			escreva("Selecione a sequência de arquivos:\n1-Histórico\n2-Produtos Registrados\n3-Total de vendas\n4-Vendas do dia\n5-Registro de vendas")
 			vetsrc[c] = src.selecionar_arquivo(typdata, verdadeiro)
 			limpa()
-		}*/
+		}
 		//menu de opções
 		faca{
-			/*numDeVet[0] = totalProdutos(vetsrc[1])
+			numDeVet[0] = totalProdutos(vetsrc[1])
 			numDeVet[1] = totalProdutos(vetsrc[2])
-			numDeVet[2] = totalProdutos(vetsrc[3])*/
+			numDeVet[2] = totalProdutos(vetsrc[3])
 			imprime_mnu(mnu)
 			escolha(mnu){
 				caso 1:
@@ -1972,8 +1972,8 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 4567; 
- * @DOBRAMENTO-CODIGO = [84, 367, 127, 427, 437, 441, 562, 540, 603, 616, 637, 664, 647, 678, 697, 730, 769, 787, 811, 846, 878, 900, 1194, 1293, 1356, 1369, 1390, 1412, 1443, 1462, 1492, 1510, 1534, 1569, 1601, 1623, 1658, 1665, 1753, 1852, 1868, 1914, 1917, 1939];
+ * @POSICAO-CURSOR = 4241; 
+ * @DOBRAMENTO-CODIGO = [664, 678, 697, 730, 769, 787, 811, 846, 878, 900, 1194, 1293, 1356, 1369, 1390, 1412, 1443, 1462, 1492, 1510, 1534, 1569, 1601, 1658, 1665, 1753, 1852, 1868, 1914, 1917, 1939];
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
