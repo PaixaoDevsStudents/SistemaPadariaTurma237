@@ -166,8 +166,11 @@ programa
 				caso 3:
 					//opção foi cartão, escreve texto sobre escolha
 					escreva("Forma de pagamento em cartão de crédito/débito foi escolhido.\n3% de acrescimo foi acrescentado ao valor da compra.\n")
-					
+					se(vetorProd[3] == "true"){
 						valorTotal += (preco * quantidadeVend)//valorTotal recebe o valor da compra
+					}
+					senao{
+						valorTotal += balanca(quantidadeVend, preco)
 					}
 					valorTotalD += valorTotal
 					pare
@@ -940,7 +943,7 @@ programa
 		enquanto(saida){
 			Apresentar_Cadastro(5,Tela(1920, 694, LarguraT),Tela(1080, 765, AlturaT),texto)
 			Escrever_Num(1,texto, saida)
-			se(typ.cadeia_e_real(texto) ou typ.cadeia_e_inteiro(texto, 10)){
+			se((typ.cadeia_e_real(texto) ou typ.cadeia_e_inteiro(texto, 10)) e (typ.cadeia_para_real(texto) < typ.cadeia_para_real(vetor[4]))){
 				real valor = typ.cadeia_para_real(texto)
 				vetor[5] = typ.real_para_cadeia(valor)
 			}
@@ -1079,8 +1082,8 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 6180; 
- * @DOBRAMENTO-CODIGO = [103, 384, 451, 464, 505, 524, 557, 596, 614, 638, 694, 673, 705, 727, 756, 764, 855, 955, 972, 1019, 1022, 1044];
+ * @POSICAO-CURSOR = 39587; 
+ * @DOBRAMENTO-CODIGO = [60, 103, 220, 66, 377, 387, 391, 454, 467, 477, 508, 527, 560, 599, 617, 641, 676, 708, 730, 759, 767, 958, 975, 1022, 1025, 1047];
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
