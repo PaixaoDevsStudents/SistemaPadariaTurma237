@@ -57,8 +57,7 @@ programa
 				pare
 				caso 4:
 					//fechar caixa
-					fechamentoCaixa(password,vetorProd,vetorVend,caminho,linhaOriginal,posicao,vetDeNum)
-					fechamentoCaixa(password,vetsrc)
+					fechamentoCaixa(password,vetorProd,vetorVend,caminho,linhaOriginal,posicao,vetDeNum,vetsrc)
 					
 				pare
 				caso 5:
@@ -73,37 +72,10 @@ programa
 		escreva("Escolha uma opcao \n\n 1) Cadastrar produto         2) Registrar Venda\n 3) Relatorio Atual           4) Fechar Caixa e Sair\n\nDigite o numero referente a opção desejada: ")
 		leia(opcao)
 		retorne opcao
-	}/*
-// Função para verificar o acesso
-funcao verifAcess(cadeia password) {
-    // Implementação da função verifAcess
-    // Aqui você precisa adicionar o código que verifica se a senha fornecida é correta.
-}
-
-// Função para obter a data e hora atuais
-funcao Data(cadeia dia ,cadeia mes,cadeia ano,cadeia hora,cadeia minuto) {
-    // Implementação da função Data
-    // Aqui você precisa adicionar o código que retorna a data e hora atuais no formato desejado.
-    retorne ""+dia+"/"+mes+"/"+ano+"\t"+hora+":"+minuto
-}
-
-// Função para calcular o total de vendas
-funcao real calcularTotalVendas(cadeia caminho) {
-    // Aqui você precisa adicionar o código que calcula o total de vendas do dia.
-    // Você pode fazer isso abrindo o arquivo de vendas, lendo cada linha, 
-    // e somando o valor de cada venda.
-}
-
-// Função para gerar um relatório de vendas
-funcao vazio gerarRelatorioVendas(cadeia dia ,cadeia mes,cadeia ano,cadeia hora,cadeia minuto,cadeia caminho) {
-    // Aqui você precisa adicionar o código que gera um relatório de vendas.
-    // Você pode fazer isso abrindo o arquivo de vendas, lendo cada linha, 
-    // e imprimindo os detalhes de cada venda.
-}*/
-
-funcao fechamentoCaixa(cadeia password, cadeia vetorProd[], cadeia vetorVend[], cadeia caminho, cadeia linhaOriginal, inteiro posicao, inteiro vetDeNum[]) {
 	}
-     funcao fechamentoCaixa(cadeia password,cadeia vetsrc[]) {
+
+funcao fechamentoCaixa(cadeia password, cadeia vetorProd[], cadeia vetorVend[], cadeia caminho, cadeia linhaOriginal, inteiro posicao, inteiro vetDeNum[],cadeia vetsrc[]) {
+	
     // Solicita a verificação de acesso
     verifAcess(password)
     logico formato_24h = verdadeiro
@@ -121,12 +93,6 @@ funcao fechamentoCaixa(cadeia password, cadeia vetorProd[], cadeia vetorVend[], 
     // Se o usuário responder 'S' ou 's', prossiga com o fechamento do caixa
     escreva("Fechando o caixa...\n")
      gerarRelatorioVendas(vetsrc)
-    // realizar todas as operações necessárias para fechar o caixa
-    // Isso pode incluir coisas como calcular o total de vendas do dia, gerar um relatório de vendas
-    // verificar o estoque restante, realizar uma auditoria de caixa
-    // Aqui você pode adicionar o código para realizar todas as operações necessárias para fechar o caixa.
-    // Isso pode incluir coisas como calcular o total de vendas do dia, gerar um relatório de vendas,
-    // verificar o estoque restante, realizar uma auditoria de caixa, etc.
 
    // Registrar a data e hora de fechamento
     cadeia dataHoraFechamento = Data()
@@ -156,30 +122,7 @@ funcao fechamentoCaixa(cadeia password, cadeia vetorProd[], cadeia vetorVend[], 
 
     retorne ""+dia+"/"+mes+"/"+ano+"\t"+hora+":"+minuto
 }
-funcao real calcularTotalVendas(cadeia caminho) {
-    // Abra o arquivo onde os dados de vendas estão armazenados
-    inteiro arquivoVendas = src.abrir_arquivo(caminho, src.MODO_LEITURA)
-    real totalVendas = 0.0
-    cadeia linhaVenda = src.ler_linha(arquivoVendas)
 
-    // Percorra cada venda no arquivo
-    enquanto (src.fim_arquivo(arquivoVendas) == falso){
-        // Supondo que os dados de venda estejam estruturados como: produto|quantidade|preco_unitario
-       // cadeia vetorVenda[] =scr.escreva_linha(linhaVenda, "|")
-
-        // O total para cada venda é a quantidade vendida vezes o preço unitário
-       // real totalVenda = typ.cadeia_para_inteiro(vetorVenda[1], 10) * typ.cadeia_para_real(vetorVenda[2])
-
-        // Adicione o total desta venda às vendas totais
-       // totalVendas += totalVenda
-
-        // Leia a próxima linha no arquivo de vendas
-        linhaVenda = src.ler_linha(arquivoVendas)
-
-    }
-
-    retorne ""+dia+"/"+mes+"/"+ano+"\t"+hora+":"+minuto
-}
 funcao vazio gerarRelatorioVendas(cadeia vetsrc[]) {
     // Abra o arquivo onde os dados de vendas estão armazenados
     inteiro c = 0
@@ -246,7 +189,8 @@ funcao vazio gerarRelatorioVendas(cadeia vetsrc[]) {
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 109; 
+ * @POSICAO-CURSOR = 1968; 
+ * @DOBRAMENTO-CODIGO = [157];
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
