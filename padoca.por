@@ -14,22 +14,34 @@ programa
 	const inteiro TAM_Y_TELA = 1080
 	const inteiro PROD = 5
 	const inteiro VENDA = 4
+	
      inteiro LarguraT = grf.largura_tela()
      inteiro AlturaT = grf.altura_tela()
 	cadeia computador =  utl.obter_diretorio_usuario()
+	
 	//Menu 
-	inteiro ImgMenu = grf.carregar_imagem(computador+"./midia/imagens/Sistema Padaria 2.0/Menu.png")
+	inteiro ImgMenu = grf.carregar_imagem("./midia/imagens/Telas do Front Padaria/verificar_ADM/menu_programa1.png")
      //Login e Senha
-     inteiro ImgAcesso = grf.carregar_imagem(computador+".midia/imagens/Sistema Padaria 2.0/VerificarAcesso.png")
-     inteiro ImgAcessoNegado = grf.carregar_imagem(computador+"./midia/imagens/Sistema Padaria 2.0/AcessoNegado.png")
+     inteiro ImgAcesso = grf.carregar_imagem("./midia/imagens/Telas do Front Padaria/verificar_ADM/tela_verfica_acesso1.png")
+     inteiro ImgAcessoNegado = grf.carregar_imagem("./midia/imagens/Telas do Front Padaria/verificar_ADM/senha_incorreta.png")
+     inteiro ImgExcessoTentativas = grf.carregar_imagem ("./midia/imagens/Telas do Front Padaria/verificar_ADM/excedeu_tentativas.png")
      //cadastro
+     inteiro ImgNome = grf.carregar_imagem("./midia/imagens/Telas do Front Padaria/cadastro/nome_produto.png")
+    	inteiro ImgCusto = grf.carregar_imagem("./midia/imagens/Telas do Front Padaria/cadastro/custo_produto.png")
+	inteiro ImgPesoUnitario = grf.carregar_imagem("./midia/imagens/Telas do Front Padaria/cadastro/kg_ou_uni.png")
+	inteiro ImgPeso = grf.carregar_imagem("./midia/imagens/Telas do Front Padaria/cadastro/preco_kg.png")
+	inteiro ImgUnitario = grf.carregar_imagem("./midia/imagens/Telas do Front Padaria/cadastro/preco_unidade.png")
+	inteiro ImgQuantidade = grf.carregar_imagem("./midia/imagens/Telas do Front Padaria/cadastro/quant_produtos.png")
+     inteiro ImgCadastroSucesso = grf.carregar_imagem("./midia/imagens/Telas do Front Padaria/cadastro/produto_cadastrado.png")
+	
+     /*cadastro
      inteiro ImgNome = grf.carregar_imagem(computador+"./midia/imagens/Sistema Padaria 2.0/Nome.png")
     	inteiro ImgCusto = grf.carregar_imagem(computador+"./midia/imagens/Sistema Padaria 2.0/Custo.png")
 	inteiro ImgPesoUnitario = grf.carregar_imagem(computador+"./midia/imagens/Sistema Padaria 2.0/PesoUnitario.png")
 	inteiro ImgPeso = grf.carregar_imagem(computador+"./midia/imagens/Sistema Padaria 2.0/Peso.png")
 	inteiro ImgUnitario = grf.carregar_imagem(computador+"./midia/imagens/Sistema Padaria 2.0/Unitario.png")
 	inteiro ImgQuantidade = grf.carregar_imagem(computador+"./midia/imagens/Sistema Padaria 2.0/Quantidade.png")
-     inteiro ImgCadastroSucesso = grf.carregar_imagem(computador+"./midia/imagens/Sistema Padaria 2.0/CadastradoSucesso.png")
+     inteiro ImgCadastroSucesso = grf.carregar_imagem(computador+"./midia/imagens/Sistema Padaria 2.0/CadastradoSucesso.png")*/
 	
 	funcao inicio()
 	{	
@@ -851,6 +863,7 @@ programa
           retorne x
      }
 	funcao inteiro escolhas(cadeia texto){
+		
      	inteiro saidaLoop = 0
      	faca{
 			escreva(texto)
@@ -872,7 +885,89 @@ programa
 		}enquanto(saidaLoop != 1 e saidaLoop != 2)
 		retorne saidaLoop
      }
+	funcao fechamentoCaixa(cadeia password, cadeia vetsrc[]) {
+	    // Solicita a verificação de acesso
+	    verifAcess(password)
+	    logico formato_24h = verdadeiro
+	    // Após a verificação bem-sucedida, pergunte ao usuário se ele realmente deseja fechar o caixa
+	    escreva("Você realmente deseja fechar o caixa? (S/N)\n-->")
+	    caracter resposta
+	    leia(resposta)
+	    enquanto (resposta != 'S' e resposta != 's' e resposta != 'N' e resposta != 'n') {
+	        escreva("Entrada inválida. Por favor, insira 'S' para sim ou 'N' para não.\n-->")
+	        leia(resposta)
+	    }
+	    se (resposta == 'N' ou resposta == 'n') {
+	        inicio() // Volta para o menu inicial se o usuário responder 'N' ou 'n'
+	    }senao{
+	    // Se o usuário responder 'S' ou 's', prossiga com o fechamento do caixa
+	    escreva("Fechando o caixa...\n")
+	      gerarRelatorioVendas(vetsrc)
+	    
+	   // Registrar a data e hora de fechamento
+	    cadeia dataHoraFechamento = Data()
+	    escreva("Data e hora de fechamento: ", dataHoraFechamento, "\n")
+	    }
+	}
+	funcao cadeia Data() {
+	    cadeia dia = typ.inteiro_para_cadeia(cal.dia_mes_atual(),10)
+	    cadeia mes = typ.inteiro_para_cadeia(cal.mes_atual(),10)
+	    cadeia ano = typ.inteiro_para_cadeia(cal.ano_atual(),10)
+	    cadeia hora = typ.inteiro_para_cadeia(cal.hora_atual(verdadeiro),10) // formato_24h = verdadeiro
+	    cadeia minuto = typ.inteiro_para_cadeia(cal.minuto_atual(),10)
+	
+	    // Adiciona um zero à esquerda se o dia, mês, hora ou minuto tiverem apenas um dígito
+	    se (txt.numero_caracteres(dia) == 1) {
+	        dia = "0" + dia
+	    }
+	    se (txt.numero_caracteres(mes) == 1) {
+	        mes = "0" + mes
+	    }
+	    se (txt.numero_caracteres(hora) == 1) {
+	        hora = "0" + hora
+	    }
+	    se (txt.numero_caracteres(minuto) == 1) {
+	        minuto = "0" + minuto
+	    }
+	
+	    retorne ""+dia+"/"+mes+"/"+ano+"\t"+hora+":"+minuto
+	}
+	funcao vazio gerarRelatorioVendas(cadeia vetsrc[]) {
+	        // Abra o arquivo onde os dados de vendas estão armazenados    
+	        cadeia dataHoraFechamento = Data()
+	        cadeia caminho = vetsrc[3] // Ajuste o índice conforme necessário para o caminho correto
+	        inteiro arquivoVendas = src.abrir_arquivo(caminho, src.MODO_LEITURA)
+	
+	        escreva("===========================================\n")
+	        escreva("\tRELATÓRIO\n")
+	        escreva("===========================================\n")
+	
+	        // Leia cada linha do arquivo de vendas
+	        cadeia linha = src.ler_linha(arquivoVendas)
+	        enquanto (src.fim_arquivo(arquivoVendas) == falso) {
+	            // Supondo que cada linha esteja no formato "nomeProduto;quantidadeVendida;valorTotalVenda"
+	            // A linha é exibida diretamente, a formatação será feita pela biblioteca gráfica
+	            escreva(linha + "\n")
+	            linha = src.ler_linha(arquivoVendas)
+	        
+	
+	        escreva("===========================================\n")
+	
+	        // Feche o arquivo de vendas
+	        src.fechar_arquivo(arquivoVendas)
+	    }
+	    
+	    escreva("\n=============================================\n")
+	    escreva("TOTAL DE VENDAS DO DIA: "+  +"\n")
+	    escreva("=============================================\n")
+	
+	    // Feche o arquivo de vendas
+	    
+	    src.fechar_arquivo(arquivoVendas)
+	}
      funcao vazio verifAcess (cadeia password){
+     	
+     	
 		cadeia senha
 		inteiro contador=0
 		escreva("Verificação de Acesso\n\nDigite a senha para continuar:\n->")
@@ -899,7 +994,157 @@ programa
 			}
 		}
 	}
+	funcao real fluxoCaixa(real matCaixa[][]){
+		real saldoInicial, saldoFinal=0.0, saldoAnterior=0.0, saldo=0.0, l=0.0
+		inteiro entrada=src.abrir_arquivo("./sourceDaPadaria/sfluxoCaixa.txt", src.MODO_LEITURA)
+		
+		src.fechar_arquivo(entrada)
+		
+		src.abrir_arquivo("./sourceDaPadaria/sfluxoCaixa.txt", src.MODO_ACRESCENTAR)
+		escreva("\nDigite o saldo inicial: R$")
+		leia(saldoInicial)
+		
+		matCaixa[0][0]=saldoInicial
+		cadeia z=typ.real_para_cadeia(matCaixa[0][0])
+		
+		matCaixa[0][1]=saldoAnterior
+		cadeia w=typ.real_para_cadeia(matCaixa[0][1])
+		
+		src.escrever_linha('|'+z+'|'+w, entrada)
+			
+		escreva("O saldo Inicial é de: R$"+z+"\n")
+			
+		src.fechar_arquivo(entrada)
+		saldo=matCaixa[0][0]
+		
+		retorne saldo
+	}
+	
 	//front end
+	funcao realizarVendas(inteiro id, inteiro x, inteiro y,cadeia &texto){
+		leia(id)
+		//inteiro imgCodigo=0, alturaT=0, larguraT=0,imgquantidade=0, imgQuantErrada=0, imgTelaValor =0
+		inteiro alturaT=0, larguraT=0
+		escolha(id){
+			caso 1: 
+			inteiro ImgCodigo =  grf.carregar_imagem("./midia/imagens/Telas do Front Padaria/vendas/cod_produto.png")
+			inteiro TelaCodigo = grf.redimensionar_imagem(ImgCodigo, LarguraT, AlturaT, verdadeiro)
+               grf.desenhar_imagem(0, 0, TelaCodigo)
+               grf.desenhar_texto(x, y, texto+"_")
+               grf.liberar_imagem(TelaCodigo)
+               grf.liberar_imagem( ImgCodigo)
+			pare 
+			caso 2: 
+			inteiro ImgCodInexistente  = grf.carregar_imagem("./imagens/Telas do Front Padaria/vendas/cod_inexistente.png")
+			inteiro CodInesxistente =  grf.redimensionar_imagem(ImgCodInexistente, LarguraT, AlturaT, verdadeiro)
+               grf.desenhar_imagem(0, 0, CodInesxistente)
+               grf.desenhar_texto(x, y, texto+"_")
+               grf.liberar_imagem(CodInesxistente)
+               grf.liberar_imagem(ImgCodInexistente)
+			pare
+			caso 3: 
+			 inteiro  ImgQuantidade = grf.carregar_imagem("./midia/imagens/Telas do Front Padaria/vendas/cod_prod_qtdvend.png")
+			 inteiro TelaQuantidade = grf.redimensionar_imagem(ImgQuantidade, LarguraT, AlturaT, verdadeiro)
+               grf.desenhar_imagem(0, 0,  TelaQuantidade)
+               grf.desenhar_texto(x, y, texto+"_")
+               grf.liberar_imagem( TelaQuantidade)
+               grf.liberar_imagem( ImgQuantidade)
+			pare
+			caso 4: 
+			 inteiro ImgQuantErrada = grf.carregar_imagem("./midia/imagens/Telas do Front Padaria/vendas/erro_qtd_infor.png")
+			 inteiro TelaQuantErrada = grf.redimensionar_imagem(ImgQuantErrada, LarguraT, AlturaT, verdadeiro)
+               grf.desenhar_imagem(0, 0, TelaQuantErrada)
+               grf.desenhar_texto(x, y, texto+"_")
+               grf.liberar_imagem(TelaQuantErrada)
+               grf.liberar_imagem(ImgQuantErrada)
+			
+			pare
+			caso 5:
+               inteiro ImgFinalizarVend =grf.carregar_imagem("./imagens/Telas do Front Padaria/vendas/vend_finali.png")
+               inteiro FinalizarVend = grf.redimensionar_imagem(ImgFinalizarVend, LarguraT, AlturaT, verdadeiro)
+               grf.desenhar_imagem(0, 0, FinalizarVend)
+               grf.desenhar_texto(x, y, texto+"_")
+               grf.liberar_imagem(FinalizarVend)
+               grf.liberar_imagem(ImgFinalizarVend)
+			pare
+			caso 6:
+			inteiro ImgFormaPag = grf.carregar_imagem("./imagens/Telas do Front Padaria/vendas/forma_pagrf.png")
+			inteiro TelaFormaPag = grf.redimensionar_imagem(ImgFormaPag, LarguraT, AlturaT, verdadeiro)
+               grf.desenhar_imagem(0, 0, TelaFormaPag )
+               grf.desenhar_texto(x, y, texto+"_")
+               grf.liberar_imagem(TelaFormaPag )
+               grf.liberar_imagem(ImgFormaPag)
+			pare
+			caso 7:
+               inteiro ImgTelaValor = grf.carregar_imagem("./midia/imagens/Telas do Front Padaria/vendas/valor_ pgmento.png")
+			inteiro TelaValor = grf.redimensionar_imagem(ImgTelaValor, LarguraT, AlturaT, verdadeiro)
+               grf.desenhar_imagem(0, 0, TelaValor)
+               grf.desenhar_texto(x, y, texto+"_")
+               grf.liberar_imagem(TelaValor)
+               grf.liberar_imagem(ImgTelaValor)
+			pare 
+			caso 8:
+               inteiro ImgTipoCartao = grf.carregar_imagem("./midia/imagens/Telas do Front Padaria/vendas/selec_cart.png")
+               inteiro TipoCartao = grf.redimensionar_imagem(ImgTipoCartao, LarguraT, AlturaT, verdadeiro)
+               grf.desenhar_imagem(0, 0, TipoCartao)
+               grf.desenhar_texto(x, y, texto+"_")
+               grf.liberar_imagem(TipoCartao )
+               grf.liberar_imagem(ImgTipoCartao)
+			pare
+			caso 9:
+			inteiro ImgPagamentoCred = grf.carregar_imagem("./midia/imagens/Telas do Front Padaria/vendas/pgmento_credito.png")
+			inteiro PagamentoCred = grf.redimensionar_imagem(ImgPagamentoCred, LarguraT, AlturaT, verdadeiro)
+               grf.desenhar_imagem(0, 0,  PagamentoCred )
+               grf.desenhar_texto(x, y, texto+"_")
+               grf.liberar_imagem( PagamentoCred)
+               grf.liberar_imagem( ImgPagamentoCred )
+			
+			pare
+		     caso 10:
+		     inteiro ImgPagamentoDeb = grf.carregar_imagem("./midia/imagens/Telas do Front Padaria/vendas/pgmento_debito.png")
+		     inteiro PagamentoDeb = grf.redimensionar_imagem(ImgPagamentoDeb, LarguraT, AlturaT, verdadeiro)
+               grf.desenhar_imagem(0, 0,  PagamentoDeb)
+               grf.desenhar_texto(x, y, texto+"_")
+               grf.liberar_imagem( PagamentoDeb)
+               grf.liberar_imagem(ImgPagamentoDeb)
+       
+		     pare 
+		     caso 11:
+		     inteiro ImgPix = grf.carregar_imagem("./midia/imagens/Telas do Front Padaria/vendas/qrcod_gerado.png")
+		     inteiro PixQrcod =  grf.redimensionar_imagem(ImgPix, LarguraT, AlturaT, verdadeiro)
+               grf.desenhar_imagem(0, 0,  PixQrcod)
+               grf.desenhar_texto(x, y, texto+"_")
+               grf.liberar_imagem( PixQrcod)
+               grf.liberar_imagem( ImgPix )
+		     pare 
+		     caso 12:
+		     inteiro ImgPixAprovad = grf.carregar_imagem("./midia/imagens/Telas do Front Padaria/vendas/qrcod_aprov.png")
+		     inteiro PixAprovad =  grf.redimensionar_imagem(ImgPixAprovad, LarguraT, AlturaT, verdadeiro)
+               grf.desenhar_imagem(0, 0,  PixAprovad)
+               grf.desenhar_texto(x, y, texto+"_")
+               grf.liberar_imagem( PixAprovad)
+               grf.liberar_imagem( ImgPixAprovad )
+		     pare 
+		     caso 13:
+               inteiro ImgTroco = grf.carregar_imagem("./midia/imagens/Telas do Front Padaria/vendas/inf_pagtroco.png")
+		     inteiro Troco =  grf.redimensionar_imagem(ImgTroco, LarguraT, AlturaT, verdadeiro)
+               grf.desenhar_imagem(0, 0,  Troco)
+               grf.desenhar_texto(x, y, texto+"_")
+               grf.liberar_imagem(Troco)
+               grf.liberar_imagem(ImgTroco)
+		     pare 
+		     caso 14:
+               inteiro ImgPagAprovad = grf.carregar_imagem("/midia/imagens/Telas do Front Padaria/vendas/pag_aprovado.png")
+               inteiro PagAprovad = grf.redimensionar_imagem(ImgPagAprovad, LarguraT, AlturaT, verdadeiro)
+               grf.desenhar_imagem(0, 0,  PagAprovad)
+               grf.desenhar_texto(x, y, texto+"_")
+               grf.liberar_imagem(PagAprovad)
+               grf.liberar_imagem(ImgPagAprovad)
+		     pare 
+			
+			}
+		grf.renderizar()
+		}
 	funcao logico mouse(inteiro x, inteiro y, inteiro a, inteiro b)
      {
           se (m.posicao_x() >= x e m.posicao_y() >= y e m.posicao_x() <= x + a e m.posicao_y() <= y + b) {
@@ -1216,10 +1461,10 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 1639; 
- * @DOBRAMENTO-CODIGO = [33, 50, 56, 356, 366, 370, 469, 532, 545, 566, 605, 621, 652, 671, 704, 743, 761, 785, 820, 852, 874, 902, 909, 997, 1096, 1112, 1158, 1161, 1183];
+ * @POSICAO-CURSOR = 511; 
+ * @DOBRAMENTO-CODIGO = [45, 62, 68, 368, 378, 382, 481, 544, 557, 578, 617, 633, 664, 683, 716, 755, 773, 797, 832, 864, 887, 911, 934, 967, 996, 1147, 1242, 1341, 1357, 1403, 1406, 1428];
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
- * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
+ * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz;
  */
