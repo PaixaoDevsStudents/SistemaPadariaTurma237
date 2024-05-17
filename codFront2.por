@@ -17,35 +17,12 @@ programa
 //--------------------------------------------------------------------
  
  /*TELAS*/
+ 	//Caminho base
  	cadeia computador =  utl.obter_diretorio_usuario()
 	//Menu 
-	inteiro ImgMenu = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\Menu.png")
-     //Login e Senha
-     inteiro ImgAcesso = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\VerificarAcesso.png")
-     inteiro ImgAcessoNegado = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\AcessoNegado.png")
-     //cadastro
-     inteiro ImgNome = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\Nome.png")
-    	inteiro ImgCusto = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\Custo.png")
-	inteiro ImgPesoUnitario = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\PesoUnitario.png")
-	inteiro ImgPeso = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\Peso.png")
-	inteiro ImgUnitario = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\Unitario.png")
-	inteiro ImgQuantidade = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\Quantidade.png")
-     inteiro ImgCadastroSucesso = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\CadastradoSucesso.png")
 	
-     
-     //RealizarVendas
-     /*inteiro TelaCodigo = g.carregar_imagem()
-     inteiro TelaQuantidade = g.carregar_imagem()
-     inteiro TelaQuantErrada = g.carregar_imagem()
-     inteiro TelaValor = g.carregar_imagem()
-     inteiro TelaTroco = g.carregar_imagem()
-     inteiro TelaFormaPag = g.carregar_imagem()
-     inteiro TelaPagCart = g.carregar_imagem()
-     inteiro TelaOpcCart = g.carregar_imagem()
-     inteiro TelaPagCartConc = g.carregar_imagem()
-     inteiro TelaPagPix = g.carregar_imagem()
-     inteiro TelaPagPixConc = g.carregar_imagem()
-
+	
+     /*
      //Relatório
      inteiro TelaRelatDia = g.carregar_imagem()
      inteiro TelaVerificaAdm = g.carregar_imagem()
@@ -88,10 +65,11 @@ programa
           
           enquanto (verdadeiro) {
           	
-               
+               inteiro ImgMenu = g.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/Menu.png")
                inteiro telaMenu = g.redimensionar_imagem(ImgMenu, LarguraT, AlturaT, verdadeiro) // variavel que recebe a foto da variavel (telaMenu) e redimensiona para cobrir toda a janela.
                g.desenhar_imagem(0,0, telaMenu)
                g.liberar_imagem(telaMenu)  // libera o cache dessa imagem da memoria RAM 
+			g.liberar_imagem(ImgMenu) 
 			g.renderizar()
 			//Função para Cadastrar Produtos
 
@@ -125,7 +103,7 @@ programa
                se(mouse(Tela(1920,735,LarguraT), Tela(1080,765,AlturaT), Tela(1920,325,LarguraT), Tela(1080,85,AlturaT)) e mou == m.BOTAO_ESQUERDO){
                	botao = 4
                }
-               faca{
+              	
 			//Função para Realizar Vendas
            	//se(mouse(735, 475, 325, 85) == verdadeiro 
            	/*se (mouse(735, 620, 325, 85) == verdadeiro e mou == m.BOTAO_ESQUERDO){
@@ -255,69 +233,309 @@ programa
 		Apresentar_Cadastro(6,0,0,texto)
 		utl.aguarde(3500)
 	}
+
+	
+	//Login e Senha
+	
+	
+	//cadastro
+     
+     //RealizarVendas
+     /*
+     inteiro TelaCodigo = g.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/Codigo.png")
+     inteiro TelaQuantidade = g.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/QuantidadeVenda.png")
+     inteiro TelaQuantErrada = g.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/EstoqueLimite.png")
+     inteiro TelaValor = g.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/ValorPago.png")
+     inteiro TelaTroco = g.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/Troco.png")
+     inteiro TelaFormaPag = g.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/Pagamento.png")
+     inteiro TelaPagCart = g.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/CartaoPagar.png")
+     inteiro TelaOpcCart = g.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/Cartao.png")
+     inteiro TelaPagCartConc = g.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/CartaoAprovado.png")
+     inteiro TelaPagPix = g.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/Pix.png")
+     inteiro TelaPagPixConc = g.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/PixAprovado.png")
+	*/
      funcao vazio Apresenta_Registro(inteiro id, inteiro x, inteiro y,cadeia &texto)// função para aparecer a outra tela 
      {
      	se(id == 0){
+     		
+     		inteiro ImgAcesso = g.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/VerificarAcesso.png")
      		inteiro telaAcesso = g.redimensionar_imagem(ImgAcesso, LarguraT, AlturaT, verdadeiro)
 	     	g.desenhar_imagem(0, 0, telaAcesso)
 	     	g.desenhar_texto(x, y, texto+"_")
 	     	g.liberar_imagem(telaAcesso)
+	     	g.liberar_imagem(ImgAcesso)
      	}
      	senao se(id == 1){
+     		inteiro ImgAcessoNegado = g.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/AcessoNegado.png")
      		inteiro telaAcessoNegado = g.redimensionar_imagem(ImgAcessoNegado, LarguraT, AlturaT, verdadeiro)
      		g.desenhar_imagem(0, 0, telaAcessoNegado)
      		g.desenhar_texto(x, y, texto+"_")
      		g.liberar_imagem(telaAcessoNegado)
+     		g.liberar_imagem(ImgAcessoNegado)
      	} 
      	g.renderizar()
      }
 	funcao Apresentar_Cadastro(inteiro id, inteiro x, inteiro y,cadeia &texto){
 		escolha(id){
 			caso 0:
+				inteiro ImgNome = g.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/Nome.png")
 				inteiro telaNome = g.redimensionar_imagem(ImgNome, LarguraT, AlturaT, verdadeiro)
 				g.desenhar_imagem(0, 0, telaNome)
 				g.desenhar_texto(x, y, texto+"_")
 			     g.liberar_imagem(telaNome)
+			     g.liberar_imagem(ImgNome)
 				pare
 			caso 1:
+				inteiro ImgQuantidade = g.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/Quantidade.png")
 				inteiro telaQuantidade = g.redimensionar_imagem(ImgQuantidade, LarguraT, AlturaT, verdadeiro)
 			     g.desenhar_imagem(0, 0, telaQuantidade)
 			     g.desenhar_texto(x, y, texto+"_")
 			     g.liberar_imagem(telaQuantidade)
+			     g.liberar_imagem(ImgQuantidade)
 		     	pare
 		     caso 2:
+		     	inteiro ImgPesoUnitario = g.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/PesoUnitario.png")
 		     	inteiro telaPesoUnitario = g.redimensionar_imagem(ImgPesoUnitario, LarguraT, AlturaT, verdadeiro)
 			     g.desenhar_imagem(0, 0, telaPesoUnitario)
 			     g.liberar_imagem(telaPesoUnitario)
+			     g.liberar_imagem(ImgPesoUnitario)
 		     	pare
 		     caso 3:
+		     	inteiro ImgPeso = g.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/Peso.png")
 		     	inteiro telaPeso = g.redimensionar_imagem(ImgPeso, LarguraT, AlturaT, verdadeiro)
 		     	g.desenhar_imagem(0, 0, telaPeso)
 		     	g.desenhar_texto(x, y, texto+"_")
 		     	g.liberar_imagem(telaPeso)
 		     	pare
 		     caso 4:
+		     	inteiro ImgUnitario = g.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/Unitario.png")
 		     	inteiro telaUnitario = g.redimensionar_imagem(ImgUnitario, LarguraT, AlturaT, verdadeiro)
 		     	g.desenhar_imagem(0, 0, telaUnitario)
 		     	g.desenhar_texto(x, y, texto+"_")
 		     	g.liberar_imagem(telaUnitario)
+		     	g.liberar_imagem(ImgUnitario)
 		     	pare
 		     caso 5:
+		     	inteiro ImgCusto = g.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/Custo.png")
 		     	inteiro telaCusto = g.redimensionar_imagem(ImgCusto, LarguraT, AlturaT, verdadeiro)
 			     g.desenhar_imagem(0, 0, telaCusto)
 			     g.desenhar_texto(x, y, texto+"_")
 			     g.liberar_imagem(telaCusto)
+			     g.liberar_imagem(ImgCusto)
 		     	pare
 		      caso 6:
+		      	inteiro ImgCadastroSucesso = g.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/CadastradoSucesso.png")
 		     	inteiro telaCadastroSucesso = g.redimensionar_imagem(ImgCadastroSucesso, LarguraT, AlturaT, verdadeiro)
 			     g.desenhar_imagem(0, 0, telaCadastroSucesso)
 			     g.liberar_imagem(telaCadastroSucesso)
+			     g.liberar_imagem(ImgCadastroSucesso)
 		     	pare
 		}
 		
 		g.renderizar()
 	}
-	
+	funcao realizarVendas(inteiro id, inteiro x, inteiro y,cadeia &texto){
+		leia(id)
+		//inteiro imgCodigo=0, alturaT=0, larguraT=0,imgquantidade=0, imgQuantErrada=0, imgTelaValor =0
+		inteiro alturaT=0, larguraT=0
+		escolha(id){
+			caso 1: 
+			inteiro ImgCodigo =  g.carregar_imagem("./midia/imagens/Telas do Front Padaria/vendas/cod_produto.png")
+			inteiro TelaCodigo = g.redimensionar_imagem(ImgCodigo, LarguraT, AlturaT, verdadeiro)
+               g.desenhar_imagem(0, 0, TelaCodigo)
+               g.desenhar_texto(x, y, texto+"_")
+               g.liberar_imagem(TelaCodigo)
+               g.liberar_imagem( ImgCodigo)
+			pare 
+			caso 2: 
+			inteiro ImgCodInexistente  = g.carregar_imagem("./imagens/Telas do Front Padaria/vendas/cod_inexistente.png")
+			inteiro CodInesxistente =  g.redimensionar_imagem(ImgCodInexistente, LarguraT, AlturaT, verdadeiro)
+               g.desenhar_imagem(0, 0, CodInesxistente)
+               g.desenhar_texto(x, y, texto+"_")
+               g.liberar_imagem(CodInesxistente)
+               g.liberar_imagem(ImgCodInexistente)
+			pare
+			caso 3: 
+			 inteiro  ImgQuantidade = g.carregar_imagem("./midia/imagens/Telas do Front Padaria/vendas/cod_prod_qtdvend.png")
+			 inteiro TelaQuantidade = g.redimensionar_imagem(ImgQuantidade, LarguraT, AlturaT, verdadeiro)
+               g.desenhar_imagem(0, 0,  TelaQuantidade)
+               g.desenhar_texto(x, y, texto+"_")
+               g.liberar_imagem( TelaQuantidade)
+               g.liberar_imagem( ImgQuantidade)
+			pare
+			caso 4: 
+			 inteiro ImgQuantErrada = g.carregar_imagem("./midia/imagens/Telas do Front Padaria/vendas/erro_qtd_infor.png")
+			 inteiro TelaQuantErrada = g.redimensionar_imagem(ImgQuantErrada, LarguraT, AlturaT, verdadeiro)
+               g.desenhar_imagem(0, 0, TelaQuantErrada)
+               g.desenhar_texto(x, y, texto+"_")
+               g.liberar_imagem(TelaQuantErrada)
+               g.liberar_imagem(ImgQuantErrada)
+			
+			pare
+			caso 5:
+               inteiro ImgFinalizarVend =g.carregar_imagem("./imagens/Telas do Front Padaria/vendas/vend_finali.png")
+               inteiro FinalizarVend = g.redimensionar_imagem(ImgFinalizarVend, LarguraT, AlturaT, verdadeiro)
+               g.desenhar_imagem(0, 0, FinalizarVend)
+               g.desenhar_texto(x, y, texto+"_")
+               g.liberar_imagem(FinalizarVend)
+               g.liberar_imagem(ImgFinalizarVend)
+			pare
+			caso 6:
+			inteiro ImgFormaPag = g.carregar_imagem("./imagens/Telas do Front Padaria/vendas/forma_pag.png")
+			inteiro TelaFormaPag = g.redimensionar_imagem(ImgFormaPag, LarguraT, AlturaT, verdadeiro)
+               g.desenhar_imagem(0, 0, TelaFormaPag )
+               g.desenhar_texto(x, y, texto+"_")
+               g.liberar_imagem(TelaFormaPag )
+               g.liberar_imagem(ImgFormaPag)
+			pare
+			caso 7:
+               inteiro ImgTelaValor = g.carregar_imagem("./midia/imagens/Telas do Front Padaria/vendas/valor_ pgmento.png")
+			inteiro TelaValor = g.redimensionar_imagem(ImgTelaValor, LarguraT, AlturaT, verdadeiro)
+               g.desenhar_imagem(0, 0, TelaValor)
+               g.desenhar_texto(x, y, texto+"_")
+               g.liberar_imagem(TelaValor)
+               g.liberar_imagem(ImgTelaValor)
+			pare 
+			caso 8:
+               inteiro ImgTipoCartao = g.carregar_imagem("./midia/imagens/Telas do Front Padaria/vendas/selec_cart.png")
+               inteiro TipoCartao = g.redimensionar_imagem(ImgTipoCartao, LarguraT, AlturaT, verdadeiro)
+               g.desenhar_imagem(0, 0, TipoCartao)
+               g.desenhar_texto(x, y, texto+"_")
+               g.liberar_imagem(TipoCartao )
+               g.liberar_imagem(ImgTipoCartao)
+			pare
+			caso 9:
+			inteiro ImgPagamentoCred = g.carregar_imagem("./midia/imagens/Telas do Front Padaria/vendas/pgmento_credito.png")
+			inteiro PagamentoCred = g.redimensionar_imagem(ImgPagamentoCred, LarguraT, AlturaT, verdadeiro)
+               g.desenhar_imagem(0, 0,  PagamentoCred )
+               g.desenhar_texto(x, y, texto+"_")
+               g.liberar_imagem( PagamentoCred)
+               g.liberar_imagem( ImgPagamentoCred )
+			
+			pare
+		     caso 10:
+		     inteiro ImgPagamentoDeb = g.carregar_imagem("./midia/imagens/Telas do Front Padaria/vendas/pgmento_debito.png")
+		     inteiro PagamentoDeb = g.redimensionar_imagem(ImgPagamentoDeb, LarguraT, AlturaT, verdadeiro)
+               g.desenhar_imagem(0, 0,  PagamentoDeb)
+               g.desenhar_texto(x, y, texto+"_")
+               g.liberar_imagem( PagamentoDeb)
+               g.liberar_imagem(ImgPagamentoDeb)
+       
+		     pare 
+		     caso 11:
+		     inteiro ImgPix = g.carregar_imagem("./midia/imagens/Telas do Front Padaria/vendas/qrcod_gerado.png")
+		     inteiro PixQrcod =  g.redimensionar_imagem(ImgPix, LarguraT, AlturaT, verdadeiro)
+               g.desenhar_imagem(0, 0,  PixQrcod)
+               g.desenhar_texto(x, y, texto+"_")
+               g.liberar_imagem( PixQrcod)
+               g.liberar_imagem( ImgPix )
+		     pare 
+		     caso 12:
+		     inteiro ImgPixAprovad = g.carregar_imagem("./midia/imagens/Telas do Front Padaria/vendas/qrcod_aprov.png")
+		     inteiro PixAprovad =  g.redimensionar_imagem(ImgPixAprovad, LarguraT, AlturaT, verdadeiro)
+               g.desenhar_imagem(0, 0,  PixAprovad)
+               g.desenhar_texto(x, y, texto+"_")
+               g.liberar_imagem( PixAprovad)
+               g.liberar_imagem( ImgPixAprovad )
+		     pare 
+		     caso 13:
+               inteiro ImgTroco = g.carregar_imagem("./midia/imagens/Telas do Front Padaria/vendas/inf_pagtroco.png")
+		     inteiro Troco =  g.redimensionar_imagem(ImgTroco, LarguraT, AlturaT, verdadeiro)
+               g.desenhar_imagem(0, 0,  Troco)
+               g.desenhar_texto(x, y, texto+"_")
+               g.liberar_imagem(Troco)
+               g.liberar_imagem(ImgTroco)
+		     pare 
+		     caso 14:
+               inteiro ImgPagAprovad = g.carregar_imagem("/midia/imagens/Telas do Front Padaria/vendas/pag_aprovado.png")
+               inteiro PagAprovad = g.redimensionar_imagem(ImgPagAprovad, LarguraT, AlturaT, verdadeiro)
+               g.desenhar_imagem(0, 0,  PagAprovad)
+               g.desenhar_texto(x, y, texto+"_")
+               g.liberar_imagem(PagAprovad)
+               g.liberar_imagem(ImgPagAprovad)
+		     pare 
+			
+			}
+		g.renderizar()
+		}
+	/*
+	funcao Apresentar_Venda(inteiro id, inteiro x, inteiro y,cadeia &texto){
+		//inteiro imgCodigo=0, LarguraT=0, AlturaT=0,imgquantidade=0, imgQuantErrada=0, imgTelaValor =0
+		escolha(id){
+			caso 1: 
+              	TelaCodigo =  g.redimensionar_imagem( TelaCodigo=0, LarguraT, AlturaT, verdadeiro )
+               g.desenhar_imagem(0, 0, TelaCodigo)
+               g.desenhar_texto(x, y, texto+"_")
+               g.liberar_imagem(TelaCodigo)
+			pare 
+			caso 2: 
+               TelaQuantidade = g.redimensionar_imagem( TelaQuantidade, LarguraT, AlturaT, verdadeiro )
+               g.desenhar_imagem(0, 0, TelaQuantidade)
+               g.desenhar_texto(x, y, texto+"_")
+               g.liberar_imagem(TelaQuantidade)
+			pare
+			caso 3: 
+			TelaQuantErrada =  g.redimensionar_imagem(TelaQuantErrada , LarguraT, AlturaT, verdadeiro )
+               g.desenhar_imagem(0, 0, TelaQuantErrada)
+               g.desenhar_texto(x, y, texto+"_")
+               g.liberar_imagem(TelaQuantErrada)
+			pare
+			caso 4: 
+               TelaValor =  g.redimensionar_imagem( TelaValor , LarguraT, AlturaT, verdadeiro )
+               g.desenhar_imagem(0, 0, TelaValor)
+               g.desenhar_texto(x, y, texto+"_")
+               g.liberar_imagem(TelaValor)
+			pare
+			caso 5:
+               TelaTroco =  g.redimensionar_imagem( TelaTroco, LarguraT, AlturaT, verdadeiro )
+               g.desenhar_imagem(0, 0, TelaTroco)
+               g.desenhar_texto(x, y, texto+"_")
+               g.liberar_imagem(TelaTroco)
+			pare
+			caso 6:
+               TelaFormaPag =  g.redimensionar_imagem(  TelaFormaPag , LarguraT, AlturaT, verdadeiro )
+               g.desenhar_imagem(0, 0,  TelaFormaPag)
+               g.desenhar_texto(x, y, texto+"_")
+               g.liberar_imagem( TelaFormaPag)
+			
+			pare 
+			caso 7:
+		     TelaPagCart =  g.redimensionar_imagem(TelaPagCart , LarguraT, AlturaT, verdadeiro )
+               g.desenhar_imagem(0, 0,  TelaPagCart)
+               g.desenhar_texto(x, y, texto+"_")
+               g.liberar_imagem( TelaPagCart)
+			
+			pare
+		     caso 8:
+		     TelaOpcCart =  g.redimensionar_imagem(TelaOpcCart , LarguraT, AlturaT, verdadeiro )
+               g.desenhar_imagem(0, 0,  TelaOpcCart)
+               g.desenhar_texto(x, y, texto+"_")
+               g.liberar_imagem( TelaOpcCart)
+       
+		     pare 
+		     caso 9:
+              TelaPagCartConc =  g.redimensionar_imagem(TelaPagCartConc , LarguraT, AlturaT, verdadeiro )
+               g.desenhar_imagem(0, 0,  TelaPagCartConc)
+               g.desenhar_texto(x, y, texto+"_")
+               g.liberar_imagem( TelaPagCartConc)
+		     pare 
+		     caso 10:
+               TelaPagPix=  g.redimensionar_imagem(TelaPagPix , LarguraT, AlturaT, verdadeiro )
+               g.desenhar_imagem(0, 0,  TelaPagPix)
+               g.desenhar_texto(x, y, texto+"_")
+               g.liberar_imagem(TelaPagPix)
+		     pare 
+		     caso 11:
+              TelaPagPixConc =  g.redimensionar_imagem(TelaPagPixConc , LarguraT, AlturaT, verdadeiro )
+               g.desenhar_imagem(0, 0,  TelaPagPixConc)
+               g.desenhar_texto(x, y, texto+"_")
+               g.liberar_imagem( TelaPagPixConc)
+		     pare 
+			}
+			g.renderizar()
+		
+	}
+	*/
 	funcao inteiro Tela(inteiro Base, inteiro posiTam, inteiro tela){
 		retorne ((tela*posiTam)/Base)
 	}
@@ -379,10 +597,10 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 5370; 
- * @DOBRAMENTO-CODIGO = [109, 162, 257, 273, 320, 323, 345];
+ * @POSICAO-CURSOR = 19255; 
+ * @DOBRAMENTO-CODIGO = [243, 460];
  * @PONTOS-DE-PARADA = ;
- * @SIMBOLOS-INSPECIONADOS = {x, 73, 33, 1}-{y, 73, 44, 1}-{botao, 100, 11, 5}-{Produto, 112, 20, 7};
+ * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
  * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
  */
