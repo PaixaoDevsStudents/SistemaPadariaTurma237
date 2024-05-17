@@ -18,34 +18,40 @@ programa
      inteiro AlturaT = grf.altura_tela()
 	cadeia computador =  utl.obter_diretorio_usuario()
 	//Menu 
-	inteiro ImgMenu = grf.carregar_imagem(computador+"C:/Users/Aluno/Documents/igor f/projeto turma/SistemaPadariaTurma237/sourceDaPadaria/midia/imagens/Sistema Padaria 2.0/Menu.png")
+	inteiro ImgMenu = grf.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/Menu.png")
      //Login e Senha
-     inteiro ImgAcesso = grf.carregar_imagem(computador+"C:/Users/Aluno/Documents/igor f/projeto turma/SistemaPadariaTurma237/sourceDaPadaria/midia/imagens/Sistema Padaria 2.0/midia/imagens/Sistema Padaria 2.0/VerificarAcesso.png")
-     inteiro ImgAcessoNegado = grf.carregar_imagem(computador+"./midia/imagens/Sistema Padaria 2.0/AcessoNegado.png")
+     inteiro ImgAcesso = grf.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/VerificarAcesso.png")
+     inteiro ImgAcessoNegado = grf.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/AcessoNegado.png")
      //cadastro
-     inteiro ImgNome = grf.carregar_imagem(computador+"./midia/imagens/Sistema Padaria 2.0/Nome.png")
-    	inteiro ImgCusto = grf.carregar_imagem(computador+"./midia/imagens/Sistema Padaria 2.0/Custo.png")
-	inteiro ImgPesoUnitario = grf.carregar_imagem(computador+"./midia/imagens/Sistema Padaria 2.0/PesoUnitario.png")
-	inteiro ImgPeso = grf.carregar_imagem(computador+"./midia/imagens/Sistema Padaria 2.0/Peso.png")
-	inteiro ImgUnitario = grf.carregar_imagem(computador+"./midia/imagens/Sistema Padaria 2.0/Unitario.png")
-	inteiro ImgQuantidade = grf.carregar_imagem(computador+"./midia/imagens/Sistema Padaria 2.0/Quantidade.png")
-     inteiro ImgCadastroSucesso = grf.carregar_imagem(computador+"./midia/imagens/Sistema Padaria 2.0/CadastradoSucesso.png")
+     inteiro ImgNome = grf.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/Nome.png")
+    	inteiro ImgCusto = grf.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/Custo.png")
+	inteiro ImgPesoUnitario = grf.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/PesoUnitario.png")
+	inteiro ImgPeso = grf.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/Peso.png")
+	inteiro ImgUnitario = grf.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/Unitario.png")
+	inteiro ImgQuantidade = grf.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/Quantidade.png")
+     inteiro ImgCadastroSucesso = grf.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/CadastradoSucesso.png")
+	
 	
 	funcao inicio()
 	{	
 		//variaveis
 		inteiro arquivo, mnu=0, qtd_estoque=0, id_produto=0
-		real val_uni=0.0, val_custo=0.0
-		cadeia nome_produto="", vetsrc[5], typdata[2]={"arquivo de dados|txt","arquivo de dados|txt"}
+		real val_uni=0.0, val_custo=0.0, matCaixa[7][2]
+		cadeia nome_produto="", vetsrc[6], typdata[2]={"arquivo de dados|txt","arquivo de dados|txt"}
 		inteiro opcao
 		inteiro numDeVet[3]
+
+		inteiro  posicao=0, id=0, vetDeNum[]
+		//cadeia  caminho[], vetorProd[], vetorVend[]
+		real  saldoCaixa=0.0 
+		
 		//leitura de arquivos
-		para(inteiro c=0;c<5;c++){
-			escreva("Selecione a sequência de arquivos:\n1-Carrinho\n2-Produtos Registrados\n3-Total de vendas\n4-Vendas do dia\n5-Registro de vendas")
+		para(inteiro c=0;c<6;c++){
+			escreva("Selecione a sequência de arquivos:\n1-Carrinho\n2-Produtos Registrados\n3-Total de vendas\n4-Vendas do dia\n5-Registro de vendas\n6-Fluxo de Caixa")
 			vetsrc[c] = src.selecionar_arquivo(typdata, verdadeiro)
 		}
 		//menu de opções
-		Menu(numDeVet,vetsrc)
+		Menu(numDeVet, vetsrc, matCaixa)
 	}
 	//back end
 	funcao inteiro imprime_mnu(inteiro &opcao){
@@ -54,8 +60,9 @@ programa
 		limpa()
 		retorne opcao
 	}
-	funcao realizarVenda(cadeia vetorProd[], cadeia vetorVend[], cadeia caminho[], cadeia linhaOriginal, inteiro posicao,inteiro vetDeNum[], real saldoCaixa){
+	funcao realizarVenda(cadeia vetorProd[],real matCaixa[][], cadeia vetorVend[], cadeia caminho[], cadeia linhaOriginal, inteiro posicao,inteiro vetDeNum[], real saldoCaixa){
 		//se existir produto escolhido
+		fluxoCaixa(matCaixa)
 		se(vetorProd[0] != ""){
 			//define valores default do vetor de vendas
 			para(inteiro i = 0; i < VENDA; i++){
@@ -364,10 +371,7 @@ programa
 		escreva("Valor a cobrar do cliente é: ",valorCobrarCliente) // mostra o valor na tela a ser cobrado 
 		retorne (valorCobrarCliente)
 	}
-	funcao real abrirCaixa (real saldoCaixa){
-		saldoCaixa = entradaBaseReal("Abertura de caixa, Quantos reais tem no caixa?: ")
-		retorne saldoCaixa
-	}
+
      funcao cadeia filtrarCaracteres(cadeia nome){
 		para(inteiro i = 0; i < txt.numero_caracteres(nome); i++){
 			caracter x = txt.obter_caracter(nome, i)// caracter a ser analisado
@@ -380,7 +384,7 @@ programa
 					nome = txt.substituir(nome, letra, "a")
 					pare
 				//filtra A
-				caso 'Ã':caso 'Â':caso 'Á':caso 'À':caso 'Ä':
+				caso 'Ã':caso ' ':caso 'Á':caso 'À':caso 'Ä':
 					letra = typ.caracter_para_cadeia(x)
 					nome = txt.substituir(nome, letra, "A")
 					pare
@@ -467,9 +471,11 @@ programa
 		}
 		retorne nome
 	}
-	funcao pesquisarProduto(inteiro id,cadeia caminho[], inteiro vetDeNum[], real saldoCaixa){
+
+	funcao pesquisarProduto(inteiro id,cadeia caminho[], inteiro vetDeNum[], real saldoCaixa, real matCaixa[][]){
+		
 		inteiro opcaoInterna, arquivo, saidaLoop, j = 1
-		cadeia vetInfProd[5]
+		cadeia vetInfProd[6]
 		cadeia vetInfVend[4]
 		faca{
           	saidaLoop = 0
@@ -510,7 +516,7 @@ programa
 						}
 						//se produto foi escolhido, realiza venda e sai
 						senao{
-							realizarVenda(vetInfProd, vetInfVend, caminho, linhaOriginal, j, vetDeNum, saldoCaixa)
+							realizarVenda( vetInfProd, matCaixa, vetInfVend, caminho, linhaOriginal, j,vetDeNum,saldoCaixa)
 							saidaLoop = 1
 						}
 					}
@@ -570,55 +576,10 @@ programa
 		para(inteiro i = 0; i< PROD; i++){
 			vetor[i] = ""
 		} 
-        f_front_cadastro(senha, vetor)
-            vetor[0] += (numDeProd+1)
-        // Antes de passar o produto, verifique se o produto já existe
-        // Esta linha chama a função produtoExiste para verificar se o produto já existe no arquivo
-        se (produtoExiste(vetor[1], caminho) == falso) {
-            // Validação de quantidade de produtos
-            // Esta parte garante que a quantidade de produtos inserida seja um número inteiro maior que zero
-            inteiro quantidade
-            faca {
-                quantidade = entradaBaseInteiro("Insira a quantidade do produto: ")
-            } enquanto (quantidade <= 0)
-            vetor[2] = typ.inteiro_para_cadeia(quantidade, 10)
-
-            // Validação de valores de produtos
-            // Esta parte garante que o valor de custo do produto não seja maior que o valor do produto
-            real valor_custo, valor_produto
-            faca {
-                valor_custo = entradaBaseReal("Insira o valor de custo do produto: ")
-                valor_produto = entradaBaseReal("Insira o valor do produto: ")
-                se (valor_custo > valor_produto) {
-                    escreva("O valor de custo não pode ser maior que o valor do produto. Por favor, tente novamente.")
-                }
-            } enquanto (valor_custo > valor_produto)
-            vetor[3] = typ.real_para_cadeia(valor_produto)
-            vetor[4] = typ.real_para_cadeia(valor_custo)
-
-            passeProduto(1, caminho , vetor)//passa os dados do produto para o arquivo
-        } senao {
-            escreva("O produto já existe. Por favor, tente novamente com um produto diferente.")
-        }
-    
+		vetor[0] += (numDeProd+1)
+		f_front_cadastro(senha, vetor)
           passeProduto(1, caminho , vetor)//passa os dados do produto para o arquivo
 	}
-     funcao logico produtoExiste(cadeia nomeProduto, cadeia caminho) {
-        // Abra o arquivo em modo de leitura
-        inteiro arquivo = src.abrir_arquivo(caminho, src.MODO_LEITURA)
-        cadeia linha = src.ler_linha(arquivo)
-        // Enquanto não for o fim do arquivo
-        enquanto (src.fim_arquivo(arquivo) == falso) {
-            // Se o nome do produto existir na linha, retorne verdadeiro
-            // Esta linha verifica se o nome do produto existe na linha do arquivo
-            se (txt.posicao_texto(linha, nomeProduto, 1) != -1) {
-                retorne verdadeiro
-            }
-            linha = src.ler_linha(arquivo)
-        }
-        // Se o produto não foi encontrado, retorne falso
-        retorne falso
-    }
 	funcao cadeia leiaProduto(cadeia vetor[], inteiro arquivo){
 		//loop for para cada elemento da coluna
 		cadeia valor = "" //váriavel para colocar os valores retirados das matrizes dentro arquivo, começa limpa
@@ -872,76 +833,6 @@ programa
 		}enquanto(saidaLoop != 1 e saidaLoop != 2)
 		retorne saidaLoop
      }
-     funcao fechamentoCaixa(cadeia password, cadeia vetsrc[]) {
-    // Solicita a verificação de acesso
-    verifAcess(password)
-    logico formato_24h = verdadeiro
-    // Após a verificação bem-sucedida, pergunte ao usuário se ele realmente deseja fechar o caixa
-    escreva("Você realmente deseja fechar o caixa? (S/N)\n-->")
-    caracter resposta
-    leia(resposta)
-    enquanto (resposta != 'S' e resposta != 's' e resposta != 'N' e resposta != 'n') {
-        escreva("Entrada inválida. Por favor, insira 'S' para sim ou 'N' para não.\n-->")
-        leia(resposta)
-    }
-    se (resposta == 'N' ou resposta == 'n') {
-        inicio() // Volta para o menu inicial se o usuário responder 'N' ou 'n'
-    }senao{
-    // Se o usuário responder 'S' ou 's', prossiga com o fechamento do caixa
-    escreva("Fechando o caixa...\n")
-     gerarRelatorioVendas(vetsrc)
-
-   // Registrar a data e hora de fechamento
-    cadeia dataHoraFechamento = Data()
-    escreva("Data e hora de fechamento: ", dataHoraFechamento, "\n")
-    }
-}
-     funcao cadeia Data() {
-    cadeia dia = typ.inteiro_para_cadeia(cal.dia_mes_atual(),10)
-    cadeia mes = typ.inteiro_para_cadeia(cal.mes_atual(),10)
-    cadeia ano = typ.inteiro_para_cadeia(cal.ano_atual(),10)
-    cadeia hora = typ.inteiro_para_cadeia(cal.hora_atual(verdadeiro),10) // formato_24h = verdadeiro
-    cadeia minuto = typ.inteiro_para_cadeia(cal.minuto_atual(),10)
-
-    // Adiciona um zero à esquerda se o dia, mês, hora ou minuto tiverem apenas um dígito
-    se (txt.numero_caracteres(dia) == 1) {
-        dia = "0" + dia
-    }
-    se (txt.numero_caracteres(mes) == 1) {
-        mes = "0" + mes
-    }
-    se (txt.numero_caracteres(hora) == 1) {
-        hora = "0" + hora
-    }
-    se (txt.numero_caracteres(minuto) == 1) {
-        minuto = "0" + minuto
-    }
-
-    retorne ""+dia+"/"+mes+"/"+ano+"\t"+hora+":"+minuto
-}
-     funcao vazio gerarRelatorioVendas(cadeia vetsrc[]) {
-    // Abra o arquivo onde os dados de vendas estão armazenados
-        cadeia caminho = vetsrc[3] // Ajuste o índice conforme necessário para o caminho correto
-        inteiro arquivoVendas = src.abrir_arquivo(caminho, src.MODO_LEITURA)
-
-        escreva("===========================================\n")
-        escreva("RELATÓRIO - ", caminho, "\n")
-        escreva("===========================================\n")
-
-        // Leia cada linha do arquivo de vendas
-        cadeia linha = src.ler_linha(arquivoVendas)
-        enquanto (src.fim_arquivo(arquivoVendas) == falso) {
-            // A linha é exibida diretamente, a formatação será feita pela biblioteca gráfica
-            escreva(linha + "\n")
-            linha = src.ler_linha(arquivoVendas)
-        }
-
-        escreva("===========================================\n")
-
-        // Feche o arquivo de vendas
-        src.fechar_arquivo(arquivoVendas)
-    }
-
      funcao vazio verifAcess (cadeia password){
 		cadeia senha
 		inteiro contador=0
@@ -969,6 +860,117 @@ programa
 			}
 		}
 	}
+	funcao real fluxoCaixa(real matCaixa[][]){
+		real saldoInicial, saldoFinal=0.0, saldoAnterior=0.0, saldo=0.0, l=0.0
+		inteiro entrada=src.abrir_arquivo("./sourceDaPadaria/sfluxoCaixa.txt", src.MODO_LEITURA)
+		enquanto (src.fim_arquivo(entrada)==falso){
+			cadeia linha=src.ler_linha(entrada)
+			se(typ.cadeia_e_real(linha)){
+				l=typ.cadeia_para_real(linha)
+			}
+		}
+		saldoAnterior=l
+		src.fechar_arquivo(entrada)
+		src.abrir_arquivo("./sourceDaPadaria/sfluxoCaixa.txt", src.MODO_ACRESCENTAR)
+		escreva("\nDigite o saldo inicial: R$")
+		leia(saldoInicial)
+		matCaixa[0][0]=saldoInicial
+		src.escrever_linha(typ.real_para_cadeia(matCaixa[0][0]), entrada)
+		se(saldoAnterior==0.0){
+			
+			matCaixa[0][1]=saldoAnterior
+			src.escrever_linha(typ.real_para_cadeia(matCaixa[0][1]), entrada)
+			
+		}senao{
+			matCaixa[0][0]=saldoAnterior+saldoInicial
+			src.escrever_linha(typ.real_para_cadeia(matCaixa[0][0]), entrada)
+			escreva("O saldo Inicial é de: R$"+matCaixa[0][0])
+		}
+		saldo=matCaixa[0][0]
+		
+		retorne saldo
+	}
+funcao fechamentoCaixa(cadeia password, cadeia vetorProd[], cadeia vetorVend[], cadeia caminho, inteiro posicao, inteiro vetDeNum[],cadeia vetsrc[]) {
+	cadeia linhaOriginalcadeia=""
+    // Solicita a verificação de acesso
+    verifAcess(password)
+    logico formato_24h = verdadeiro
+    // Após a verificação bem-sucedida, pergunte ao usuário se ele realmente deseja fechar o caixa
+    escreva("Você realmente deseja fechar o caixa? (S/N)\n-->")
+    caracter resposta
+    leia(resposta)
+    enquanto (resposta != 'S' e resposta != 's' e resposta != 'N' e resposta != 'n') {
+        escreva("Entrada inválida. Por favor, insira 'S' para sim ou 'N' para não.\n-->")
+        leia(resposta)
+    }
+    se (resposta == 'N' ou resposta == 'n') {
+        inicio() // Volta para o menu inicial se o usuário responder 'N' ou 'n'
+    }senao{
+    // Se o usuário responder 'S' ou 's', prossiga com o fechamento do caixa
+    escreva("Fechando o caixa...\n")
+      gerarRelatorioVendas(vetsrc)
+    
+   // Registrar a data e hora de fechamento
+    cadeia dataHoraFechamento = Data()
+    escreva("Data e hora de fechamento: ", dataHoraFechamento, "\n")
+    }
+}
+   funcao cadeia Data() {
+    cadeia dia = typ.inteiro_para_cadeia(cal.dia_mes_atual(),10)
+    cadeia mes = typ.inteiro_para_cadeia(cal.mes_atual(),10)
+    cadeia ano = typ.inteiro_para_cadeia(cal.ano_atual(),10)
+    cadeia hora = typ.inteiro_para_cadeia(cal.hora_atual(verdadeiro),10) // formato_24h = verdadeiro
+    cadeia minuto = typ.inteiro_para_cadeia(cal.minuto_atual(),10)
+
+    // Adiciona um zero à esquerda se o dia, mês, hora ou minuto tiverem apenas um dígito
+    se (txt.numero_caracteres(dia) == 1) {
+        dia = "0" + dia
+    }
+    se (txt.numero_caracteres(mes) == 1) {
+        mes = "0" + mes
+    }
+    se (txt.numero_caracteres(hora) == 1) {
+        hora = "0" + hora
+    }
+    se (txt.numero_caracteres(minuto) == 1) {
+        minuto = "0" + minuto
+    }
+
+    retorne ""+dia+"/"+mes+"/"+ano+"\t"+hora+":"+minuto
+}
+
+funcao vazio gerarRelatorioVendas(cadeia vetsrc[]) {
+    // Abra o arquivo onde os dados de vendas estão armazenados
+  
+    cadeia vendaTotal = "C:/Users/Aluno/Documents/igor f/projeto turma/SistemaPadariaTurma237/sourceDaPadaria/DataBaseDeVendasEmTotal.txt"
+    cadeia dataHoraFechamento = Data()
+    inteiro arquivoVendas = src.abrir_arquivo(vendaTotal, src.MODO_LEITURA)
+    escreva("=============================================\n")
+    escreva("RELATÓRIO DE VENDAS - DATA: ", dataHoraFechamento , "\n")
+    escreva("=============================================\n\n")
+    escreva("PRODUTO\t\tQUANTIDADE VENDIDA\tPREÇO UNITÁRIO\tTOTAL DE VENDAS\n")
+    
+    cadeia linhaVenda = src.ler_linha(arquivoVendas)
+    // Percorra cada venda no arquivo
+    enquanto (src.fim_arquivo(arquivoVendas) == falso) {
+        // Supondo que os dados de venda estejam estruturados como: produto|quantidade|preco_unitario
+         
+
+        // Imprima os detalhes de cada venda
+       
+
+        // Leia a próxima linha no arquivo de vendas
+        linhaVenda = src.ler_linha(arquivoVendas)
+    }
+     
+    escreva("\n=============================================\n")
+    escreva("TOTAL DE VENDAS DO DIA: "+  +"\n")
+    escreva("=============================================\n")
+
+    // Feche o arquivo de vendas
+    
+    src.fechar_arquivo(arquivoVendas)
+}
 	//front end
 	funcao logico mouse(inteiro x, inteiro y, inteiro a, inteiro b)
      {
@@ -977,11 +979,15 @@ programa
           }
           retorne falso
      }
-	funcao Menu(inteiro numDeVet[],cadeia vetsrc[])
+
+	funcao Menu(inteiro numDeVet[],cadeia vetsrc[], real matCaixa[][])
+	
      {
+          cadeia password="",vetorProd[5],vetorVend[5],caminho=""
+          inteiro posicao=0,vetDeNum[5]
           grf.iniciar_modo_grafico(verdadeiro)
           grf.definir_dimensoes_janela(LarguraT, AlturaT)
-          grf.renderizar()// antes de aparecer alguma imagem aparece uma tela preta. 
+          //grf.renderizar()// antes de aparecer alguma imagem aparece uma tela preta. 
           logico saida = verdadeiro
           enquanto (saida) {
                inteiro telaMenu = grf.redimensionar_imagem(ImgMenu, LarguraT, AlturaT, verdadeiro) // variavel que recebe a foto da variavel (telaMenu) e redimensiona para cobrir toda a janela.
@@ -994,7 +1000,7 @@ programa
 			inteiro mou = m.ler_botao() 
 			inteiro botao = 0
 			cadeia senha = "ADMIN"
-               cadeia password =""
+
            	se(mouse(Tela(1920,735,LarguraT), Tela(1080,330,AlturaT), Tela(1920,325,LarguraT), Tela(1080,85,AlturaT)) e mou == m.BOTAO_ESQUERDO){
            		botao = 1
                }
@@ -1017,8 +1023,8 @@ programa
 				pare
 				caso 2:
 					//realizar vendas
-					real saldoCaixa = abrirCaixa(0.0)
-					pesquisarProduto(0,vetsrc,numDeVet, saldoCaixa)
+					real saldoCaixa = fluxoCaixa(matCaixa)
+					pesquisarProduto(0, vetsrc, numDeVet, saldoCaixa, matCaixa)
 				pare
 				caso 3:
 					//relatorio temporario
@@ -1026,14 +1032,14 @@ programa
 				pare
 				caso 4:
 					saida=falso
-					fechamentoCaixa(password,vetsrc)
+					fechamentoCaixa(password,vetorProd,vetorVend,caminho,posicao,vetDeNum,vetsrc)
 
 				pare
 			}
                
                //Função para Realizar Vendas
-           	//se(mouse(735, 475, 325, 85) == verdadeiro 
-           	/*se (mouse(735, 620, 325, 85) == verdadeiro e mou == m.BOTAO_ESQUERDO){
+           	/*//se(mouse(735, 475, 325, 85) == verdadeiro 
+           	se (mouse(735, 620, 325, 85) == verdadeiro e mou == m.BOTAO_ESQUERDO){
            	 	grf.definir_cor(grf.COR_VERDE)
 				grf.desenhar_retangulo(745, 480, 305, 84, verdadeiro, falso)
 		     	grf.definir_tamanho_texto(20.0)
@@ -1063,7 +1069,8 @@ programa
                }*/
           }
           grf.encerrar_modo_grafico()
-     }    
+     }
+     
 	funcao f_front_venda(){}
 	funcao f_front_cadastro(cadeia senha, cadeia &vetor[]){
 		logico saida = verdadeiro
@@ -1225,7 +1232,8 @@ programa
 		}
 		
 		grf.renderizar()
-	}	
+	}
+	
 	funcao inteiro Tela(inteiro Base, inteiro posiTam, inteiro tela){
 		retorne ((tela*posiTam)/Base)
 	}
@@ -1279,15 +1287,17 @@ programa
           	saida = falso	
           }
           
-     }	
+     }
+	
 }
+
 /* $$$ Portugol Studio $$$ 
  * 
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 949; 
- * @DOBRAMENTO-CODIGO = [33, 50, 56, 356, 366, 370, 469, 532, 566, 605, 621, 652, 671, 704, 743, 761, 785, 820, 852, 944, 972, 1067, 1166, 1182, 1228, 1231, 1253];
+ * @POSICAO-CURSOR = 38717; 
+ * @DOBRAMENTO-CODIGO = [56, 62, 363, 374, 474, 538, 551, 575, 572, 582, 613, 632, 665, 704, 722, 746, 781, 813, 835, 974, 1074, 1173, 1189, 1236, 1239, 1261];
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
