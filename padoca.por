@@ -16,11 +16,12 @@ programa
 	const inteiro VENDA = 4
      inteiro LarguraT = grf.largura_tela()
      inteiro AlturaT = grf.altura_tela()
+
      
-	inteiro ImgMenu = grf.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/Menu.png")
+	
 	//Login e Senha
-	inteiro ImgAcesso = grf.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/VerificarAcesso.png")
-	inteiro ImgAcessoNegado = grf.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/AcessoNegado.png")
+	
+	
 	//cadastro
 	inteiro ImgNome = grf.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/Nome.png")
 	inteiro ImgCusto = grf.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/Custo.png")
@@ -100,12 +101,13 @@ programa
 			real valorTotalD = 0.0
 			inteiro limite = 0 //variável para o limite de estoque
 			//loop para entrada de quantidade
+
 			se(vetorProd[3] == "true"){
 			faca{
 				limite = typ.cadeia_para_inteiro(vetorProd[2], 10)//váriavel limite de estoque recebe limite de estoque
 				//se estoque foi esgotado
 				se(limite == 0){
-					escreva("Produtlo foi esgotado!! Reposição do estoque foi solicitada\n")
+					escreva("Produto foi esgotado!! Reposição do estoque foi solicitada\n")
 					reposicao = entradaBaseInteiro("Insira o número da reposicao: ")//reposição recebe a reposição de estoque
 					//loop para receber receber o uma diferença do estoque
 					para(inteiro i = 0; i < PROD; i++){
@@ -130,6 +132,25 @@ programa
 					escreva("Quantidade inválida!! Está igual ou abaixo de zero.\n")
 				}
 			}enquanto(quantidadeVend <= 0 ou quantidadeVend > limite e saidaLoop != 1)
+			}
+			senao{
+				limite = typ.cadeia_para_inteiro(vetorProd[2], 10)//váriavel limite de estoque recebe NOVO limite de estoque
+				se(limite == 0){
+					escreva("Produtlo foi esgotado!! Reposição do estoque foi solicitada\n")
+					reposicao = entradaBaseInteiro("Insira o número da reposicao: ")//reposição recebe a reposição de estoque
+					//loop para receber receber o uma diferença do estoque
+					para(inteiro i = 0; i < PROD; i++){
+						//se iterador for igual a posição do valor do estoque
+						se(i == 2){
+							vetorProd[i] = ""//vetor de produto com id de estoque é limpado
+							vetorProd[i] += reposicao //vetor de produto com id de estoque é substituido pelo valor de reposição
+						}
+						linhaSubsProd += "/"+vetorProd[i]+"/"//linhaSubsProd concatena os dados do vetor do produto
+					}
+					src.substituir_texto(caminho[0], linhaOriginal, linhaSubsProd, verdadeiro)//substitui os dados antigos do estoque pelos novos
+					limite = typ.cadeia_para_inteiro(vetorProd[2], 10)//váriavel limite de estoque recebe NOVO limite de estoque
+				}
+				valorTotal = balanca(quantidadeVend, preco)
 			}
 			escreva(linhaSubsProd)
 			//texto de opções de pagamento
@@ -157,9 +178,6 @@ programa
 					se(vetorProd[3] == "true"){
 						valorTotal += (preco * quantidadeVend)//valorTotal recebe o valor da compra
 					}
-					senao{
-						valorTotal += balanca(quantidadeVend, preco)
-					}
 					valorTotalD += valorTotal
 					pare
 				// caso cartão: acréscimo de 3%
@@ -168,9 +186,6 @@ programa
 					escreva("Forma de pagamento em cartão de crédito/débito foi escolhido.\n3% de acrescimo foi acrescentado ao valor da compra.\n")
 					se(vetorProd[3] == "true"){
 						valorTotal += (preco * quantidadeVend)//valorTotal recebe o valor da compra
-					}
-					senao{
-						valorTotal += balanca(quantidadeVend, preco)
 					}
 					valorTotalD += valorTotal
 					pare
@@ -375,12 +390,11 @@ programa
 			}enquanto(saidaLoop != 1)
 		}
 	}
-	funcao real balanca (inteiro quantidadeCompraCliente,real valorDaKg){
-		inteiro peso = utl.sorteia(1, 1000) // sorteando a quantidade que o cliente vai comprar, para simular uma balança 
+	funcao real balanca (inteiro &peso, real valorDaKg){
+		peso = utl.sorteia(50, 1000) // sorteando a quantidade que o cliente vai comprar, para simular uma balança 
 		real l = typ.inteiro_para_real(peso) // mudando o valor de inteiro para real para poder usar zero apos a virgula pq o sorteia so roda com inteiro...
 		escreva ("Você comprou ",l," gramas de pão.\n")
-		real precoEmGramas =(valorDaKg/1000)
-		real valorCobrarCliente = ((precoEmGramas*peso)) // converte gramas em reais $$ dindin
+		real valorCobrarCliente = ((l * valorDaKg)/1000) // converte gramas em reais $$ dindin
 		valorCobrarCliente = mat.arredondar(valorCobrarCliente, 7)
 		escreva("Valor a cobrar do cliente é: ",valorCobrarCliente) // mostra o valor na tela a ser cobrado 
 		retorne valorCobrarCliente
@@ -527,7 +541,7 @@ programa
 	}
 	funcao ordenacaoVend(inteiro p, inteiro k, inteiro numDeVendasDiaria, cadeia caminhoVendasD){
 		cadeia dadosDeVenda[4]
-		inteiro arquivoVendaD = src.abrir_arquivo(caminhoVendasD, src.MODO_LEITURA)
+		inteiro arquivoVendaD = src.abrir_arquivo("sourceDaPadaria\\"+caminhoVendasD, src.MODO_LEITURA)
 		leiaProduto(dadosDeVenda, arquivoVendaD)
 		se(dadosDeVenda[0] != ""){
           	//título		
@@ -772,9 +786,11 @@ programa
           grf.renderizar()// antes de aparecer alguma imagem aparece uma tela preta. 
           logico saida = verdadeiro
           enquanto (saida) {
+          	inteiro ImgMenu = grf.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/Menu.png")
                inteiro telaMenu = grf.redimensionar_imagem(ImgMenu, LarguraT, AlturaT, verdadeiro) // variavel que recebe a foto da variavel (telaMenu) e redimensiona para cobrir toda a janela.
                grf.desenhar_imagem(0,0, telaMenu)
                grf.liberar_imagem(telaMenu)  // libera o cache dessa imagem da memoria RAM 
+			grf.liberar_imagem(ImgMenu)
 			grf.renderizar()
 			//Função para Cadastrar Produtos
 
@@ -819,7 +835,7 @@ programa
 				pare
 			}
                
-               //Função para Realizar Vendas
+               
            	//se(mouse(735, 475, 325, 85) == verdadeiro 
            	/*se (mouse(735, 620, 325, 85) == verdadeiro e mou == m.BOTAO_ESQUERDO){
            	 	grf.definir_cor(grf.COR_VERDE)
@@ -873,6 +889,7 @@ programa
 				}
 			}
 		}
+		//nome
 		saida = verdadeiro
 		texto = ""
 		enquanto(saida){
@@ -881,18 +898,7 @@ programa
 			
 			vetor[1] = texto
 		}
-		saida = verdadeiro
-		texto = ""
-		enquanto(saida){
-			Apresentar_Cadastro(1,Tela(1920, 694, LarguraT),Tela(1080, 745, AlturaT),texto)
-			Escrever_Num(0,texto, saida)
-			se(typ.cadeia_e_inteiro(texto, 10)){
-				vetor[2] = texto
-			}
-			senao{
-				saida = verdadeiro
-			}
-		}
+		//Peso ou kg
 		texto = ""
 		saida = verdadeiro
 		inteiro descisao = 0
@@ -906,6 +912,24 @@ programa
 			senao se(mouse(Tela(1920,951,LarguraT), Tela(1080,721,AlturaT), Tela(1920,140,LarguraT), Tela(1080,53,AlturaT))e mou == m.BOTAO_ESQUERDO){
 				descisao = 2
 				vetor[3] += falso
+			}
+		}
+		//quantidade
+		saida = verdadeiro
+		texto = ""
+		enquanto(saida){
+			Apresentar_Cadastro(1,Tela(1920, 694, LarguraT),Tela(1080, 745, AlturaT),texto)
+			Escrever_Num(0,texto, saida)
+			se(typ.cadeia_e_inteiro(texto, 10)){
+				se(vetor[3]== "true"){
+					vetor[2] = texto
+				}
+				senao{
+					vetor[2] = typ.inteiro_para_cadeia(typ.cadeia_para_inteiro(texto, 10)*1000, 10)
+				}
+			}
+			senao{
+				saida = verdadeiro
 			}
 		}
 		texto = ""
@@ -938,6 +962,7 @@ programa
 				}
 			}
 		}
+		
 		texto = ""
 		saida = verdadeiro
 		enquanto(saida){
@@ -959,16 +984,19 @@ programa
      funcao vazio Apresenta_Registro(inteiro id, inteiro x, inteiro y,cadeia &texto)// função para aparecer a outra tela 
      {
      	se(id == 0){
+     		inteiro ImgAcesso = grf.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/VerificarAcesso.png")
      		inteiro telaAcesso = grf.redimensionar_imagem(ImgAcesso, LarguraT, AlturaT, verdadeiro)
 	     	grf.desenhar_imagem(0, 0, telaAcesso)
 	     	grf.desenhar_texto(x, y, texto+"_")
 	     	grf.liberar_imagem(telaAcesso)
      	}
      	senao se(id == 1){
+     		inteiro ImgAcessoNegado = grf.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/AcessoNegado.png")
      		inteiro telaAcessoNegado = grf.redimensionar_imagem(ImgAcessoNegado, LarguraT, AlturaT, verdadeiro)
      		grf.desenhar_imagem(0, 0, telaAcessoNegado)
      		grf.desenhar_texto(x, y, texto+"_")
      		grf.liberar_imagem(telaAcessoNegado)
+     		grf.liberar_imagem(ImgAcessoNegado)
      	} 
      	grf.renderizar()
      }
@@ -976,6 +1004,7 @@ programa
 	funcao Apresentar_Cadastro(inteiro id, inteiro x, inteiro y,cadeia &texto){
 		escolha(id){
 			caso 0:
+				
 				inteiro telaNome = grf.redimensionar_imagem(ImgNome, LarguraT, AlturaT, verdadeiro)
 				grf.desenhar_imagem(0, 0, telaNome)
 				grf.desenhar_texto(x, y, texto+"_")
@@ -1082,8 +1111,8 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 39587; 
- * @DOBRAMENTO-CODIGO = [60, 103, 220, 66, 377, 387, 391, 454, 467, 477, 508, 527, 560, 599, 617, 641, 676, 708, 730, 759, 767, 958, 975, 1022, 1025, 1047];
+ * @POSICAO-CURSOR = 39826; 
+ * @DOBRAMENTO-CODIGO = [61, 137, 401, 405, 468, 481, 491, 522, 541, 574, 613, 631, 655, 690, 722, 744, 773, 839, 781, 1051, 1054, 1076];
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
