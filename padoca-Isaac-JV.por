@@ -44,11 +44,6 @@ programa
 		inteiro  posicao=0, id=0, vetDeNum[]
 		//cadeia  caminho[], vetorProd[], vetorVend[]
 		real  saldoCaixa=0.0 
-
-
-
-
-
 		
 		//leitura de arquivos
 		para(inteiro c=0;c<6;c++){
@@ -895,7 +890,87 @@ programa
 		
 		retorne saldo
 	}
+funcao fechamentoCaixa(cadeia password, cadeia vetorProd[], cadeia vetorVend[], cadeia caminho, inteiro posicao, inteiro vetDeNum[],cadeia vetsrc[]) {
+	cadeia linhaOriginalcadeia=""
+    // Solicita a verificação de acesso
+    verifAcess(password)
+    logico formato_24h = verdadeiro
+    // Após a verificação bem-sucedida, pergunte ao usuário se ele realmente deseja fechar o caixa
+    escreva("Você realmente deseja fechar o caixa? (S/N)\n-->")
+    caracter resposta
+    leia(resposta)
+    enquanto (resposta != 'S' e resposta != 's' e resposta != 'N' e resposta != 'n') {
+        escreva("Entrada inválida. Por favor, insira 'S' para sim ou 'N' para não.\n-->")
+        leia(resposta)
+    }
+    se (resposta == 'N' ou resposta == 'n') {
+        inicio() // Volta para o menu inicial se o usuário responder 'N' ou 'n'
+    }senao{
+    // Se o usuário responder 'S' ou 's', prossiga com o fechamento do caixa
+    escreva("Fechando o caixa...\n")
+      gerarRelatorioVendas(vetsrc)
+    
+   // Registrar a data e hora de fechamento
+    cadeia dataHoraFechamento = Data()
+    escreva("Data e hora de fechamento: ", dataHoraFechamento, "\n")
+    }
+}
+   funcao cadeia Data() {
+    cadeia dia = typ.inteiro_para_cadeia(cal.dia_mes_atual(),10)
+    cadeia mes = typ.inteiro_para_cadeia(cal.mes_atual(),10)
+    cadeia ano = typ.inteiro_para_cadeia(cal.ano_atual(),10)
+    cadeia hora = typ.inteiro_para_cadeia(cal.hora_atual(verdadeiro),10) // formato_24h = verdadeiro
+    cadeia minuto = typ.inteiro_para_cadeia(cal.minuto_atual(),10)
 
+    // Adiciona um zero à esquerda se o dia, mês, hora ou minuto tiverem apenas um dígito
+    se (txt.numero_caracteres(dia) == 1) {
+        dia = "0" + dia
+    }
+    se (txt.numero_caracteres(mes) == 1) {
+        mes = "0" + mes
+    }
+    se (txt.numero_caracteres(hora) == 1) {
+        hora = "0" + hora
+    }
+    se (txt.numero_caracteres(minuto) == 1) {
+        minuto = "0" + minuto
+    }
+
+    retorne ""+dia+"/"+mes+"/"+ano+"\t"+hora+":"+minuto
+}
+
+funcao vazio gerarRelatorioVendas(cadeia vetsrc[]) {
+    // Abra o arquivo onde os dados de vendas estão armazenados
+  
+    cadeia vendaTotal = "C:/Users/Aluno/Documents/igor f/projeto turma/SistemaPadariaTurma237/sourceDaPadaria/DataBaseDeVendasEmTotal.txt"
+    cadeia dataHoraFechamento = Data()
+    inteiro arquivoVendas = src.abrir_arquivo(vendaTotal, src.MODO_LEITURA)
+    escreva("=============================================\n")
+    escreva("RELATÓRIO DE VENDAS - DATA: ", dataHoraFechamento , "\n")
+    escreva("=============================================\n\n")
+    escreva("PRODUTO\t\tQUANTIDADE VENDIDA\tPREÇO UNITÁRIO\tTOTAL DE VENDAS\n")
+    
+    cadeia linhaVenda = src.ler_linha(arquivoVendas)
+    // Percorra cada venda no arquivo
+    enquanto (src.fim_arquivo(arquivoVendas) == falso) {
+        // Supondo que os dados de venda estejam estruturados como: produto|quantidade|preco_unitario
+         
+
+        // Imprima os detalhes de cada venda
+       
+
+        // Leia a próxima linha no arquivo de vendas
+        linhaVenda = src.ler_linha(arquivoVendas)
+    }
+     
+    escreva("\n=============================================\n")
+    escreva("TOTAL DE VENDAS DO DIA: "+  +"\n")
+    escreva("=============================================\n")
+
+    // Feche o arquivo de vendas
+    
+    src.fechar_arquivo(arquivoVendas)
+}
 	//front end
 	funcao logico mouse(inteiro x, inteiro y, inteiro a, inteiro b)
      {
@@ -908,6 +983,8 @@ programa
 	funcao Menu(inteiro numDeVet[],cadeia vetsrc[], real matCaixa[][])
 	
      {
+          cadeia password="",vetorProd[5],vetorVend[5],caminho=""
+          inteiro posicao=0,vetDeNum[5]
           grf.iniciar_modo_grafico(verdadeiro)
           grf.definir_dimensoes_janela(LarguraT, AlturaT)
           //grf.renderizar()// antes de aparecer alguma imagem aparece uma tela preta. 
@@ -955,7 +1032,7 @@ programa
 				pare
 				caso 4:
 					saida=falso
-					//fechar caixa
+					fechamentoCaixa(password,vetorProd,vetorVend,caminho,posicao,vetDeNum,vetsrc)
 
 				pare
 			}
@@ -1219,8 +1296,8 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 14601; 
- * @DOBRAMENTO-CODIGO = [618, 637, 670, 709, 727, 751, 786, 818, 840, 899, 997, 1096, 1112, 1159, 1162, 1184];
+ * @POSICAO-CURSOR = 38717; 
+ * @DOBRAMENTO-CODIGO = [56, 62, 363, 374, 474, 538, 551, 575, 572, 582, 613, 632, 665, 704, 722, 746, 781, 813, 835, 974, 1074, 1173, 1189, 1236, 1239, 1261];
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
