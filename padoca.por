@@ -546,7 +546,7 @@ programa
 	funcao cadeia caminhoDoArquivo(cadeia texto){
 		cadeia entrada = ""//cadeia que recebe caminho do usuário
 		inteiro saidaLoop = 0
-		//faz enquanto o valor saidaloop != 1
+		//faz enquanto o valor saidaloop !=
 		faca{
 			escreva(texto)
 			cadeia tiposArq[2] = {"Arquivo de texto|txt", "Arquivo de texto|txt"}
@@ -1286,8 +1286,8 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 949; 
- * @DOBRAMENTO-CODIGO = [33, 50, 56, 356, 366, 370, 469, 532, 566, 605, 621, 652, 671, 704, 743, 761, 785, 820, 852, 944, 972, 1067, 1166, 1182, 1228, 1231, 1253];
+ * @POSICAO-CURSOR = 24071; 
+ * @DOBRAMENTO-CODIGO = [33, 50, 56, 356, 366, 370, 469, 532, 545, 566, 605, 621, 652, 671, 704, 743, 761, 785, 820, 852, 874, 898, 921, 944, 972, 979, 1067, 1166, 1182, 1228, 1231, 1253];
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
