@@ -16,52 +16,19 @@ programa
 	const inteiro VENDA = 4
      inteiro LarguraT = grf.largura_tela()
      inteiro AlturaT = grf.altura_tela()
-<<<<<<< HEAD
-
-     
-	
-	//Login e Senha
-	
-=======
-	cadeia computador =  utl.obter_diretorio_usuario()
-	//Menu 
-	inteiro ImgMenu = grf.carregar_imagem(computador+"./midia/imagens/Sistema Padaria 2.0/Menu.png")
-     //Login e Senha
-     inteiro ImgAcesso = grf.carregar_imagem(computador+".midia/imagens/Sistema Padaria 2.0/VerificarAcesso.png")
-     inteiro ImgAcessoNegado = grf.carregar_imagem(computador+"./midia/imagens/Sistema Padaria 2.0/AcessoNegado.png")
-     //cadastro
-     inteiro ImgNome = grf.carregar_imagem(computador+"./midia/imagens/Sistema Padaria 2.0/Nome.png")
-    	inteiro ImgCusto = grf.carregar_imagem(computador+"./midia/imagens/Sistema Padaria 2.0/Custo.png")
-	inteiro ImgPesoUnitario = grf.carregar_imagem(computador+"./midia/imagens/Sistema Padaria 2.0/PesoUnitario.png")
-	inteiro ImgPeso = grf.carregar_imagem(computador+"./midia/imagens/Sistema Padaria 2.0/Peso.png")
-	inteiro ImgUnitario = grf.carregar_imagem(computador+"./midia/imagens/Sistema Padaria 2.0/Unitario.png")
-	inteiro ImgQuantidade = grf.carregar_imagem(computador+"./midia/imagens/Sistema Padaria 2.0/Quantidade.png")
-     inteiro ImgCadastroSucesso = grf.carregar_imagem(computador+"./midia/imagens/Sistema Padaria 2.0/CadastradoSucesso.png")
->>>>>>> 9a651723d5c3cf91153c07ff8d347ada02676f0c
-	
-	//cadastro
-	inteiro ImgNome = grf.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/Nome.png")
-	inteiro ImgCusto = grf.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/Custo.png")
-	inteiro ImgPesoUnitario = grf.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/PesoUnitario.png")
-	inteiro ImgPeso = grf.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/Peso.png")
-	inteiro ImgUnitario = grf.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/Unitario.png")
-	inteiro ImgQuantidade = grf.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/Quantidade.png")
-	inteiro ImgCadastroSucesso = grf.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/CadastradoSucesso.png")
-
-	
 	//realizar venda
 	/*
-	inteiro TelaCodigo = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\")
-     inteiro TelaQuantidade = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\")
-     inteiro TelaQuantErrada = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\")
-     inteiro TelaValor = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\")
-     inteiro TelaTroco = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\")
-     inteiro TelaFormaPag = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\")
-     inteiro TelaPagCart = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\")
-     inteiro TelaOpcCart = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\")
-     inteiro TelaPagCartConc = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\")
-     inteiro TelaPagPix = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\")
-     inteiro TelaPagPixConc = g.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\")
+	inteiro TelaCodigo = grf.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\")
+     inteiro TelaQuantidade = grf.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\")
+     inteiro TelaQuantErrada = grf.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\")
+     inteiro TelaValor = grf.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\")
+     inteiro TelaTroco = grf.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\")
+     inteiro TelaFormaPag = grf.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\")
+     inteiro TelaPagCart = grf.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\")
+     inteiro TelaOpcCart = grf.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\")
+     inteiro TelaPagCartConc = grf.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\")
+     inteiro TelaPagPix = grf.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\")
+     inteiro TelaPagPixConc = grf.carregar_imagem(computador+"\\Downloads\\Sistema Padaria 2.0\\")
      */
 	funcao inicio()
 	{	
@@ -420,109 +387,7 @@ programa
 		saldoCaixa = entradaBaseReal("Abertura de caixa, Quantos reais tem no caixa?: ")
 		retorne saldoCaixa
 	}
-<<<<<<< HEAD
-=======
-     funcao cadeia filtrarCaracteres(cadeia nome){
-		para(inteiro i = 0; i < txt.numero_caracteres(nome); i++){
-			caracter x = txt.obter_caracter(nome, i)// caracter a ser analisado
-			cadeia letra //cadeia que representa caracter analisado
-			//escolha para substituir caracteres especiais indesejados e pelos seu naturais ou desejados
-			escolha(x){
-				//filtra a
-				caso 'ã':caso 'â':caso 'á':caso 'à':caso 'ä':
-					letra = typ.caracter_para_cadeia(x)
-					nome = txt.substituir(nome, letra, "a")
-					pare
-				//filtra A
-				caso 'Ã':caso 'Â':caso 'Á':caso 'À':caso 'Ä':
-					letra = typ.caracter_para_cadeia(x)
-					nome = txt.substituir(nome, letra, "A")
-					pare
-				//filtra e
-				caso 'ê':caso 'ë':caso 'é':caso 'è':
-					letra = typ.caracter_para_cadeia(x)
-					nome = txt.substituir(nome, letra, "e")
-					pare
-				//filtra E
-				caso 'Ê':caso 'Ë':caso 'É':caso 'È':
-					letra = typ.caracter_para_cadeia(x)
-					nome = txt.substituir(nome, letra, "E")
-					pare
-				//filtra o
-				caso 'õ':caso 'ô':caso 'ó':caso 'ò':caso 'ö':
-					letra = typ.caracter_para_cadeia(x)
-					nome = txt.substituir(nome, letra, "o")
-					pare
-				//filtra O
-				caso 'Õ':caso 'Ô':caso 'Ó':caso 'Ò':caso 'Ö':
-					letra = typ.caracter_para_cadeia(x)
-					nome = txt.substituir(nome, letra, "O")
-					pare
-				//filtra i
-				caso 'î':caso 'í':caso 'ì':caso 'ï':
-					letra = typ.caracter_para_cadeia(x)
-					nome = txt.substituir(nome, letra, "i")
-					pare
-				//filtra I
-				caso 'Î':caso 'Í':caso 'Ì':caso 'Ï':
-					letra = typ.caracter_para_cadeia(x)
-					nome = txt.substituir(nome, letra, "I")
-					pare
-				//filtra u
-				caso 'û':caso 'ú':caso 'ù':caso 'ü':
-					letra = typ.caracter_para_cadeia(x)
-					nome = txt.substituir(nome, letra, "u")
-					pare
-				//filtra U
-				caso 'Û':caso 'Ú':caso 'Ù':caso 'Ü':
-					letra = typ.caracter_para_cadeia(x)
-					nome = txt.substituir(nome, letra, "U")
-					pare
-				//filtra n
-				caso 'ñ':
-					letra = typ.caracter_para_cadeia(x)
-					nome = txt.substituir(nome, letra, "n")
-					pare
-				//filtra N
-				caso 'Ñ':
-					letra = typ.caracter_para_cadeia(x)
-					nome = txt.substituir(nome, letra, "N")
-					pare
-				//filtra c
-				caso 'ç':
-					letra = typ.caracter_para_cadeia(x)
-					nome = txt.substituir(nome, letra, "c")
-				//filtra C
-				caso 'Ç':
-					letra = typ.caracter_para_cadeia(x)
-					nome = txt.substituir(nome, letra, "C")
-					pare
-				//filtra Y
-				caso 'Ý':
-					letra = typ.caracter_para_cadeia(x)
-					nome = txt.substituir(nome, letra, "Y")
-					pare
-				//filtra y
-				caso 'ý': caso 'ÿ':
-					letra = typ.caracter_para_cadeia(x)
-					nome = txt.substituir(nome, letra, "y")
-					pare
-				//filtra caracteres indesejados
-				caso '|':caso '\\':caso '/':
-					letra = typ.caracter_para_cadeia(x)
-					nome = txt.substituir(nome, letra, "")
-					pare
-				//filtra caracter de separação de dados
-				caso ':':
-					letra = typ.caracter_para_cadeia(x)
-					nome = txt.substituir(nome, letra, "-")
-					pare
-			}
-		}
-		retorne nome
-	}
->>>>>>> 9a651723d5c3cf91153c07ff8d347ada02676f0c
-	funcao pesquisarProduto(inteiro id,cadeia caminho[], inteiro vetDeNum[], real saldoCaixa){
+     funcao pesquisarProduto(inteiro id,cadeia caminho[], inteiro vetDeNum[], real saldoCaixa){
 		inteiro opcaoInterna, arquivo, saidaLoop, j = 1
 		cadeia vetInfProd[6]
 		cadeia vetInfVend[4]
@@ -604,38 +469,11 @@ programa
 		para(inteiro i = 0; i< PROD; i++){
 			vetor[i] = ""
 		} 
-        f_front_cadastro(senha, vetor)
-            vetor[0] += (numDeProd+1)
-        // Antes de passar o produto, verifique se o produto já existe
-        // Esta linha chama a função produtoExiste para verificar se o produto já existe no arquivo
-        se (produtoExiste(vetor[1], caminho) == falso) {
-            // Validação de quantidade de produtos
-            // Esta parte garante que a quantidade de produtos inserida seja um número inteiro maior que zero
-            inteiro quantidade
-            faca {
-                quantidade = entradaBaseInteiro("Insira a quantidade do produto: ")
-            } enquanto (quantidade <= 0)
-            vetor[2] = typ.inteiro_para_cadeia(quantidade, 10)
-
-            // Validação de valores de produtos
-            // Esta parte garante que o valor de custo do produto não seja maior que o valor do produto
-            real valor_custo, valor_produto
-            faca {
-                valor_custo = entradaBaseReal("Insira o valor de custo do produto: ")
-                valor_produto = entradaBaseReal("Insira o valor do produto: ")
-                se (valor_custo > valor_produto) {
-                    escreva("O valor de custo não pode ser maior que o valor do produto. Por favor, tente novamente.")
-                }
-            } enquanto (valor_custo > valor_produto)
-            vetor[3] = typ.real_para_cadeia(valor_produto)
-            vetor[4] = typ.real_para_cadeia(valor_custo)
-
-            passeProduto(1, caminho , vetor)//passa os dados do produto para o arquivo
-        } senao {
-            escreva("O produto já existe. Por favor, tente novamente com um produto diferente.")
-        }
-    
-          passeProduto(1, caminho , vetor)//passa os dados do produto para o arquivo
+		vetor[0] += (numDeProd+1)	
+		f_front_cadastro(senha, vetor)
+		// Antes de passar o produto, verifique se o produto já existe
+		// Esta linha chama a função produtoExiste para verificar se o produto já existe no arquivo
+		passeProduto(1, caminho , vetor)//passa os dados do produto para o arquivo
 	}
      funcao logico produtoExiste(cadeia nomeProduto, cadeia caminho) {
         // Abra o arquivo em modo de leitura
@@ -906,11 +744,7 @@ programa
 		}enquanto(saidaLoop != 1 e saidaLoop != 2)
 		retorne saidaLoop
      }
-<<<<<<< HEAD
-    	funcao vazio verifAcess (cadeia password){
-=======
      funcao vazio verifAcess (cadeia password){
->>>>>>> 9a651723d5c3cf91153c07ff8d347ada02676f0c
 		cadeia senha
 		inteiro contador=0
 		escreva("Verificação de Acesso\n\nDigite a senha para continuar:\n->")
@@ -945,10 +779,6 @@ programa
           }
           retorne falso
      }
-<<<<<<< HEAD
-	
-=======
->>>>>>> 9a651723d5c3cf91153c07ff8d347ada02676f0c
 	funcao Menu(inteiro numDeVet[],cadeia vetsrc[])
      {
           grf.iniciar_modo_grafico(verdadeiro)
@@ -956,7 +786,7 @@ programa
           grf.renderizar()// antes de aparecer alguma imagem aparece uma tela preta. 
           logico saida = verdadeiro
           enquanto (saida) {
-          	inteiro ImgMenu = grf.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/Menu.png")
+          	inteiro ImgMenu = grf.carregar_imagem("./midia/imagens/Telas do Front Padaria/menu/menu_programa1.png")
                inteiro telaMenu = grf.redimensionar_imagem(ImgMenu, LarguraT, AlturaT, verdadeiro) // variavel que recebe a foto da variavel (telaMenu) e redimensiona para cobrir toda a janela.
                grf.desenhar_imagem(0,0, telaMenu)
                grf.liberar_imagem(telaMenu)  // libera o cache dessa imagem da memoria RAM 
@@ -1038,13 +868,7 @@ programa
                */
           }
           grf.encerrar_modo_grafico()
-<<<<<<< HEAD
      }
-     
-     
-=======
-     }    
->>>>>>> 9a651723d5c3cf91153c07ff8d347ada02676f0c
 	funcao f_front_venda(){}
 	funcao f_front_cadastro(cadeia senha, cadeia &vetor[]){
 		logico saida = verdadeiro
@@ -1053,24 +877,37 @@ programa
 			Apresenta_Registro(0, Tela(1920, 684, LarguraT),Tela(1080, 850, AlturaT),texto)//para login e senha
 			Escrever(texto, saida)
 		}
+		
+		logico chaveTentativas = verdadeiro
 		se(texto != senha){
-			saida = verdadeiro
-			enquanto(saida){
-				Apresenta_Registro(1, Tela(1920, 684, LarguraT),Tela(1080, 850, AlturaT),texto)
-				Escrever(texto, saida)
+			para(inteiro tentativas = 1; tentativas <= 5; tentativas++){
+				saida = verdadeiro
+				enquanto(saida){
+					Apresenta_Registro(1, Tela(1920, 684, LarguraT),Tela(1080, 850, AlturaT),texto)
+					Escrever(texto, saida)
+					
+				}
 				se(texto != senha){
-					saida = verdadeiro
+					chaveTentativas = falso
+				}
+				senao{
+					chaveTentativas = verdadeiro
 				}
 			}
 		}
+		se(chaveTentativas){
 		//nome
 		saida = verdadeiro
 		texto = ""
 		enquanto(saida){
 			Apresentar_Cadastro(0, Tela(1920, 694, LarguraT),Tela(1080, 749, AlturaT),texto)//para login e senha
 			Escrever(texto, saida)
-			
-			vetor[1] = texto
+			se(texto != ""){
+				vetor[1] = texto
+			}
+			senao{
+				saida = verdadeiro	
+			}
 		}
 		//Peso ou kg
 		texto = ""
@@ -1153,70 +990,100 @@ programa
 		texto = ""
 		Apresentar_Cadastro(6,0,0,texto)
 		utl.aguarde(3500)
+		}
+		senao{
+			Apresenta_Registro(2,0,0,texto)
+			utl.aguarde(3500)
+		}
 	}
 	
      funcao vazio Apresenta_Registro(inteiro id, inteiro x, inteiro y,cadeia &texto)// função para aparecer a outra tela 
      {
-     	se(id == 0){
-     		inteiro ImgAcesso = grf.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/VerificarAcesso.png")
+     	
+     	escolha(id){
+     	caso 0:
+     		inteiro ImgAcesso = grf.carregar_imagem("./midia/imagens/Telas do Front Padaria/verificar_ADM/tela_verfica_acesso1.png")
      		inteiro telaAcesso = grf.redimensionar_imagem(ImgAcesso, LarguraT, AlturaT, verdadeiro)
 	     	grf.desenhar_imagem(0, 0, telaAcesso)
 	     	grf.desenhar_texto(x, y, texto+"_")
 	     	grf.liberar_imagem(telaAcesso)
-     	}
-     	senao se(id == 1){
-     		inteiro ImgAcessoNegado = grf.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/AcessoNegado.png")
+	     	pare
+     	caso 1:
+     		inteiro ImgAcessoNegado = grf.carregar_imagem("./midia/imagens/Telas do Front Padaria/verificar_ADM/senha_incorreta.png")
      		inteiro telaAcessoNegado = grf.redimensionar_imagem(ImgAcessoNegado, LarguraT, AlturaT, verdadeiro)
      		grf.desenhar_imagem(0, 0, telaAcessoNegado)
      		grf.desenhar_texto(x, y, texto+"_")
      		grf.liberar_imagem(telaAcessoNegado)
      		grf.liberar_imagem(ImgAcessoNegado)
-     	} 
+     		pare
+		caso 2:
+			inteiro ImgExcessoTentativas = grf.carregar_imagem ("./midia/imagens/Telas do Front Padaria/verificar_ADM/excedeu_tentativas.png")
+			inteiro telaExcessoTentativas = grf.redimensionar_imagem(ImgExcessoTentativas, LarguraT, AlturaT, verdadeiro)
+			grf.desenhar_imagem(0, 0, telaExcessoTentativas)
+			grf.liberar_imagem(telaExcessoTentativas)
+     		grf.liberar_imagem(ImgExcessoTentativas)
+			pare
+     		
+     	}
      	grf.renderizar()
      }
      
 	funcao Apresentar_Cadastro(inteiro id, inteiro x, inteiro y,cadeia &texto){
+		
+    	
 		escolha(id){
 			caso 0:
-				
+				inteiro ImgNome = grf.carregar_imagem("./midia/imagens/Telas do Front Padaria/cadastro/nome_produto.png")
 				inteiro telaNome = grf.redimensionar_imagem(ImgNome, LarguraT, AlturaT, verdadeiro)
 				grf.desenhar_imagem(0, 0, telaNome)
 				grf.desenhar_texto(x, y, texto+"_")
 			     grf.liberar_imagem(telaNome)
+			     grf.liberar_imagem(ImgNome)
 				pare
 			caso 1:
-				inteiro telaQuantidade = grf.redimensionar_imagem(ImgQuantidade, LarguraT, AlturaT, verdadeiro)
+				inteiro ImgQuantidade = grf.carregar_imagem("./midia/imagens/Telas do Front Padaria/cadastro/quant_produtos.png")
+     			inteiro telaQuantidade = grf.redimensionar_imagem(ImgQuantidade, LarguraT, AlturaT, verdadeiro)
 			     grf.desenhar_imagem(0, 0, telaQuantidade)
 			     grf.desenhar_texto(x, y, texto+"_")
 			     grf.liberar_imagem(telaQuantidade)
+			     grf.liberar_imagem(ImgQuantidade)
 		     	pare
 		     caso 2:
-		     	inteiro telaPesoUnitario = grf.redimensionar_imagem(ImgPesoUnitario, LarguraT, AlturaT, verdadeiro)
+		     	inteiro ImgPesoUnitario = grf.carregar_imagem("./midia/imagens/Telas do Front Padaria/cadastro/kg_ou_uni.png")
+				inteiro telaPesoUnitario = grf.redimensionar_imagem(ImgPesoUnitario, LarguraT, AlturaT, verdadeiro)
 			     grf.desenhar_imagem(0, 0, telaPesoUnitario)
 			     grf.liberar_imagem(telaPesoUnitario)
+			     grf.liberar_imagem(ImgPesoUnitario)
 		     	pare
 		     caso 3:
-		     	inteiro telaPeso = grf.redimensionar_imagem(ImgPeso, LarguraT, AlturaT, verdadeiro)
+		     	inteiro ImgPeso = grf.carregar_imagem("./midia/imagens/Telas do Front Padaria/cadastro/preco_kgrf.png")
+				inteiro telaPeso = grf.redimensionar_imagem(ImgPeso, LarguraT, AlturaT, verdadeiro)
 		     	grf.desenhar_imagem(0, 0, telaPeso)
 		     	grf.desenhar_texto(x, y, texto+"_")
 		     	grf.liberar_imagem(telaPeso)
 		     	pare
 		     caso 4:
-		     	inteiro telaUnitario = grf.redimensionar_imagem(ImgUnitario, LarguraT, AlturaT, verdadeiro)
+		     	inteiro ImgUnitario = grf.carregar_imagem("./midia/imagens/Telas do Front Padaria/cadastro/preco_unidade.png")
+				inteiro telaUnitario = grf.redimensionar_imagem(ImgUnitario, LarguraT, AlturaT, verdadeiro)
 		     	grf.desenhar_imagem(0, 0, telaUnitario)
 		     	grf.desenhar_texto(x, y, texto+"_")
 		     	grf.liberar_imagem(telaUnitario)
+		     	grf.liberar_imagem(ImgUnitario)
 		     	pare
 		     caso 5:
+		     	inteiro ImgCusto = grf.carregar_imagem("./midia/imagens/Sistema Padaria 2.0/Custo.png")
 		     	inteiro telaCusto = grf.redimensionar_imagem(ImgCusto, LarguraT, AlturaT, verdadeiro)
 			     grf.desenhar_imagem(0, 0, telaCusto)
 			     grf.desenhar_texto(x, y, texto+"_")
 			     grf.liberar_imagem(telaCusto)
+			     grf.liberar_imagem(ImgCusto)
 		     	pare
 		      caso 6:
-		     	inteiro telaCadastroSucesso = grf.redimensionar_imagem(ImgCadastroSucesso, LarguraT, AlturaT, verdadeiro)
+		      	inteiro ImgCadastroSucesso = grf.carregar_imagem("./midia/imagens/Telas do Front Padaria/cadastro/produto_cadastrado.png")
+				inteiro telaCadastroSucesso = grf.redimensionar_imagem(ImgCadastroSucesso, LarguraT, AlturaT, verdadeiro)
 			     grf.desenhar_imagem(0, 0, telaCadastroSucesso)
 			     grf.liberar_imagem(telaCadastroSucesso)
+			     grf.liberar_imagem(ImgCadastroSucesso)
 		     	pare
 		}
 		
@@ -1282,13 +1149,8 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
-<<<<<<< HEAD
- * @POSICAO-CURSOR = 39826; 
- * @DOBRAMENTO-CODIGO = [61, 137, 401, 405, 468, 481, 491, 522, 541, 574, 613, 631, 655, 690, 722, 744, 773, 839, 781, 1051, 1054, 1076];
-=======
- * @POSICAO-CURSOR = 1639; 
- * @DOBRAMENTO-CODIGO = [33, 50, 56, 356, 366, 370, 469, 532, 545, 566, 605, 621, 652, 671, 704, 743, 761, 785, 820, 852, 874, 902, 909, 997, 1096, 1112, 1158, 1161, 1183];
->>>>>>> 9a651723d5c3cf91153c07ff8d347ada02676f0c
+ * @POSICAO-CURSOR = 41209; 
+ * @DOBRAMENTO-CODIGO = [88, 389, 493, 524, 677, 781, 875, 901, 915, 930, 948, 962, 978];
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
