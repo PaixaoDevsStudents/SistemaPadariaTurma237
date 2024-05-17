@@ -18,9 +18,9 @@ programa
      inteiro AlturaT = grf.altura_tela()
 	cadeia computador =  utl.obter_diretorio_usuario()
 	//Menu 
-	inteiro ImgMenu = grf.carregar_imagem(computador+"./midia/imagens/Sistema Padaria 2.0/Menu.png")
+	inteiro ImgMenu = grf.carregar_imagem(computador+"C:/Users/Aluno/Documents/igor f/projeto turma/SistemaPadariaTurma237/sourceDaPadaria/midia/imagens/Sistema Padaria 2.0/Menu.png")
      //Login e Senha
-     inteiro ImgAcesso = grf.carregar_imagem(computador+".midia/imagens/Sistema Padaria 2.0/VerificarAcesso.png")
+     inteiro ImgAcesso = grf.carregar_imagem(computador+"C:/Users/Aluno/Documents/igor f/projeto turma/SistemaPadariaTurma237/sourceDaPadaria/midia/imagens/Sistema Padaria 2.0/midia/imagens/Sistema Padaria 2.0/VerificarAcesso.png")
      inteiro ImgAcessoNegado = grf.carregar_imagem(computador+"./midia/imagens/Sistema Padaria 2.0/AcessoNegado.png")
      //cadastro
      inteiro ImgNome = grf.carregar_imagem(computador+"./midia/imagens/Sistema Padaria 2.0/Nome.png")
@@ -872,6 +872,76 @@ programa
 		}enquanto(saidaLoop != 1 e saidaLoop != 2)
 		retorne saidaLoop
      }
+     funcao fechamentoCaixa(cadeia password, cadeia vetsrc[]) {
+    // Solicita a verificação de acesso
+    verifAcess(password)
+    logico formato_24h = verdadeiro
+    // Após a verificação bem-sucedida, pergunte ao usuário se ele realmente deseja fechar o caixa
+    escreva("Você realmente deseja fechar o caixa? (S/N)\n-->")
+    caracter resposta
+    leia(resposta)
+    enquanto (resposta != 'S' e resposta != 's' e resposta != 'N' e resposta != 'n') {
+        escreva("Entrada inválida. Por favor, insira 'S' para sim ou 'N' para não.\n-->")
+        leia(resposta)
+    }
+    se (resposta == 'N' ou resposta == 'n') {
+        inicio() // Volta para o menu inicial se o usuário responder 'N' ou 'n'
+    }senao{
+    // Se o usuário responder 'S' ou 's', prossiga com o fechamento do caixa
+    escreva("Fechando o caixa...\n")
+     gerarRelatorioVendas(vetsrc)
+
+   // Registrar a data e hora de fechamento
+    cadeia dataHoraFechamento = Data()
+    escreva("Data e hora de fechamento: ", dataHoraFechamento, "\n")
+    }
+}
+     funcao cadeia Data() {
+    cadeia dia = typ.inteiro_para_cadeia(cal.dia_mes_atual(),10)
+    cadeia mes = typ.inteiro_para_cadeia(cal.mes_atual(),10)
+    cadeia ano = typ.inteiro_para_cadeia(cal.ano_atual(),10)
+    cadeia hora = typ.inteiro_para_cadeia(cal.hora_atual(verdadeiro),10) // formato_24h = verdadeiro
+    cadeia minuto = typ.inteiro_para_cadeia(cal.minuto_atual(),10)
+
+    // Adiciona um zero à esquerda se o dia, mês, hora ou minuto tiverem apenas um dígito
+    se (txt.numero_caracteres(dia) == 1) {
+        dia = "0" + dia
+    }
+    se (txt.numero_caracteres(mes) == 1) {
+        mes = "0" + mes
+    }
+    se (txt.numero_caracteres(hora) == 1) {
+        hora = "0" + hora
+    }
+    se (txt.numero_caracteres(minuto) == 1) {
+        minuto = "0" + minuto
+    }
+
+    retorne ""+dia+"/"+mes+"/"+ano+"\t"+hora+":"+minuto
+}
+     funcao vazio gerarRelatorioVendas(cadeia vetsrc[]) {
+    // Abra o arquivo onde os dados de vendas estão armazenados
+        cadeia caminho = vetsrc[3] // Ajuste o índice conforme necessário para o caminho correto
+        inteiro arquivoVendas = src.abrir_arquivo(caminho, src.MODO_LEITURA)
+
+        escreva("===========================================\n")
+        escreva("RELATÓRIO - ", caminho, "\n")
+        escreva("===========================================\n")
+
+        // Leia cada linha do arquivo de vendas
+        cadeia linha = src.ler_linha(arquivoVendas)
+        enquanto (src.fim_arquivo(arquivoVendas) == falso) {
+            // A linha é exibida diretamente, a formatação será feita pela biblioteca gráfica
+            escreva(linha + "\n")
+            linha = src.ler_linha(arquivoVendas)
+        }
+
+        escreva("===========================================\n")
+
+        // Feche o arquivo de vendas
+        src.fechar_arquivo(arquivoVendas)
+    }
+
      funcao vazio verifAcess (cadeia password){
 		cadeia senha
 		inteiro contador=0
@@ -924,7 +994,7 @@ programa
 			inteiro mou = m.ler_botao() 
 			inteiro botao = 0
 			cadeia senha = "ADMIN"
-
+               cadeia password =""
            	se(mouse(Tela(1920,735,LarguraT), Tela(1080,330,AlturaT), Tela(1920,325,LarguraT), Tela(1080,85,AlturaT)) e mou == m.BOTAO_ESQUERDO){
            		botao = 1
                }
@@ -956,7 +1026,7 @@ programa
 				pare
 				caso 4:
 					saida=falso
-					//fechar caixa
+					fechamentoCaixa(password,vetsrc)
 
 				pare
 			}
@@ -1216,8 +1286,8 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 1639; 
- * @DOBRAMENTO-CODIGO = [33, 50, 56, 356, 366, 370, 469, 532, 545, 566, 605, 621, 652, 671, 704, 743, 761, 785, 820, 852, 874, 902, 909, 997, 1096, 1112, 1158, 1161, 1183];
+ * @POSICAO-CURSOR = 949; 
+ * @DOBRAMENTO-CODIGO = [33, 50, 56, 356, 366, 370, 469, 532, 566, 605, 621, 652, 671, 704, 743, 761, 785, 820, 852, 944, 972, 1067, 1166, 1182, 1228, 1231, 1253];
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;

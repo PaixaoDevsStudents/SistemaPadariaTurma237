@@ -57,7 +57,7 @@ programa
 				pare
 				caso 4:
 					//fechar caixa
-					fechamentoCaixa(password,vetorProd,vetorVend,caminho,linhaOriginal,posicao,vetDeNum,vetsrc)
+					fechamentoCaixa(password,vetsrc)
 					
 				pare
 				caso 5:
@@ -73,8 +73,8 @@ programa
 		leia(opcao)
 		retorne opcao
 	}
-funcao fechamentoCaixa(cadeia password, cadeia vetorProd[], cadeia vetorVend[], cadeia caminho, cadeia linhaOriginal, inteiro posicao, inteiro vetDeNum[],cadeia vetsrc[]) {
-	
+
+     funcao fechamentoCaixa(cadeia password, cadeia vetsrc[]) {
     // Solicita a verificação de acesso
     verifAcess(password)
     logico formato_24h = verdadeiro
@@ -98,7 +98,7 @@ funcao fechamentoCaixa(cadeia password, cadeia vetorProd[], cadeia vetorVend[], 
     escreva("Data e hora de fechamento: ", dataHoraFechamento, "\n")
     }
 }
-   funcao cadeia Data() {
+     funcao cadeia Data() {
     cadeia dia = typ.inteiro_para_cadeia(cal.dia_mes_atual(),10)
     cadeia mes = typ.inteiro_para_cadeia(cal.mes_atual(),10)
     cadeia ano = typ.inteiro_para_cadeia(cal.ano_atual(),10)
@@ -121,32 +121,31 @@ funcao fechamentoCaixa(cadeia password, cadeia vetorProd[], cadeia vetorVend[], 
 
     retorne ""+dia+"/"+mes+"/"+ano+"\t"+hora+":"+minuto
 }
+     funcao vazio gerarRelatorioVendas(cadeia vetsrc[]) {
+        // Abra o arquivo onde os dados de vendas estão armazenados    
+        cadeia dataHoraFechamento = Data()
+        cadeia caminho = vetsrc[3] // Ajuste o índice conforme necessário para o caminho correto
+        inteiro arquivoVendas = src.abrir_arquivo(caminho, src.MODO_LEITURA)
 
-funcao vazio gerarRelatorioVendas(cadeia vetsrc[]) {
-    // Abra o arquivo onde os dados de vendas estão armazenados
-    
-    cadeia caminho = "C:/Users/Aluno/Documents/igor f/projeto turma/SistemaPadariaTurma237/sourceDaPadaria/DataBaseDeVendasEmTotal.txt"
-    cadeia dataHoraFechamento = Data()
-    inteiro arquivoVendas = src.abrir_arquivo(caminho, src.MODO_LEITURA)
+        escreva("===========================================\n")
+        escreva("\tRELATÓRIO\n")
+        escreva("===========================================\n")
 
-    escreva("=============================================\n")
-    escreva("RELATÓRIO DE VENDAS - DATA: ", dataHoraFechamento, "\n")
-    escreva("=============================================\n\n")
-    escreva("PRODUTO\t\tQUANTIDADE VENDIDA\tPREÇO UNITÁRIO\tTOTAL DE VENDAS\n")
+        // Leia cada linha do arquivo de vendas
+        cadeia linha = src.ler_linha(arquivoVendas)
+        enquanto (src.fim_arquivo(arquivoVendas) == falso) {
+            // Supondo que cada linha esteja no formato "nomeProduto;quantidadeVendida;valorTotalVenda"
+            // A linha é exibida diretamente, a formatação será feita pela biblioteca gráfica
+            escreva(linha + "\n")
+            linha = src.ler_linha(arquivoVendas)
+        
 
-    cadeia linhaVenda = src.ler_linha(arquivoVendas)
-    // Percorra cada venda no arquivo
-    enquanto (src.fim_arquivo(arquivoVendas) == falso) {
-        // Supondo que os dados de venda estejam estruturados como: produto|quantidade|preco_unitario
-         
+        escreva("===========================================\n")
 
-        // Imprima os detalhes de cada venda
-       
-
-        // Leia a próxima linha no arquivo de vendas
-        linhaVenda = src.ler_linha(arquivoVendas)
+        // Feche o arquivo de vendas
+        src.fechar_arquivo(arquivoVendas)
     }
-
+    
     escreva("\n=============================================\n")
     escreva("TOTAL DE VENDAS DO DIA: "+  +"\n")
     escreva("=============================================\n")
@@ -189,7 +188,7 @@ funcao vazio gerarRelatorioVendas(cadeia vetsrc[]) {
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 4064; 
+ * @POSICAO-CURSOR = 3840; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
