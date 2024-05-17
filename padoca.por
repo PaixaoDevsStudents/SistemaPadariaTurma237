@@ -994,7 +994,7 @@ programa
 		}
 	}
 	
-	//front end
+	//front en
 	funcao realizarVendas(inteiro id, inteiro x, inteiro y,cadeia &texto){a
 		leia(id)
 		//inteiro imgCodigo=0, alturaT=0, larguraT=0,imgquantidade=0, imgQuantErrada=0, imgTelaValor =0
@@ -1435,7 +1435,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 40223; 
+ * @POSICAO-CURSOR = 42246; 
  * @DOBRAMENTO-CODIGO = [45, 62, 68, 368, 378, 382, 481, 544, 557, 578, 617, 633, 664, 683, 716, 755, 773, 797, 832, 864, 887, 911, 934, 967, 997, 1121, 1128, 1216, 1315, 1331, 1377, 1380, 1402];
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
